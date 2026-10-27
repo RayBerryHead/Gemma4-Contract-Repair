@@ -64,3 +64,7 @@ python -m gemma_paper.runner --cases C1 T5 --replicate new-r01 --arms B M --run-
 ```
 
 無API key的固定patch重播不受這一段影響。完整source refs在docs/plans/20261023_research_ready/case_index.json；自有程式Apache-2.0，第三方上下文與diff片段依各上游授權，詳見THIRD_PARTY_NOTICES.md與third-party-licenses/。此包不含Kaggle competition data、私有聊天、帳號credential或模型權重。
+
+## Kaggle 貼入版本
+
+[PrivateCacheWitness](kaggle/private-cache-witness.md)／[CivilTimeGuard](kaggle/civil-time-guard.md)已將圖連結固定到公開asset commit，字數各2240／2411。submission-metadata.json記錄READY_NOT_SUBMITTED；本repo發布不等於Kaggle已按Submit。
