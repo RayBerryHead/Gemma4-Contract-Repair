@@ -1,0 +1,477 @@
+{
+  "case_id": "T3",
+  "replicate": "r01",
+  "identity": "228e2e11d2bf4d3746fa3c20193a4965964d8bc5d89cadff53b5f96291c28744",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/src/dateutil/tz/_tzfile.py b/src/dateutil/tz/_tzfile.py\n--- a/src/dateutil/tz/_tzfile.py\n+++ b/src/dateutil/tz/_tzfile.py\n@@ -1240,7 +1240,7 @@\n def _post_epoch_days_before_year(year):\n     \"\"\"Get the number of days between 1970-01-01 and YEAR-01-01\"\"\"\n     y = year - 1\n-    return y * 365 + y // 4 - y // 100 + y // 400 - EPOCHORDINAL\n+    return y * 365 + y // 4 - y // 100 + y // 400 + 1 - EPOCHORDINAL\n \n \n class _DayOffset(object):\n@@ -1261,8 +1261,10 @@\n         days_before_year = _post_epoch_days_before_year(year)\n \n         d = self.d\n-        if self.julian and d >= 59 and calendar.isleap(year):\n-            d += 1\n+        if self.julian:\n+            d -= 1\n+            if d >= 59 and calendar.isleap(year):\n+                d += 1\n \n         epoch = (days_before_year + d) * 86400\n         epoch += self.hour * 3600 + self.minute * 60 + self.second\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T3/r01/B/patch-014b189c553b46d6",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": [
+            "STD",
+            "DST"
+          ],
+          "probe_id": "T3-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.05301465839147568,
+          "subject_calls": 1,
+          "input": {
+            "rule": "STD0DST-1,J59/0,J200/0",
+            "dates": [
+              "2020-02-27T12:00",
+              "2020-02-28T12:00"
+            ]
+          },
+          "expected": [
+            "STD",
+            "DST"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "ordinal",
+            "leap"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "STD",
+            "DST"
+          ],
+          "probe_id": "T3-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.04412356950342655,
+          "subject_calls": 1,
+          "input": {
+            "rule": "STD0DST-1,J60/0,J200/0",
+            "dates": [
+              "2024-02-29T12:00",
+              "2024-03-01T12:00"
+            ]
+          },
+          "expected": [
+            "STD",
+            "DST"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "ordinal",
+            "leap"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": [
+            "STD",
+            "DST",
+            "STD",
+            "DST"
+          ],
+          "probe_id": "T3-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.05557155795395374,
+          "subject_calls": 1,
+          "input": {
+            "rule": "STD0DST-1,59/0,J200/0",
+            "dates": [
+              "2020-02-28T12:00",
+              "2020-02-29T12:00",
+              "2025-02-28T12:00",
+              "2025-03-01T12:00"
+            ]
+          },
+          "expected": [
+            "STD",
+            "DST",
+            "STD",
+            "DST"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "ordinal",
+            "leap"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": [
+              "STD",
+              "DST"
+            ],
+            "probe_id": "T3-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.0925395805388689,
+            "subject_calls": 1,
+            "input": {
+              "rule": "STD0DST-1,10/0,J100/0",
+              "dates": [
+                "2021-01-10T12:00",
+                "2021-01-11T12:00"
+              ]
+            },
+            "expected": [
+              "STD",
+              "DST"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinal"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "STD",
+              "DST"
+            ],
+            "probe_id": "T3-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.06985582411289215,
+            "subject_calls": 1,
+            "input": {
+              "rule": "STD0DST-1,M3.2.0/2,M11.1.0/2",
+              "dates": [
+                "2021-01-15T12:00",
+                "2021-07-15T12:00"
+              ]
+            },
+            "expected": [
+              "STD",
+              "DST"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinary",
+              "month-week"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "STD",
+              "DST"
+            ],
+            "probe_id": "T3-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.05301465839147568,
+            "subject_calls": 1,
+            "input": {
+              "rule": "STD0DST-1,J59/0,J200/0",
+              "dates": [
+                "2020-02-27T12:00",
+                "2020-02-28T12:00"
+              ]
+            },
+            "expected": [
+              "STD",
+              "DST"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinal",
+              "leap"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "STD",
+              "DST"
+            ],
+            "probe_id": "T3-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.04412356950342655,
+            "subject_calls": 1,
+            "input": {
+              "rule": "STD0DST-1,J60/0,J200/0",
+              "dates": [
+                "2024-02-29T12:00",
+                "2024-03-01T12:00"
+              ]
+            },
+            "expected": [
+              "STD",
+              "DST"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinal",
+              "leap"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T3-V-01",
+          "T3-V-02"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "ddcec71e86e4ac8af636835f8c9acf3391917b320c219b2195d0270b731173cd",
+          "applied_diff_hash": "014b189c553b46d6968b8a0f049d1f1a341089c0ffe3bb33272cc8626de1e0a8"
+        }
+      },
+      "joint_valid": true
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/src/dateutil/tz/_tzfile.py b/src/dateutil/tz/_tzfile.py\n--- a/src/dateutil/tz/_tzfile.py\n+++ b/src/dateutil/tz/_tzfile.py\n@@ -1240,7 +1240,7 @@\n def _post_epoch_days_before_year(year):\n     \"\"\"Get the number of days between 1970-01-01 and YEAR-01-01\"\"\"\n     y = year - 1\n-    return y * 365 + y // 4 - y // 100 + y // 400 - EPOCHORDINAL\n+    return y * 365 + y // 4 - y // 100 + y // 400 + 1 - EPOCHORDINAL\n \n \n class _DayOffset(object):\n@@ -1261,8 +1261,10 @@\n         days_before_year = _post_epoch_days_before_year(year)\n \n         d = self.d\n-        if self.julian and d >= 59 and calendar.isleap(year):\n-            d += 1\n+        if self.julian:\n+            d -= 1\n+            if d >= 59 and calendar.isleap(year):\n+                d += 1\n \n         epoch = (days_before_year + d) * 86400\n         epoch += self.hour * 3600 + self.minute * 60 + self.second\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T3/r01/M/patch-014b189c553b46d6",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": [
+            "STD",
+            "DST"
+          ],
+          "probe_id": "T3-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.06969073601067066,
+          "subject_calls": 1,
+          "input": {
+            "rule": "STD0DST-1,J59/0,J200/0",
+            "dates": [
+              "2020-02-27T12:00",
+              "2020-02-28T12:00"
+            ]
+          },
+          "expected": [
+            "STD",
+            "DST"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "ordinal",
+            "leap"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "STD",
+            "DST"
+          ],
+          "probe_id": "T3-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.051419807597994804,
+          "subject_calls": 1,
+          "input": {
+            "rule": "STD0DST-1,J60/0,J200/0",
+            "dates": [
+              "2024-02-29T12:00",
+              "2024-03-01T12:00"
+            ]
+          },
+          "expected": [
+            "STD",
+            "DST"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "ordinal",
+            "leap"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": [
+            "STD",
+            "DST",
+            "STD",
+            "DST"
+          ],
+          "probe_id": "T3-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.06926616095006466,
+          "subject_calls": 1,
+          "input": {
+            "rule": "STD0DST-1,59/0,J200/0",
+            "dates": [
+              "2020-02-28T12:00",
+              "2020-02-29T12:00",
+              "2025-02-28T12:00",
+              "2025-03-01T12:00"
+            ]
+          },
+          "expected": [
+            "STD",
+            "DST",
+            "STD",
+            "DST"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "ordinal",
+            "leap"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": [
+              "STD",
+              "DST"
+            ],
+            "probe_id": "T3-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.0781598873436451,
+            "subject_calls": 1,
+            "input": {
+              "rule": "STD0DST-1,10/0,J100/0",
+              "dates": [
+                "2021-01-10T12:00",
+                "2021-01-11T12:00"
+              ]
+            },
+            "expected": [
+              "STD",
+              "DST"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinal"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "STD",
+              "DST"
+            ],
+            "probe_id": "T3-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.05867205932736397,
+            "subject_calls": 1,
+            "input": {
+              "rule": "STD0DST-1,M3.2.0/2,M11.1.0/2",
+              "dates": [
+                "2021-01-15T12:00",
+                "2021-07-15T12:00"
+              ]
+            },
+            "expected": [
+              "STD",
+              "DST"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinary",
+              "month-week"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "STD",
+              "DST"
+            ],
+            "probe_id": "T3-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.06969073601067066,
+            "subject_calls": 1,
+            "input": {
+              "rule": "STD0DST-1,J59/0,J200/0",
+              "dates": [
+                "2020-02-27T12:00",
+                "2020-02-28T12:00"
+              ]
+            },
+            "expected": [
+              "STD",
+              "DST"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinal",
+              "leap"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "STD",
+              "DST"
+            ],
+            "probe_id": "T3-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.051419807597994804,
+            "subject_calls": 1,
+            "input": {
+              "rule": "STD0DST-1,J60/0,J200/0",
+              "dates": [
+                "2024-02-29T12:00",
+                "2024-03-01T12:00"
+              ]
+            },
+            "expected": [
+              "STD",
+              "DST"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinal",
+              "leap"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T3-V-01",
+          "T3-V-02"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "ddcec71e86e4ac8af636835f8c9acf3391917b320c219b2195d0270b731173cd",
+          "applied_diff_hash": "014b189c553b46d6968b8a0f049d1f1a341089c0ffe3bb33272cc8626de1e0a8"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "ddcec71e86e4ac8af636835f8c9acf3391917b320c219b2195d0270b731173cd"
+}

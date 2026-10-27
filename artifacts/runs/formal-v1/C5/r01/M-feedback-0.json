@@ -1,0 +1,153 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "status": 200,
+            "body": "alice"
+          },
+          {
+            "status": 200,
+            "body": "bob"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C5-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.22603501193225384,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "identity/key",
+        "store"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "status": 200,
+            "body": "alice"
+          },
+          {
+            "status": 200,
+            "body": "alice"
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C5-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.19065484404563904,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "alice"
+        ]
+      },
+      "expected": null,
+      "contract_check": "private_reuse",
+      "tags": [
+        "store",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "status": 200,
+            "body": "alice"
+          },
+          {
+            "status": 200,
+            "body": "anon"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C5-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.19160278514027596,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "existing_session": false
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "identity/key",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "status": 200,
+            "body": "anon"
+          },
+          {
+            "status": 200,
+            "body": "bob"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C5-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.20749346911907196,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "anon",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "identity/key",
+        "read"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "C5-V-01",
+    "C5-V-02"
+  ],
+  "new_subject_calls": 4,
+  "all_visible_pass": true,
+  "mapped_patch_phases": [],
+  "unmapped": true,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "40facaa378c9504cba9b309e217d132b1dca943a6b22251b01bb99ac5e4275be",
+    "applied_diff_hash": "3ad04f52c6a92aa628446b87b0b999d2b55c8f0f0b839e00c80dc9e775e5954f"
+  }
+}

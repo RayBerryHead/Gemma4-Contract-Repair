@@ -1,0 +1,147 @@
+{
+  "id": "T8",
+  "contract": "differenceInDays measures complete local day periods truncated toward zero, not elapsed seconds divided by 86400.",
+  "product_paths": [
+    "src/differenceInDays/index.js"
+  ],
+  "evidence_class": "temporal",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "T8-Q0-01",
+      "case": "T8",
+      "role": "Q0",
+      "params": {
+        "start": [
+          2024,
+          2,
+          9,
+          12
+        ],
+        "end": [
+          2024,
+          2,
+          10,
+          12
+        ]
+      },
+      "expected": 1,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "local-day",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T8-V-01",
+      "case": "T8",
+      "role": "V",
+      "params": {
+        "start": [
+          2024,
+          2,
+          9,
+          12
+        ],
+        "end": [
+          2024,
+          2,
+          10,
+          11,
+          59
+        ]
+      },
+      "expected": 0,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "local-day",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T8-E-01",
+      "case": "T8",
+      "role": "E",
+      "params": {
+        "start": [
+          2024,
+          10,
+          2,
+          12
+        ],
+        "end": [
+          2024,
+          10,
+          3,
+          12
+        ]
+      },
+      "expected": 1,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "local-day",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T8-U-01",
+      "case": "T8",
+      "role": "U",
+      "params": {
+        "start": [
+          2024,
+          0,
+          1,
+          12
+        ],
+        "end": [
+          2024,
+          0,
+          2,
+          12
+        ]
+      },
+      "expected": 1,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "local-day",
+        "ordinary"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T8-V-02",
+      "case": "T8",
+      "role": "V",
+      "params": {
+        "start": [
+          2023,
+          10,
+          4,
+          12
+        ],
+        "end": [
+          2023,
+          10,
+          5,
+          12
+        ]
+      },
+      "expected": 1,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "local-day",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    }
+  ]
+}

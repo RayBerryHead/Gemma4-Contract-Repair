@@ -1,0 +1,532 @@
+{
+  "case_id": "C3",
+  "replicate": "r02",
+  "identity": "c0ef7d2271652b67debe888bdc86988ea441ba7996425715fa847aacbbcb9292",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [
+        "C3-V-01",
+        "C3-V-02"
+      ],
+      "step": 2,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/django/middleware/cache.py b/django/middleware/cache.py\n--- a/django/middleware/cache.py\n+++ b/django/middleware/cache.py\n@@ -112,6 +112,12 @@\n             )\n         ):\n             return response\n+\n+        # If the request has an Authorization header, the response must be\n+        # either explicitly public or isolated by Authorization.\n+        if request.META.get(\"HTTP_AUTHORIZATION\"):\n+            if \"public\" not in cache_control:\n+                response.vary(\"Authorization\")\n \n         # Don't cache responses when the Vary header contains '*'.\n         if has_vary_header(response, \"*\"):\n",
+      "last_valid_source": "artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b",
+      "final_audit": [
+        {
+          "execution": "PRODUCT_EXCEPTION",
+          "error_type": "AttributeError",
+          "error": "'HttpResponse' object has no attribute 'vary'",
+          "traceback": "Traceback (most recent call last):\n  File \"study-source/fixtures/probe_python.py\", line 179, in <module>\n    observed = run(specification[\"case\"], Path(specification[\"source\"]), specification[\"params\"])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"study-source/fixtures/probe_python.py\", line 113, in run\n    response = chain(request)\n               ^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/utils/deprecation.py\", line 391, in __call__\n    response = self.process_response(request, response)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/middleware/cache.py\", line 120, in process_response\n    response.vary(\"Authorization\")\n    ^^^^^^^^^^^^^\nAttributeError: 'HttpResponse' object has no attribute 'vary'\n",
+          "probe_id": "C3-V-01",
+          "role": "V",
+          "passed": false,
+          "elapsed_seconds": 0.1368718482553959,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "alice",
+              "anon"
+            ],
+            "existing_session": false
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        },
+        {
+          "execution": "PRODUCT_EXCEPTION",
+          "error_type": "AttributeError",
+          "error": "'HttpResponse' object has no attribute 'vary'",
+          "traceback": "Traceback (most recent call last):\n  File \"study-source/fixtures/probe_python.py\", line 179, in <module>\n    observed = run(specification[\"case\"], Path(specification[\"source\"]), specification[\"params\"])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"study-source/fixtures/probe_python.py\", line 113, in run\n    response = chain(request)\n               ^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/utils/deprecation.py\", line 391, in __call__\n    response = self.process_response(request, response)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/middleware/cache.py\", line 120, in process_response\n    response.vary(\"Authorization\")\n    ^^^^^^^^^^^^^\nAttributeError: 'HttpResponse' object has no attribute 'vary'\n",
+          "probe_id": "C3-V-02",
+          "role": "V",
+          "passed": false,
+          "elapsed_seconds": 0.20931260846555233,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "eve",
+              "frank"
+            ],
+            "vary_language": true
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "store"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "PRODUCT_EXCEPTION",
+          "error_type": "AttributeError",
+          "error": "'HttpResponse' object has no attribute 'vary'",
+          "traceback": "Traceback (most recent call last):\n  File \"study-source/fixtures/probe_python.py\", line 179, in <module>\n    observed = run(specification[\"case\"], Path(specification[\"source\"]), specification[\"params\"])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"study-source/fixtures/probe_python.py\", line 113, in run\n    response = chain(request)\n               ^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/utils/deprecation.py\", line 391, in __call__\n    response = self.process_response(request, response)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/middleware/cache.py\", line 120, in process_response\n    response.vary(\"Authorization\")\n    ^^^^^^^^^^^^^\nAttributeError: 'HttpResponse' object has no attribute 'vary'\n",
+          "probe_id": "C3-E-01",
+          "role": "E",
+          "passed": false,
+          "elapsed_seconds": 0.124829376116395,
+          "subject_calls": 3,
+          "input": {
+            "actors": [
+              "carol",
+              "dave",
+              "carol"
+            ]
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "PRODUCT_EXCEPTION",
+            "error_type": "AttributeError",
+            "error": "'HttpResponse' object has no attribute 'vary'",
+            "traceback": "Traceback (most recent call last):\n  File \"study-source/fixtures/probe_python.py\", line 179, in <module>\n    observed = run(specification[\"case\"], Path(specification[\"source\"]), specification[\"params\"])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"study-source/fixtures/probe_python.py\", line 113, in run\n    response = chain(request)\n               ^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/utils/deprecation.py\", line 391, in __call__\n    response = self.process_response(request, response)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/middleware/cache.py\", line 120, in process_response\n    response.vary(\"Authorization\")\n    ^^^^^^^^^^^^^\nAttributeError: 'HttpResponse' object has no attribute 'vary'\n",
+            "probe_id": "C3-Q0-01",
+            "role": "Q0",
+            "passed": false,
+            "elapsed_seconds": 0.374809842556715,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ]
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                },
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                }
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C3-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.14169861935079098,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ],
+              "public": true
+            },
+            "expected": null,
+            "contract_check": "public_reuse",
+            "tags": [
+              "store",
+              "read"
+            ]
+          },
+          {
+            "execution": "PRODUCT_EXCEPTION",
+            "error_type": "AttributeError",
+            "error": "'HttpResponse' object has no attribute 'vary'",
+            "traceback": "Traceback (most recent call last):\n  File \"study-source/fixtures/probe_python.py\", line 179, in <module>\n    observed = run(specification[\"case\"], Path(specification[\"source\"]), specification[\"params\"])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"study-source/fixtures/probe_python.py\", line 113, in run\n    response = chain(request)\n               ^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/utils/deprecation.py\", line 391, in __call__\n    response = self.process_response(request, response)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/middleware/cache.py\", line 120, in process_response\n    response.vary(\"Authorization\")\n    ^^^^^^^^^^^^^\nAttributeError: 'HttpResponse' object has no attribute 'vary'\n",
+            "probe_id": "C3-V-01",
+            "role": "V",
+            "passed": false,
+            "elapsed_seconds": 0.1368718482553959,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "anon"
+              ],
+              "existing_session": false
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          },
+          {
+            "execution": "PRODUCT_EXCEPTION",
+            "error_type": "AttributeError",
+            "error": "'HttpResponse' object has no attribute 'vary'",
+            "traceback": "Traceback (most recent call last):\n  File \"study-source/fixtures/probe_python.py\", line 179, in <module>\n    observed = run(specification[\"case\"], Path(specification[\"source\"]), specification[\"params\"])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"study-source/fixtures/probe_python.py\", line 113, in run\n    response = chain(request)\n               ^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/utils/deprecation.py\", line 391, in __call__\n    response = self.process_response(request, response)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"artifacts/runs/formal-v1/C3/r02/B/patch-b0a15c05ad58958b/django/middleware/cache.py\", line 120, in process_response\n    response.vary(\"Authorization\")\n    ^^^^^^^^^^^^^\nAttributeError: 'HttpResponse' object has no attribute 'vary'\n",
+            "probe_id": "C3-V-02",
+            "role": "V",
+            "passed": false,
+            "elapsed_seconds": 0.20931260846555233,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "eve",
+                "frank"
+              ],
+              "vary_language": true
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          }
+        ],
+        "selected_probe_ids": [],
+        "new_subject_calls": 0,
+        "all_visible_pass": false,
+        "mapped_patch_phases": [
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "55aa1fa88e1cf4ef4a72204fb40ac056477c9bf9c6d9dc36b0b78e0ab11daa59",
+          "applied_diff_hash": "b0a15c05ad58958b5b2602cd00dc798e04896b44c11ad60a483ed4a31d341d78"
+        }
+      },
+      "joint_valid": false
+    },
+    "M": {
+      "previous_witnesses": [
+        "C3-V-01"
+      ],
+      "step": 1,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/django/middleware/cache.py b/django/middleware/cache.py\n--- a/django/middleware/cache.py\n+++ b/django/middleware/cache.py\n@@ -116,6 +116,13 @@\n         # Don't cache responses when the Vary header contains '*'.\n         if has_vary_header(response, \"*\"):\n             return response\n+\n+        # If the request has an Authorization header, the response must be\n+        # either explicitly public or isolated by Authorization.\n+        if request.META.get(\"HTTP_AUTHORIZATION\") and \"public\" not in cache_control:\n+            if not has_vary_header(response, \"Authorization\"):\n+                vary = response.get(\"Vary\", \"\")\n+                response[\"Vary\"] = (vary + \", Authorization\").strip(\", \")\n \n         # Page timeout takes precedence over the \"max-age\" and the default\n         # cache timeout.\n",
+      "last_valid_source": "artifacts/runs/formal-v1/C3/r02/M/patch-24efb4837cc5a8e4",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "alice",
+                "cookie": null,
+                "vary": "Authorization",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "anon",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C3-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.12159024178981781,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "alice",
+              "anon"
+            ],
+            "existing_session": false
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "eve",
+                "cookie": null,
+                "vary": "Accept-Language, Authorization",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "frank",
+                "cookie": null,
+                "vary": "Accept-Language, Authorization",
+                "cache_control": "max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C3-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.12066052481532097,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "eve",
+              "frank"
+            ],
+            "vary_language": true
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "store"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "carol",
+                "cookie": null,
+                "vary": "Authorization",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "dave",
+                "cookie": null,
+                "vary": "Authorization",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "carol",
+                "cookie": null,
+                "vary": "Authorization",
+                "cache_control": "max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C3-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.11792507953941822,
+          "subject_calls": 3,
+          "input": {
+            "actors": [
+              "carol",
+              "dave",
+              "carol"
+            ]
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "alice",
+                  "cookie": null,
+                  "vary": "Authorization",
+                  "cache_control": "max-age=300"
+                },
+                {
+                  "body": "bob",
+                  "cookie": null,
+                  "vary": "Authorization",
+                  "cache_control": "max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C3-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.3932278733700514,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ]
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                },
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                }
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C3-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.20437597669661045,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ],
+              "public": true
+            },
+            "expected": null,
+            "contract_check": "public_reuse",
+            "tags": [
+              "store",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "alice",
+                  "cookie": null,
+                  "vary": "Authorization",
+                  "cache_control": "max-age=300"
+                },
+                {
+                  "body": "anon",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C3-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.12159024178981781,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "anon"
+              ],
+              "existing_session": false
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "eve",
+                  "cookie": null,
+                  "vary": "Accept-Language, Authorization",
+                  "cache_control": "max-age=300"
+                },
+                {
+                  "body": "frank",
+                  "cookie": null,
+                  "vary": "Accept-Language, Authorization",
+                  "cache_control": "max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C3-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.12066052481532097,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "eve",
+                "frank"
+              ],
+              "vary_language": true
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "C3-V-02"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "020d9090ef4bc1a78b1ad507d01b75e6b08e2ee77bac825e6c0b22f78d732703",
+          "applied_diff_hash": "24efb4837cc5a8e418f0b7e9d134b9ce4d9905745fb50c13a701210998e26e86"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "f2017faf36f3d2bd8dd8816140ea4f02efd7d2f5330a8550574dd4cd7f29559e"
+}

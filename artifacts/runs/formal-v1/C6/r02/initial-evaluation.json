@@ -1,0 +1,134 @@
+{
+  "id": "C6",
+  "results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": "eyJpZGVudGl0eSI6ImFsaWNlIn0:1xLh5c:us18xwMrKuORKkv7lz0eGN0VY6MTaTB5iJx-Xg5FJvM"
+          },
+          {
+            "body": "public",
+            "cookie": null
+          }
+        ],
+        "origin_calls": 2,
+        "owner_preserved": true
+      },
+      "probe_id": "C6-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.3980610594153404,
+      "subject_calls": 2,
+      "input": {
+        "owner": "alice"
+      },
+      "expected": null,
+      "contract_check": "session_not_replayed",
+      "tags": [
+        "store",
+        "identity/key"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": "eyJpZGVudGl0eSI6ImNhcm9sIn0:1xLh5c:pe-rB2jbM19dNiiBUBsKXLimeBcAN3-jYc3QfjI7n9g"
+          },
+          {
+            "body": "public",
+            "cookie": null
+          }
+        ],
+        "origin_calls": 2,
+        "owner_preserved": true
+      },
+      "probe_id": "C6-E-01",
+      "role": "E",
+      "passed": true,
+      "elapsed_seconds": 0.2046047057956457,
+      "subject_calls": 2,
+      "input": {
+        "owner": "carol"
+      },
+      "expected": null,
+      "contract_check": "session_not_replayed",
+      "tags": [
+        "read",
+        "identity/key"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": "eyJpZGVudGl0eSI6ImJvYiJ9:1xLh5c:VaGxj1CPEvlrCl0lPW6Av5mpYgKTJiMawoAebnJzkRY"
+          },
+          {
+            "body": "public",
+            "cookie": null
+          }
+        ],
+        "origin_calls": 2,
+        "owner_preserved": true
+      },
+      "probe_id": "C6-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.14384321868419647,
+      "subject_calls": 2,
+      "input": {
+        "owner": "bob",
+        "touch_session": true
+      },
+      "expected": null,
+      "contract_check": "session_not_replayed",
+      "tags": [
+        "store",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": null
+          },
+          {
+            "body": "public",
+            "cookie": null
+          }
+        ],
+        "origin_calls": 1,
+        "owner_preserved": false
+      },
+      "probe_id": "C6-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.12687706388533115,
+      "subject_calls": 2,
+      "input": {
+        "empty": true
+      },
+      "expected": null,
+      "contract_check": "no_session_created",
+      "tags": [
+        "read",
+        "ordinary"
+      ]
+    }
+  ],
+  "all_pass": true,
+  "infra_ok": true,
+  "proposal_valid": true,
+  "reason": "APPLIED"
+}

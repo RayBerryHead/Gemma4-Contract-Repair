@@ -1,0 +1,108 @@
+{
+  "id": "C5",
+  "contract": "GraphQL cached responses must be scoped to the authenticated user. Preserve same-user and anonymous cache reuse.",
+  "product_paths": [
+    "django_graphex/views.py"
+  ],
+  "evidence_class": "privacy",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "C5-Q0-01",
+      "case": "C5",
+      "role": "Q0",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "store"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C5-V-01",
+      "case": "C5",
+      "role": "V",
+      "params": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "existing_session": false
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C5-E-01",
+      "case": "C5",
+      "role": "E",
+      "params": {
+        "actors": [
+          "carol",
+          "dave",
+          "carol"
+        ]
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 3,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C5-U-01",
+      "case": "C5",
+      "role": "U",
+      "params": {
+        "actors": [
+          "alice",
+          "alice"
+        ]
+      },
+      "expected": null,
+      "predicate": "private_reuse",
+      "cost": 2,
+      "tags": [
+        "store",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C5-V-02",
+      "case": "C5",
+      "role": "V",
+      "params": {
+        "actors": [
+          "anon",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    }
+  ]
+}

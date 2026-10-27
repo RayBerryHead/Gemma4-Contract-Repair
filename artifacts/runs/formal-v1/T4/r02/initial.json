@@ -1,0 +1,57 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 4305,
+    "candidatesTokenCount": 632,
+    "totalTokenCount": 13775,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 4305
+      }
+    ],
+    "thoughtsTokenCount": 8838,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "src/pendulum/date.py",
+                    "old_text": "        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week\n\n        if month[0][calendar_day] > 0:\n            day_of_month = month[0][calendar_day]\n        else:\n            day_of_month = month[1][calendar_day]",
+                    "new_text": "        first_day_weekday = dt.set(day=1).weekday()\n        day_of_month = 1 + (day_of_week - first_day_weekday) % 7"
+                  },
+                  {
+                    "old_text": "        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week\n\n        if month[-1][calendar_day] > 0:\n            day_of_month = month[-1][calendar_day]\n        else:\n            day_of_month = month[-2][calendar_day]",
+                    "path": "src/pendulum/date.py",
+                    "new_text": "        last_day_weekday = dt.set(day=self.days_in_month).weekday()\n        day_of_month = self.days_in_month - (last_day_weekday - day_of_week) % 7"
+                  },
+                  {
+                    "old_text": "        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week\n\n        if month[0][calendar_day] > 0:\n            day_of_month = month[0][calendar_day]\n        else:\n            day_of_month = month[1][calendar_day]",
+                    "new_text": "        first_day_weekday = dt.set(day=1).weekday()\n        day_of_month = 1 + (day_of_week - first_day_weekday) % 7",
+                    "path": "src/pendulum/datetime.py"
+                  },
+                  {
+                    "new_text": "        last_day_weekday = dt.set(day=self.days_in_month).weekday()\n        day_of_month = self.days_in_month - (last_day_weekday - day_of_week) % 7",
+                    "path": "src/pendulum/datetime.py",
+                    "old_text": "        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week\n\n        if month[-1][calendar_day] > 0:\n            day_of_month = month[-1][calendar_day]\n        else:\n            day_of_month = month[-2][calendar_day]"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "75bb3986e0caaec033403024bfc42e9bc815be710e32641371123dfea0161ba5"
+}

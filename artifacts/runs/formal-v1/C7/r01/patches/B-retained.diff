@@ -1,0 +1,14 @@
+diff --git a/lib/util/cache.js b/lib/util/cache.js
+--- a/lib/util/cache.js
++++ b/lib/util/cache.js
+@@ -194,6 +194,10 @@
+     }
+ 
+     switch (key) {
++      case 'no-cache':
++      case 'private':
++        output[key] = true
++        break
+       case 'min-fresh':
+       case 'max-stale':
+       case 'max-age':

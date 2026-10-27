@@ -1,0 +1,48 @@
+diff --git a/src/pendulum/duration.py b/src/pendulum/duration.py
+--- a/src/pendulum/duration.py
++++ b/src/pendulum/duration.py
+@@ -94,6 +94,9 @@
+             weeks,
+         )
+ 
++        self._days_input = days
++        self._weeks_input = weeks
++
+         # Intuitive normalization
+         total = self.total_seconds() - (years * 365 + months * 30) * SECONDS_PER_DAY
+         self._total = total
+diff --git a/src/pendulum/datetime.py b/src/pendulum/datetime.py
+--- a/src/pendulum/datetime.py
++++ b/src/pendulum/datetime.py
+@@ -685,8 +685,14 @@
+                 microseconds=delta.microseconds,
+             )
+         elif isinstance(delta, pendulum.Duration):
++            days_input = getattr(delta, "_days_input", 0)
++            weeks_input = getattr(delta, "_weeks_input", 0)
+             return self.add(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta.years,
++                months=delta.months,
++                weeks=weeks_input,
++                days=days_input,
++                seconds=delta._total - (days_input + weeks_input * 7) * SECONDS_PER_DAY,
+             )
+ 
+         return self.add(seconds=delta.total_seconds())
+@@ -696,8 +702,14 @@
+         Remove timedelta duration from the instance.
+         """
+         if isinstance(delta, pendulum.Duration):
++            days_input = getattr(delta, "_days_input", 0)
++            weeks_input = getattr(delta, "_weeks_input", 0)
+             return self.subtract(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta.years,
++                months=delta.months,
++                weeks=weeks_input,
++                days=days_input,
++                seconds=delta._total - (days_input + weeks_input * 7) * SECONDS_PER_DAY,
+             )
+ 
+         return self.subtract(seconds=delta.total_seconds())

@@ -1,0 +1,198 @@
+{
+  "id": "T2",
+  "buggy": {
+    "id": "T2",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": [
+          1,
+          6,
+          11,
+          16,
+          21
+        ],
+        "probe_id": "T2-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.10871443152427673,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          3,
+          8,
+          13,
+          18,
+          23
+        ],
+        "probe_id": "T2-V-01",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.11604293622076511,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          3,
+          8,
+          13,
+          18,
+          23
+        ],
+        "probe_id": "T2-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.08166967332363129,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "probe_id": "T2-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.08559520915150642,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "probe_id": "T2-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.07585135102272034,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          2,
+          7,
+          12,
+          17,
+          22
+        ],
+        "probe_id": "T2-V-03",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.09295675344765186,
+        "subject_calls": 1
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "T2",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "probe_id": "T2-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.07726671174168587,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          2,
+          7,
+          12,
+          17,
+          22
+        ],
+        "probe_id": "T2-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.0982009507715702,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "probe_id": "T2-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.09183972701430321,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "probe_id": "T2-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.0715359877794981,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "probe_id": "T2-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.0663873627781868,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          2,
+          7,
+          12,
+          17,
+          22
+        ],
+        "probe_id": "T2-V-03",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.1041703000664711,
+        "subject_calls": 1
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

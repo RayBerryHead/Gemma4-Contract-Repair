@@ -1,0 +1,458 @@
+{
+  "id": "C4",
+  "buggy": {
+    "id": "C4",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C4-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.47697465494275093,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ]
+        },
+        "expected": null,
+        "contract_check": "cookie_isolation",
+        "tags": [
+          "identity/key",
+          "store"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C4-V-01",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.1331260446459055,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "anon"
+          ],
+          "existing_session": true
+        },
+        "expected": null,
+        "contract_check": "cookie_isolation",
+        "tags": [
+          "identity/key",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C4-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.17042967304587364,
+        "subject_calls": 3,
+        "input": {
+          "actors": [
+            "carol",
+            "dave",
+            "carol"
+          ]
+        },
+        "expected": null,
+        "contract_check": "cookie_isolation",
+        "tags": [
+          "identity/key",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C4-E-02",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.1917748972773552,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ],
+          "cookie_name": "language"
+        },
+        "expected": null,
+        "contract_check": "cookie_isolation",
+        "tags": [
+          "store"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-2",
+              "vary": "Cookie"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C4-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.11665038391947746,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ],
+          "no_cookie": true
+        },
+        "expected": null,
+        "contract_check": "cookie_isolation",
+        "tags": [
+          "store",
+          "cold"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C4-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.25817690044641495,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ],
+          "public": true
+        },
+        "expected": null,
+        "contract_check": "public_reuse",
+        "tags": [
+          "ordinary",
+          "store",
+          "read"
+        ]
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "C4",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-2",
+              "vary": "Cookie"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C4-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.2854600362479687,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ]
+        },
+        "expected": null,
+        "contract_check": "cookie_isolation",
+        "tags": [
+          "identity/key",
+          "store"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-2",
+              "vary": "Cookie"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C4-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.24206802435219288,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "anon"
+          ],
+          "existing_session": true
+        },
+        "expected": null,
+        "contract_check": "cookie_isolation",
+        "tags": [
+          "identity/key",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-2",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-3",
+              "vary": "Cookie"
+            }
+          ],
+          "origin_calls": 3
+        },
+        "probe_id": "C4-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.12527071125805378,
+        "subject_calls": 3,
+        "input": {
+          "actors": [
+            "carol",
+            "dave",
+            "carol"
+          ]
+        },
+        "expected": null,
+        "contract_check": "cookie_isolation",
+        "tags": [
+          "identity/key",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-2",
+              "vary": "Cookie"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C4-E-02",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.24926096759736538,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ],
+          "cookie_name": "language"
+        },
+        "expected": null,
+        "contract_check": "cookie_isolation",
+        "tags": [
+          "store"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": "created-1",
+              "vary": "Cookie"
+            },
+            {
+              "body": "public",
+              "cookie": "created-2",
+              "vary": "Cookie"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C4-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.13958007469773293,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ],
+          "no_cookie": true
+        },
+        "expected": null,
+        "contract_check": "cookie_isolation",
+        "tags": [
+          "store",
+          "cold"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C4-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.1332134362310171,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ],
+          "public": true
+        },
+        "expected": null,
+        "contract_check": "public_reuse",
+        "tags": [
+          "ordinary",
+          "store",
+          "read"
+        ]
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

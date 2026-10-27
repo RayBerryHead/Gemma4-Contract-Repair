@@ -1,0 +1,1 @@
+本artifact自有runtime與工具依Apache-2.0提供。第三方上游程式、上下文與patch片段保留各自授權；見third-party-licenses/與固定repo/SHA的case_index。未重新授權第三方原始碼，也未打包模型權重或Kaggle competition data。所有身份、cookie及fixture key皆為公開測試產生的合成值，沒有真實帳號credential。

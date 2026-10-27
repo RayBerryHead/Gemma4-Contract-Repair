@@ -1,0 +1,287 @@
+{
+  "case_id": "C2",
+  "replicate": "r02",
+  "identity": "cdf6f119b88d2b61e05917f172fc041c17b6231e5175ddaf57c3dda92a88dc0e",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 2,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/lib/handler/cache-handler.js b/lib/handler/cache-handler.js\n--- a/lib/handler/cache-handler.js\n+++ b/lib/handler/cache-handler.js\n@@ -256,6 +256,10 @@\n       )\n     const handler = this\n \n+    if (controller.crossOriginRedirect) {\n+      return downstreamOnHeaders()\n+    }\n+\n     if (\n       !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&\n       statusCode >= 200 &&\ndiff --git a/lib/handler/redirect-handler.js b/lib/handler/redirect-handler.js\n--- a/lib/handler/redirect-handler.js\n+++ b/lib/handler/redirect-handler.js\n@@ -130,6 +130,10 @@\n       }\n     }\n \n+    if (requestOrigin !== origin) {\n+      controller.crossOriginRedirect = true\n+    }\n+\n     // Remove headers referring to the original URL.\n     // By default it is Host only. A 303 or a 301/302 POST-to-GET redirect also removes all Content-* headers.\n     // https://tools.ietf.org/html/rfc7231#section-6.4\n",
+      "last_valid_source": "artifacts/runs/formal-v1/C2/r02/B/patch-8fd285881d454e43",
+      "final_audit": [],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "bodies": [
+              "attacker-controlled-content",
+              "attacker-controlled-content"
+            ],
+            "origin_calls": 1
+          },
+          "probe_id": "C2-E-01",
+          "role": "E",
+          "passed": false,
+          "elapsed_seconds": 0.16401792131364346,
+          "subject_calls": 2,
+          "input": {
+            "path": "/hidden-resource"
+          },
+          "expected": [
+            "attacker-controlled-content",
+            "legitimate-content"
+          ],
+          "contract_check": "redirect_integrity",
+          "tags": [
+            "redirect",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "attacker-controlled-content",
+                "attacker-controlled-content"
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C2-Q0-01",
+            "role": "Q0",
+            "passed": false,
+            "elapsed_seconds": 0.1166005078703165,
+            "subject_calls": 2,
+            "input": {},
+            "expected": [
+              "attacker-controlled-content",
+              "legitimate-content"
+            ],
+            "contract_check": "redirect_integrity",
+            "tags": [
+              "redirect",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "legitimate-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C2-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.08585730008780956,
+            "subject_calls": 2,
+            "input": {
+              "no_redirect": true
+            },
+            "expected": [
+              "legitimate-content",
+              "legitimate-content"
+            ],
+            "contract_check": "redirect_integrity",
+            "tags": [
+              "read",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "legitimate-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C2-U-02",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.091515326872468,
+            "subject_calls": 2,
+            "input": {
+              "no_redirect": true,
+              "public_control": true
+            },
+            "expected": [
+              "legitimate-content",
+              "legitimate-content"
+            ],
+            "contract_check": "public_origin_reuse",
+            "tags": [
+              "ordinary",
+              "read",
+              "store"
+            ]
+          }
+        ],
+        "selected_probe_ids": [],
+        "new_subject_calls": 0,
+        "all_visible_pass": false,
+        "mapped_patch_phases": [
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": false,
+          "reason": "OLD_TEXT_MATCH_COUNT_0: copy an exact unique source string",
+          "raw_proposal_hash": "1fc6a99492dd4286431f1183f0ed9516c55defda18601ebde6c9071e318c900b",
+          "applied_diff_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+        }
+      },
+      "joint_valid": false
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 1,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/lib/handler/cache-handler.js b/lib/handler/cache-handler.js\n--- a/lib/handler/cache-handler.js\n+++ b/lib/handler/cache-handler.js\n@@ -256,6 +256,10 @@\n       )\n     const handler = this\n \n+    if (controller.crossOriginRedirect) {\n+      return downstreamOnHeaders()\n+    }\n+\n     if (\n       !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&\n       statusCode >= 200 &&\ndiff --git a/lib/handler/redirect-handler.js b/lib/handler/redirect-handler.js\n--- a/lib/handler/redirect-handler.js\n+++ b/lib/handler/redirect-handler.js\n@@ -110,6 +110,9 @@\n     }\n \n     if (!this.location) {\n+      if (this.opts.crossOriginRedirect) {\n+        controller.crossOriginRedirect = true\n+      }\n       this.handler.onResponseStart?.(controller, statusCode, headers, statusMessage)\n       return\n     }\n@@ -134,6 +137,9 @@\n     // By default it is Host only. A 303 or a 301/302 POST-to-GET redirect also removes all Content-* headers.\n     // https://tools.ietf.org/html/rfc7231#section-6.4\n     this.opts.headers = cleanRequestHeaders(this.opts.headers, removeContentHeaders, requestOrigin !== origin, this.stripHeadersOnRedirect, this.stripHeadersOnCrossOriginRedirect)\n+    if (requestOrigin !== origin) {\n+      this.opts.crossOriginRedirect = true\n+    }\n     this.opts.path = path\n     this.opts.origin = origin\n     this.opts[kRequestOrigin] = origin\n",
+      "last_valid_source": "artifacts/runs/formal-v1/C2/r02/M/patch-cf6127a22b167075",
+      "final_audit": [],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "bodies": [
+              "attacker-controlled-content",
+              "legitimate-content"
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C2-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.09716261737048626,
+          "subject_calls": 2,
+          "input": {
+            "path": "/hidden-resource"
+          },
+          "expected": [
+            "attacker-controlled-content",
+            "legitimate-content"
+          ],
+          "contract_check": "redirect_integrity",
+          "tags": [
+            "redirect",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "attacker-controlled-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C2-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.08989330008625984,
+            "subject_calls": 2,
+            "input": {},
+            "expected": [
+              "attacker-controlled-content",
+              "legitimate-content"
+            ],
+            "contract_check": "redirect_integrity",
+            "tags": [
+              "redirect",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "legitimate-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C2-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.15923887863755226,
+            "subject_calls": 2,
+            "input": {
+              "no_redirect": true
+            },
+            "expected": [
+              "legitimate-content",
+              "legitimate-content"
+            ],
+            "contract_check": "redirect_integrity",
+            "tags": [
+              "read",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "legitimate-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C2-U-02",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.11268897540867329,
+            "subject_calls": 2,
+            "input": {
+              "no_redirect": true,
+              "public_control": true
+            },
+            "expected": [
+              "legitimate-content",
+              "legitimate-content"
+            ],
+            "contract_check": "public_origin_reuse",
+            "tags": [
+              "ordinary",
+              "read",
+              "store"
+            ]
+          }
+        ],
+        "selected_probe_ids": [],
+        "new_subject_calls": 0,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "8a80a1515ca5228cee0fe0626f275b2c8425a2c0e87291b57b5acb77a1cc6bd5",
+          "applied_diff_hash": "cf6127a22b167075de8c9868314eb0ac2b32d3e4c99f0097666c0a1a314f1ad7"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "053b84ab412194b21286d671bc86f5a93ce3f3f25b54a4d617f5dea4e641fa9e"
+}

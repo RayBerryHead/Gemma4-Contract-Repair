@@ -1,0 +1,47 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2574,
+    "candidatesTokenCount": 256,
+    "totalTokenCount": 16656,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2574
+      }
+    ],
+    "thoughtsTokenCount": 13826,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "    return y * 365 + y // 4 - y // 100 + y // 400 + 1 - EPOCHORDINAL",
+                    "old_text": "    return y * 365 + y // 4 - y // 100 + y // 400 - EPOCHORDINAL",
+                    "path": "src/dateutil/tz/_tzfile.py"
+                  },
+                  {
+                    "old_text": "        d = self.d\n        if self.julian and d >= 59 and calendar.isleap(year):\n            d += 1\n\n        epoch = (days_before_year + d) * 86400",
+                    "new_text": "        d = self.d\n        if self.julian:\n            d -= 1\n            if d >= 59 and calendar.isleap(year):\n                d += 1\n\n        epoch = (days_before_year + d) * 86400",
+                    "path": "src/dateutil/tz/_tzfile.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "0e8e4a20deed9d2f68b7b54aa5712460e113b36594e095c42c30b1096d896c82"
+}

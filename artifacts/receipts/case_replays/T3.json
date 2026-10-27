@@ -1,0 +1,142 @@
+{
+  "id": "T3",
+  "buggy": {
+    "id": "T3",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": [
+          "DST",
+          "DST"
+        ],
+        "probe_id": "T3-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.08439397439360619,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "STD",
+          "STD"
+        ],
+        "probe_id": "T3-V-01",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.08023469522595406,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "DST",
+          "DST",
+          "DST",
+          "DST"
+        ],
+        "probe_id": "T3-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.07999949343502522,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "STD",
+          "DST"
+        ],
+        "probe_id": "T3-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.08028626069426537,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "STD",
+          "DST"
+        ],
+        "probe_id": "T3-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.07920733094215393,
+        "subject_calls": 1
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "T3",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": [
+          "STD",
+          "DST"
+        ],
+        "probe_id": "T3-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.08740206249058247,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "STD",
+          "DST"
+        ],
+        "probe_id": "T3-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.07931731268763542,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "STD",
+          "DST",
+          "STD",
+          "DST"
+        ],
+        "probe_id": "T3-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.07382436655461788,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "STD",
+          "DST"
+        ],
+        "probe_id": "T3-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.07965648174285889,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "STD",
+          "DST"
+        ],
+        "probe_id": "T3-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.058842550963163376,
+        "subject_calls": 1
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

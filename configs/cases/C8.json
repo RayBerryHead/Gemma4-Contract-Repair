@@ -1,0 +1,114 @@
+{
+  "id": "C8",
+  "contract": "Django qualified private/no-cache/no-store directives must prevent response reuse under the documented fail-safe policy.",
+  "product_paths": [
+    "django/middleware/cache.py",
+    "django/utils/cache.py"
+  ],
+  "evidence_class": "privacy",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "C8-Q0-01",
+      "case": "C8",
+      "role": "Q0",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "directive": "private=\"X-Private\", max-age=300"
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "store"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C8-V-01",
+      "case": "C8",
+      "role": "V",
+      "params": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "existing_session": false,
+        "directive": "private=\"X-Private\", max-age=300"
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C8-E-01",
+      "case": "C8",
+      "role": "E",
+      "params": {
+        "actors": [
+          "carol",
+          "dave",
+          "carol"
+        ],
+        "directive": "private=\"X-Private\", max-age=300"
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 3,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C8-U-01",
+      "case": "C8",
+      "role": "U",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "predicate": "public_reuse",
+      "cost": 2,
+      "tags": [
+        "store",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C8-V-02",
+      "case": "C8",
+      "role": "V",
+      "params": {
+        "actors": [
+          "anon",
+          "bob"
+        ],
+        "directive": "no-cache=\"X-Private\", max-age=300"
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    }
+  ]
+}

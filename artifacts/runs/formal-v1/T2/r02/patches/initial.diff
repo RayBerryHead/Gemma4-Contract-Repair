@@ -1,0 +1,24 @@
+diff --git a/src/croniter/croniter.py b/src/croniter/croniter.py
+--- a/src/croniter/croniter.py
++++ b/src/croniter/croniter.py
+@@ -326,10 +326,19 @@
+         self.cur = 0.0
+         self.set_current(start_time, force=True)
+ 
++        from_timestamp = None
++        if self._expand_from_start_time:
++            from_timestamp = self.dst_start_time
++            if self.tzinfo:
++                dt = datetime.datetime.fromtimestamp(from_timestamp, self.tzinfo)
++                offset = dt.utcoffset()
++                if offset:
++                    from_timestamp += offset.total_seconds()
++
+         self.expanded, self.nth_weekday_of_month, self.expressions, self.nearest_weekday = self._expand(
+             expr_format,
+             hash_id=hash_id,
+-            from_timestamp=self.dst_start_time if self._expand_from_start_time else None,
++            from_timestamp=from_timestamp,
+             second_at_beginning=second_at_beginning,
+         )
+         self.fields = CRON_FIELDS[len(self.expanded)]

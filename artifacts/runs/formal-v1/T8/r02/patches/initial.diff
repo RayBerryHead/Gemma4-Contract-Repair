@@ -1,0 +1,27 @@
+diff --git a/src/differenceInDays/index.js b/src/differenceInDays/index.js
+--- a/src/differenceInDays/index.js
++++ b/src/differenceInDays/index.js
+@@ -44,9 +44,19 @@
+   var dateLeft = toDate(dirtyDateLeft)
+   var dateRight = toDate(dirtyDateRight)
+ 
+-  var result = (dateLeft - dateRight) / MILLISECONDS_IN_DAY
++  var dateLeftMidnight = new Date(dateLeft)
++  dateLeftMidnight.setHours(0, 0, 0, 0)
++  var dateRightMidnight = new Date(dateRight)
++  dateRightMidnight.setHours(0, 0, 0, 0)
+ 
+-  // round towards zero
+-  if (result > 0) return Math.floor(result)
+-  return Math.ceil(result)
++  var result = Math.round((dateLeftMidnight - dateRightMidnight) / MILLISECONDS_IN_DAY)
++
++  if (result !== 0) {
++    var dateRightPlusDays = new Date(dateRight)
++    dateRightPlusDays.setDate(dateRightPlusDays.getDate() + result)
++    if (result > 0 && dateLeft < dateRightPlusDays) result--
++    else if (result < 0 && dateLeft > dateRightPlusDays) result++
++  }
++
++  return result
+ }

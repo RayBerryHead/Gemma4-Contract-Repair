@@ -1,0 +1,54 @@
+{
+  "id": "TD1",
+  "split": "dev",
+  "contract": "Month cron phases expanded from start time preserve the 1-based month range.",
+  "product_paths": [
+    "src/croniter/croniter.py"
+  ],
+  "evidence_class": "development",
+  "probes": [
+    {
+      "id": "TD1-Q0-01",
+      "case": "T2",
+      "role": "Q0",
+      "params": {
+        "start": "2025-05-01T00:00:00",
+        "expression": "0 0 1 */5 *",
+        "field": 3
+      },
+      "expected": [
+        5,
+        10
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "month",
+        "phase"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "TD1-U-01",
+      "case": "T2",
+      "role": "U",
+      "params": {
+        "start": "2025-06-01T00:00:00",
+        "expression": "0 0 1 */5 *",
+        "field": 3
+      },
+      "expected": [
+        1,
+        6,
+        11
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "month",
+        "phase"
+      ],
+      "obligation": "time-policy"
+    }
+  ]
+}

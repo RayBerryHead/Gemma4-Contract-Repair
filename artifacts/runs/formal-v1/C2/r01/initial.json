@@ -1,0 +1,52 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 7177,
+    "candidatesTokenCount": 524,
+    "totalTokenCount": 19967,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 7177
+      }
+    ],
+    "thoughtsTokenCount": 12266,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "  /**\n   * @type {import('node:stream').Writable | undefined}\n   */\n  #writeStream\n\n  #isReused = false",
+                    "old_text": "  /**\n   * @type {import('node:stream').Writable | undefined}\n   */\n  #writeStream",
+                    "path": "lib/handler/cache-handler.js"
+                  },
+                  {
+                    "path": "lib/handler/cache-handler.js",
+                    "old_text": "  onRequestStart (controller, context) {\n    this.#writeStream?.destroy()\n    this.#writeStream = undefined\n    this.#downstreamController = new CacheController(controller)\n    this.#handler.onRequestStart?.(this.#downstreamController, context)\n  }",
+                    "new_text": "  onRequestStart (controller, context) {\n    if (this.#downstreamController) {\n      this.#isReused = true\n    }\n    this.#writeStream?.destroy()\n    this.#writeStream = undefined\n    this.#downstreamController = new CacheController(controller)\n    this.#handler.onRequestStart?.(this.#downstreamController, context)\n  }"
+                  },
+                  {
+                    "new_text": "  onResponseStart (\n    controller,\n    statusCode,\n    resHeaders,\n    statusMessage\n  ) {\n    const downstreamOnHeaders = () =>\n      this.#handler.onResponseStart?.(\n        this.#downstreamController,\n        statusCode,\n        resHeaders,\n        statusMessage\n      )\n    const handler = this\n\n    if (this.#isReused) {\n      return downstreamOnHeaders()\n    }\n\n    if (\n      !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&",
+                    "old_text": "  onResponseStart (\n    controller,\n    statusCode,\n    resHeaders,\n    statusMessage\n  ) {\n    const downstreamOnHeaders = () =>\n      this.#handler.onResponseStart?.(\n        this.#downstreamController,\n        statusCode,\n        resHeaders,\n        statusMessage\n      )\n    const handler = this\n\n    if (\n      !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&",
+                    "path": "lib/handler/cache-handler.js"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "76c87fbbc148d611e37087f591c2d488c38d4734392936ef1f83fa0a90002f38"
+}

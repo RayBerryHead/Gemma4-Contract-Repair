@@ -1,0 +1,23 @@
+[
+  {
+    "path": "django_graphex/views.py",
+    "start": 218,
+    "end": 250,
+    "phase": "read",
+    "symbol": "dispatch"
+  },
+  {
+    "path": "django_graphex/views.py",
+    "start": 530,
+    "end": 554,
+    "phase": "read",
+    "symbol": "dispatch"
+  },
+  {
+    "path": "django_graphex/views.py",
+    "start": 671,
+    "end": 691,
+    "phase": "read",
+    "symbol": "dispatch"
+  }
+]

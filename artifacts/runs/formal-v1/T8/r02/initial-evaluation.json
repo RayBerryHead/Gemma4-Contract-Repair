@@ -1,0 +1,155 @@
+{
+  "id": "T8",
+  "results": [
+    {
+      "execution": "VALID",
+      "observed": 1,
+      "probe_id": "T8-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.03548506647348404,
+      "subject_calls": 1,
+      "input": {
+        "start": [
+          2024,
+          2,
+          9,
+          12
+        ],
+        "end": [
+          2024,
+          2,
+          10,
+          12
+        ]
+      },
+      "expected": 1,
+      "contract_check": "equal",
+      "tags": [
+        "local-day",
+        "dst"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 0,
+      "probe_id": "T8-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.024379391223192215,
+      "subject_calls": 1,
+      "input": {
+        "start": [
+          2024,
+          2,
+          9,
+          12
+        ],
+        "end": [
+          2024,
+          2,
+          10,
+          11,
+          59
+        ]
+      },
+      "expected": 0,
+      "contract_check": "equal",
+      "tags": [
+        "local-day",
+        "dst"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 1,
+      "probe_id": "T8-E-01",
+      "role": "E",
+      "passed": true,
+      "elapsed_seconds": 0.026163991540670395,
+      "subject_calls": 1,
+      "input": {
+        "start": [
+          2024,
+          10,
+          2,
+          12
+        ],
+        "end": [
+          2024,
+          10,
+          3,
+          12
+        ]
+      },
+      "expected": 1,
+      "contract_check": "equal",
+      "tags": [
+        "local-day",
+        "dst"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 1,
+      "probe_id": "T8-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.05486264266073704,
+      "subject_calls": 1,
+      "input": {
+        "start": [
+          2024,
+          0,
+          1,
+          12
+        ],
+        "end": [
+          2024,
+          0,
+          2,
+          12
+        ]
+      },
+      "expected": 1,
+      "contract_check": "equal",
+      "tags": [
+        "local-day",
+        "ordinary"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 1,
+      "probe_id": "T8-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.052898792549967766,
+      "subject_calls": 1,
+      "input": {
+        "start": [
+          2023,
+          10,
+          4,
+          12
+        ],
+        "end": [
+          2023,
+          10,
+          5,
+          12
+        ]
+      },
+      "expected": 1,
+      "contract_check": "equal",
+      "tags": [
+        "local-day",
+        "dst"
+      ]
+    }
+  ],
+  "all_pass": true,
+  "infra_ok": true,
+  "proposal_valid": true,
+  "reason": "APPLIED"
+}

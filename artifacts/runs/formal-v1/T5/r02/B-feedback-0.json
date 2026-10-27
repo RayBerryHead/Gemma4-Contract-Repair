@@ -1,0 +1,121 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2017-03-12 10:45",
+        "elapsed": 82800
+      },
+      "probe_id": "T5-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.13482213206589222,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2017,
+          3,
+          11,
+          10,
+          45
+        ],
+        "zone": "America/Los_Angeles",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2017-03-12 10:45",
+        "elapsed": 82800
+      },
+      "contract_check": "equal",
+      "tags": [
+        "calendar",
+        "dst"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2017-03-10 10:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.10382189229130745,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2017,
+          3,
+          9,
+          10,
+          45
+        ],
+        "zone": "America/Los_Angeles",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2017-03-10 10:45",
+        "elapsed": 86400
+      },
+      "contract_check": "equal",
+      "tags": [
+        "calendar",
+        "ordinary"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2017-03-12 10:45",
+        "elapsed": 82800
+      },
+      "probe_id": "T5-V-01",
+      "role": "V",
+      "passed": false,
+      "elapsed_seconds": 0.12769647128880024,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2017,
+          3,
+          11,
+          10,
+          45
+        ],
+        "zone": "America/Los_Angeles",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2017-03-12 11:45",
+        "elapsed": 86400
+      },
+      "contract_check": "equal",
+      "tags": [
+        "elapsed",
+        "dst"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "T5-V-01"
+  ],
+  "new_subject_calls": 1,
+  "all_visible_pass": false,
+  "mapped_patch_phases": [],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": false,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "facac490fccf128234df61c763c0cc1fa11881f9d4187d862bb4293ffb460d11",
+    "applied_diff_hash": "fd7076b6cebfc95040df2f22da5409c480f575d377a33401c977281b960c484b"
+  }
+}

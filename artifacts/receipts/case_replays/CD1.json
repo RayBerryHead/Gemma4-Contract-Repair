@@ -1,0 +1,114 @@
+{
+  "id": "CD1",
+  "buggy": {
+    "id": "CD1",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:alice",
+          "private:alice"
+        ],
+        "probe_id": "CD1-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.05681515112519264,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:alice",
+          "private:alice"
+        ],
+        "probe_id": "CD1-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.026669614017009735,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:carol",
+          "private:carol"
+        ],
+        "probe_id": "CD1-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.039113499224185944,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "public",
+          "public"
+        ],
+        "probe_id": "CD1-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.039301324635744095,
+        "subject_calls": 2
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "CD1",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:alice",
+          "private:bob"
+        ],
+        "probe_id": "CD1-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.0320244412869215,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:alice",
+          "private:alice"
+        ],
+        "probe_id": "CD1-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.03545239567756653,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:carol",
+          "private:dave"
+        ],
+        "probe_id": "CD1-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.03910517878830433,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "public",
+          "public"
+        ],
+        "probe_id": "CD1-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.04011724703013897,
+        "subject_calls": 2
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 1928,
+    "candidatesTokenCount": 75,
+    "totalTokenCount": 9045,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1928
+      }
+    ],
+    "thoughtsTokenCount": 7042,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "        [newTS] = objToLocalTS(asObj, offsetGuess, zone);",
+                    "old_text": "        [newTS] = objToTS(asObj, offsetGuess, zone);",
+                    "path": "src/datetime.js"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "7e63db9e9e43cae879dbc9f3b68287435284c7be5f5eaabb63c807b457722a15"
+}

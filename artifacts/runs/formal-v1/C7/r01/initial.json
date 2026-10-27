@@ -1,0 +1,57 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2453,
+    "candidatesTokenCount": 600,
+    "totalTokenCount": 16328,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2453
+      }
+    ],
+    "thoughtsTokenCount": 13275,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "      case 'no-cache':\n      case 'private':\n      case 'min-fresh':\n      case 'max-stale':\n      case 'max-age':\n      case 's-maxage':\n      case 'stale-while-revalidate':\n      case 'stale-if-error': {\n        if (value === undefined) {\n          if (key === 'no-cache' || key === 'private') {\n            output[key] = true\n            break\n          }\n          continue\n        }\n        if (value[0] === ' ') {\n          continue\n        }",
+                    "old_text": "      case 'min-fresh':\n      case 'max-stale':\n      case 'max-age':\n      case 's-maxage':\n      case 'stale-while-revalidate':\n      case 'stale-if-error': {\n        if (value === undefined || value[0] === ' ') {\n          continue\n        }",
+                    "path": "lib/util/cache.js"
+                  },
+                  {
+                    "old_text": "              if (key in output) {\n                output[key] = output[key].concat(headers)\n              } else {\n                output[key] = headers\n              }",
+                    "path": "lib/util/cache.js",
+                    "new_text": "              if (key in output) {\n                const current = typeof output[key] === 'boolean' ? [] : output[key]\n                output[key] = current.concat(headers)\n              } else {\n                output[key] = headers\n              }"
+                  },
+                  {
+                    "new_text": "            if (key in output) {\n              const current = typeof output[key] === 'boolean' ? [] : output[key]\n              output[key] = current.concat(fieldName)\n            } else {\n              output[key] = [fieldName]\n            }",
+                    "path": "lib/util/cache.js",
+                    "old_text": "            if (key in output) {\n              output[key] = output[key].concat(fieldName)\n            } else {\n              output[key] = [fieldName]\n            }"
+                  },
+                  {
+                    "new_text": "  for (const key of ['no-cache', 'private']) {\n    if (output[key] && Array.isArray(output[key]) && output[key].every(h => h === '')) {\n      output[key] = true\n    }\n  }\n\n  return output\n}",
+                    "path": "lib/util/cache.js",
+                    "old_text": "  return output\n}"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "d5a8f1d14bd197a91652bc1d6b67028401df5343c56f07e13be9e9cd27e608d1"
+}

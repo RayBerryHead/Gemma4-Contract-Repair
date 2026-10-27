@@ -1,0 +1,60 @@
+[
+  {
+    "source": "artifacts/runs/formal-v1/C1/r01/initial-workspace/patch-52bbb0b99b39e16c",
+    "public_subject_calls": 2,
+    "origin_calls": 1,
+    "first": {
+      "body": "response for alice",
+      "cookie": "session-for-alice"
+    },
+    "second": {
+      "body": "response for alice"
+    },
+    "private_entry_replayed_to_bob": true,
+    "patch_label": "natural_initial"
+  },
+  {
+    "source": "artifacts/sources/nodejs--undici-cb75bbb34224a968b4ad80cab8b7aba5e0b3b28a",
+    "public_subject_calls": 2,
+    "origin_calls": 2,
+    "first": {
+      "body": "response for alice",
+      "cookie": "session-for-alice"
+    },
+    "second": {
+      "body": "response for bob",
+      "cookie": "session-for-bob"
+    },
+    "private_entry_replayed_to_bob": false,
+    "patch_label": "upstream_fixed"
+  },
+  {
+    "source": "artifacts/runs/formal-v1/C1/r01/B/patch-1e0c56ecd4c6f489",
+    "public_subject_calls": 2,
+    "origin_calls": 2,
+    "first": {
+      "body": "response for alice",
+      "cookie": "session-for-alice"
+    },
+    "second": {
+      "body": "response for bob",
+      "cookie": "session-for-bob"
+    },
+    "private_entry_replayed_to_bob": false,
+    "patch_label": "B_final"
+  },
+  {
+    "source": "artifacts/runs/formal-v1/C1/r01/M/patch-531d04112f2aba4c",
+    "public_subject_calls": 2,
+    "origin_calls": 1,
+    "first": {
+      "body": "response for alice",
+      "cookie": "session-for-alice"
+    },
+    "second": {
+      "body": "response for alice"
+    },
+    "private_entry_replayed_to_bob": true,
+    "patch_label": "M_final"
+  }
+]

@@ -1,0 +1,53 @@
+diff --git a/src/pendulum/datetime.py b/src/pendulum/datetime.py
+--- a/src/pendulum/datetime.py
++++ b/src/pendulum/datetime.py
+@@ -685,8 +685,17 @@
+                 microseconds=delta.microseconds,
+             )
+         elif isinstance(delta, pendulum.Duration):
++            days = getattr(delta, "_original_days", 0)
++            weeks = getattr(delta, "_original_weeks", 0)
++            if not isinstance(days, int) or not isinstance(weeks, int):
++                days, weeks = 0, 0
++
+             return self.add(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta.years,
++                months=delta.months,
++                weeks=weeks,
++                days=days,
++                seconds=delta._total - (days * SECONDS_PER_DAY + weeks * 7 * SECONDS_PER_DAY),
+             )
+ 
+         return self.add(seconds=delta.total_seconds())
+@@ -696,8 +705,17 @@
+         Remove timedelta duration from the instance.
+         """
+         if isinstance(delta, pendulum.Duration):
++            days = getattr(delta, "_original_days", 0)
++            weeks = getattr(delta, "_original_weeks", 0)
++            if not isinstance(days, int) or not isinstance(weeks, int):
++                days, weeks = 0, 0
++
+             return self.subtract(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta.years,
++                months=delta.months,
++                weeks=weeks,
++                days=days,
++                seconds=delta._total - (days * SECONDS_PER_DAY + weeks * 7 * SECONDS_PER_DAY),
+             )
+ 
+         return self.subtract(seconds=delta.total_seconds())
+diff --git a/src/pendulum/duration.py b/src/pendulum/duration.py
+--- a/src/pendulum/duration.py
++++ b/src/pendulum/duration.py
+@@ -111,6 +111,8 @@
+         self._weeks = abs(_days) // 7 * m
+         self._months = months
+         self._years = years
++        self._original_days = days
++        self._original_weeks = weeks
+ 
+         return self
+ 

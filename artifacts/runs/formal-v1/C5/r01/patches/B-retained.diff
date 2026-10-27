@@ -1,0 +1,18 @@
+diff --git a/django_graphex/views.py b/django_graphex/views.py
+--- a/django_graphex/views.py
++++ b/django_graphex/views.py
+@@ -515,9 +515,13 @@
+ 
+     @staticmethod
+     def fetch_cache_key(request: HttpRequest) -> str:
+-        """Return a hashed cache key built from the request body."""
++        """Return a hashed cache key built from the request body and user."""
+         m = hashlib.sha256()
+         m.update(request.body)
++
++        user = getattr(request, "user", None)
++        user_id = user.pk if user and user.is_authenticated else "anonymous"
++        m.update(str(user_id).encode("utf-8"))
+ 
+         return m.hexdigest()
+ 

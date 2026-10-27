@@ -1,0 +1,621 @@
+{
+  "case_id": "C3",
+  "replicate": "r02",
+  "identity": "c0ef7d2271652b67debe888bdc86988ea441ba7996425715fa847aacbbcb9292",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/django/middleware/cache.py b/django/middleware/cache.py\n--- a/django/middleware/cache.py\n+++ b/django/middleware/cache.py\n@@ -112,6 +112,12 @@\n             )\n         ):\n             return response\n+\n+        # If the request has an Authorization header, the response must be\n+        # either explicitly public or isolated by Authorization.\n+        if request.META.get(\"HTTP_AUTHORIZATION\"):\n+            if \"public\" not in cache_control and not has_vary_header(response, \"Authorization\"):\n+                return response\n \n         # Don't cache responses when the Vary header contains '*'.\n         if has_vary_header(response, \"*\"):\n",
+      "last_valid_source": "artifacts/runs/formal-c3-semantic-v1/C3/r02/B/patch-c230da815b87b426",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "alice",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "anon",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C3-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.21389193087816238,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "alice",
+              "anon"
+            ],
+            "existing_session": false
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "eve",
+                "cookie": null,
+                "vary": "Accept-Language",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "frank",
+                "cookie": null,
+                "vary": "Accept-Language",
+                "cache_control": "max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C3-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.18236654438078403,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "eve",
+              "frank"
+            ],
+            "vary_language": true
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "store"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "carol",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "dave",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "carol",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              }
+            ],
+            "origin_calls": 3
+          },
+          "probe_id": "C3-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.13696264103055,
+          "subject_calls": 3,
+          "input": {
+            "actors": [
+              "carol",
+              "dave",
+              "carol"
+            ]
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "alice",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "max-age=300"
+                },
+                {
+                  "body": "bob",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C3-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.38952029682695866,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ]
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                },
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                }
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C3-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.11826705187559128,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ],
+              "public": true
+            },
+            "expected": null,
+            "contract_check": "public_reuse",
+            "tags": [
+              "store",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "alice",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "max-age=300"
+                },
+                {
+                  "body": "anon",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C3-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.21389193087816238,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "anon"
+              ],
+              "existing_session": false
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "eve",
+                  "cookie": null,
+                  "vary": "Accept-Language",
+                  "cache_control": "max-age=300"
+                },
+                {
+                  "body": "frank",
+                  "cookie": null,
+                  "vary": "Accept-Language",
+                  "cache_control": "max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C3-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.18236654438078403,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "eve",
+                "frank"
+              ],
+              "vary_language": true
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "C3-V-01",
+          "C3-V-02"
+        ],
+        "new_subject_calls": 4,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "f2017faf36f3d2bd8dd8816140ea4f02efd7d2f5330a8550574dd4cd7f29559e",
+          "applied_diff_hash": "c230da815b87b426049a5c267e0e64f2b3c3e18168ec20105934bd1a5b1ce42f"
+        }
+      },
+      "joint_valid": true
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/django/middleware/cache.py b/django/middleware/cache.py\n--- a/django/middleware/cache.py\n+++ b/django/middleware/cache.py\n@@ -112,6 +112,12 @@\n             )\n         ):\n             return response\n+\n+        # If the request has an Authorization header, the response must be\n+        # either explicitly public or isolated by Authorization.\n+        if request.META.get(\"HTTP_AUTHORIZATION\"):\n+            if \"public\" not in cache_control and not has_vary_header(response, \"Authorization\"):\n+                return response\n \n         # Don't cache responses when the Vary header contains '*'.\n         if has_vary_header(response, \"*\"):\n",
+      "last_valid_source": "artifacts/runs/formal-c3-semantic-v1/C3/r02/M/patch-c230da815b87b426",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "alice",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "anon",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C3-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.1958593837916851,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "alice",
+              "anon"
+            ],
+            "existing_session": false
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "eve",
+                "cookie": null,
+                "vary": "Accept-Language",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "frank",
+                "cookie": null,
+                "vary": "Accept-Language",
+                "cache_control": "max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C3-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.217011921107769,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "eve",
+              "frank"
+            ],
+            "vary_language": true
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "store"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "carol",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "dave",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              },
+              {
+                "body": "carol",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "max-age=300"
+              }
+            ],
+            "origin_calls": 3
+          },
+          "probe_id": "C3-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.12512574344873428,
+          "subject_calls": 3,
+          "input": {
+            "actors": [
+              "carol",
+              "dave",
+              "carol"
+            ]
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "alice",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "max-age=300"
+                },
+                {
+                  "body": "bob",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C3-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.3783762473613024,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ]
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                },
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                }
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C3-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.12914287485182285,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ],
+              "public": true
+            },
+            "expected": null,
+            "contract_check": "public_reuse",
+            "tags": [
+              "store",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "alice",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "max-age=300"
+                },
+                {
+                  "body": "anon",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C3-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.1958593837916851,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "anon"
+              ],
+              "existing_session": false
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "eve",
+                  "cookie": null,
+                  "vary": "Accept-Language",
+                  "cache_control": "max-age=300"
+                },
+                {
+                  "body": "frank",
+                  "cookie": null,
+                  "vary": "Accept-Language",
+                  "cache_control": "max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C3-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.217011921107769,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "eve",
+                "frank"
+              ],
+              "vary_language": true
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "C3-V-01",
+          "C3-V-02"
+        ],
+        "new_subject_calls": 4,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "f2017faf36f3d2bd8dd8816140ea4f02efd7d2f5330a8550574dd4cd7f29559e",
+          "applied_diff_hash": "c230da815b87b426049a5c267e0e64f2b3c3e18168ec20105934bd1a5b1ce42f"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "ed7085b2f4f80575910d8c7dcce5e7c568a0a29b",
+  "initial_hash": "f2017faf36f3d2bd8dd8816140ea4f02efd7d2f5330a8550574dd4cd7f29559e"
+}

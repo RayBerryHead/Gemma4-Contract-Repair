@@ -1,0 +1,164 @@
+{
+  "papers": {
+    "cache": {
+      "natural_roots": 8,
+      "planned_initial_draws": 16,
+      "initial_observed": 16,
+      "initial_applied": 13,
+      "initial_joint_valid": 12,
+      "apparent_passes": 13,
+      "apparent_pass_hidden_fail": 1,
+      "arms": {
+        "B": {
+          "completed": 16,
+          "joint_valid": 14,
+          "recovered": 2,
+          "regressed": 0
+        },
+        "M": {
+          "completed": 16,
+          "joint_valid": 13,
+          "recovered": 1,
+          "regressed": 0
+        },
+        "F": {
+          "completed": 4,
+          "joint_valid": 3,
+          "recovered": 0,
+          "regressed": 0
+        }
+      },
+      "pairs": {
+        "B_only": 2,
+        "both": 12,
+        "M_only": 1,
+        "neither": 1
+      },
+      "same_initial_feedback_pairs": 16,
+      "same_feedback_discordant_outcomes": 3,
+      "roots": [
+        {
+          "id": "C1",
+          "evidence_class": "privacy",
+          "repo": "nodejs/undici"
+        },
+        {
+          "id": "C2",
+          "evidence_class": "origin-integrity",
+          "repo": "nodejs/undici"
+        },
+        {
+          "id": "C3",
+          "evidence_class": "privacy",
+          "repo": "django/django"
+        },
+        {
+          "id": "C4",
+          "evidence_class": "privacy",
+          "repo": "django/django"
+        },
+        {
+          "id": "C5",
+          "evidence_class": "privacy",
+          "repo": "eamigo86/django-graphex"
+        },
+        {
+          "id": "C6",
+          "evidence_class": "privacy",
+          "repo": "django/django"
+        },
+        {
+          "id": "C7",
+          "evidence_class": "privacy",
+          "repo": "nodejs/undici"
+        },
+        {
+          "id": "C8",
+          "evidence_class": "privacy",
+          "repo": "django/django"
+        }
+      ]
+    },
+    "time": {
+      "natural_roots": 8,
+      "planned_initial_draws": 16,
+      "initial_observed": 16,
+      "initial_applied": 16,
+      "initial_joint_valid": 11,
+      "apparent_passes": 13,
+      "apparent_pass_hidden_fail": 0,
+      "arms": {
+        "B": {
+          "completed": 16,
+          "joint_valid": 14,
+          "recovered": 3,
+          "regressed": 0
+        },
+        "M": {
+          "completed": 16,
+          "joint_valid": 14,
+          "recovered": 3,
+          "regressed": 0
+        },
+        "F": {
+          "completed": 4,
+          "joint_valid": 4,
+          "recovered": 1,
+          "regressed": 0
+        }
+      },
+      "pairs": {
+        "both": 14,
+        "neither": 2
+      },
+      "same_initial_feedback_pairs": 16,
+      "same_feedback_discordant_outcomes": 0,
+      "roots": [
+        {
+          "id": "T1",
+          "evidence_class": "temporal",
+          "repo": "arrow-py/arrow"
+        },
+        {
+          "id": "T2",
+          "evidence_class": "temporal",
+          "repo": "pallets-eco/croniter"
+        },
+        {
+          "id": "T3",
+          "evidence_class": "temporal",
+          "repo": "dateutil/dateutil"
+        },
+        {
+          "id": "T4",
+          "evidence_class": "temporal",
+          "repo": "python-pendulum/pendulum"
+        },
+        {
+          "id": "T5",
+          "evidence_class": "temporal",
+          "repo": "python-pendulum/pendulum"
+        },
+        {
+          "id": "T6",
+          "evidence_class": "temporal",
+          "repo": "agronholm/apscheduler"
+        },
+        {
+          "id": "T7",
+          "evidence_class": "temporal",
+          "repo": "moment/luxon"
+        },
+        {
+          "id": "T8",
+          "evidence_class": "temporal",
+          "repo": "date-fns/date-fns"
+        }
+      ]
+    }
+  },
+  "missing_main": [],
+  "missing_F": [],
+  "complete_main": true,
+  "complete_F": true
+}

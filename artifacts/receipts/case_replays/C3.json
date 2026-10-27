@@ -1,0 +1,488 @@
+{
+  "id": "C3",
+  "buggy": {
+    "id": "C3",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C3-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.1963072158396244,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ]
+        },
+        "expected": null,
+        "contract_check": "actor_isolation",
+        "tags": [
+          "identity/key",
+          "store"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C3-V-01",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.16795541532337666,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "anon"
+          ],
+          "existing_session": false
+        },
+        "expected": null,
+        "contract_check": "actor_isolation",
+        "tags": [
+          "identity/key",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "carol",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "carol",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "carol",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C3-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.17901544086635113,
+        "subject_calls": 3,
+        "input": {
+          "actors": [
+            "carol",
+            "dave",
+            "carol"
+          ]
+        },
+        "expected": null,
+        "contract_check": "actor_isolation",
+        "tags": [
+          "identity/key",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "public, max-age=300"
+            },
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "public, max-age=300"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C3-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.17312549613416195,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ],
+          "public": true
+        },
+        "expected": null,
+        "contract_check": "public_reuse",
+        "tags": [
+          "store",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "eve",
+              "cookie": null,
+              "vary": "Accept-Language",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "eve",
+              "cookie": null,
+              "vary": "Accept-Language",
+              "cache_control": "max-age=300"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C3-V-02",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.1951538883149624,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "eve",
+            "frank"
+          ],
+          "vary_language": true
+        },
+        "expected": null,
+        "contract_check": "actor_isolation",
+        "tags": [
+          "identity/key",
+          "store"
+        ]
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "C3",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": "Authorization",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "bob",
+              "cookie": null,
+              "vary": "Authorization",
+              "cache_control": "max-age=300"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C3-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.19111892580986023,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ]
+        },
+        "expected": null,
+        "contract_check": "actor_isolation",
+        "tags": [
+          "identity/key",
+          "store"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": "Authorization",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "anon",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C3-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.17614136449992657,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "anon"
+          ],
+          "existing_session": false
+        },
+        "expected": null,
+        "contract_check": "actor_isolation",
+        "tags": [
+          "identity/key",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "carol",
+              "cookie": null,
+              "vary": "Authorization",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "dave",
+              "cookie": null,
+              "vary": "Authorization",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "carol",
+              "cookie": null,
+              "vary": "Authorization",
+              "cache_control": "max-age=300"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C3-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.16782053373754025,
+        "subject_calls": 3,
+        "input": {
+          "actors": [
+            "carol",
+            "dave",
+            "carol"
+          ]
+        },
+        "expected": null,
+        "contract_check": "actor_isolation",
+        "tags": [
+          "identity/key",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "public, max-age=300"
+            },
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "public, max-age=300"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C3-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.20030726678669453,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "alice",
+            "bob"
+          ],
+          "public": true
+        },
+        "expected": null,
+        "contract_check": "public_reuse",
+        "tags": [
+          "store",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "eve",
+              "cookie": null,
+              "vary": "Accept-Language, Authorization",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "frank",
+              "cookie": null,
+              "vary": "Accept-Language, Authorization",
+              "cache_control": "max-age=300"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C3-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.1543425116688013,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "eve",
+            "frank"
+          ],
+          "vary_language": true
+        },
+        "expected": null,
+        "contract_check": "actor_isolation",
+        "tags": [
+          "identity/key",
+          "store"
+        ]
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "exploratory_diagnostics": {
+    "buggy": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "anon",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "anon",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C3-D-01",
+        "role": "D",
+        "passed": false,
+        "elapsed_seconds": 0.20181791298091412,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "anon",
+            "bob"
+          ]
+        },
+        "expected": null,
+        "contract_check": "actor_isolation",
+        "tags": [
+          "identity/key",
+          "read"
+        ]
+      }
+    ],
+    "fixed": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "anon",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            },
+            {
+              "body": "anon",
+              "cookie": null,
+              "vary": "",
+              "cache_control": "max-age=300"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C3-D-01",
+        "role": "D",
+        "passed": false,
+        "elapsed_seconds": 0.19117148779332638,
+        "subject_calls": 2,
+        "input": {
+          "actors": [
+            "anon",
+            "bob"
+          ]
+        },
+        "expected": null,
+        "contract_check": "actor_isolation",
+        "tags": [
+          "identity/key",
+          "read"
+        ]
+      }
+    ]
+  },
+  "status": "READY"
+}

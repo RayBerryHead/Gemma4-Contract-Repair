@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2574,
+    "candidatesTokenCount": 163,
+    "totalTokenCount": 15349,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2574
+      }
+    ],
+    "thoughtsTokenCount": 12612,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "        d = self.d\n        if self.julian and d >= 59 and calendar.isleap(year):\n            d += 1\n\n        epoch = (days_before_year + d) * 86400",
+                    "path": "src/dateutil/tz/_tzfile.py",
+                    "new_text": "        d = self.d\n        if self.julian:\n            if d >= 60 and calendar.isleap(year):\n                d += 1\n        else:\n            d += 1\n\n        epoch = (days_before_year + d) * 86400"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "9855d9acb579a01a70cdf90352ef853a2a8abfecd310e5c8ca66ccd0e512b64a"
+}

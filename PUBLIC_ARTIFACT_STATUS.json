@@ -1,0 +1,20 @@
+{
+  "complete": true,
+  "partial_preflight": false,
+  "main_natural_roots": 16,
+  "main_draws": 32,
+  "paid_resources": false,
+  "frozen_source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "transport_source_sha": "07f0f2b618646a88c2ec150b50d2da3a5a58aade",
+  "effective_oracle_source_sha": "ed7085b2f4f80575910d8c7dcce5e7c568a0a29b",
+  "primary_view": "Original formal-v1 except C3 uses same initials with behavioral-isolation oracle amendment. Original strict C3 retained under historical/.",
+  "portable_changes": [
+    "Machine-local config paths and project reference",
+    "Node esbuild path from config or PAPER_ESBUILD",
+    "C3 source-backed oracle amendment; all other subject semantics unchanged",
+    "Independent HTTP overlap after quota reservations; unchanged generation request bodies",
+    "Read timeout floor later 1800 seconds; historical config value and unknown attempts preserved"
+  ],
+  "internal_model_thoughts_published": false,
+  "private_chat_published": false
+}

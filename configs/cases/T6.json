@@ -1,0 +1,103 @@
+{
+  "id": "T6",
+  "contract": "Scheduler waiting intervals measure elapsed instants, with past-due waits clamped to zero.",
+  "product_paths": [
+    "src/apscheduler/schedulers/base.py"
+  ],
+  "evidence_class": "temporal",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "T6-Q0-01",
+      "case": "T6",
+      "role": "Q0",
+      "params": {
+        "start": "2026-03-29T01:59:59",
+        "end": "2026-03-29T03:00:00",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 1,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "elapsed",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T6-V-01",
+      "case": "T6",
+      "role": "V",
+      "params": {
+        "start": "2026-10-25T02:30:00",
+        "end": "2026-10-25T02:30:00",
+        "start_fold": 0,
+        "end_fold": 1,
+        "zone": "Europe/Berlin"
+      },
+      "expected": 3600,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "elapsed",
+        "fold"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T6-E-01",
+      "case": "T6",
+      "role": "E",
+      "params": {
+        "start": "2025-03-30T01:59:59",
+        "end": "2025-03-30T03:00:00",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 1,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "elapsed",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T6-U-01",
+      "case": "T6",
+      "role": "U",
+      "params": {
+        "start": "2026-01-02T12:00:00",
+        "end": "2026-01-02T12:00:05",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 5,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "elapsed",
+        "ordinary"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T6-V-02",
+      "case": "T6",
+      "role": "V",
+      "params": {
+        "start": "2026-01-02T12:00:00",
+        "end": "2026-01-02T12:00:10",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 10,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "elapsed",
+        "ordinary"
+      ],
+      "obligation": "time-policy"
+    }
+  ]
+}

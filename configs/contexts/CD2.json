@@ -1,0 +1,16 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "subject.mjs": [
+      [
+        0,
+        12
+      ],
+      [
+        0,
+        12
+      ]
+    ]
+  }
+}

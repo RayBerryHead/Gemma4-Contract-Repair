@@ -1,0 +1,31 @@
+diff --git a/src/pendulum/datetime.py b/src/pendulum/datetime.py
+--- a/src/pendulum/datetime.py
++++ b/src/pendulum/datetime.py
+@@ -686,7 +686,12 @@
+             )
+         elif isinstance(delta, pendulum.Duration):
+             return self.add(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta.years,
++                months=delta.months,
++                weeks=delta._weeks,
++                days=delta._remaining_days,
++                seconds=delta._seconds,
++                microseconds=delta._microseconds,
+             )
+ 
+         return self.add(seconds=delta.total_seconds())
+@@ -697,7 +702,12 @@
+         """
+         if isinstance(delta, pendulum.Duration):
+             return self.subtract(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta.years,
++                months=delta.months,
++                weeks=delta._weeks,
++                days=delta._remaining_days,
++                seconds=delta._seconds,
++                microseconds=delta._microseconds,
+             )
+ 
+         return self.subtract(seconds=delta.total_seconds())

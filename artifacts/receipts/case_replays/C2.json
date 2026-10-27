@@ -1,0 +1,234 @@
+{
+  "id": "C2",
+  "buggy": {
+    "id": "C2",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "bodies": [
+            "attacker-controlled-content",
+            "attacker-controlled-content"
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C2-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.1939874403178692,
+        "subject_calls": 2,
+        "input": {},
+        "expected": [
+          "attacker-controlled-content",
+          "legitimate-content"
+        ],
+        "contract_check": "redirect_integrity",
+        "tags": [
+          "redirect",
+          "store"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "bodies": [
+            "attacker-controlled-content",
+            "attacker-controlled-content"
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C2-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.16164001636207104,
+        "subject_calls": 2,
+        "input": {
+          "path": "/hidden-resource"
+        },
+        "expected": [
+          "attacker-controlled-content",
+          "legitimate-content"
+        ],
+        "contract_check": "redirect_integrity",
+        "tags": [
+          "redirect",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "bodies": [
+            "legitimate-content",
+            "legitimate-content"
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C2-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.11402482725679874,
+        "subject_calls": 2,
+        "input": {
+          "no_redirect": true
+        },
+        "expected": [
+          "legitimate-content",
+          "legitimate-content"
+        ],
+        "contract_check": "redirect_integrity",
+        "tags": [
+          "read",
+          "ordinary"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "bodies": [
+            "legitimate-content",
+            "legitimate-content"
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C2-U-02",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.11260818131268024,
+        "subject_calls": 2,
+        "input": {
+          "no_redirect": true,
+          "public_control": true
+        },
+        "expected": [
+          "legitimate-content",
+          "legitimate-content"
+        ],
+        "contract_check": "public_origin_reuse",
+        "tags": [
+          "ordinary",
+          "read",
+          "store"
+        ]
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "C2",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "bodies": [
+            "attacker-controlled-content",
+            "legitimate-content"
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C2-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.18786493130028248,
+        "subject_calls": 2,
+        "input": {},
+        "expected": [
+          "attacker-controlled-content",
+          "legitimate-content"
+        ],
+        "contract_check": "redirect_integrity",
+        "tags": [
+          "redirect",
+          "store"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "bodies": [
+            "attacker-controlled-content",
+            "legitimate-content"
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C2-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.16429141908884048,
+        "subject_calls": 2,
+        "input": {
+          "path": "/hidden-resource"
+        },
+        "expected": [
+          "attacker-controlled-content",
+          "legitimate-content"
+        ],
+        "contract_check": "redirect_integrity",
+        "tags": [
+          "redirect",
+          "read"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "bodies": [
+            "legitimate-content",
+            "legitimate-content"
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C2-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.1405993141233921,
+        "subject_calls": 2,
+        "input": {
+          "no_redirect": true
+        },
+        "expected": [
+          "legitimate-content",
+          "legitimate-content"
+        ],
+        "contract_check": "redirect_integrity",
+        "tags": [
+          "read",
+          "ordinary"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "bodies": [
+            "legitimate-content",
+            "legitimate-content"
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C2-U-02",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.09669153764843941,
+        "subject_calls": 2,
+        "input": {
+          "no_redirect": true,
+          "public_control": true
+        },
+        "expected": [
+          "legitimate-content",
+          "legitimate-content"
+        ],
+        "contract_check": "public_origin_reuse",
+        "tags": [
+          "ordinary",
+          "read",
+          "store"
+        ]
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

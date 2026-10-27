@@ -1,0 +1,131 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": [
+        "STD",
+        "DST"
+      ],
+      "probe_id": "T3-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.08828950300812721,
+      "subject_calls": 1,
+      "input": {
+        "rule": "STD0DST-1,10/0,J100/0",
+        "dates": [
+          "2021-01-10T12:00",
+          "2021-01-11T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinal"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "STD",
+        "DST"
+      ],
+      "probe_id": "T3-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.06430136412382126,
+      "subject_calls": 1,
+      "input": {
+        "rule": "STD0DST-1,M3.2.0/2,M11.1.0/2",
+        "dates": [
+          "2021-01-15T12:00",
+          "2021-07-15T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinary",
+        "month-week"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "STD",
+        "DST"
+      ],
+      "probe_id": "T3-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.05864395759999752,
+      "subject_calls": 1,
+      "input": {
+        "rule": "STD0DST-1,J59/0,J200/0",
+        "dates": [
+          "2020-02-27T12:00",
+          "2020-02-28T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinal",
+        "leap"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "STD",
+        "DST"
+      ],
+      "probe_id": "T3-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.06394139863550663,
+      "subject_calls": 1,
+      "input": {
+        "rule": "STD0DST-1,J60/0,J200/0",
+        "dates": [
+          "2024-02-29T12:00",
+          "2024-03-01T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinal",
+        "leap"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "T3-V-01",
+    "T3-V-02"
+  ],
+  "new_subject_calls": 2,
+  "all_visible_pass": true,
+  "mapped_patch_phases": [],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "2ba0e25c962d5ad7deef84d490ba7134da9c68f6129edded38f44bb8be69fb7b",
+    "applied_diff_hash": "9446f0da8bbfa2b6a885548040e77e548e5f689db9ba6434dcbb665bae3c8213"
+  }
+}

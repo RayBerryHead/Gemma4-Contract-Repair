@@ -1,0 +1,255 @@
+{
+  "case": "T1",
+  "replicate": "r02",
+  "condition": "Q0_without_added_policy",
+  "proposal_valid": true,
+  "proposal_reason": "APPLIED",
+  "joint_valid": true,
+  "evaluation": {
+    "id": "T1",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": [
+          "2015-01-31",
+          "2015-02-28",
+          "2015-03-31",
+          "2015-04-30"
+        ],
+        "probe_id": "T1-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.10695628821849823,
+        "subject_calls": 1,
+        "input": {
+          "start": "2015-01-31",
+          "count": 4
+        },
+        "expected": [
+          "2015-01-31",
+          "2015-02-28",
+          "2015-03-31",
+          "2015-04-30"
+        ],
+        "contract_check": "equal",
+        "tags": [
+          "anchor",
+          "month-end"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "2020-01-30",
+          "2020-02-29",
+          "2020-03-30"
+        ],
+        "probe_id": "T1-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.064473956823349,
+        "subject_calls": 1,
+        "input": {
+          "start": "2020-01-30",
+          "count": 3
+        },
+        "expected": [
+          "2020-01-30",
+          "2020-02-29",
+          "2020-03-30"
+        ],
+        "contract_check": "equal",
+        "tags": [
+          "anchor",
+          "month-end"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "2021-02-28",
+          "2021-03-28",
+          "2021-04-28"
+        ],
+        "probe_id": "T1-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.07559494860470295,
+        "subject_calls": 1,
+        "input": {
+          "start": "2021-02-28",
+          "count": 3
+        },
+        "expected": [
+          "2021-02-28",
+          "2021-03-28",
+          "2021-04-28"
+        ],
+        "contract_check": "equal",
+        "tags": [
+          "anchor",
+          "month-end"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "2021-01-15",
+          "2021-02-15",
+          "2021-03-15"
+        ],
+        "probe_id": "T1-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.06671049818396568,
+        "subject_calls": 1,
+        "input": {
+          "start": "2021-01-15",
+          "count": 3
+        },
+        "expected": [
+          "2021-01-15",
+          "2021-02-15",
+          "2021-03-15"
+        ],
+        "contract_check": "equal",
+        "tags": [
+          "anchor",
+          "month-end"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "2019-01-15",
+          "2019-02-15",
+          "2019-03-15",
+          "2019-04-15"
+        ],
+        "probe_id": "T1-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.06226248852908611,
+        "subject_calls": 1,
+        "input": {
+          "start": "2019-01-15",
+          "count": 4
+        },
+        "expected": [
+          "2019-01-15",
+          "2019-02-15",
+          "2019-03-15",
+          "2019-04-15"
+        ],
+        "contract_check": "equal",
+        "tags": [
+          "ordinary"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "2021-01-31",
+          "2021-02-28",
+          "2021-03-31"
+        ],
+        "probe_id": "T1-V-03",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.05494820885360241,
+        "subject_calls": 1,
+        "input": {
+          "start": "2021-01-31",
+          "count": 3
+        },
+        "expected": [
+          "2021-01-31",
+          "2021-02-28",
+          "2021-03-31"
+        ],
+        "contract_check": "equal",
+        "tags": [
+          "month-end",
+          "anchor"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "2016-02-29",
+          "2017-02-28",
+          "2018-02-28",
+          "2019-02-28",
+          "2020-02-29"
+        ],
+        "probe_id": "T1-E-02",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.04546966031193733,
+        "subject_calls": 1,
+        "input": {
+          "start": "2016-02-29",
+          "frame": "year",
+          "count": 5
+        },
+        "expected": [
+          "2016-02-29",
+          "2017-02-28",
+          "2018-02-28",
+          "2019-02-28",
+          "2020-02-29"
+        ],
+        "contract_check": "equal",
+        "tags": [
+          "leap",
+          "anchor"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "2019-11-30",
+          "2020-02-29",
+          "2020-05-30"
+        ],
+        "probe_id": "T1-E-03",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.04294433444738388,
+        "subject_calls": 1,
+        "input": {
+          "start": "2019-11-30",
+          "frame": "quarter",
+          "count": 3
+        },
+        "expected": [
+          "2019-11-30",
+          "2020-02-29",
+          "2020-05-30"
+        ],
+        "contract_check": "equal",
+        "tags": [
+          "anchor",
+          "quarter"
+        ]
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "usage": {
+    "promptTokenCount": 2507,
+    "candidatesTokenCount": 194,
+    "totalTokenCount": 14334,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2507
+      }
+    ],
+    "thoughtsTokenCount": 11633,
+    "serviceTier": "standard"
+  },
+  "model_version": "gemma-4-31b-it",
+  "source_response": "artifacts/runs/time-information-v1/T1/r02/Q0_without_added_policy/response.json"
+}

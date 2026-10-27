@@ -1,0 +1,42 @@
+diff --git a/src/pendulum/date.py b/src/pendulum/date.py
+--- a/src/pendulum/date.py
++++ b/src/pendulum/date.py
+@@ -575,7 +575,7 @@
+         if day_of_week is None:
+             return dt.set(day=1)
+ 
+-        month = calendar.monthcalendar(dt.year, dt.month)
++        month = calendar.Calendar(0).monthdayscalendar(dt.year, dt.month)
+ 
+         calendar_day = day_of_week
+ 
+@@ -600,7 +600,7 @@
+         if day_of_week is None:
+             return dt.set(day=self.days_in_month)
+ 
+-        month = calendar.monthcalendar(dt.year, dt.month)
++        month = calendar.Calendar(0).monthdayscalendar(dt.year, dt.month)
+ 
+         calendar_day = day_of_week
+ 
+diff --git a/src/pendulum/datetime.py b/src/pendulum/datetime.py
+--- a/src/pendulum/datetime.py
++++ b/src/pendulum/datetime.py
+@@ -1026,7 +1026,7 @@
+         if day_of_week is None:
+             return dt.set(day=1)
+ 
+-        month = calendar.monthcalendar(dt.year, dt.month)
++        month = calendar.Calendar(0).monthdayscalendar(dt.year, dt.month)
+ 
+         calendar_day = day_of_week
+ 
+@@ -1049,7 +1049,7 @@
+         if day_of_week is None:
+             return dt.set(day=self.days_in_month)
+ 
+-        month = calendar.monthcalendar(dt.year, dt.month)
++        month = calendar.Calendar(0).monthdayscalendar(dt.year, dt.month)
+ 
+         calendar_day = day_of_week
+ 

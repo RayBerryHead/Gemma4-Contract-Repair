@@ -1,0 +1,17 @@
+{
+  "generation_settings_and_prompts_changed": false,
+  "original_source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "versions": {
+    "independent-http-v1": {
+      "source_commit": "7cf758dbf3771317f634b97e7617272ca45f46e2",
+      "api_file_sha256": "7952f48344ac0a77441d861c001e70a66eb3f489bace20c7f55fbc74cf2e4b64",
+      "effective_read_timeout_seconds": 900
+    },
+    "independent-http-v2-long-read": {
+      "source_commit": "8dfdb24f2497a857ebb25df3830c2ad823562790",
+      "api_file_sha256": "2d410b2ee931cb7b19a4cec5c3bd066741409b7519ad6584b9f6fafba93d962e",
+      "effective_read_timeout_seconds": 1800
+    }
+  },
+  "selection": "Each child loads its transport module at startup; the per-attempt transport_version identifies that module. Coordinator source SHA identifies its startup, not a claim that every later child used v1."
+}

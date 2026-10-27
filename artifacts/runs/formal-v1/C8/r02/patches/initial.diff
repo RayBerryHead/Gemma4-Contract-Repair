@@ -1,0 +1,18 @@
+diff --git a/django/middleware/cache.py b/django/middleware/cache.py
+--- a/django/middleware/cache.py
++++ b/django/middleware/cache.py
+@@ -109,12 +109,8 @@
+         cache_control = response.get("Cache-Control", "").lower()
+         cache_control_parts = list(split_header_value(cache_control))
+         if cache_control and any(
+-            directive in cache_control_parts
+-            for directive in (
+-                "private",
+-                "no-cache",
+-                "no-store",
+-            )
++            part.split("=", 1)[0] in ("private", "no-cache", "no-store")
++            for part in cache_control_parts
+         ):
+             return response
+ 

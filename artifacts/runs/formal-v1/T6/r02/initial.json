@@ -1,0 +1,47 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 1301,
+    "candidatesTokenCount": 187,
+    "totalTokenCount": 13126,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1301
+      }
+    ],
+    "thoughtsTokenCount": 11638,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "src/apscheduler/schedulers/base.py",
+                    "old_text": "from datetime import datetime, timedelta",
+                    "new_text": "from datetime import datetime, timedelta, timezone"
+                  },
+                  {
+                    "new_text": "            now = datetime.now(timezone.utc)\n            wait_seconds = min(\n                max((next_wakeup_time.astimezone(timezone.utc) - now).total_seconds(), 0), TIMEOUT_MAX\n            )",
+                    "old_text": "            now = datetime.now(self.timezone)\n            wait_seconds = min(\n                max((next_wakeup_time - now).total_seconds(), 0), TIMEOUT_MAX\n            )",
+                    "path": "src/apscheduler/schedulers/base.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "c477db53e9a39229392a28626217a692a1fab7d96198553cb1cc73e0a0391854"
+}

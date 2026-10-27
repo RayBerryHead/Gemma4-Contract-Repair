@@ -1,0 +1,58 @@
+[
+  {
+    "path": "lib/handler/cache-handler.js",
+    "start": 170,
+    "end": 175,
+    "phase": "identity/key",
+    "symbol": "onRequestStart"
+  },
+  {
+    "path": "lib/handler/cache-handler.js",
+    "start": 194,
+    "end": 440,
+    "phase": "store",
+    "symbol": "onResponseStart"
+  },
+  {
+    "path": "lib/handler/cache-handler.js",
+    "start": 449,
+    "end": 453,
+    "phase": "store",
+    "symbol": "onResponseEnd"
+  },
+  {
+    "path": "lib/interceptor/cache.js",
+    "start": 407,
+    "end": 657,
+    "phase": "read",
+    "symbol": "handleResult"
+  },
+  {
+    "path": "lib/interceptor/cache.js",
+    "start": 451,
+    "end": 528,
+    "phase": "read",
+    "symbol": "dispatch"
+  },
+  {
+    "path": "lib/interceptor/cache.js",
+    "start": 458,
+    "end": 458,
+    "phase": "identity/key",
+    "symbol": "onRequestStart"
+  },
+  {
+    "path": "lib/interceptor/cache.js",
+    "start": 460,
+    "end": 460,
+    "phase": "store",
+    "symbol": "onResponseStart"
+  },
+  {
+    "path": "lib/interceptor/cache.js",
+    "start": 462,
+    "end": 462,
+    "phase": "store",
+    "symbol": "onResponseEnd"
+  }
+]

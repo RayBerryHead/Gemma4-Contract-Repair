@@ -1,0 +1,551 @@
+{
+  "case_id": "C5",
+  "replicate": "r01",
+  "identity": "1f6d9367268c73d93440ae0eaece6a67cc4b3ed2e00c1c1bc1ce2d057aa4fc9f",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/django_graphex/views.py b/django_graphex/views.py\n--- a/django_graphex/views.py\n+++ b/django_graphex/views.py\n@@ -515,9 +515,13 @@\n \n     @staticmethod\n     def fetch_cache_key(request: HttpRequest) -> str:\n-        \"\"\"Return a hashed cache key built from the request body.\"\"\"\n+        \"\"\"Return a hashed cache key built from the request body and user.\"\"\"\n         m = hashlib.sha256()\n         m.update(request.body)\n+\n+        user = getattr(request, \"user\", None)\n+        user_id = user.pk if user and user.is_authenticated else \"anonymous\"\n+        m.update(str(user_id).encode(\"utf-8\"))\n \n         return m.hexdigest()\n \n",
+      "last_valid_source": "artifacts/runs/formal-v1/C5/r01/B/patch-3ad04f52c6a92aa6",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "status": 200,
+                "body": "alice"
+              },
+              {
+                "status": 200,
+                "body": "anon"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C5-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.17841575853526592,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "alice",
+              "anon"
+            ],
+            "existing_session": false
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "status": 200,
+                "body": "anon"
+              },
+              {
+                "status": 200,
+                "body": "bob"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C5-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.19724094681441784,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "anon",
+              "bob"
+            ]
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "status": 200,
+                "body": "carol"
+              },
+              {
+                "status": 200,
+                "body": "dave"
+              },
+              {
+                "status": 200,
+                "body": "carol"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C5-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.1897047609090805,
+          "subject_calls": 3,
+          "input": {
+            "actors": [
+              "carol",
+              "dave",
+              "carol"
+            ]
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "status": 200,
+                  "body": "alice"
+                },
+                {
+                  "status": 200,
+                  "body": "bob"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C5-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.23716276697814465,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ]
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "status": 200,
+                  "body": "alice"
+                },
+                {
+                  "status": 200,
+                  "body": "alice"
+                }
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C5-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.19573969580233097,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "alice"
+              ]
+            },
+            "expected": null,
+            "contract_check": "private_reuse",
+            "tags": [
+              "store",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "status": 200,
+                  "body": "alice"
+                },
+                {
+                  "status": 200,
+                  "body": "anon"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C5-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.17841575853526592,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "anon"
+              ],
+              "existing_session": false
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "status": 200,
+                  "body": "anon"
+                },
+                {
+                  "status": 200,
+                  "body": "bob"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C5-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.19724094681441784,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "anon",
+                "bob"
+              ]
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "C5-V-01",
+          "C5-V-02"
+        ],
+        "new_subject_calls": 4,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": true,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "40facaa378c9504cba9b309e217d132b1dca943a6b22251b01bb99ac5e4275be",
+          "applied_diff_hash": "3ad04f52c6a92aa628446b87b0b999d2b55c8f0f0b839e00c80dc9e775e5954f"
+        }
+      },
+      "joint_valid": true
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/django_graphex/views.py b/django_graphex/views.py\n--- a/django_graphex/views.py\n+++ b/django_graphex/views.py\n@@ -515,9 +515,13 @@\n \n     @staticmethod\n     def fetch_cache_key(request: HttpRequest) -> str:\n-        \"\"\"Return a hashed cache key built from the request body.\"\"\"\n+        \"\"\"Return a hashed cache key built from the request body and user.\"\"\"\n         m = hashlib.sha256()\n         m.update(request.body)\n+\n+        user = getattr(request, \"user\", None)\n+        user_id = user.pk if user and user.is_authenticated else \"anonymous\"\n+        m.update(str(user_id).encode(\"utf-8\"))\n \n         return m.hexdigest()\n \n",
+      "last_valid_source": "artifacts/runs/formal-v1/C5/r01/M/patch-3ad04f52c6a92aa6",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "status": 200,
+                "body": "alice"
+              },
+              {
+                "status": 200,
+                "body": "anon"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C5-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.19160278514027596,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "alice",
+              "anon"
+            ],
+            "existing_session": false
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "status": 200,
+                "body": "anon"
+              },
+              {
+                "status": 200,
+                "body": "bob"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C5-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.20749346911907196,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "anon",
+              "bob"
+            ]
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "status": 200,
+                "body": "carol"
+              },
+              {
+                "status": 200,
+                "body": "dave"
+              },
+              {
+                "status": 200,
+                "body": "carol"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C5-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.17788767628371716,
+          "subject_calls": 3,
+          "input": {
+            "actors": [
+              "carol",
+              "dave",
+              "carol"
+            ]
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "status": 200,
+                  "body": "alice"
+                },
+                {
+                  "status": 200,
+                  "body": "bob"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C5-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.22603501193225384,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ]
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "status": 200,
+                  "body": "alice"
+                },
+                {
+                  "status": 200,
+                  "body": "alice"
+                }
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C5-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.19065484404563904,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "alice"
+              ]
+            },
+            "expected": null,
+            "contract_check": "private_reuse",
+            "tags": [
+              "store",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "status": 200,
+                  "body": "alice"
+                },
+                {
+                  "status": 200,
+                  "body": "anon"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C5-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.19160278514027596,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "anon"
+              ],
+              "existing_session": false
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "status": 200,
+                  "body": "anon"
+                },
+                {
+                  "status": 200,
+                  "body": "bob"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C5-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.20749346911907196,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "anon",
+                "bob"
+              ]
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "C5-V-01",
+          "C5-V-02"
+        ],
+        "new_subject_calls": 4,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": true,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "40facaa378c9504cba9b309e217d132b1dca943a6b22251b01bb99ac5e4275be",
+          "applied_diff_hash": "3ad04f52c6a92aa628446b87b0b999d2b55c8f0f0b839e00c80dc9e775e5954f"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "40facaa378c9504cba9b309e217d132b1dca943a6b22251b01bb99ac5e4275be"
+}

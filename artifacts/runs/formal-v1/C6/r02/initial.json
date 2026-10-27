@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 1214,
+    "candidatesTokenCount": 292,
+    "totalTokenCount": 10342,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1214
+      }
+    ],
+    "thoughtsTokenCount": 8836,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "django/contrib/sessions/middleware.py",
+                    "new_text": "                    response.set_cookie(\n                        settings.SESSION_COOKIE_NAME,\n                        request.session.session_key,\n                        max_age=max_age,\n                        expires=expires,\n                        domain=settings.SESSION_COOKIE_DOMAIN,\n                        path=settings.SESSION_COOKIE_PATH,\n                        secure=settings.SESSION_COOKIE_SECURE or None,\n                        httponly=settings.SESSION_COOKIE_HTTPONLY or None,\n                        samesite=settings.SESSION_COOKIE_SAMESITE,\n                    )\n                    patch_vary_headers(response, (\"Cookie\",))",
+                    "old_text": "                    response.set_cookie(\n                        settings.SESSION_COOKIE_NAME,\n                        request.session.session_key,\n                        max_age=max_age,\n                        expires=expires,\n                        domain=settings.SESSION_COOKIE_DOMAIN,\n                        path=settings.SESSION_COOKIE_PATH,\n                        secure=settings.SESSION_COOKIE_SECURE or None,\n                        httponly=settings.SESSION_COOKIE_HTTPONLY or None,\n                        samesite=settings.SESSION_COOKIE_SAMESITE,\n                    )"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "c544f3280e58cecd03751d55c8d54050dbb1c3b6d1ecc0aae088fa18c866d937"
+}

@@ -1,0 +1,47 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2428,
+    "candidatesTokenCount": 274,
+    "totalTokenCount": 11057,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2428
+      }
+    ],
+    "thoughtsTokenCount": 8355,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )",
+                    "path": "src/pendulum/datetime.py",
+                    "new_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years,\n                months=delta.months,\n                days=delta._days,\n                seconds=delta._total - delta._days * SECONDS_PER_DAY,\n            )"
+                  },
+                  {
+                    "old_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )",
+                    "path": "src/pendulum/datetime.py",
+                    "new_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years,\n                months=delta.months,\n                days=delta._days,\n                seconds=delta._total - delta._days * SECONDS_PER_DAY,\n            )"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "0810b5c41a80887c903a68b93e8fe3538bbe8d20e8cfefd1a47fdc804b83fc58"
+}

@@ -1,0 +1,1031 @@
+{
+  "case_id": "T1",
+  "replicate": "r01",
+  "identity": "c7006e6cd0551b9924e91d9c880140189c842826cd953accd17ca91de749d194",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/arrow/arrow.py b/arrow/arrow.py\n--- a/arrow/arrow.py\n+++ b/arrow/arrow.py\n@@ -373,16 +373,15 @@\n         end, limit = cls._get_iteration_params(end, limit)\n         end = cls._get_datetime(end).replace(tzinfo=tzinfo)\n \n-        current = cls.fromdatetime(start)\n+        start_arrow = cls.fromdatetime(start)\n+        current = start_arrow\n         i = 0\n \n         while current <= end and i < limit:\n+            yield current\n             i += 1\n-            yield current\n-\n-            values = [getattr(current, f) for f in cls._ATTRS]\n-            current = cls(*values, tzinfo=tzinfo).shift(\n-                **{frame_relative: relative_steps}\n+            current = start_arrow.shift(\n+                **{frame_relative: i * relative_steps}\n             )\n \n     def span(self, frame, count=1, bounds=\"[)\"):\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T1/r01/B/patch-c37f829ad31882fb",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": [
+            "2020-01-30",
+            "2020-02-29",
+            "2020-03-30"
+          ],
+          "probe_id": "T1-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.07189097069203854,
+          "subject_calls": 1,
+          "input": {
+            "start": "2020-01-30",
+            "count": 3
+          },
+          "expected": [
+            "2020-01-30",
+            "2020-02-29",
+            "2020-03-30"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "anchor",
+            "month-end"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2019-01-15",
+            "2019-02-15",
+            "2019-03-15",
+            "2019-04-15"
+          ],
+          "probe_id": "T1-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.05991966463625431,
+          "subject_calls": 1,
+          "input": {
+            "start": "2019-01-15",
+            "count": 4
+          },
+          "expected": [
+            "2019-01-15",
+            "2019-02-15",
+            "2019-03-15",
+            "2019-04-15"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "ordinary"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2021-01-31",
+            "2021-02-28",
+            "2021-03-31"
+          ],
+          "probe_id": "T1-V-03",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.06121915020048618,
+          "subject_calls": 1,
+          "input": {
+            "start": "2021-01-31",
+            "count": 3
+          },
+          "expected": [
+            "2021-01-31",
+            "2021-02-28",
+            "2021-03-31"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "month-end",
+            "anchor"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": [
+            "2021-02-28",
+            "2021-03-28",
+            "2021-04-28"
+          ],
+          "probe_id": "T1-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.046136559918522835,
+          "subject_calls": 1,
+          "input": {
+            "start": "2021-02-28",
+            "count": 3
+          },
+          "expected": [
+            "2021-02-28",
+            "2021-03-28",
+            "2021-04-28"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "anchor",
+            "month-end"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2016-02-29",
+            "2017-02-28",
+            "2018-02-28",
+            "2019-02-28",
+            "2020-02-29"
+          ],
+          "probe_id": "T1-E-02",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.0463446881622076,
+          "subject_calls": 1,
+          "input": {
+            "start": "2016-02-29",
+            "frame": "year",
+            "count": 5
+          },
+          "expected": [
+            "2016-02-29",
+            "2017-02-28",
+            "2018-02-28",
+            "2019-02-28",
+            "2020-02-29"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "leap",
+            "anchor"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2019-11-30",
+            "2020-02-29",
+            "2020-05-30"
+          ],
+          "probe_id": "T1-E-03",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.04583563283085823,
+          "subject_calls": 1,
+          "input": {
+            "start": "2019-11-30",
+            "frame": "quarter",
+            "count": 3
+          },
+          "expected": [
+            "2019-11-30",
+            "2020-02-29",
+            "2020-05-30"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "anchor",
+            "quarter"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": [
+              "2015-01-31",
+              "2015-02-28",
+              "2015-03-31",
+              "2015-04-30"
+            ],
+            "probe_id": "T1-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.08999108523130417,
+            "subject_calls": 1,
+            "input": {
+              "start": "2015-01-31",
+              "count": 4
+            },
+            "expected": [
+              "2015-01-31",
+              "2015-02-28",
+              "2015-03-31",
+              "2015-04-30"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "anchor",
+              "month-end"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2021-01-15",
+              "2021-02-15",
+              "2021-03-15"
+            ],
+            "probe_id": "T1-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.08383958972990513,
+            "subject_calls": 1,
+            "input": {
+              "start": "2021-01-15",
+              "count": 3
+            },
+            "expected": [
+              "2021-01-15",
+              "2021-02-15",
+              "2021-03-15"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "anchor",
+              "month-end"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2020-01-30",
+              "2020-02-29",
+              "2020-03-30"
+            ],
+            "probe_id": "T1-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.07189097069203854,
+            "subject_calls": 1,
+            "input": {
+              "start": "2020-01-30",
+              "count": 3
+            },
+            "expected": [
+              "2020-01-30",
+              "2020-02-29",
+              "2020-03-30"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "anchor",
+              "month-end"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2019-01-15",
+              "2019-02-15",
+              "2019-03-15",
+              "2019-04-15"
+            ],
+            "probe_id": "T1-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.05991966463625431,
+            "subject_calls": 1,
+            "input": {
+              "start": "2019-01-15",
+              "count": 4
+            },
+            "expected": [
+              "2019-01-15",
+              "2019-02-15",
+              "2019-03-15",
+              "2019-04-15"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2021-01-31",
+              "2021-02-28",
+              "2021-03-31"
+            ],
+            "probe_id": "T1-V-03",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.06121915020048618,
+            "subject_calls": 1,
+            "input": {
+              "start": "2021-01-31",
+              "count": 3
+            },
+            "expected": [
+              "2021-01-31",
+              "2021-02-28",
+              "2021-03-31"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "month-end",
+              "anchor"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T1-V-01",
+          "T1-V-02",
+          "T1-V-03"
+        ],
+        "new_subject_calls": 3,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "2f2323d607ccfd2c793069429fe1697ae45bb74a90a2f7ae3600e5bca10ae9bc",
+          "applied_diff_hash": "c37f829ad31882fb8901bac2b6df882646a3fb2179c5bb0d417c3a403408ebf2"
+        }
+      },
+      "joint_valid": true
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/arrow/arrow.py b/arrow/arrow.py\n--- a/arrow/arrow.py\n+++ b/arrow/arrow.py\n@@ -373,16 +373,15 @@\n         end, limit = cls._get_iteration_params(end, limit)\n         end = cls._get_datetime(end).replace(tzinfo=tzinfo)\n \n-        current = cls.fromdatetime(start)\n+        start_arrow = cls.fromdatetime(start)\n+        current = start_arrow\n         i = 0\n \n         while current <= end and i < limit:\n+            yield current\n             i += 1\n-            yield current\n-\n-            values = [getattr(current, f) for f in cls._ATTRS]\n-            current = cls(*values, tzinfo=tzinfo).shift(\n-                **{frame_relative: relative_steps}\n+            current = start_arrow.shift(\n+                **{frame_relative: i * relative_steps}\n             )\n \n     def span(self, frame, count=1, bounds=\"[)\"):\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T1/r01/M/patch-c37f829ad31882fb",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": [
+            "2020-01-30",
+            "2020-02-29",
+            "2020-03-30"
+          ],
+          "probe_id": "T1-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.07182792946696281,
+          "subject_calls": 1,
+          "input": {
+            "start": "2020-01-30",
+            "count": 3
+          },
+          "expected": [
+            "2020-01-30",
+            "2020-02-29",
+            "2020-03-30"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "anchor",
+            "month-end"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2019-01-15",
+            "2019-02-15",
+            "2019-03-15",
+            "2019-04-15"
+          ],
+          "probe_id": "T1-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.050610996782779694,
+          "subject_calls": 1,
+          "input": {
+            "start": "2019-01-15",
+            "count": 4
+          },
+          "expected": [
+            "2019-01-15",
+            "2019-02-15",
+            "2019-03-15",
+            "2019-04-15"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "ordinary"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2021-01-31",
+            "2021-02-28",
+            "2021-03-31"
+          ],
+          "probe_id": "T1-V-03",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.07370126061141491,
+          "subject_calls": 1,
+          "input": {
+            "start": "2021-01-31",
+            "count": 3
+          },
+          "expected": [
+            "2021-01-31",
+            "2021-02-28",
+            "2021-03-31"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "month-end",
+            "anchor"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": [
+            "2021-02-28",
+            "2021-03-28",
+            "2021-04-28"
+          ],
+          "probe_id": "T1-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.07709809578955173,
+          "subject_calls": 1,
+          "input": {
+            "start": "2021-02-28",
+            "count": 3
+          },
+          "expected": [
+            "2021-02-28",
+            "2021-03-28",
+            "2021-04-28"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "anchor",
+            "month-end"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2016-02-29",
+            "2017-02-28",
+            "2018-02-28",
+            "2019-02-28",
+            "2020-02-29"
+          ],
+          "probe_id": "T1-E-02",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.07562612369656563,
+          "subject_calls": 1,
+          "input": {
+            "start": "2016-02-29",
+            "frame": "year",
+            "count": 5
+          },
+          "expected": [
+            "2016-02-29",
+            "2017-02-28",
+            "2018-02-28",
+            "2019-02-28",
+            "2020-02-29"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "leap",
+            "anchor"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2019-11-30",
+            "2020-02-29",
+            "2020-05-30"
+          ],
+          "probe_id": "T1-E-03",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.07548537664115429,
+          "subject_calls": 1,
+          "input": {
+            "start": "2019-11-30",
+            "frame": "quarter",
+            "count": 3
+          },
+          "expected": [
+            "2019-11-30",
+            "2020-02-29",
+            "2020-05-30"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "anchor",
+            "quarter"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": [
+              "2015-01-31",
+              "2015-02-28",
+              "2015-03-31",
+              "2015-04-30"
+            ],
+            "probe_id": "T1-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.07269553281366825,
+            "subject_calls": 1,
+            "input": {
+              "start": "2015-01-31",
+              "count": 4
+            },
+            "expected": [
+              "2015-01-31",
+              "2015-02-28",
+              "2015-03-31",
+              "2015-04-30"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "anchor",
+              "month-end"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2021-01-15",
+              "2021-02-15",
+              "2021-03-15"
+            ],
+            "probe_id": "T1-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.0706647951155901,
+            "subject_calls": 1,
+            "input": {
+              "start": "2021-01-15",
+              "count": 3
+            },
+            "expected": [
+              "2021-01-15",
+              "2021-02-15",
+              "2021-03-15"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "anchor",
+              "month-end"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2020-01-30",
+              "2020-02-29",
+              "2020-03-30"
+            ],
+            "probe_id": "T1-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.07182792946696281,
+            "subject_calls": 1,
+            "input": {
+              "start": "2020-01-30",
+              "count": 3
+            },
+            "expected": [
+              "2020-01-30",
+              "2020-02-29",
+              "2020-03-30"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "anchor",
+              "month-end"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2019-01-15",
+              "2019-02-15",
+              "2019-03-15",
+              "2019-04-15"
+            ],
+            "probe_id": "T1-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.050610996782779694,
+            "subject_calls": 1,
+            "input": {
+              "start": "2019-01-15",
+              "count": 4
+            },
+            "expected": [
+              "2019-01-15",
+              "2019-02-15",
+              "2019-03-15",
+              "2019-04-15"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2021-01-31",
+              "2021-02-28",
+              "2021-03-31"
+            ],
+            "probe_id": "T1-V-03",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.07370126061141491,
+            "subject_calls": 1,
+            "input": {
+              "start": "2021-01-31",
+              "count": 3
+            },
+            "expected": [
+              "2021-01-31",
+              "2021-02-28",
+              "2021-03-31"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "month-end",
+              "anchor"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T1-V-01",
+          "T1-V-02",
+          "T1-V-03"
+        ],
+        "new_subject_calls": 3,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "2f2323d607ccfd2c793069429fe1697ae45bb74a90a2f7ae3600e5bca10ae9bc",
+          "applied_diff_hash": "c37f829ad31882fb8901bac2b6df882646a3fb2179c5bb0d417c3a403408ebf2"
+        }
+      },
+      "joint_valid": true
+    },
+    "F": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/arrow/arrow.py b/arrow/arrow.py\n--- a/arrow/arrow.py\n+++ b/arrow/arrow.py\n@@ -373,16 +373,15 @@\n         end, limit = cls._get_iteration_params(end, limit)\n         end = cls._get_datetime(end).replace(tzinfo=tzinfo)\n \n-        current = cls.fromdatetime(start)\n+        start_arrow = cls.fromdatetime(start)\n+        current = start_arrow\n         i = 0\n \n         while current <= end and i < limit:\n+            yield current\n             i += 1\n-            yield current\n-\n-            values = [getattr(current, f) for f in cls._ATTRS]\n-            current = cls(*values, tzinfo=tzinfo).shift(\n-                **{frame_relative: relative_steps}\n+            current = start_arrow.shift(\n+                **{frame_relative: i * relative_steps}\n             )\n \n     def span(self, frame, count=1, bounds=\"[)\"):\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T1/r01/F/patch-c37f829ad31882fb",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": [
+            "2020-01-30",
+            "2020-02-29",
+            "2020-03-30"
+          ],
+          "probe_id": "T1-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.09009458497166634,
+          "subject_calls": 1,
+          "input": {
+            "start": "2020-01-30",
+            "count": 3
+          },
+          "expected": [
+            "2020-01-30",
+            "2020-02-29",
+            "2020-03-30"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "anchor",
+            "month-end"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2019-01-15",
+            "2019-02-15",
+            "2019-03-15",
+            "2019-04-15"
+          ],
+          "probe_id": "T1-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.07395702973008156,
+          "subject_calls": 1,
+          "input": {
+            "start": "2019-01-15",
+            "count": 4
+          },
+          "expected": [
+            "2019-01-15",
+            "2019-02-15",
+            "2019-03-15",
+            "2019-04-15"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "ordinary"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2021-01-31",
+            "2021-02-28",
+            "2021-03-31"
+          ],
+          "probe_id": "T1-V-03",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.07075107656419277,
+          "subject_calls": 1,
+          "input": {
+            "start": "2021-01-31",
+            "count": 3
+          },
+          "expected": [
+            "2021-01-31",
+            "2021-02-28",
+            "2021-03-31"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "month-end",
+            "anchor"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": [
+            "2021-02-28",
+            "2021-03-28",
+            "2021-04-28"
+          ],
+          "probe_id": "T1-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.04687909409403801,
+          "subject_calls": 1,
+          "input": {
+            "start": "2021-02-28",
+            "count": 3
+          },
+          "expected": [
+            "2021-02-28",
+            "2021-03-28",
+            "2021-04-28"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "anchor",
+            "month-end"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2016-02-29",
+            "2017-02-28",
+            "2018-02-28",
+            "2019-02-28",
+            "2020-02-29"
+          ],
+          "probe_id": "T1-E-02",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.04650251567363739,
+          "subject_calls": 1,
+          "input": {
+            "start": "2016-02-29",
+            "frame": "year",
+            "count": 5
+          },
+          "expected": [
+            "2016-02-29",
+            "2017-02-28",
+            "2018-02-28",
+            "2019-02-28",
+            "2020-02-29"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "leap",
+            "anchor"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": [
+            "2019-11-30",
+            "2020-02-29",
+            "2020-05-30"
+          ],
+          "probe_id": "T1-E-03",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.046777380630373955,
+          "subject_calls": 1,
+          "input": {
+            "start": "2019-11-30",
+            "frame": "quarter",
+            "count": 3
+          },
+          "expected": [
+            "2019-11-30",
+            "2020-02-29",
+            "2020-05-30"
+          ],
+          "contract_check": "equal",
+          "tags": [
+            "anchor",
+            "quarter"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": [
+              "2015-01-31",
+              "2015-02-28",
+              "2015-03-31",
+              "2015-04-30"
+            ],
+            "probe_id": "T1-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.08306408300995827,
+            "subject_calls": 1,
+            "input": {
+              "start": "2015-01-31",
+              "count": 4
+            },
+            "expected": [
+              "2015-01-31",
+              "2015-02-28",
+              "2015-03-31",
+              "2015-04-30"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "anchor",
+              "month-end"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2021-01-15",
+              "2021-02-15",
+              "2021-03-15"
+            ],
+            "probe_id": "T1-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.07836890779435635,
+            "subject_calls": 1,
+            "input": {
+              "start": "2021-01-15",
+              "count": 3
+            },
+            "expected": [
+              "2021-01-15",
+              "2021-02-15",
+              "2021-03-15"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "anchor",
+              "month-end"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2020-01-30",
+              "2020-02-29",
+              "2020-03-30"
+            ],
+            "probe_id": "T1-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.09009458497166634,
+            "subject_calls": 1,
+            "input": {
+              "start": "2020-01-30",
+              "count": 3
+            },
+            "expected": [
+              "2020-01-30",
+              "2020-02-29",
+              "2020-03-30"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "anchor",
+              "month-end"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2019-01-15",
+              "2019-02-15",
+              "2019-03-15",
+              "2019-04-15"
+            ],
+            "probe_id": "T1-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.07395702973008156,
+            "subject_calls": 1,
+            "input": {
+              "start": "2019-01-15",
+              "count": 4
+            },
+            "expected": [
+              "2019-01-15",
+              "2019-02-15",
+              "2019-03-15",
+              "2019-04-15"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": [
+              "2021-01-31",
+              "2021-02-28",
+              "2021-03-31"
+            ],
+            "probe_id": "T1-V-03",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.07075107656419277,
+            "subject_calls": 1,
+            "input": {
+              "start": "2021-01-31",
+              "count": 3
+            },
+            "expected": [
+              "2021-01-31",
+              "2021-02-28",
+              "2021-03-31"
+            ],
+            "contract_check": "equal",
+            "tags": [
+              "month-end",
+              "anchor"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T1-V-01",
+          "T1-V-02",
+          "T1-V-03"
+        ],
+        "new_subject_calls": 3,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "2f2323d607ccfd2c793069429fe1697ae45bb74a90a2f7ae3600e5bca10ae9bc",
+          "applied_diff_hash": "c37f829ad31882fb8901bac2b6df882646a3fb2179c5bb0d417c3a403408ebf2"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "2f2323d607ccfd2c793069429fe1697ae45bb74a90a2f7ae3600e5bca10ae9bc"
+}

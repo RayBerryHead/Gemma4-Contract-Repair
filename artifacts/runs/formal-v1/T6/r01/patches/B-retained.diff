@@ -1,0 +1,15 @@
+diff --git a/src/apscheduler/schedulers/base.py b/src/apscheduler/schedulers/base.py
+--- a/src/apscheduler/schedulers/base.py
++++ b/src/apscheduler/schedulers/base.py
+@@ -1251,9 +1251,9 @@
+             wait_seconds = None
+             self._logger.debug("No jobs; waiting until a job is added")
+         else:
+-            now = datetime.now(self.timezone)
++            now = datetime.now(self.timezone).astimezone()
+             wait_seconds = min(
+-                max((next_wakeup_time - now).total_seconds(), 0), TIMEOUT_MAX
++                max((next_wakeup_time.astimezone() - now).total_seconds(), 0), TIMEOUT_MAX
+             )
+             self._logger.debug(
+                 "Next wakeup is due at %s (in %f seconds)",

@@ -1,0 +1,46 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 1306,
+    "candidatesTokenCount": 110,
+    "totalTokenCount": 10259,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1306
+      }
+    ],
+    "thoughtsTokenCount": 8843,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "from datetime import datetime, timedelta, timezone",
+                    "old_text": "from datetime import datetime, timedelta",
+                    "path": "src/apscheduler/schedulers/base.py"
+                  },
+                  {
+                    "new_text": "            now = datetime.now(timezone.utc)",
+                    "path": "src/apscheduler/schedulers/base.py",
+                    "old_text": "            now = datetime.now(self.timezone)"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "original_response_sha256": "f6e65cf4bd50fe99f083055cd7c9ea163590db5b087b1ed514ba29370e7f66ad"
+}

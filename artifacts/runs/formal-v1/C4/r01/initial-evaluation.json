@@ -1,0 +1,242 @@
+{
+  "id": "C4",
+  "results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": "created-1",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          },
+          {
+            "body": "public",
+            "cookie": "created-2",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C4-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.42231799103319645,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "contract_check": "cookie_isolation",
+      "tags": [
+        "identity/key",
+        "store"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": "created-1",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          },
+          {
+            "body": "public",
+            "cookie": "created-2",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C4-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.21116887591779232,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "existing_session": true
+      },
+      "expected": null,
+      "contract_check": "cookie_isolation",
+      "tags": [
+        "identity/key",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": "created-1",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          },
+          {
+            "body": "public",
+            "cookie": "created-2",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          },
+          {
+            "body": "public",
+            "cookie": "created-3",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          }
+        ],
+        "origin_calls": 3
+      },
+      "probe_id": "C4-E-01",
+      "role": "E",
+      "passed": true,
+      "elapsed_seconds": 0.2068475279957056,
+      "subject_calls": 3,
+      "input": {
+        "actors": [
+          "carol",
+          "dave",
+          "carol"
+        ]
+      },
+      "expected": null,
+      "contract_check": "cookie_isolation",
+      "tags": [
+        "identity/key",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": "created-1",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          },
+          {
+            "body": "public",
+            "cookie": "created-2",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C4-E-02",
+      "role": "E",
+      "passed": true,
+      "elapsed_seconds": 0.2189281228929758,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "cookie_name": "language"
+      },
+      "expected": null,
+      "contract_check": "cookie_isolation",
+      "tags": [
+        "store"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": "created-1",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          },
+          {
+            "body": "public",
+            "cookie": "created-2",
+            "vary": "Cookie",
+            "cache_control": "max-age=300"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C4-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.1711866371333599,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "no_cookie": true
+      },
+      "expected": null,
+      "contract_check": "cookie_isolation",
+      "tags": [
+        "store",
+        "cold"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": null,
+            "vary": "",
+            "cache_control": "public, max-age=300"
+          },
+          {
+            "body": "public",
+            "cookie": null,
+            "vary": "",
+            "cache_control": "public, max-age=300"
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C4-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.23223474994301796,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "contract_check": "public_reuse",
+      "tags": [
+        "ordinary",
+        "store",
+        "read"
+      ]
+    }
+  ],
+  "all_pass": true,
+  "infra_ok": true,
+  "proposal_valid": true,
+  "reason": "APPLIED"
+}

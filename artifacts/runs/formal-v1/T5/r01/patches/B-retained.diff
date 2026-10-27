@@ -1,0 +1,38 @@
+diff --git a/src/pendulum/datetime.py b/src/pendulum/datetime.py
+--- a/src/pendulum/datetime.py
++++ b/src/pendulum/datetime.py
+@@ -686,7 +686,10 @@
+             )
+         elif isinstance(delta, pendulum.Duration):
+             return self.add(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta.years,
++                months=delta.months,
++                days=delta._days_passed,
++                seconds=delta._total - delta._days_passed * SECONDS_PER_DAY,
+             )
+ 
+         return self.add(seconds=delta.total_seconds())
+@@ -697,7 +700,10 @@
+         """
+         if isinstance(delta, pendulum.Duration):
+             return self.subtract(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta.years,
++                months=delta.months,
++                days=delta._days_passed,
++                seconds=delta._total - delta._days_passed * SECONDS_PER_DAY,
+             )
+ 
+         return self.subtract(seconds=delta.total_seconds())
+diff --git a/src/pendulum/duration.py b/src/pendulum/duration.py
+--- a/src/pendulum/duration.py
++++ b/src/pendulum/duration.py
+@@ -93,6 +93,7 @@
+             hours,
+             weeks,
+         )
++        self._days_passed = int(days + weeks * 7)
+ 
+         # Intuitive normalization
+         total = self.total_seconds() - (years * 365 + months * 30) * SECONDS_PER_DAY

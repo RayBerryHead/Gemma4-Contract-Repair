@@ -1,0 +1,1029 @@
+{
+  "label": "r01_F_retained",
+  "root": "T5",
+  "product_sha256": "247a744189a228a9176ed8972d7497970e355b90fe79c58d282c7aa0656e6020",
+  "passed": 30,
+  "total": 30,
+  "results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-03-14 10:45",
+        "elapsed": 82800
+      },
+      "probe_id": "T5-X-01",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.09059211611747742,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          3,
+          13,
+          10,
+          45
+        ],
+        "zone": "America/New_York",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2021-03-14 10:45",
+        "elapsed": 82800
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-03-14 11:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-02",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.14140046574175358,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          3,
+          13,
+          10,
+          45
+        ],
+        "zone": "America/New_York",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2021-03-14 11:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-03-13 10:45",
+        "elapsed": -82800
+      },
+      "probe_id": "T5-X-03",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.14838994666934013,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          3,
+          14,
+          10,
+          45
+        ],
+        "zone": "America/New_York",
+        "duration": {
+          "days": -1
+        }
+      },
+      "expected": {
+        "wall": "2021-03-13 10:45",
+        "elapsed": -82800
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-03-13 09:45",
+        "elapsed": -86400
+      },
+      "probe_id": "T5-X-04",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.11795094981789589,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          3,
+          14,
+          10,
+          45
+        ],
+        "zone": "America/New_York",
+        "duration": {
+          "hours": -24
+        }
+      },
+      "expected": {
+        "wall": "2021-03-13 09:45",
+        "elapsed": -86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-11-07 10:45",
+        "elapsed": 90000
+      },
+      "probe_id": "T5-X-05",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.08591478876769543,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          11,
+          6,
+          10,
+          45
+        ],
+        "zone": "America/New_York",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2021-11-07 10:45",
+        "elapsed": 90000
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-11-07 09:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-06",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.10099120624363422,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          11,
+          6,
+          10,
+          45
+        ],
+        "zone": "America/New_York",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2021-11-07 09:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-11-06 10:45",
+        "elapsed": -90000
+      },
+      "probe_id": "T5-X-07",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.13292005844414234,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          11,
+          7,
+          10,
+          45
+        ],
+        "zone": "America/New_York",
+        "duration": {
+          "days": -1
+        }
+      },
+      "expected": {
+        "wall": "2021-11-06 10:45",
+        "elapsed": -90000
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-11-06 11:45",
+        "elapsed": -86400
+      },
+      "probe_id": "T5-X-08",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.15772865153849125,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          11,
+          7,
+          10,
+          45
+        ],
+        "zone": "America/New_York",
+        "duration": {
+          "hours": -24
+        }
+      },
+      "expected": {
+        "wall": "2021-11-06 11:45",
+        "elapsed": -86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-09",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.12912321649491787,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          1,
+          15,
+          10,
+          45
+        ],
+        "zone": "America/New_York",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "normal_day_control",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-10",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.08597798645496368,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          1,
+          15,
+          10,
+          45
+        ],
+        "zone": "America/New_York",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "normal_day_control",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-03-28 10:45",
+        "elapsed": 82800
+      },
+      "probe_id": "T5-X-11",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.08618837408721447,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          3,
+          27,
+          10,
+          45
+        ],
+        "zone": "Europe/Paris",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2021-03-28 10:45",
+        "elapsed": 82800
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-03-28 11:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-12",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.10365347936749458,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          3,
+          27,
+          10,
+          45
+        ],
+        "zone": "Europe/Paris",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2021-03-28 11:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-03-27 10:45",
+        "elapsed": -82800
+      },
+      "probe_id": "T5-X-13",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.08801234140992165,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          3,
+          28,
+          10,
+          45
+        ],
+        "zone": "Europe/Paris",
+        "duration": {
+          "days": -1
+        }
+      },
+      "expected": {
+        "wall": "2021-03-27 10:45",
+        "elapsed": -82800
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-03-27 09:45",
+        "elapsed": -86400
+      },
+      "probe_id": "T5-X-14",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.10257214494049549,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          3,
+          28,
+          10,
+          45
+        ],
+        "zone": "Europe/Paris",
+        "duration": {
+          "hours": -24
+        }
+      },
+      "expected": {
+        "wall": "2021-03-27 09:45",
+        "elapsed": -86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-10-31 10:45",
+        "elapsed": 90000
+      },
+      "probe_id": "T5-X-15",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.1016253549605608,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          10,
+          30,
+          10,
+          45
+        ],
+        "zone": "Europe/Paris",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2021-10-31 10:45",
+        "elapsed": 90000
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-10-31 09:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-16",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.15531807579100132,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          10,
+          30,
+          10,
+          45
+        ],
+        "zone": "Europe/Paris",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2021-10-31 09:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-10-30 10:45",
+        "elapsed": -90000
+      },
+      "probe_id": "T5-X-17",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.14527485892176628,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          10,
+          31,
+          10,
+          45
+        ],
+        "zone": "Europe/Paris",
+        "duration": {
+          "days": -1
+        }
+      },
+      "expected": {
+        "wall": "2021-10-30 10:45",
+        "elapsed": -90000
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-10-30 11:45",
+        "elapsed": -86400
+      },
+      "probe_id": "T5-X-18",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.10223609395325184,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          10,
+          31,
+          10,
+          45
+        ],
+        "zone": "Europe/Paris",
+        "duration": {
+          "hours": -24
+        }
+      },
+      "expected": {
+        "wall": "2021-10-30 11:45",
+        "elapsed": -86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-19",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.10437153279781342,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          1,
+          15,
+          10,
+          45
+        ],
+        "zone": "Europe/Paris",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "normal_day_control",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-20",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.12022794038057327,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          1,
+          15,
+          10,
+          45
+        ],
+        "zone": "Europe/Paris",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "normal_day_control",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-04-04 10:45",
+        "elapsed": 90000
+      },
+      "probe_id": "T5-X-21",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.1414571851491928,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          4,
+          3,
+          10,
+          45
+        ],
+        "zone": "Australia/Sydney",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2021-04-04 10:45",
+        "elapsed": 90000
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-04-04 09:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-22",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.14124611020088196,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          4,
+          3,
+          10,
+          45
+        ],
+        "zone": "Australia/Sydney",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2021-04-04 09:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-04-03 10:45",
+        "elapsed": -90000
+      },
+      "probe_id": "T5-X-23",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.10434391722083092,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          4,
+          4,
+          10,
+          45
+        ],
+        "zone": "Australia/Sydney",
+        "duration": {
+          "days": -1
+        }
+      },
+      "expected": {
+        "wall": "2021-04-03 10:45",
+        "elapsed": -90000
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-04-03 11:45",
+        "elapsed": -86400
+      },
+      "probe_id": "T5-X-24",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.10073981434106827,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          4,
+          4,
+          10,
+          45
+        ],
+        "zone": "Australia/Sydney",
+        "duration": {
+          "hours": -24
+        }
+      },
+      "expected": {
+        "wall": "2021-04-03 11:45",
+        "elapsed": -86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-10-03 10:45",
+        "elapsed": 82800
+      },
+      "probe_id": "T5-X-25",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.10431650839745998,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          10,
+          2,
+          10,
+          45
+        ],
+        "zone": "Australia/Sydney",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2021-10-03 10:45",
+        "elapsed": 82800
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-10-03 11:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-26",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.08850445225834846,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          10,
+          2,
+          10,
+          45
+        ],
+        "zone": "Australia/Sydney",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2021-10-03 11:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-10-02 10:45",
+        "elapsed": -82800
+      },
+      "probe_id": "T5-X-27",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.13043555803596973,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          10,
+          3,
+          10,
+          45
+        ],
+        "zone": "Australia/Sydney",
+        "duration": {
+          "days": -1
+        }
+      },
+      "expected": {
+        "wall": "2021-10-02 10:45",
+        "elapsed": -82800
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-10-02 09:45",
+        "elapsed": -86400
+      },
+      "probe_id": "T5-X-28",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.1452878024429083,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          10,
+          3,
+          10,
+          45
+        ],
+        "zone": "Australia/Sydney",
+        "duration": {
+          "hours": -24
+        }
+      },
+      "expected": {
+        "wall": "2021-10-02 09:45",
+        "elapsed": -86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "transition",
+        "hours"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-29",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.10644341818988323,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          1,
+          15,
+          10,
+          45
+        ],
+        "zone": "Australia/Sydney",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "normal_day_control",
+        "days"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "probe_id": "T5-X-30",
+      "role": "X",
+      "passed": true,
+      "elapsed_seconds": 0.08843677118420601,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2021,
+          1,
+          15,
+          10,
+          45
+        ],
+        "zone": "Australia/Sydney",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2021-01-16 10:45",
+        "elapsed": 86400
+      },
+      "contract_check": "subset",
+      "tags": [
+        "normal_day_control",
+        "hours"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2453,
+    "candidatesTokenCount": 760,
+    "totalTokenCount": 15870,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2453
+      }
+    ],
+    "thoughtsTokenCount": 12657,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "      case 'min-fresh':\n      case 'max-stale':\n      case 'max-age':\n      case 's-maxage':\n      case 'stale-while-revalidate':\n      case 'stale-if-error': {\n        if (value === undefined || value[0] === ' ') {\n          continue\n        }",
+                    "new_text": "      case 'min-fresh':\n      case 'max-stale':\n      case 'max-age':\n      case 's-maxage':\n      case 'stale-while-revalidate':\n      case 'stale-if-error':\n      case 'private':\n      case 'no-cache': {\n        if (value === undefined) {\n          if (key === 'private' || key === 'no-cache') {\n            output[key] = true\n          }\n          continue\n        }\n        if (value.trim() === '' && (key === 'private' || key === 'no-cache')) {\n          output[key] = true\n          continue\n        }\n        if (value[0] === ' ') {\n          continue\n        }",
+                    "path": "lib/util/cache.js"
+                  },
+                  {
+                    "path": "lib/util/cache.js",
+                    "old_text": "              for (let j = 0; j < headers.length; j++) {\n                headers[j] = headers[j].trim()\n              }\n\n              if (key in output) {\n                output[key] = output[key].concat(headers)\n              } else {\n                output[key] = headers\n              }",
+                    "new_text": "              for (let j = 0; j < headers.length; j++) {\n                headers[j] = headers[j].trim()\n              }\n\n              const filteredHeaders = headers.filter(h => h !== '')\n              if (filteredHeaders.length === 0 && (key === 'private' || key === 'no-cache')) {\n                output[key] = true\n              } else if (filteredHeaders.length > 0) {\n                if (Array.isArray(output[key])) {\n                  output[key] = output[key].concat(filteredHeaders)\n                } else {\n                  output[key] = filteredHeaders\n                }\n              }"
+                  },
+                  {
+                    "path": "lib/util/cache.js",
+                    "new_text": "          } else {\n            // Something like `no-cache=\\\"some-header\\\"`\n            const fieldName = value.trim()\n\n            if (fieldName === '' && (key === 'private' || key === 'no-cache')) {\n              output[key] = true\n            } else if (fieldName !== '') {\n              if (Array.isArray(output[key])) {\n                output[key] = output[key].concat(fieldName)\n              } else {\n                output[key] = [fieldName]\n              }\n            }\n          }",
+                    "old_text": "          } else {\n            // Something like `no-cache=\\\"some-header\\\"`\n            const fieldName = value.trim()\n\n            if (key in output) {\n              output[key] = output[key].concat(fieldName)\n            } else {\n              output[key] = [fieldName]\n            }\n          }"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "710a19641c286ec72d866cac06bddb03f021c00e93d630524d0312a6a167356a"
+}

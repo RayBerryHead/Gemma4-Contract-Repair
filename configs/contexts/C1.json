@@ -1,0 +1,42 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "lib/handler/cache-handler.js": [
+      [
+        0,
+        30
+      ],
+      [
+        180,
+        261
+      ],
+      [
+        196,
+        277
+      ],
+      [
+        446,
+        527
+      ],
+      [
+        484,
+        565
+      ]
+    ],
+    "lib/interceptor/cache.js": [
+      [
+        0,
+        30
+      ],
+      [
+        88,
+        169
+      ],
+      [
+        379,
+        460
+      ]
+    ]
+  }
+}

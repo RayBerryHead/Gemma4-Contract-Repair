@@ -1,0 +1,539 @@
+{
+  "case_id": "T6",
+  "replicate": "r01",
+  "identity": "dde717cc05300eeaaec38a92c2908d21d255489fd7c25e945ea6bc8320f39672",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/src/apscheduler/schedulers/base.py b/src/apscheduler/schedulers/base.py\n--- a/src/apscheduler/schedulers/base.py\n+++ b/src/apscheduler/schedulers/base.py\n@@ -1251,9 +1251,9 @@\n             wait_seconds = None\n             self._logger.debug(\"No jobs; waiting until a job is added\")\n         else:\n-            now = datetime.now(self.timezone)\n+            now = datetime.now(self.timezone).astimezone()\n             wait_seconds = min(\n-                max((next_wakeup_time - now).total_seconds(), 0), TIMEOUT_MAX\n+                max((next_wakeup_time.astimezone() - now).total_seconds(), 0), TIMEOUT_MAX\n             )\n             self._logger.debug(\n                 \"Next wakeup is due at %s (in %f seconds)\",\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T6/r01/B/patch-3de68ecd0dc7201a",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": 3600.0,
+          "probe_id": "T6-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.10692358948290348,
+          "subject_calls": 1,
+          "input": {
+            "start": "2026-10-25T02:30:00",
+            "end": "2026-10-25T02:30:00",
+            "start_fold": 0,
+            "end_fold": 1,
+            "zone": "Europe/Berlin"
+          },
+          "expected": 3600,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "fold"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": 10.0,
+          "probe_id": "T6-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.09638601168990135,
+          "subject_calls": 1,
+          "input": {
+            "start": "2026-01-02T12:00:00",
+            "end": "2026-01-02T12:00:10",
+            "zone": "Europe/Berlin"
+          },
+          "expected": 10,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "ordinary"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": 1.0,
+          "probe_id": "T6-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.0756335910409689,
+          "subject_calls": 1,
+          "input": {
+            "start": "2025-03-30T01:59:59",
+            "end": "2025-03-30T03:00:00",
+            "zone": "Europe/Berlin"
+          },
+          "expected": 1,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "dst"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": 1.0,
+            "probe_id": "T6-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.08698227629065514,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-03-29T01:59:59",
+              "end": "2026-03-29T03:00:00",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "dst"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 5.0,
+            "probe_id": "T6-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.10804430022835732,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-01-02T12:00:00",
+              "end": "2026-01-02T12:00:05",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 5,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 3600.0,
+            "probe_id": "T6-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.10692358948290348,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-10-25T02:30:00",
+              "end": "2026-10-25T02:30:00",
+              "start_fold": 0,
+              "end_fold": 1,
+              "zone": "Europe/Berlin"
+            },
+            "expected": 3600,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "fold"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 10.0,
+            "probe_id": "T6-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.09638601168990135,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-01-02T12:00:00",
+              "end": "2026-01-02T12:00:10",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 10,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "ordinary"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T6-V-01",
+          "T6-V-02"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "2630be3f6048ad3d610b8205bb050b8e3cf471b80eb8bdca9676262e578260e4",
+          "applied_diff_hash": "3de68ecd0dc7201a5d39b6f7f8576b9a92fe6ab7768aed3bd215ec40cbab986d"
+        }
+      },
+      "joint_valid": true
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/src/apscheduler/schedulers/base.py b/src/apscheduler/schedulers/base.py\n--- a/src/apscheduler/schedulers/base.py\n+++ b/src/apscheduler/schedulers/base.py\n@@ -1251,9 +1251,9 @@\n             wait_seconds = None\n             self._logger.debug(\"No jobs; waiting until a job is added\")\n         else:\n-            now = datetime.now(self.timezone)\n+            now = datetime.now(self.timezone).astimezone()\n             wait_seconds = min(\n-                max((next_wakeup_time - now).total_seconds(), 0), TIMEOUT_MAX\n+                max((next_wakeup_time.astimezone() - now).total_seconds(), 0), TIMEOUT_MAX\n             )\n             self._logger.debug(\n                 \"Next wakeup is due at %s (in %f seconds)\",\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T6/r01/M/patch-3de68ecd0dc7201a",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": 3600.0,
+          "probe_id": "T6-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.09797958470880985,
+          "subject_calls": 1,
+          "input": {
+            "start": "2026-10-25T02:30:00",
+            "end": "2026-10-25T02:30:00",
+            "start_fold": 0,
+            "end_fold": 1,
+            "zone": "Europe/Berlin"
+          },
+          "expected": 3600,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "fold"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": 10.0,
+          "probe_id": "T6-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.07888851687312126,
+          "subject_calls": 1,
+          "input": {
+            "start": "2026-01-02T12:00:00",
+            "end": "2026-01-02T12:00:10",
+            "zone": "Europe/Berlin"
+          },
+          "expected": 10,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "ordinary"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": 1.0,
+          "probe_id": "T6-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.10325375199317932,
+          "subject_calls": 1,
+          "input": {
+            "start": "2025-03-30T01:59:59",
+            "end": "2025-03-30T03:00:00",
+            "zone": "Europe/Berlin"
+          },
+          "expected": 1,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "dst"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": 1.0,
+            "probe_id": "T6-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.11291446536779404,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-03-29T01:59:59",
+              "end": "2026-03-29T03:00:00",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "dst"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 5.0,
+            "probe_id": "T6-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.11562599427998066,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-01-02T12:00:00",
+              "end": "2026-01-02T12:00:05",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 5,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 3600.0,
+            "probe_id": "T6-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.09797958470880985,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-10-25T02:30:00",
+              "end": "2026-10-25T02:30:00",
+              "start_fold": 0,
+              "end_fold": 1,
+              "zone": "Europe/Berlin"
+            },
+            "expected": 3600,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "fold"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 10.0,
+            "probe_id": "T6-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.07888851687312126,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-01-02T12:00:00",
+              "end": "2026-01-02T12:00:10",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 10,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "ordinary"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T6-V-01",
+          "T6-V-02"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "2630be3f6048ad3d610b8205bb050b8e3cf471b80eb8bdca9676262e578260e4",
+          "applied_diff_hash": "3de68ecd0dc7201a5d39b6f7f8576b9a92fe6ab7768aed3bd215ec40cbab986d"
+        }
+      },
+      "joint_valid": true
+    },
+    "F": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/src/apscheduler/schedulers/base.py b/src/apscheduler/schedulers/base.py\n--- a/src/apscheduler/schedulers/base.py\n+++ b/src/apscheduler/schedulers/base.py\n@@ -1251,9 +1251,9 @@\n             wait_seconds = None\n             self._logger.debug(\"No jobs; waiting until a job is added\")\n         else:\n-            now = datetime.now(self.timezone)\n+            now = datetime.now(self.timezone).astimezone()\n             wait_seconds = min(\n-                max((next_wakeup_time - now).total_seconds(), 0), TIMEOUT_MAX\n+                max((next_wakeup_time.astimezone() - now).total_seconds(), 0), TIMEOUT_MAX\n             )\n             self._logger.debug(\n                 \"Next wakeup is due at %s (in %f seconds)\",\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T6/r01/F/patch-3de68ecd0dc7201a",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": 3600.0,
+          "probe_id": "T6-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.0877411775290966,
+          "subject_calls": 1,
+          "input": {
+            "start": "2026-10-25T02:30:00",
+            "end": "2026-10-25T02:30:00",
+            "start_fold": 0,
+            "end_fold": 1,
+            "zone": "Europe/Berlin"
+          },
+          "expected": 3600,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "fold"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": 10.0,
+          "probe_id": "T6-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.056503916159272194,
+          "subject_calls": 1,
+          "input": {
+            "start": "2026-01-02T12:00:00",
+            "end": "2026-01-02T12:00:10",
+            "zone": "Europe/Berlin"
+          },
+          "expected": 10,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "ordinary"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": 1.0,
+          "probe_id": "T6-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.07182077318429947,
+          "subject_calls": 1,
+          "input": {
+            "start": "2025-03-30T01:59:59",
+            "end": "2025-03-30T03:00:00",
+            "zone": "Europe/Berlin"
+          },
+          "expected": 1,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "dst"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": 1.0,
+            "probe_id": "T6-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.1304671000689268,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-03-29T01:59:59",
+              "end": "2026-03-29T03:00:00",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "dst"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 5.0,
+            "probe_id": "T6-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.0962897315621376,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-01-02T12:00:00",
+              "end": "2026-01-02T12:00:05",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 5,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 3600.0,
+            "probe_id": "T6-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.0877411775290966,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-10-25T02:30:00",
+              "end": "2026-10-25T02:30:00",
+              "start_fold": 0,
+              "end_fold": 1,
+              "zone": "Europe/Berlin"
+            },
+            "expected": 3600,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "fold"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 10.0,
+            "probe_id": "T6-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.056503916159272194,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-01-02T12:00:00",
+              "end": "2026-01-02T12:00:10",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 10,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "ordinary"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T6-V-01",
+          "T6-V-02"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "2630be3f6048ad3d610b8205bb050b8e3cf471b80eb8bdca9676262e578260e4",
+          "applied_diff_hash": "3de68ecd0dc7201a5d39b6f7f8576b9a92fe6ab7768aed3bd215ec40cbab986d"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "2630be3f6048ad3d610b8205bb050b8e3cf471b80eb8bdca9676262e578260e4"
+}

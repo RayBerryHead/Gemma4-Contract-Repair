@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2992,
+    "candidatesTokenCount": 143,
+    "totalTokenCount": 8687,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2992
+      }
+    ],
+    "thoughtsTokenCount": 5552,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "        if cache_control and any(\n            directive in cache_control_parts\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response",
+                    "new_text": "        if cache_control and any(\n            part.split(\"=\", 1)[0] in (\"private\", \"no-cache\", \"no-store\")\n            for part in cache_control_parts\n        ):\n            return response",
+                    "path": "django/middleware/cache.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "d662539aeebc0202ae2af771a6ab229ea8fef539be5b129bfd913e08ad18f0a6"
+}

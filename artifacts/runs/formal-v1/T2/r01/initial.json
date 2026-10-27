@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 3543,
+    "candidatesTokenCount": 373,
+    "totalTokenCount": 13532,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 3543
+      }
+    ],
+    "thoughtsTokenCount": 9616,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "src/croniter/croniter.py",
+                    "old_text": "        self.start_time = 0.0\n        self.dst_start_time = 0.0\n        self.cur = 0.0\n        self.set_current(start_time, force=True)\n\n        self.expanded, self.nth_weekday_of_month, self.expressions, self.nearest_weekday = self._expand(\n            expr_format,\n            hash_id=hash_id,\n            from_timestamp=self.dst_start_time if self._expand_from_start_time else None,\n            second_at_beginning=second_at_beginning,\n        )",
+                    "new_text": "        self.start_time = 0.0\n        self.dst_start_time = 0.0\n        self.cur = 0.0\n        self.set_current(start_time, force=True)\n\n        if self._expand_from_start_time:\n            dt = self.timestamp_to_datetime(self.cur)\n            self.dst_start_time = dt.replace(tzinfo=tzutc()).timestamp()\n\n        self.expanded, self.nth_weekday_of_month, self.expressions, self.nearest_weekday = self._expand(\n            expr_format,\n            hash_id=hash_id,\n            from_timestamp=self.dst_start_time if self._expand_from_start_time else None,\n            second_at_beginning=second_at_beginning,\n        )"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "3d078c051a00cc8d7a70689afa17b1c0257ce09ffb113cb0a96bcf8a73ba3ecb"
+}

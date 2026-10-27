@@ -1,0 +1,36 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "src/croniter/croniter.py": [
+      [
+        0,
+        30
+      ],
+      [
+        292,
+        373
+      ],
+      [
+        903,
+        984
+      ],
+      [
+        1068,
+        1149
+      ],
+      [
+        1205,
+        1286
+      ],
+      [
+        1252,
+        1333
+      ],
+      [
+        1263,
+        1345
+      ]
+    ]
+  }
+}

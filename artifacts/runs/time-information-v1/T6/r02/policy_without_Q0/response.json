@@ -1,0 +1,25 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 1180,
+    "totalTokenCount": 33945,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1180
+      }
+    ],
+    "thoughtsTokenCount": 32765,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": []
+      },
+      "finishReason": "MAX_TOKENS"
+    }
+  ],
+  "original_response_sha256": "c1fc26145fa2d7c1cb8c68ce1b8f36955c494748a16863ca96cdac90b29d77e2"
+}

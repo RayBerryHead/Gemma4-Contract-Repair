@@ -1,0 +1,39 @@
+diff --git a/src/pendulum/datetime.py b/src/pendulum/datetime.py
+--- a/src/pendulum/datetime.py
++++ b/src/pendulum/datetime.py
+@@ -686,7 +686,10 @@
+             )
+         elif isinstance(delta, pendulum.Duration):
+             return self.add(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta.years,
++                months=delta.months,
++                days=delta._days,
++                seconds=delta._total - delta._days * SECONDS_PER_DAY,
+             )
+ 
+         return self.add(seconds=delta.total_seconds())
+@@ -697,7 +700,10 @@
+         """
+         if isinstance(delta, pendulum.Duration):
+             return self.subtract(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta.years,
++                months=delta.months,
++                days=delta._days,
++                seconds=delta._total - delta._days * SECONDS_PER_DAY,
+             )
+ 
+         return self.subtract(seconds=delta.total_seconds())
+diff --git a/src/pendulum/duration.py b/src/pendulum/duration.py
+--- a/src/pendulum/duration.py
++++ b/src/pendulum/duration.py
+@@ -106,7 +106,7 @@
+         self._seconds = abs(int(total)) % SECONDS_PER_DAY * m
+ 
+         _days = abs(int(total)) // SECONDS_PER_DAY * m
+-        self._days = _days
++        self._days = int(days + weeks * 7)
+         self._remaining_days = abs(_days) % 7 * m
+         self._weeks = abs(_days) // 7 * m
+         self._months = months

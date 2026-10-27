@@ -1,0 +1,16 @@
+diff --git a/django/middleware/cache.py b/django/middleware/cache.py
+--- a/django/middleware/cache.py
++++ b/django/middleware/cache.py
+@@ -112,6 +112,12 @@
+             )
+         ):
+             return response
++
++        # If the request has an Authorization header, the response must be
++        # either explicitly public or isolated by Authorization.
++        if request.META.get("HTTP_AUTHORIZATION"):
++            if "public" not in cache_control and not has_vary_header(response, "Authorization"):
++                return response
+ 
+         # Don't cache responses when the Vary header contains '*'.
+         if has_vary_header(response, "*"):

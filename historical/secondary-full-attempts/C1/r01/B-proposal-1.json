@@ -1,0 +1,26 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 5962,
+    "totalTokenCount": 38727,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 5962
+      }
+    ],
+    "thoughtsTokenCount": 32765,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-26b-a4b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": []
+      },
+      "finishReason": "MAX_TOKENS"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "2fe7322b75abd4d1a627750e9f20b2d872cc140445af5dc4b033314e780d7e53"
+}

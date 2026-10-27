@@ -1,0 +1,37 @@
+diff --git a/lib/handler/cache-handler.js b/lib/handler/cache-handler.js
+--- a/lib/handler/cache-handler.js
++++ b/lib/handler/cache-handler.js
+@@ -256,6 +256,10 @@
+       )
+     const handler = this
+ 
++    if (controller.crossOriginRedirect) {
++      return downstreamOnHeaders()
++    }
++
+     if (
+       !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&
+       statusCode >= 200 &&
+diff --git a/lib/handler/redirect-handler.js b/lib/handler/redirect-handler.js
+--- a/lib/handler/redirect-handler.js
++++ b/lib/handler/redirect-handler.js
+@@ -110,6 +110,9 @@
+     }
+ 
+     if (!this.location) {
++      if (this.opts.crossOriginRedirect) {
++        controller.crossOriginRedirect = true
++      }
+       this.handler.onResponseStart?.(controller, statusCode, headers, statusMessage)
+       return
+     }
+@@ -134,6 +137,9 @@
+     // By default it is Host only. A 303 or a 301/302 POST-to-GET redirect also removes all Content-* headers.
+     // https://tools.ietf.org/html/rfc7231#section-6.4
+     this.opts.headers = cleanRequestHeaders(this.opts.headers, removeContentHeaders, requestOrigin !== origin, this.stripHeadersOnRedirect, this.stripHeadersOnCrossOriginRedirect)
++    if (requestOrigin !== origin) {
++      this.opts.crossOriginRedirect = true
++    }
+     this.opts.path = path
+     this.opts.origin = origin
+     this.opts[kRequestOrigin] = origin

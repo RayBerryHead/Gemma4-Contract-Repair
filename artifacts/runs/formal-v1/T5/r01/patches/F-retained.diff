@@ -1,0 +1,55 @@
+diff --git a/src/pendulum/duration.py b/src/pendulum/duration.py
+--- a/src/pendulum/duration.py
++++ b/src/pendulum/duration.py
+@@ -94,6 +94,16 @@
+             weeks,
+         )
+ 
++        # Store original arguments for calendar vs elapsed arithmetic
++        self._arg_years = years
++        self._arg_months = months
++        self._arg_weeks = weeks
++        self._arg_days = days
++        self._arg_hours = hours
++        self._arg_minutes = minutes
++        self._arg_seconds = seconds
++        self._arg_microseconds = microseconds + milliseconds * 1000
++
+         # Intuitive normalization
+         total = self.total_seconds() - (years * 365 + months * 30) * SECONDS_PER_DAY
+         self._total = total
+diff --git a/src/pendulum/datetime.py b/src/pendulum/datetime.py
+--- a/src/pendulum/datetime.py
++++ b/src/pendulum/datetime.py
+@@ -686,7 +686,14 @@
+             )
+         elif isinstance(delta, pendulum.Duration):
+             return self.add(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta._arg_years,
++                months=delta._arg_months,
++                weeks=delta._arg_weeks,
++                days=delta._arg_days,
++                hours=delta._arg_hours,
++                minutes=delta._arg_minutes,
++                seconds=delta._arg_seconds,
++                microseconds=delta._arg_microseconds,
+             )
+ 
+         return self.add(seconds=delta.total_seconds())
+@@ -697,7 +704,14 @@
+         """
+         if isinstance(delta, pendulum.Duration):
+             return self.subtract(
+-                years=delta.years, months=delta.months, seconds=delta._total
++                years=delta._arg_years,
++                months=delta._arg_months,
++                weeks=delta._arg_weeks,
++                days=delta._arg_days,
++                hours=delta._arg_hours,
++                minutes=delta._arg_minutes,
++                seconds=delta._arg_seconds,
++                microseconds=delta._arg_microseconds,
+             )
+ 
+         return self.subtract(seconds=delta.total_seconds())

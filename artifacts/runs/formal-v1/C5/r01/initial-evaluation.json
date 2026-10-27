@@ -1,0 +1,180 @@
+{
+  "id": "C5",
+  "results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "status": 200,
+            "body": "alice"
+          },
+          {
+            "status": 200,
+            "body": "bob"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C5-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.7122987508773804,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "identity/key",
+        "store"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "status": 200,
+            "body": "alice"
+          },
+          {
+            "status": 200,
+            "body": "anon"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C5-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.19806167110800743,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "existing_session": false
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "identity/key",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "status": 200,
+            "body": "carol"
+          },
+          {
+            "status": 200,
+            "body": "dave"
+          },
+          {
+            "status": 200,
+            "body": "carol"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C5-E-01",
+      "role": "E",
+      "passed": true,
+      "elapsed_seconds": 0.1740422211587429,
+      "subject_calls": 3,
+      "input": {
+        "actors": [
+          "carol",
+          "dave",
+          "carol"
+        ]
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "identity/key",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "status": 200,
+            "body": "alice"
+          },
+          {
+            "status": 200,
+            "body": "alice"
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C5-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.18687924556434155,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "alice"
+        ]
+      },
+      "expected": null,
+      "contract_check": "private_reuse",
+      "tags": [
+        "store",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "status": 200,
+            "body": "anon"
+          },
+          {
+            "status": 200,
+            "body": "bob"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C5-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.2034972943365574,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "anon",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "identity/key",
+        "read"
+      ]
+    }
+  ],
+  "all_pass": true,
+  "infra_ok": true,
+  "proposal_valid": true,
+  "reason": "APPLIED"
+}

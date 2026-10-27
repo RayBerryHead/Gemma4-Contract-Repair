@@ -1,0 +1,22 @@
+diff --git a/django/middleware/cache.py b/django/middleware/cache.py
+--- a/django/middleware/cache.py
++++ b/django/middleware/cache.py
+@@ -116,6 +116,18 @@
+         # Don't cache responses when the Vary header contains '*'.
+         if has_vary_header(response, "*"):
+             return response
++
++        # If the request has an Authorization header, and the response is not
++        # marked as public, we must ensure that the Authorization header is
++        # included in the Vary header so that the cache is isolated by
++        # Authorization.
++        if request.headers.get("Authorization") and "public" not in cache_control:
++            if not has_vary_header(response, "Authorization"):
++                vary = response.get("Vary", "")
++                if vary:
++                    response["Vary"] = f"{vary}, Authorization"
++                else:
++                    response["Vary"] = "Authorization"
+ 
+         # Page timeout takes precedence over the "max-age" and the default
+         # cache timeout.

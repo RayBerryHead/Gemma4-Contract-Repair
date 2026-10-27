@@ -1,0 +1,236 @@
+{
+  "id": "C5",
+  "buggy": {
+    "id": "C5",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "status": 200,
+              "body": "alice"
+            },
+            {
+              "status": 200,
+              "body": "alice"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C5-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.5525823701173067,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "status": 200,
+              "body": "alice"
+            },
+            {
+              "status": 200,
+              "body": "alice"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C5-V-01",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.3117976635694504,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "status": 200,
+              "body": "carol"
+            },
+            {
+              "status": 200,
+              "body": "carol"
+            },
+            {
+              "status": 200,
+              "body": "carol"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C5-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.3316566366702318,
+        "subject_calls": 3
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "status": 200,
+              "body": "alice"
+            },
+            {
+              "status": 200,
+              "body": "alice"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C5-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.3278851006180048,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "status": 200,
+              "body": "anon"
+            },
+            {
+              "status": 200,
+              "body": "anon"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C5-V-02",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.30675814487040043,
+        "subject_calls": 2
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "C5",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "status": 200,
+              "body": "alice"
+            },
+            {
+              "status": 200,
+              "body": "bob"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C5-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.3256068993359804,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "status": 200,
+              "body": "alice"
+            },
+            {
+              "status": 200,
+              "body": "anon"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C5-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.3144068904221058,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "status": 200,
+              "body": "carol"
+            },
+            {
+              "status": 200,
+              "body": "dave"
+            },
+            {
+              "status": 200,
+              "body": "carol"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C5-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.3343043886125088,
+        "subject_calls": 3
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "status": 200,
+              "body": "alice"
+            },
+            {
+              "status": 200,
+              "body": "alice"
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C5-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.30590493977069855,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "status": 200,
+              "body": "anon"
+            },
+            {
+              "status": 200,
+              "body": "bob"
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C5-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.32982582598924637,
+        "subject_calls": 2
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

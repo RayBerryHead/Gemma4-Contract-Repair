@@ -1,0 +1,15 @@
+diff --git a/src/dateutil/tz/_tzfile.py b/src/dateutil/tz/_tzfile.py
+--- a/src/dateutil/tz/_tzfile.py
++++ b/src/dateutil/tz/_tzfile.py
+@@ -1261,7 +1261,10 @@
+         days_before_year = _post_epoch_days_before_year(year)
+ 
+         d = self.d
+-        if self.julian and d >= 59 and calendar.isleap(year):
++        if self.julian:
++            if d >= 60 and calendar.isleap(year):
++                d += 1
++        else:
+             d += 1
+ 
+         epoch = (days_before_year + d) * 86400

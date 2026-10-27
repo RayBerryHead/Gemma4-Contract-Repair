@@ -1,0 +1,74 @@
+diff --git a/src/pendulum/date.py b/src/pendulum/date.py
+--- a/src/pendulum/date.py
++++ b/src/pendulum/date.py
+@@ -575,14 +575,8 @@
+         if day_of_week is None:
+             return dt.set(day=1)
+ 
+-        month = calendar.monthcalendar(dt.year, dt.month)
+-
+-        calendar_day = day_of_week
+-
+-        if month[0][calendar_day] > 0:
+-            day_of_month = month[0][calendar_day]
+-        else:
+-            day_of_month = month[1][calendar_day]
++        first_day_weekday = dt.set(day=1).weekday()
++        day_of_month = 1 + (day_of_week - first_day_weekday) % 7
+ 
+         return dt.set(day=day_of_month)
+ 
+@@ -600,14 +594,8 @@
+         if day_of_week is None:
+             return dt.set(day=self.days_in_month)
+ 
+-        month = calendar.monthcalendar(dt.year, dt.month)
+-
+-        calendar_day = day_of_week
+-
+-        if month[-1][calendar_day] > 0:
+-            day_of_month = month[-1][calendar_day]
+-        else:
+-            day_of_month = month[-2][calendar_day]
++        last_day_weekday = dt.set(day=self.days_in_month).weekday()
++        day_of_month = self.days_in_month - (last_day_weekday - day_of_week) % 7
+ 
+         return dt.set(day=day_of_month)
+ 
+diff --git a/src/pendulum/datetime.py b/src/pendulum/datetime.py
+--- a/src/pendulum/datetime.py
++++ b/src/pendulum/datetime.py
+@@ -1026,14 +1026,8 @@
+         if day_of_week is None:
+             return dt.set(day=1)
+ 
+-        month = calendar.monthcalendar(dt.year, dt.month)
+-
+-        calendar_day = day_of_week
+-
+-        if month[0][calendar_day] > 0:
+-            day_of_month = month[0][calendar_day]
+-        else:
+-            day_of_month = month[1][calendar_day]
++        first_day_weekday = dt.set(day=1).weekday()
++        day_of_month = 1 + (day_of_week - first_day_weekday) % 7
+ 
+         return dt.set(day=day_of_month)
+ 
+@@ -1049,14 +1043,8 @@
+         if day_of_week is None:
+             return dt.set(day=self.days_in_month)
+ 
+-        month = calendar.monthcalendar(dt.year, dt.month)
+-
+-        calendar_day = day_of_week
+-
+-        if month[-1][calendar_day] > 0:
+-            day_of_month = month[-1][calendar_day]
+-        else:
+-            day_of_month = month[-2][calendar_day]
++        last_day_weekday = dt.set(day=self.days_in_month).weekday()
++        day_of_month = self.days_in_month - (last_day_weekday - day_of_week) % 7
+ 
+         return dt.set(day=day_of_month)
+ 

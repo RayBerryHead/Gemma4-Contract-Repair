@@ -1,0 +1,152 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2016-10-30 04:59",
+        "instant_preserved": false,
+        "valid": true
+      },
+      "probe_id": "T7-Q0-01",
+      "role": "Q0",
+      "passed": false,
+      "elapsed_seconds": 0.038947900757193565,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 30,
+          "hour": 2,
+          "minute": 59
+        },
+        "source_zone": "America/New_York",
+        "target_zone": "Europe/Athens",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2016-10-30 02:59"
+      },
+      "contract_check": "subset",
+      "tags": [
+        "wall",
+        "zone"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2025-01-15 03:30",
+        "instant_preserved": true,
+        "valid": true
+      },
+      "probe_id": "T7-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.03899937495589256,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2025,
+          "month": 1,
+          "day": 15,
+          "hour": 10,
+          "minute": 30
+        },
+        "source_zone": "Asia/Taipei",
+        "target_zone": "Europe/Paris",
+        "keep_local": false
+      },
+      "expected": {
+        "instant_preserved": true
+      },
+      "contract_check": "subset",
+      "tags": [
+        "instant",
+        "zone"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2025-01-15 11:30",
+        "instant_preserved": false,
+        "valid": true
+      },
+      "probe_id": "T7-V-01",
+      "role": "V",
+      "passed": false,
+      "elapsed_seconds": 0.03983969800174236,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2025,
+          "month": 1,
+          "day": 15,
+          "hour": 10,
+          "minute": 30
+        },
+        "source_zone": "Asia/Taipei",
+        "target_zone": "Europe/Paris",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2025-01-15 10:30"
+      },
+      "contract_check": "subset",
+      "tags": [
+        "wall",
+        "zone"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2016-10-30 04:57",
+        "instant_preserved": false,
+        "valid": true
+      },
+      "probe_id": "T7-V-02",
+      "role": "V",
+      "passed": false,
+      "elapsed_seconds": 0.04363268427550793,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 30,
+          "hour": 2,
+          "minute": 57
+        },
+        "source_zone": "America/New_York",
+        "target_zone": "Europe/Athens",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2016-10-30 02:57"
+      },
+      "contract_check": "subset",
+      "tags": [
+        "wall",
+        "zone",
+        "boundary"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "T7-V-02"
+  ],
+  "new_subject_calls": 1,
+  "all_visible_pass": false,
+  "mapped_patch_phases": [],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "7c31767f37082f876389370df6323112d6a8ebc4156d1dfaa4297f545fe91a09",
+    "applied_diff_hash": "465bd9a9cfdb6e008da458ee1c18ec36f2d147bb5f8b00d1dafc2fa88d29fd81"
+  }
+}

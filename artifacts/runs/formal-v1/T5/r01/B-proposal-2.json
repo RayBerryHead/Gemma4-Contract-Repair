@@ -1,0 +1,52 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 5088,
+    "candidatesTokenCount": 448,
+    "totalTokenCount": 15043,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 5088
+      }
+    ],
+    "thoughtsTokenCount": 9507,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )",
+                    "new_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years,\n                months=delta.months,\n                days=delta._days_passed,\n                seconds=delta._total - delta._days_passed * SECONDS_PER_DAY,\n            )",
+                    "path": "src/pendulum/datetime.py"
+                  },
+                  {
+                    "new_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years,\n                months=delta.months,\n                days=delta._days_passed,\n                seconds=delta._total - delta._days_passed * SECONDS_PER_DAY,\n            )",
+                    "old_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )",
+                    "path": "src/pendulum/datetime.py"
+                  },
+                  {
+                    "old_text": "        self = timedelta.__new__(\n            cls,\n            days + years * 365 + months * 30,\n            seconds,\n            microseconds,\n            milliseconds,\n            minutes,\n            hours,\n            weeks,\n        )\n\n        # Intuitive normalization",
+                    "new_text": "        self = timedelta.__new__(\n            cls,\n            days + years * 365 + months * 30,\n            seconds,\n            microseconds,\n            milliseconds,\n            minutes,\n            hours,\n            weeks,\n        )\n        self._days_passed = int(days + weeks * 7)\n\n        # Intuitive normalization",
+                    "path": "src/pendulum/duration.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "f2f5ed36689e5d198a9ba94f8a0ee82e0795d4876a6f895a9fc88ee05b501d72"
+}

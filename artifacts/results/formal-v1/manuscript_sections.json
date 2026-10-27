@@ -1,0 +1,484 @@
+{
+  "cache": {
+    "main_table": "| Root / task | Initial | B | M | F (r01) |\n| --- | --- | --- | --- | --- |\n| C1 Undici: existing Set-Cookie entry | 1/2 | 2/2 | 1/2 | 0/1 |\n| C2 Undici: redirect origin * | 1/2 | 1/2 | 2/2 | 1/1 |\n| C3 Django: Authorization | 2/2 | 2/2 | 2/2 | 1/1 |\n| C4 Django: cookie creation | 2/2 | 2/2 | 2/2 | 1/1 |\n| C5 django-graphex: user identity | 2/2 | 2/2 | 2/2 | \u2014 |\n| C6 Django: session renewal | 2/2 | 2/2 | 2/2 | \u2014 |\n| C7 Undici: empty private directive | 0/2 | 1/2 | 0/2 | \u2014 |\n| C8 Django: qualified directives | 2/2 | 2/2 | 2/2 | \u2014 |",
+    "matched_F_table": "| Controller | Passes | New V subject calls | All public-feedback subject calls | Feedback execution seconds | Revision responses | Provider total revision tokens |\n| --- | --- | --- | --- | --- | --- | --- |\n| B | 4/4 | 32 | 64 | 4.40 | 2 | 30,482 |\n| M | 3/4 | 32 | 64 | 4.47 | 2 | 22,141 |\n| F | 3/4 | 32 | 64 | 4.30 | 2 | 27,833 |",
+    "initial_classes": {
+      "observed_contract_failure": 1,
+      "passes_frozen_checks": 12,
+      "generation_budget_exhausted": 1,
+      "invalid_proposal": 2
+    },
+    "initial_valid": 12,
+    "initial_apparent": 13,
+    "apparent_broader_failures": 1,
+    "apparent_E_failures": 1,
+    "paired_outcomes": {
+      "B_only": 2,
+      "both": 12,
+      "M_only": 1,
+      "neither": 1
+    },
+    "same_initial_feedback_pairs": 16,
+    "same_feedback_discordant_outcomes": 3,
+    "arms": {
+      "B": {
+        "completed": 16,
+        "joint_valid": 14,
+        "recovered": 2,
+        "regressed": 0
+      },
+      "M": {
+        "completed": 16,
+        "joint_valid": 13,
+        "recovered": 1,
+        "regressed": 0
+      },
+      "F": {
+        "completed": 4,
+        "joint_valid": 3,
+        "recovered": 0,
+        "regressed": 0
+      }
+    },
+    "strata": {
+      "privacy": {
+        "natural_roots": 7,
+        "initial_valid": 11,
+        "initial_observed": 14,
+        "arms": {
+          "B": {
+            "complete": 14,
+            "joint_valid": 13,
+            "recovered": 2,
+            "regressed": 0,
+            "revision_responses": 5,
+            "revision_total_tokens": 59676,
+            "invalid_revision_proposals": 1,
+            "new_visible_subject_calls": 74,
+            "all_public_feedback_subject_calls": 162,
+            "public_feedback_elapsed_seconds": 13.667971154674888,
+            "initial_valid_visible_witnesses": 3,
+            "initial_bank_exhausted": 14,
+            "initial_new_subject_calls": 60,
+            "initial_unmapped": 4
+          },
+          "M": {
+            "complete": 14,
+            "joint_valid": 11,
+            "recovered": 0,
+            "regressed": 0,
+            "revision_responses": 6,
+            "revision_total_tokens": 53085,
+            "invalid_revision_proposals": 5,
+            "new_visible_subject_calls": 74,
+            "all_public_feedback_subject_calls": 168,
+            "public_feedback_elapsed_seconds": 13.391420811414719,
+            "initial_valid_visible_witnesses": 3,
+            "initial_bank_exhausted": 14,
+            "initial_new_subject_calls": 60,
+            "initial_unmapped": 4
+          }
+        }
+      },
+      "origin_integrity": {
+        "natural_roots": 1,
+        "initial_valid": 1,
+        "initial_observed": 2,
+        "arms": {
+          "B": {
+            "complete": 2,
+            "joint_valid": 1,
+            "recovered": 0,
+            "regressed": 0,
+            "revision_responses": 2,
+            "revision_total_tokens": 28791,
+            "invalid_revision_proposals": 1,
+            "new_visible_subject_calls": 0,
+            "all_public_feedback_subject_calls": 24,
+            "public_feedback_elapsed_seconds": 1.4629039112478495,
+            "initial_valid_visible_witnesses": 0,
+            "initial_bank_exhausted": 2,
+            "initial_new_subject_calls": 0,
+            "initial_unmapped": 1
+          },
+          "M": {
+            "complete": 2,
+            "joint_valid": 2,
+            "recovered": 1,
+            "regressed": 0,
+            "revision_responses": 1,
+            "revision_total_tokens": 18429,
+            "invalid_revision_proposals": 0,
+            "new_visible_subject_calls": 0,
+            "all_public_feedback_subject_calls": 18,
+            "public_feedback_elapsed_seconds": 1.0938548613339663,
+            "initial_valid_visible_witnesses": 0,
+            "initial_bank_exhausted": 2,
+            "initial_new_subject_calls": 0,
+            "initial_unmapped": 1
+          }
+        }
+      }
+    },
+    "http_usage": {
+      "usage_including_superseded_C3": {
+        "promptTokenCount": 184304,
+        "candidatesTokenCount": 16861,
+        "totalTokenCount": 525584,
+        "thoughtsTokenCount": 324419
+      },
+      "generation_attempts": 41,
+      "finished_generation_attempts": 41,
+      "http_statuses": {
+        "200": 41
+      },
+      "inference_elapsed_seconds": 9781.412504673004,
+      "known_price_usd": 0
+    },
+    "saved_primary_response_usage": {
+      "saved_responses": 32,
+      "promptTokenCount": 150805,
+      "candidatesTokenCount": 13686,
+      "totalTokenCount": 416547,
+      "thoughtsTokenCount": 252056
+    },
+    "cpu_diagnostics": {
+      "control": {
+        "B": {
+          "patches": 8,
+          "found_visible_witness": 3,
+          "subject_calls": 26
+        },
+        "M": {
+          "patches": 8,
+          "found_visible_witness": 3,
+          "subject_calls": 26
+        },
+        "A": {
+          "patches": 8,
+          "found_visible_witness": 3,
+          "subject_calls": 26
+        },
+        "F": {
+          "patches": 8,
+          "found_visible_witness": 3,
+          "subject_calls": 36
+        }
+      },
+      "natural_initial": {
+        "B": {
+          "patches": 7,
+          "found_visible_witness": 1,
+          "subject_calls": 36
+        },
+        "M": {
+          "patches": 7,
+          "found_visible_witness": 1,
+          "subject_calls": 36
+        },
+        "A": {
+          "patches": 7,
+          "found_visible_witness": 1,
+          "subject_calls": 31
+        },
+        "F": {
+          "patches": 7,
+          "found_visible_witness": 1,
+          "subject_calls": 36
+        }
+      }
+    }
+  },
+  "time": {
+    "main_table": "| Root / task | Initial | B | M | F (r01) |\n| --- | --- | --- | --- | --- |\n| T1 Arrow: original month anchor | 2/2 | 2/2 | 2/2 | 1/1 |\n| T2 croniter: caller zone | 2/2 | 2/2 | 2/2 | \u2014 |\n| T3 dateutil: POSIX ordinal | 2/2 | 2/2 | 2/2 | \u2014 |\n| T4 Pendulum: global calendar | 2/2 | 2/2 | 2/2 | 1/1 |\n| T5 Pendulum: duration units | 0/2 | 2/2 | 2/2 | 1/1 |\n| T6 APScheduler: elapsed wait | 2/2 | 2/2 | 2/2 | 1/1 |\n| T7 Luxon: keepLocalTime | 0/2 | 0/2 | 0/2 | \u2014 |\n| T8 date-fns: complete local days | 1/2 | 2/2 | 2/2 | \u2014 |",
+    "matched_F_table": "| Controller | Passes | New V subject calls | All public-feedback subject calls | Feedback execution seconds | Revision responses | Provider total revision tokens |\n| --- | --- | --- | --- | --- | --- | --- |\n| B | 4/4 | 12 | 27 | 3.13 | 2 | 25,350 |\n| M | 4/4 | 11 | 22 | 2.31 | 1 | 13,331 |\n| F | 4/4 | 12 | 24 | 2.30 | 1 | 15,107 |",
+    "initial_classes": {
+      "passes_frozen_checks": 11,
+      "observed_contract_failure": 3,
+      "product_runtime_failure": 2
+    },
+    "initial_valid": 11,
+    "initial_apparent": 13,
+    "apparent_broader_failures": 2,
+    "apparent_E_failures": 0,
+    "paired_outcomes": {
+      "both": 14,
+      "neither": 2
+    },
+    "same_initial_feedback_pairs": 16,
+    "same_feedback_discordant_outcomes": 0,
+    "arms": {
+      "B": {
+        "completed": 16,
+        "joint_valid": 14,
+        "recovered": 3,
+        "regressed": 0
+      },
+      "M": {
+        "completed": 16,
+        "joint_valid": 14,
+        "recovered": 3,
+        "regressed": 0
+      },
+      "F": {
+        "completed": 4,
+        "joint_valid": 4,
+        "recovered": 1,
+        "regressed": 0
+      }
+    },
+    "strata": {
+      "temporal": {
+        "natural_roots": 8,
+        "initial_valid": 11,
+        "initial_observed": 16,
+        "arms": {
+          "B": {
+            "complete": 16,
+            "joint_valid": 14,
+            "recovered": 3,
+            "regressed": 0,
+            "revision_responses": 9,
+            "revision_total_tokens": 68348,
+            "invalid_revision_proposals": 1,
+            "new_visible_subject_calls": 44,
+            "all_public_feedback_subject_calls": 106,
+            "public_feedback_elapsed_seconds": 9.022043159231544,
+            "initial_valid_visible_witnesses": 2,
+            "initial_bank_exhausted": 12,
+            "initial_new_subject_calls": 34,
+            "initial_unmapped": 0
+          },
+          "M": {
+            "complete": 16,
+            "joint_valid": 14,
+            "recovered": 3,
+            "regressed": 0,
+            "revision_responses": 8,
+            "revision_total_tokens": 56404,
+            "invalid_revision_proposals": 0,
+            "new_visible_subject_calls": 43,
+            "all_public_feedback_subject_calls": 101,
+            "public_feedback_elapsed_seconds": 8.187222760170698,
+            "initial_valid_visible_witnesses": 2,
+            "initial_bank_exhausted": 12,
+            "initial_new_subject_calls": 34,
+            "initial_unmapped": 0
+          }
+        }
+      }
+    },
+    "http_usage": {
+      "usage_including_superseded_C3": {
+        "promptTokenCount": 102430,
+        "candidatesTokenCount": 9816,
+        "totalTokenCount": 341463,
+        "thoughtsTokenCount": 229217,
+        "cachedContentTokenCount": 2032
+      },
+      "generation_attempts": 34,
+      "finished_generation_attempts": 34,
+      "http_statuses": {
+        "200": 34
+      },
+      "inference_elapsed_seconds": 6686.121239423752,
+      "known_price_usd": 0
+    },
+    "saved_primary_response_usage": {
+      "saved_responses": 34,
+      "promptTokenCount": 102430,
+      "candidatesTokenCount": 9816,
+      "totalTokenCount": 341463,
+      "thoughtsTokenCount": 229217,
+      "cachedContentTokenCount": 2032
+    },
+    "cpu_diagnostics": {
+      "control": {
+        "B": {
+          "patches": 8,
+          "found_visible_witness": 4,
+          "subject_calls": 16
+        },
+        "M": {
+          "patches": 8,
+          "found_visible_witness": 4,
+          "subject_calls": 16
+        },
+        "A": {
+          "patches": 8,
+          "found_visible_witness": 4,
+          "subject_calls": 16
+        },
+        "F": {
+          "patches": 8,
+          "found_visible_witness": 4,
+          "subject_calls": 22
+        }
+      },
+      "natural_initial": {
+        "B": {
+          "patches": 8,
+          "found_visible_witness": 2,
+          "subject_calls": 18
+        },
+        "M": {
+          "patches": 8,
+          "found_visible_witness": 2,
+          "subject_calls": 18
+        },
+        "A": {
+          "patches": 8,
+          "found_visible_witness": 2,
+          "subject_calls": 18
+        },
+        "F": {
+          "patches": 8,
+          "found_visible_witness": 2,
+          "subject_calls": 22
+        }
+      }
+    }
+  },
+  "information": {
+    "table": "| Root | Policy + Q0 | Policy, no Q0 | Q0, no added card |\n| --- | --- | --- | --- |\n| T1 | 2/2 | 2/2 | 2/2 |\n| T4 | 2/2 | 2/2 | 0/2 |\n| T5 | 0/2 | 1/2 | 0/2 |\n| T6 | 2/2 | 0/2 | 0/2 |\n| All four roots | 6/8 | 5/8 | 2/8 |",
+    "classes": {
+      "policy_and_Q0": {
+        "passes_frozen_checks": 6,
+        "observed_contract_failure": 2
+      },
+      "policy_without_Q0": {
+        "passes_frozen_checks": 5,
+        "observed_contract_failure": 2,
+        "generation_budget_exhausted": 1
+      },
+      "Q0_without_added_policy": {
+        "passes_frozen_checks": 2,
+        "invalid_proposal": 3,
+        "observed_contract_failure": 3
+      }
+    },
+    "extra_usage": {
+      "saved_responses": 16,
+      "promptTokenCount": 41222,
+      "candidatesTokenCount": 7607,
+      "totalTokenCount": 253969,
+      "thoughtsTokenCount": 205140
+    }
+  },
+  "secondary": {
+    "complete": true,
+    "protocol": "INITIAL_ONLY_EXPLORATORY_SCOPE_AMENDMENT",
+    "rows": [
+      {
+        "root": "C1",
+        "model": "gemma-4-26b-a4b-it",
+        "initial_applicable": false,
+        "initial_joint_valid": false,
+        "source_sha": "8c4ec893c8fb87edc171989c61b82ab71c21a41c",
+        "classification": "generation_budget_exhausted",
+        "finish_reasons": [
+          "MAX_TOKENS"
+        ],
+        "usage": {
+          "promptTokenCount": 5117,
+          "totalTokenCount": 37882,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 5117
+            }
+          ],
+          "thoughtsTokenCount": 32765,
+          "serviceTier": "standard"
+        }
+      },
+      {
+        "root": "C3",
+        "model": "gemma-4-26b-a4b-it",
+        "initial_applicable": true,
+        "initial_joint_valid": true,
+        "source_sha": "1de2217c02ec797f660e359b5801af91ccff9632",
+        "classification": "passes_frozen_checks",
+        "finish_reasons": [
+          "STOP"
+        ],
+        "usage": {
+          "promptTokenCount": 2109,
+          "candidatesTokenCount": 271,
+          "totalTokenCount": 15675,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 2109
+            }
+          ],
+          "thoughtsTokenCount": 13295,
+          "serviceTier": "standard"
+        }
+      },
+      {
+        "root": "T1",
+        "model": "gemma-4-26b-a4b-it",
+        "initial_applicable": false,
+        "initial_joint_valid": false,
+        "source_sha": "1de2217c02ec797f660e359b5801af91ccff9632",
+        "classification": "generation_budget_exhausted",
+        "finish_reasons": [
+          "MAX_TOKENS"
+        ],
+        "usage": {
+          "promptTokenCount": 2526,
+          "totalTokenCount": 35291,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 2526
+            }
+          ],
+          "thoughtsTokenCount": 32765,
+          "serviceTier": "standard"
+        }
+      },
+      {
+        "root": "T6",
+        "model": "gemma-4-26b-a4b-it",
+        "initial_applicable": false,
+        "initial_joint_valid": false,
+        "source_sha": "1de2217c02ec797f660e359b5801af91ccff9632",
+        "classification": "generation_budget_exhausted",
+        "finish_reasons": [
+          "MAX_TOKENS"
+        ],
+        "usage": {
+          "promptTokenCount": 1301,
+          "totalTokenCount": 34066,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 1301
+            }
+          ],
+          "thoughtsTokenCount": 32765,
+          "serviceTier": "standard"
+        }
+      }
+    ],
+    "usage": {
+      "saved_responses": 4,
+      "promptTokenCount": 11053,
+      "totalTokenCount": 122914,
+      "thoughtsTokenCount": 111590,
+      "candidatesTokenCount": 271
+    },
+    "gross_http_usage_including_superseded_expansion": {
+      "attempts": 5,
+      "usage": {
+        "promptTokenCount": 17015,
+        "totalTokenCount": 161641,
+        "thoughtsTokenCount": 144355,
+        "candidatesTokenCount": 271
+      },
+      "known_price_usd": 0
+    }
+  }
+}

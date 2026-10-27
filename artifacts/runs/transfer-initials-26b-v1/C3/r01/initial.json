@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2109,
+    "candidatesTokenCount": 271,
+    "totalTokenCount": 15675,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2109
+      }
+    ],
+    "thoughtsTokenCount": 13295,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-26b-a4b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "django/middleware/cache.py",
+                    "new_text": "        # Don't cache responses when the Vary header contains '*'.\n        if has_vary_header(response, \"*\"):\n            return response\n\n        # If the request has an Authorization header, and the response is not\n        # marked as public, we must ensure that the Authorization header is\n        # included in the Vary header so that the cache is isolated by\n        # Authorization.\n        if request.headers.get(\"Authorization\") and \"public\" not in cache_control:\n            if not has_vary_header(response, \"Authorization\"):\n                vary = response.get(\"Vary\", \"\")\n                if vary:\n                    response[\"Vary\"] = f\"{vary}, Authorization\"\n                else:\n                    response[\"Vary\"] = \"Authorization\"\n\n        # Page timeout takes precedence over the \"max-age\" and the default\n",
+                    "old_text": "        # Don't cache responses when the Vary header contains '*'.\n        if has_vary_header(response, \"*\"):\n            return response\n\n        # Page timeout takes precedence over the \"max-age\" and the default\n"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "86c4a8aecff64d2d7054d5fa18cddb58499e2c3eed40d2571955811bc7567b6f"
+}

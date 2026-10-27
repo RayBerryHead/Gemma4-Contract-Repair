@@ -1,0 +1,123 @@
+{
+  "id": "CD2",
+  "split": "dev",
+  "contract": "Preserve per-actor private isolation and supported same-actor/public reuse. Synthetic development control only.",
+  "product_paths": [
+    "subject.mjs"
+  ],
+  "evidence_class": "synthetic-development",
+  "probes": [
+    {
+      "id": "CD2-Q0-01",
+      "case": "CD2",
+      "role": "Q0",
+      "params": {
+        "steps": [
+          [
+            "alice",
+            200
+          ],
+          [
+            "bob",
+            304
+          ]
+        ]
+      },
+      "expected": [
+        "private:alice",
+        "private:bob"
+      ],
+      "predicate": "equal",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "CD2-V-01",
+      "case": "CD2",
+      "role": "V",
+      "params": {
+        "steps": [
+          [
+            "alice",
+            200
+          ],
+          [
+            "alice",
+            304
+          ]
+        ]
+      },
+      "expected": [
+        "private:alice",
+        "private:alice"
+      ],
+      "predicate": "equal",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "CD2-E-01",
+      "case": "CD2",
+      "role": "E",
+      "params": {
+        "steps": [
+          [
+            "carol",
+            200
+          ],
+          [
+            "dave",
+            304
+          ]
+        ]
+      },
+      "expected": [
+        "private:carol",
+        "private:dave"
+      ],
+      "predicate": "equal",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "CD2-U-01",
+      "case": "CD2",
+      "role": "U",
+      "params": {
+        "steps": [
+          [
+            "alice",
+            200
+          ],
+          [
+            "alice",
+            200
+          ]
+        ]
+      },
+      "expected": [
+        "private:alice",
+        "private:alice"
+      ],
+      "predicate": "equal",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    }
+  ]
+}

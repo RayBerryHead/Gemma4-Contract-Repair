@@ -1,0 +1,101 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "bodies": [
+          "attacker-controlled-content",
+          "legitimate-content"
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C2-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.13436715118587017,
+      "subject_calls": 2,
+      "input": {},
+      "expected": [
+        "attacker-controlled-content",
+        "legitimate-content"
+      ],
+      "contract_check": "redirect_integrity",
+      "tags": [
+        "redirect",
+        "store"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "bodies": [
+          "legitimate-content",
+          "legitimate-content"
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C2-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.12797723524272442,
+      "subject_calls": 2,
+      "input": {
+        "no_redirect": true
+      },
+      "expected": [
+        "legitimate-content",
+        "legitimate-content"
+      ],
+      "contract_check": "redirect_integrity",
+      "tags": [
+        "read",
+        "ordinary"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "bodies": [
+          "legitimate-content",
+          "legitimate-content"
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C2-U-02",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.1117371916770935,
+      "subject_calls": 2,
+      "input": {
+        "no_redirect": true,
+        "public_control": true
+      },
+      "expected": [
+        "legitimate-content",
+        "legitimate-content"
+      ],
+      "contract_check": "public_origin_reuse",
+      "tags": [
+        "ordinary",
+        "read",
+        "store"
+      ]
+    }
+  ],
+  "selected_probe_ids": [],
+  "new_subject_calls": 0,
+  "all_visible_pass": true,
+  "mapped_patch_phases": [
+    "identity/key",
+    "store"
+  ],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "94b780c09dfc5f3c80ba32aa16f634158f4f91f3aeac86e6aca967e86945269e",
+    "applied_diff_hash": "2543b5bd97fe1edd19fcc508285ab2a34d380e899ce57133675af7811cfd1a07"
+  }
+}

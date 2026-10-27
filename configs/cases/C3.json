@@ -1,0 +1,129 @@
+{
+  "id": "C3",
+  "contract": "Non-public responses to nonempty Authorization requests must remain isolated by Authorization. Explicit public responses may be shared.",
+  "product_paths": [
+    "django/middleware/cache.py"
+  ],
+  "evidence_class": "privacy",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "C3-Q0-01",
+      "case": "C3",
+      "role": "Q0",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "store"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C3-V-01",
+      "case": "C3",
+      "role": "V",
+      "params": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "existing_session": false
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C3-E-01",
+      "case": "C3",
+      "role": "E",
+      "params": {
+        "actors": [
+          "carol",
+          "dave",
+          "carol"
+        ]
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 3,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C3-U-01",
+      "case": "C3",
+      "role": "U",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "predicate": "public_reuse",
+      "cost": 2,
+      "tags": [
+        "store",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C3-D-01",
+      "case": "C3",
+      "role": "D",
+      "params": {
+        "actors": [
+          "anon",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C3-V-02",
+      "case": "C3",
+      "role": "V",
+      "params": {
+        "actors": [
+          "eve",
+          "frank"
+        ],
+        "vary_language": true
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "store"
+      ],
+      "obligation": "isolation"
+    }
+  ]
+}

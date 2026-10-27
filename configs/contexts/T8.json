@@ -1,0 +1,48 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "src/differenceInDays/index.js": [
+      [
+        0,
+        30
+      ],
+      [
+        0,
+        42
+      ],
+      [
+        0,
+        43
+      ],
+      [
+        0,
+        51
+      ],
+      [
+        0,
+        52
+      ],
+      [
+        0,
+        52
+      ],
+      [
+        0,
+        52
+      ],
+      [
+        0,
+        52
+      ],
+      [
+        6,
+        52
+      ],
+      [
+        8,
+        52
+      ]
+    ]
+  }
+}

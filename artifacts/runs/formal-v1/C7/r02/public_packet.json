@@ -1,0 +1,53 @@
+{
+  "task_id": "C7",
+  "contract": "An empty qualified private field list must behave as unqualified private; preserve normal public reuse.",
+  "policy_origin": "source-backed supplied contract",
+  "source": {
+    "lib/util/cache.js": "// Original line 1\n'use strict'\n\nconst {\n  safeHTTPMethods,\n  pathHasQueryOrFragment,\n  hasSafeIterator\n} = require('../core/util')\n\nconst { serializePathWithQuery } = require('../core/util')\n\n/**\n * @param {import('../../types/dispatcher.d.ts').default.DispatchOptions} opts\n */\nfunction makeCacheKey (opts) {\n  if (!opts.origin) {\n    throw new Error('opts.origin is undefined')\n  }\n\n  let fullPath = opts.path || '/'\n\n  if (opts.query && !pathHasQueryOrFragment(fullPath)) {\n    fullPath = serializePathWithQuery(fullPath, opts.query)\n  }\n\n  return {\n    origin: opts.origin.toString(),\n    method: opts.method,\n    path: fullPath,\n    headers: opts.headers\n  }\n// Original line 126\n}\n\n/**\n * @param {any} value\n */\nfunction assertCacheValue (value) {\n  if (typeof value !== 'object') {\n    throw new TypeError(`expected value to be object, got ${typeof value}`)\n  }\n\n  for (const property of ['statusCode', 'cachedAt', 'staleAt', 'deleteAt']) {\n    if (typeof value[property] !== 'number') {\n      throw new TypeError(`expected value.${property} to be number, got ${typeof value[property]}`)\n    }\n  }\n\n  if (typeof value.statusMessage !== 'string') {\n    throw new TypeError(`expected value.statusMessage to be string, got ${typeof value.statusMessage}`)\n  }\n\n  if (value.headers != null && typeof value.headers !== 'object') {\n    throw new TypeError(`expected value.rawHeaders to be object, got ${typeof value.headers}`)\n  }\n\n  if (value.vary !== undefined && typeof value.vary !== 'object') {\n    throw new TypeError(`expected value.vary to be object, got ${typeof value.vary}`)\n  }\n\n  if (value.etag !== undefined && typeof value.etag !== 'string') {\n    throw new TypeError(`expected value.etag to be string, got ${typeof value.etag}`)\n  }\n}\n\n/**\n * @see https://www.rfc-editor.org/rfc/rfc9111.html#name-cache-control\n * @see https://www.iana.org/assignments/http-cache-directives/http-cache-directives.xhtml\n\n * @param {string | string[]} header\n * @returns {import('../../types/cache-interceptor.d.ts').default.CacheControlDirectives}\n */\nfunction parseCacheControlHeader (header) {\n  /**\n   * @type {import('../../types/cache-interceptor.d.ts').default.CacheControlDirectives}\n   */\n  const output = {}\n\n  let directives\n  if (Array.isArray(header)) {\n    directives = []\n\n    for (const directive of header) {\n      directives.push(...directive.split(','))\n    }\n  } else {\n    directives = header.split(',')\n  }\n\n  for (let i = 0; i < directives.length; i++) {\n    const directive = directives[i].toLowerCase()\n    const keyValueDelimiter = directive.indexOf('=')\n\n    let key\n    let value\n    if (keyValueDelimiter !== -1) {\n      key = directive.substring(0, keyValueDelimiter).trimStart()\n      value = directive.substring(keyValueDelimiter + 1)\n    } else {\n      key = directive.trim()\n    }\n\n    switch (key) {\n      case 'min-fresh':\n      case 'max-stale':\n      case 'max-age':\n      case 's-maxage':\n      case 'stale-while-revalidate':\n      case 'stale-if-error': {\n        if (value === undefined || value[0] === ' ') {\n          continue\n        }\n\n// Original line 233\n          //  `private` or `no-cache`) or qualified (w/ a value). When they're\n          //  qualified, it's a list of headers like `no-cache=header1`,\n          //  `no-cache=\"header1\"`, or `no-cache=\"header1, header2\"`\n          // If we're given multiple headers, the comma messes us up since\n          //  we split the full header by commas. So, let's loop through the\n          //  remaining parts in front of us until we find one that ends in a\n          //  quote. We can then just splice all of the parts in between the\n          //  starting quote and the ending quote out of the directives array\n          //  and continue parsing like normal.\n          // https://www.rfc-editor.org/rfc/rfc9111.html#name-no-cache-2\n          if (value[0] === '\"') {\n            // Something like `no-cache=\"some-header\"` OR `no-cache=\"some-header, another-header\"`.\n\n            // Add the first header on and cut off the leading quote\n            const headers = [value.substring(1)]\n\n            let foundEndingQuote = value[value.length - 1] === '\"'\n            if (!foundEndingQuote) {\n              // Something like `no-cache=\"some-header, another-header\"`\n              //  This can still be something invalid, e.g. `no-cache=\"some-header, ...`\n              for (let j = i + 1; j < directives.length; j++) {\n                const nextPart = directives[j]\n                const nextPartLength = nextPart.length\n\n                headers.push(nextPart.trim())\n\n                if (nextPartLength !== 0 && nextPart[nextPartLength - 1] === '\"') {\n                  foundEndingQuote = true\n                  break\n                }\n              }\n            }\n\n            if (foundEndingQuote) {\n              let lastHeader = headers[headers.length - 1]\n              if (lastHeader[lastHeader.length - 1] === '\"') {\n                lastHeader = lastHeader.substring(0, lastHeader.length - 1)\n                headers[headers.length - 1] = lastHeader\n              }\n\n              for (let j = 0; j < headers.length; j++) {\n                headers[j] = headers[j].trim()\n              }\n\n              if (key in output) {\n                output[key] = output[key].concat(headers)\n              } else {\n                output[key] = headers\n              }\n            }\n          } else {\n            // Something like `no-cache=\"some-header\"`\n            const fieldName = value.trim()\n\n            if (key in output) {\n              output[key] = output[key].concat(fieldName)\n            } else {\n              output[key] = [fieldName]\n            }\n          }\n\n          break\n        }\n      }\n      // eslint-disable-next-line no-fallthrough\n      case 'public':\n      case 'no-store':\n      case 'must-revalidate':\n      case 'proxy-revalidate':\n      case 'immutable':\n      case 'no-transform':\n      case 'must-understand':\n      case 'only-if-cached':\n        if (value) {\n          // These are qualified (something like `public=...`) when they aren't\n          //  allowed to be, skip\n          continue\n        }\n\n        output[key] = true\n        break\n      default:\n        // Ignore unknown directives as per https://www.rfc-editor.org/rfc/rfc9111.html#section-5.2.3-1\n        continue\n    }\n  }\n\n  return output\n}\n\n/**\n * @param {string | string[]} varyHeader Vary header from the server\n * @param {Record<string, string | string[]>} headers Request headers\n * @returns {Record<string, string | string[]>}\n */\nfunction parseVaryHeader (varyHeader, headers) {\n  if (typeof varyHeader === 'string' && varyHeader.includes('*')) {\n    return headers\n  }"
+  },
+  "visible_reproducer": [
+    {
+      "id": "C7-Q0-01",
+      "case": "C7",
+      "role": "Q0",
+      "params": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "directive": "public, max-age=300, private=\"\""
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "store",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    }
+  ],
+  "preserved_functionality": [
+    {
+      "id": "C7-U-01",
+      "case": "C7",
+      "role": "U",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "predicate": "public_reuse",
+      "cost": 2,
+      "tags": [
+        "store",
+        "read"
+      ],
+      "obligation": "isolation"
+    }
+  ],
+  "instructions": "Repair the existing product source. Submit one complete cumulative list of exact text replacements against the original buggy base through submit_patch. Use the full source path keys, and copy each old_text exactly once from the supplied source, preserving whitespace. All edits must be cumulative from the original source, including after feedback. Do not edit tests or evaluator files. Source localization is supplied. Use the stated contract and preserve legitimate behavior."
+}

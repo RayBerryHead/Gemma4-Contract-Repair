@@ -1,0 +1,19 @@
+{
+  "case_id": "C1",
+  "replicate": "r01",
+  "identity": "41e91314977ae26573ea088532d5349d42ec3cb80a0cb927eb25cf313d6397f7",
+  "stage": "formal",
+  "status": "RUNNING",
+  "arms": {
+    "B": {
+      "previous_witnesses": [
+        "C1-V-03"
+      ],
+      "step": 0,
+      "status": "RUNNING",
+      "pending_step": 1
+    }
+  },
+  "source_sha": "8c4ec893c8fb87edc171989c61b82ab71c21a41c",
+  "initial_hash": "2e072389e0360e1c32688039f9e90762989e613c6f136f203d6bd30fb9a938f4"
+}

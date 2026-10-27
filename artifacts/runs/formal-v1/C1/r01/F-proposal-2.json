@@ -1,0 +1,46 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 8104,
+    "candidatesTokenCount": 358,
+    "totalTokenCount": 8462,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 8104
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "  if (!result) {\n    return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)\n  }\n\n  if (globalOpts.type === 'shared' && result.headers && result.headers['set-cookie']) {\n    result = {\n      ...result,\n      headers: {\n        ...result.headers,\n        'set-cookie': undefined\n      }\n    }\n  }\n\n  const now = Date.now()",
+                    "path": "lib/interceptor/cache.js",
+                    "new_text": "  if (!result) {\n    return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)\n  }\n\n  const now = Date.now()"
+                  },
+                  {
+                    "new_text": "  if (cacheType === 'shared' && cacheControlDirectives.private === true) {\n    return false\n  }\n\n  if (cacheType === 'shared' && resHeaders['set-cookie']) {\n    return false\n  }\n\n  // https://www.rfc-editor.org/rfc/rfc9111.html#section-4.1-5",
+                    "path": "lib/handler/cache-handler.js",
+                    "old_text": "  if (cacheType === 'shared' && cacheControlDirectives.private === true) {\n    return false\n  }\n\n  // https://www.rfc-editor.org/rfc/rfc9111.html#section-4.1-5"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "397627e06bdec7819249bc49655aa39b18b5ced380dc3af1f225f6a6479d5fb1"
+}

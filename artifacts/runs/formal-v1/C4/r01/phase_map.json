@@ -1,0 +1,16 @@
+[
+  {
+    "path": "django/middleware/cache.py",
+    "start": 88,
+    "end": 148,
+    "phase": "store",
+    "symbol": "process_response"
+  },
+  {
+    "path": "django/middleware/cache.py",
+    "start": 169,
+    "end": 207,
+    "phase": "read",
+    "symbol": "process_request"
+  }
+]
