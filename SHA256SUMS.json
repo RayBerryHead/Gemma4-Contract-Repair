@@ -2,7 +2,7 @@
   ".gitignore": "9581fe4a5c7d6b2f9f0e7e49fcd3a5f681f57666823b30434183c7999b07c8d7",
   "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
   "PUBLIC_ARTIFACT_STATUS.json": "d0527b4dac34121e4bb9a0716609cb0f5edac4c634ea153d22d57ed00ea1793b",
-  "README.md": "70fb3f59a29d5b32d8482f5aac5b300ff3ed352e56b5fc8e299116d673a2e13f",
+  "README.md": "62370cf37879b3a60542e4d764d5127276c2c96d42f2831ab15a18d8daf51285",
   "THIRD_PARTY_NOTICES.md": "1440a0753d8081d612668352dcd2de92f0784a6aaa5d36c7bd21b78884723731",
   "artifacts/api/cache-attempts.jsonl": "b17cdac8e98e91f71e6559867454e98f39d9bc95762cbe2b197cc2114476d864",
   "artifacts/api/time-attempts.jsonl": "b30f09ce81e59dfa9593d84bbcd8c01975f0ac45ea9fa0f0f0ad04206924f4db",
@@ -722,5 +722,9 @@
   "tools/temporal_contrast_audit.py": "ab84bd766d2760148e7c0666b645d039e58f3dab90eb1ce57635b221e1adea0e",
   "tools/time_information_ablation.py": "7503858429cd9724848ee83586ac48798a307ef42942df53769bd4c1ef59af03",
   "RELEASE_VERIFICATION.json": "a7c796a26d974dcb7fdc2bbb516dc285ee66b5430a39c8c237799ac02215cd0f",
-  ".gitattributes": "39cc3de7504dbd4bed22c3c24489bb2b0f683d839f1945e3d07019c36c873e90"
+  ".gitattributes": "39cc3de7504dbd4bed22c3c24489bb2b0f683d839f1945e3d07019c36c873e90",
+  "tools/export_kaggle_writeups.py": "7eec15b59d7db914e67d98158fdcdf46d822a1df4a3b08e5788e05914e931d72",
+  "kaggle/civil-time-guard.md": "67052aed02ba6a5ccf8377cd1b9759b43313a1d975667bb6bd05d7ffa51a91a0",
+  "kaggle/submission-metadata.json": "5c7984a3d72875af27dbdc912bee73a680e35e2a7a81b75ccca7f192d4e0852a",
+  "kaggle/private-cache-witness.md": "854d3b9443f4f4cfa4c7b1cee999e3a295df538df67115072e0bd40a8e0ca4a2"
 }

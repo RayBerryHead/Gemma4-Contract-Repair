@@ -1,0 +1,21 @@
+{
+  "status": "READY_NOT_SUBMITTED",
+  "competition": "gemma-4-developer-agent-paper",
+  "assets_commit": "0c3e78605a72128da60bc569e0763c5673a3579c",
+  "writeups": [
+    {
+      "title": "PrivateCacheWitness: A Clean Header Can Hide a Foreign Body",
+      "subtitle": "Native cache traces, alternative repairs, and eight historical bug lineages.",
+      "file": "private-cache-witness.md",
+      "word_count_including_markdown_tables_captions_references": 2240,
+      "sha256": "854d3b9443f4f4cfa4c7b1cee999e3a295df538df67115072e0bd40a8e0ca4a2"
+    },
+    {
+      "title": "CivilTimeGuard: When Fixing a Day Breaks 24 Hours",
+      "subtitle": "Declared time policies and residual regressions in eight repository repair lineages.",
+      "file": "civil-time-guard.md",
+      "word_count_including_markdown_tables_captions_references": 2411,
+      "sha256": "67052aed02ba6a5ccf8377cd1b9759b43313a1d975667bb6bd05d7ffa51a91a0"
+    }
+  ]
+}
