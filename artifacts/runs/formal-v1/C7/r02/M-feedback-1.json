@@ -1,0 +1,119 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "response for alice",
+            "cookie": null
+          },
+          {
+            "body": "response for alice",
+            "cookie": null
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C7-Q0-01",
+      "role": "Q0",
+      "passed": false,
+      "elapsed_seconds": 0.08292580768465996,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "directive": "public, max-age=300, private=\"\""
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "store",
+        "identity/key"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": null
+          },
+          {
+            "body": "public",
+            "cookie": null
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C7-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.12827682867646217,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "contract_check": "public_reuse",
+      "tags": [
+        "store",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "response for alice",
+            "cookie": null
+          },
+          {
+            "body": "response for alice",
+            "cookie": null
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C7-V-01",
+      "role": "V",
+      "passed": false,
+      "elapsed_seconds": 0.12880564853549004,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "directive": "public, max-age=300, private=\",\""
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "read",
+        "identity/key"
+      ]
+    }
+  ],
+  "selected_probe_ids": [],
+  "new_subject_calls": 0,
+  "all_visible_pass": false,
+  "mapped_patch_phases": [],
+  "unmapped": true,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": false,
+    "reason": "OLD_TEXT_MATCH_COUNT_0: copy an exact unique source string",
+    "raw_proposal_hash": "db15f7ece3f64543c2ae56cd882539373b7487b3085dc72e515fe3b811be1668",
+    "applied_diff_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+  }
+}

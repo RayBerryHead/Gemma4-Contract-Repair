@@ -1,0 +1,980 @@
+[
+  {
+    "case": "T1",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "B",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "M",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "A",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": true,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-02",
+      "T1-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "B",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-02",
+      "T1-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "M",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-02",
+      "T1-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "A",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-03",
+      "T1-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-02",
+      "T1-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "B",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-02",
+      "T1-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "M",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-02",
+      "T1-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "A",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-03",
+      "T1-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-02",
+      "T1-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "B",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-02",
+      "T1-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "M",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-02",
+      "T1-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "A",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-03",
+      "T1-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T1",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T1-V-01",
+      "T1-V-02",
+      "T1-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "B",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "M",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "A",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": true,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-02",
+      "T4-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "B",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-02",
+      "T4-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "M",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-02",
+      "T4-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "A",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-03",
+      "T4-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-02",
+      "T4-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "B",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-02",
+      "T4-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "M",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-02",
+      "T4-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "A",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-03",
+      "T4-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-02",
+      "T4-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "B",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-02",
+      "T4-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "M",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-02",
+      "T4-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "A",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-03",
+      "T4-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T4",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T4-V-01",
+      "T4-V-02",
+      "T4-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "B",
+    "new_subject_calls": 2,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01",
+      "T5-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "M",
+    "new_subject_calls": 2,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01",
+      "T5-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "A",
+    "new_subject_calls": 2,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01",
+      "T5-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": true,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01",
+      "T5-V-02",
+      "T5-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "B",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01",
+      "T5-V-02",
+      "T5-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "M",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01",
+      "T5-V-02",
+      "T5-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "A",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01",
+      "T5-V-02",
+      "T5-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01",
+      "T5-V-02",
+      "T5-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "B",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "M",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "A",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": true,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01",
+      "T5-V-02",
+      "T5-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "B",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "M",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "A",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T5",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "F",
+    "new_subject_calls": 3,
+    "found_visible_witness": true,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T5-V-01",
+      "T5-V-02",
+      "T5-V-03"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "B",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "M",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "A",
+    "new_subject_calls": 1,
+    "found_visible_witness": true,
+    "bank_exhausted": false,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "upstream_buggy",
+    "patch_kind": "control",
+    "arm": "F",
+    "new_subject_calls": 2,
+    "found_visible_witness": true,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "B",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "M",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "A",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "upstream_fixed",
+    "patch_kind": "control",
+    "arm": "F",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "B",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "M",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "A",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "r01",
+    "patch_kind": "natural_initial",
+    "arm": "F",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "B",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "M",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "A",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  },
+  {
+    "case": "T6",
+    "patch_label": "r02",
+    "patch_kind": "natural_initial",
+    "arm": "F",
+    "new_subject_calls": 2,
+    "found_visible_witness": false,
+    "bank_exhausted": true,
+    "budget_skipped": [],
+    "selected_probe_ids": [
+      "T6-V-01",
+      "T6-V-02"
+    ],
+    "mapped_phases": []
+  }
+]

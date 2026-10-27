@@ -1,0 +1,41 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 4509,
+    "candidatesTokenCount": 338,
+    "totalTokenCount": 4847,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 4509
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "django/middleware/cache.py",
+                    "old_text": "        # Don't cache responses when the Cache-Control header is set to\n        # private, no-cache, or no-store.\n        cache_control = response.get(\"Cache-Control\", \"\").lower()\n        if cache_control and any(\n            directive in cache_control\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response\n\n        # Don't cache responses when the Vary header contains '*'.",
+                    "new_text": "        # Don't cache responses when the Cache-Control header is set to\n        # private, no-cache, or no-store.\n        cache_control = response.get(\"Cache-Control\", \"\").lower()\n        if cache_control and any(\n            directive in cache_control\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response\n\n        # Don't cache responses to requests with Authorization header\n        # unless the response is explicitly public or isolated by Authorization.\n        if request.META.get(\"HTTP_AUTHORIZATION\") and not (\n            \"public\" in cache_control or has_vary_header(response, \"Authorization\")\n        ):\n            return response\n\n        # Don't cache responses when the Vary header contains '*'."
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "e35943bc55c018e3fd6ae3ac7adb0b43367fd75900814c5bbfb41b6a8ca476f2"
+}

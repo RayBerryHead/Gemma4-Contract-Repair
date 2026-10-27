@@ -1,0 +1,14 @@
+diff --git a/src/croniter/croniter.py b/src/croniter/croniter.py
+--- a/src/croniter/croniter.py
++++ b/src/croniter/croniter.py
+@@ -325,6 +325,10 @@
+         self.dst_start_time = 0.0
+         self.cur = 0.0
+         self.set_current(start_time, force=True)
++
++        if self._expand_from_start_time:
++            dt = self.timestamp_to_datetime(self.cur)
++            self.dst_start_time = dt.replace(tzinfo=tzutc()).timestamp()
+ 
+         self.expanded, self.nth_weekday_of_month, self.expressions, self.nearest_weekday = self._expand(
+             expr_format,

@@ -1,0 +1,41 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 3841,
+    "candidatesTokenCount": 163,
+    "totalTokenCount": 4004,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 3841
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "      if (keepLocalTime || keepCalendarTime) {\n        const offsetGuess = this.o - zone.offset(this.ts);\n        const asObj = this.toObject();\n        [newTS] = objToTS(asObj, offsetGuess, zone);\n      }",
+                    "new_text": "      if (keepLocalTime || keepCalendarTime) {\n        const offsetGuess = this.o - zone.offset(this.ts);\n        const asObj = this.toObject();\n        newTS = objToLocalTS(asObj, offsetGuess, zone);\n      }",
+                    "path": "src/datetime.js"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "360af71a3807103ed4aa581872682f800ecdb46103c88a8e6b2542a675b97d8d"
+}

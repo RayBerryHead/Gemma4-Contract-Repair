@@ -1,0 +1,485 @@
+{
+  "case_id": "T8",
+  "replicate": "r02",
+  "identity": "ed494c59c260275bc748f610166f3a3a9df1c7bc4ca933026b546f21b2546945",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/src/differenceInDays/index.js b/src/differenceInDays/index.js\n--- a/src/differenceInDays/index.js\n+++ b/src/differenceInDays/index.js\n@@ -44,9 +44,19 @@\n   var dateLeft = toDate(dirtyDateLeft)\n   var dateRight = toDate(dirtyDateRight)\n \n-  var result = (dateLeft - dateRight) / MILLISECONDS_IN_DAY\n+  var dateLeftMidnight = new Date(dateLeft)\n+  dateLeftMidnight.setHours(0, 0, 0, 0)\n+  var dateRightMidnight = new Date(dateRight)\n+  dateRightMidnight.setHours(0, 0, 0, 0)\n \n-  // round towards zero\n-  if (result > 0) return Math.floor(result)\n-  return Math.ceil(result)\n+  var result = Math.round((dateLeftMidnight - dateRightMidnight) / MILLISECONDS_IN_DAY)\n+\n+  if (result !== 0) {\n+    var dateRightPlusDays = new Date(dateRight)\n+    dateRightPlusDays.setDate(dateRightPlusDays.getDate() + result)\n+    if (result > 0 && dateLeft < dateRightPlusDays) result--\n+    else if (result < 0 && dateLeft > dateRightPlusDays) result++\n+  }\n+\n+  return result\n }\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T8/r02/B/patch-cb2303452c7246ad",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": 0,
+          "probe_id": "T8-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.05099465325474739,
+          "subject_calls": 1,
+          "input": {
+            "start": [
+              2024,
+              2,
+              9,
+              12
+            ],
+            "end": [
+              2024,
+              2,
+              10,
+              11,
+              59
+            ]
+          },
+          "expected": 0,
+          "contract_check": "equal",
+          "tags": [
+            "local-day",
+            "dst"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": 1,
+          "probe_id": "T8-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.061775779351592064,
+          "subject_calls": 1,
+          "input": {
+            "start": [
+              2023,
+              10,
+              4,
+              12
+            ],
+            "end": [
+              2023,
+              10,
+              5,
+              12
+            ]
+          },
+          "expected": 1,
+          "contract_check": "equal",
+          "tags": [
+            "local-day",
+            "dst"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": 1,
+          "probe_id": "T8-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.05701481178402901,
+          "subject_calls": 1,
+          "input": {
+            "start": [
+              2024,
+              10,
+              2,
+              12
+            ],
+            "end": [
+              2024,
+              10,
+              3,
+              12
+            ]
+          },
+          "expected": 1,
+          "contract_check": "equal",
+          "tags": [
+            "local-day",
+            "dst"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": 1,
+            "probe_id": "T8-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.05142676644027233,
+            "subject_calls": 1,
+            "input": {
+              "start": [
+                2024,
+                2,
+                9,
+                12
+              ],
+              "end": [
+                2024,
+                2,
+                10,
+                12
+              ]
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "local-day",
+              "dst"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 1,
+            "probe_id": "T8-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.044414665549993515,
+            "subject_calls": 1,
+            "input": {
+              "start": [
+                2024,
+                0,
+                1,
+                12
+              ],
+              "end": [
+                2024,
+                0,
+                2,
+                12
+              ]
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "local-day",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 0,
+            "probe_id": "T8-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.05099465325474739,
+            "subject_calls": 1,
+            "input": {
+              "start": [
+                2024,
+                2,
+                9,
+                12
+              ],
+              "end": [
+                2024,
+                2,
+                10,
+                11,
+                59
+              ]
+            },
+            "expected": 0,
+            "contract_check": "equal",
+            "tags": [
+              "local-day",
+              "dst"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 1,
+            "probe_id": "T8-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.061775779351592064,
+            "subject_calls": 1,
+            "input": {
+              "start": [
+                2023,
+                10,
+                4,
+                12
+              ],
+              "end": [
+                2023,
+                10,
+                5,
+                12
+              ]
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "local-day",
+              "dst"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T8-V-01",
+          "T8-V-02"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "53c018a2e1726553540863f806c9d655ac42bbfb8962a120261f72208f83df4b",
+          "applied_diff_hash": "cb2303452c7246adcd8058dbc1ce0118ef594ebfac51d088779e76b97704b710"
+        }
+      },
+      "joint_valid": true
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/src/differenceInDays/index.js b/src/differenceInDays/index.js\n--- a/src/differenceInDays/index.js\n+++ b/src/differenceInDays/index.js\n@@ -44,9 +44,19 @@\n   var dateLeft = toDate(dirtyDateLeft)\n   var dateRight = toDate(dirtyDateRight)\n \n-  var result = (dateLeft - dateRight) / MILLISECONDS_IN_DAY\n+  var dateLeftMidnight = new Date(dateLeft)\n+  dateLeftMidnight.setHours(0, 0, 0, 0)\n+  var dateRightMidnight = new Date(dateRight)\n+  dateRightMidnight.setHours(0, 0, 0, 0)\n \n-  // round towards zero\n-  if (result > 0) return Math.floor(result)\n-  return Math.ceil(result)\n+  var result = Math.round((dateLeftMidnight - dateRightMidnight) / MILLISECONDS_IN_DAY)\n+\n+  if (result !== 0) {\n+    var dateRightPlusDays = new Date(dateRight)\n+    dateRightPlusDays.setDate(dateRightPlusDays.getDate() + result)\n+    if (result > 0 && dateLeft < dateRightPlusDays) result--\n+    else if (result < 0 && dateLeft > dateRightPlusDays) result++\n+  }\n+\n+  return result\n }\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T8/r02/M/patch-cb2303452c7246ad",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": 0,
+          "probe_id": "T8-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.033867426216602325,
+          "subject_calls": 1,
+          "input": {
+            "start": [
+              2024,
+              2,
+              9,
+              12
+            ],
+            "end": [
+              2024,
+              2,
+              10,
+              11,
+              59
+            ]
+          },
+          "expected": 0,
+          "contract_check": "equal",
+          "tags": [
+            "local-day",
+            "dst"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": 1,
+          "probe_id": "T8-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.033038316294550896,
+          "subject_calls": 1,
+          "input": {
+            "start": [
+              2023,
+              10,
+              4,
+              12
+            ],
+            "end": [
+              2023,
+              10,
+              5,
+              12
+            ]
+          },
+          "expected": 1,
+          "contract_check": "equal",
+          "tags": [
+            "local-day",
+            "dst"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": 1,
+          "probe_id": "T8-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.02435395121574402,
+          "subject_calls": 1,
+          "input": {
+            "start": [
+              2024,
+              10,
+              2,
+              12
+            ],
+            "end": [
+              2024,
+              10,
+              3,
+              12
+            ]
+          },
+          "expected": 1,
+          "contract_check": "equal",
+          "tags": [
+            "local-day",
+            "dst"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": 1,
+            "probe_id": "T8-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.034838007763028145,
+            "subject_calls": 1,
+            "input": {
+              "start": [
+                2024,
+                2,
+                9,
+                12
+              ],
+              "end": [
+                2024,
+                2,
+                10,
+                12
+              ]
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "local-day",
+              "dst"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 1,
+            "probe_id": "T8-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.03408712521195412,
+            "subject_calls": 1,
+            "input": {
+              "start": [
+                2024,
+                0,
+                1,
+                12
+              ],
+              "end": [
+                2024,
+                0,
+                2,
+                12
+              ]
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "local-day",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 0,
+            "probe_id": "T8-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.033867426216602325,
+            "subject_calls": 1,
+            "input": {
+              "start": [
+                2024,
+                2,
+                9,
+                12
+              ],
+              "end": [
+                2024,
+                2,
+                10,
+                11,
+                59
+              ]
+            },
+            "expected": 0,
+            "contract_check": "equal",
+            "tags": [
+              "local-day",
+              "dst"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 1,
+            "probe_id": "T8-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.033038316294550896,
+            "subject_calls": 1,
+            "input": {
+              "start": [
+                2023,
+                10,
+                4,
+                12
+              ],
+              "end": [
+                2023,
+                10,
+                5,
+                12
+              ]
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "local-day",
+              "dst"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T8-V-01",
+          "T8-V-02"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "53c018a2e1726553540863f806c9d655ac42bbfb8962a120261f72208f83df4b",
+          "applied_diff_hash": "cb2303452c7246adcd8058dbc1ce0118ef594ebfac51d088779e76b97704b710"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "53c018a2e1726553540863f806c9d655ac42bbfb8962a120261f72208f83df4b"
+}

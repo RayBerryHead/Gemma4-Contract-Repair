@@ -1,0 +1,46 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 8820,
+    "candidatesTokenCount": 449,
+    "totalTokenCount": 9269,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 8820
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "lib/handler/cache-handler.js",
+                    "old_text": "    const handler = this\n\n    if (controller.crossOriginRedirect) {\n      return downstreamOnHeaders()\n    }\n\n    if (\n      !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&",
+                    "new_text": "    const handler = this\n\n    if (this.#cacheKey.crossOriginRedirect) {\n      return downstreamOnHeaders()\n    }\n\n    if (\n      !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&"
+                  },
+                  {
+                    "path": "lib/handler/redirect-handler.js",
+                    "old_text": "    if (requestOrigin !== origin) {\n      controller.crossOriginRedirect = true\n    }\n\n    // Remove headers referring to the original URL.\n    // By default it is Host only. A 303 or a 301/302 POST-to-GET redirect also removes all Content-* headers.\n    // https://tools.ietf.org/html/rfc7231#section-6.4\n    this.opts.headers = cleanRequestHeaders(this.opts.headers, removeContentHeaders, requestOrigin !== origin, this.stripHeadersOnRedirect, this.stripHeadersOnCrossOriginRedirect)",
+                    "new_text": "    if (requestOrigin !== origin) {\n      this.opts.crossOriginRedirect = true\n    }\n\n    // Remove headers referring to the original URL.\n    // By default it is Host only. A 303 or a 301/302 POST-to-GET redirect also removes all Content-* headers.\n    // https://tools.ietf.org/html/rfc7231#section-6.4\n    this.opts.headers = cleanRequestHeaders(this.opts.headers, removeContentHeaders, requestOrigin !== origin, this.stripHeadersOnRedirect, this.stripHeadersOnCrossOriginRedirect)"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "2743c779aca992dfa50dda51ab7b5ddece6d95775172c22c7074a65395575854"
+}

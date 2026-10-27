@@ -1,0 +1,129 @@
+{
+  "id": "T3",
+  "contract": "POSIX n is zero-based and includes leap day; Jn is one-based and excludes leap day.",
+  "product_paths": [
+    "src/dateutil/tz/_tzfile.py"
+  ],
+  "evidence_class": "temporal",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "T3-Q0-01",
+      "case": "T3",
+      "role": "Q0",
+      "params": {
+        "rule": "STD0DST-1,10/0,J100/0",
+        "dates": [
+          "2021-01-10T12:00",
+          "2021-01-11T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "ordinal"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T3-V-01",
+      "case": "T3",
+      "role": "V",
+      "params": {
+        "rule": "STD0DST-1,J59/0,J200/0",
+        "dates": [
+          "2020-02-27T12:00",
+          "2020-02-28T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "ordinal",
+        "leap"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T3-E-01",
+      "case": "T3",
+      "role": "E",
+      "params": {
+        "rule": "STD0DST-1,59/0,J200/0",
+        "dates": [
+          "2020-02-28T12:00",
+          "2020-02-29T12:00",
+          "2025-02-28T12:00",
+          "2025-03-01T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST",
+        "STD",
+        "DST"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "ordinal",
+        "leap"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T3-U-01",
+      "case": "T3",
+      "role": "U",
+      "params": {
+        "rule": "STD0DST-1,M3.2.0/2,M11.1.0/2",
+        "dates": [
+          "2021-01-15T12:00",
+          "2021-07-15T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "ordinary",
+        "month-week"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T3-V-02",
+      "case": "T3",
+      "role": "V",
+      "params": {
+        "rule": "STD0DST-1,J60/0,J200/0",
+        "dates": [
+          "2024-02-29T12:00",
+          "2024-03-01T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "ordinal",
+        "leap"
+      ],
+      "obligation": "time-policy"
+    }
+  ]
+}

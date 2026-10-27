@@ -1,0 +1,26 @@
+{
+  "model": "gemma-4-31b-it",
+  "secondary_model": "gemma-4-26b-a4b-it",
+  "endpoint": "https://generativelanguage.googleapis.com/v1beta",
+  "project_id": "YOUR_GCP_PROJECT_ID",
+  "free_models_only": [
+    "gemma-4-31b-it",
+    "gemma-4-26b-a4b-it"
+  ],
+  "paid_fallback_enabled": false,
+  "thinking_level": "high",
+  "temperature": 0.2,
+  "max_output_tokens": 32768,
+  "concurrency": 1,
+  "minimum_request_interval_seconds": 20,
+  "max_http_attempts": 150,
+  "max_revisions": 2,
+  "artifact_root": "artifacts",
+  "python": "python",
+  "cash_authority": "FREE_ONLY_STOP_BEFORE_ANY_PAID_RESOURCE",
+  "observed_input_tpm": 16000,
+  "prior_preparation_attempts": 2,
+  "read_timeout_seconds": 900,
+  "tool_mode": "AUTO",
+  "patch_representation": "cumulative_exact_replacements_v1"
+}

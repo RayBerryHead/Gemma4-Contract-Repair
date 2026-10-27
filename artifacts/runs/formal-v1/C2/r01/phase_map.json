@@ -1,0 +1,65 @@
+[
+  {
+    "path": "lib/handler/cache-handler.js",
+    "start": 219,
+    "end": 225,
+    "phase": "identity/key",
+    "symbol": "onRequestStart"
+  },
+  {
+    "path": "lib/handler/cache-handler.js",
+    "start": 244,
+    "end": 526,
+    "phase": "store",
+    "symbol": "onResponseStart"
+  },
+  {
+    "path": "lib/handler/cache-handler.js",
+    "start": 535,
+    "end": 539,
+    "phase": "store",
+    "symbol": "onResponseEnd"
+  },
+  {
+    "path": "lib/handler/deduplication-handler.js",
+    "start": 147,
+    "end": 157,
+    "phase": "identity/key",
+    "symbol": "onRequestStart"
+  },
+  {
+    "path": "lib/handler/deduplication-handler.js",
+    "start": 168,
+    "end": 206,
+    "phase": "store",
+    "symbol": "onResponseStart"
+  },
+  {
+    "path": "lib/handler/deduplication-handler.js",
+    "start": 249,
+    "end": 294,
+    "phase": "store",
+    "symbol": "onResponseEnd"
+  },
+  {
+    "path": "lib/handler/redirect-handler.js",
+    "start": 43,
+    "end": 46,
+    "phase": "identity/key",
+    "symbol": "onRequestStart"
+  },
+  {
+    "path": "lib/handler/redirect-handler.js",
+    "start": 59,
+    "end": 142,
+    "phase": "store",
+    "symbol": "onResponseStart"
+  },
+  {
+    "path": "lib/handler/redirect-handler.js",
+    "start": 167,
+    "end": 182,
+    "phase": "store",
+    "symbol": "onResponseEnd"
+  }
+]

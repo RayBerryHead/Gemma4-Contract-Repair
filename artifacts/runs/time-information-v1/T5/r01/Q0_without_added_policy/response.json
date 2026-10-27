@@ -1,0 +1,41 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2433,
+    "candidatesTokenCount": 150,
+    "totalTokenCount": 13958,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2433
+      }
+    ],
+    "thoughtsTokenCount": 11375,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years,\n                months=delta.months,\n                weeks=delta._weeks,\n                days=delta._remaining_days,\n                seconds=delta._seconds,\n                microseconds=delta._microseconds,\n            )",
+                    "path": "src/pendulum/datetime.py",
+                    "old_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "original_response_sha256": "9e83e41904a1476dcf1bb2fc89f4d93bb1104db2570ca7748a79412629b1f665"
+}

@@ -1,0 +1,76 @@
+{
+  "id": "C6",
+  "contract": "Session renewal without a view access must still preserve Cookie variation and must not replay a session carrier to an anonymous caller.",
+  "product_paths": [
+    "django/contrib/sessions/middleware.py"
+  ],
+  "evidence_class": "privacy",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "C6-Q0-01",
+      "case": "C6",
+      "role": "Q0",
+      "params": {
+        "owner": "alice"
+      },
+      "expected": null,
+      "predicate": "session_not_replayed",
+      "cost": 2,
+      "tags": [
+        "store",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C6-E-01",
+      "case": "C6",
+      "role": "E",
+      "params": {
+        "owner": "carol"
+      },
+      "expected": null,
+      "predicate": "session_not_replayed",
+      "cost": 2,
+      "tags": [
+        "read",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C6-V-01",
+      "case": "C6",
+      "role": "V",
+      "params": {
+        "owner": "bob",
+        "touch_session": true
+      },
+      "expected": null,
+      "predicate": "session_not_replayed",
+      "cost": 2,
+      "tags": [
+        "store",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C6-U-01",
+      "case": "C6",
+      "role": "U",
+      "params": {
+        "empty": true
+      },
+      "expected": null,
+      "predicate": "no_session_created",
+      "cost": 2,
+      "tags": [
+        "read",
+        "ordinary"
+      ],
+      "obligation": "isolation"
+    }
+  ]
+}

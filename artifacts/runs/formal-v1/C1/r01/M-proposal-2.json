@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 8154,
+    "candidatesTokenCount": 218,
+    "totalTokenCount": 12273,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 8154
+      }
+    ],
+    "thoughtsTokenCount": 3901,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "lib/handler/cache-handler.js",
+                    "old_text": "  if (cacheType === 'shared' && (cacheControlDirectives.private === true || Array.isArray(cacheControlDirectives.private))) {\n    return false\n  }\n\n  if (cacheType === 'shared' && resHeaders['set-cookie']) {\n    return false\n  }\n\n  // https://www.rfc-editor.org/rfc/rfc9111.html#section-4.1-5",
+                    "new_text": "  if (cacheType === 'shared' && cacheControlDirectives.private) {\n    return false\n  }\n\n  if (cacheType === 'shared' && resHeaders['set-cookie']) {\n    return false\n  }\n\n  // https://www.rfc-editor.org/rfc/rfc9111.html#section-4.1-5"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "e858ea1ccfdd303eb07dc7d85264c947922d3f8a2d30c33d541ebdd7404e48c4"
+}

@@ -1,0 +1,117 @@
+{
+  "id": "C2",
+  "results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "bodies": [
+          "attacker-controlled-content",
+          "legitimate-content"
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C2-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.15568784438073635,
+      "subject_calls": 2,
+      "input": {},
+      "expected": [
+        "attacker-controlled-content",
+        "legitimate-content"
+      ],
+      "contract_check": "redirect_integrity",
+      "tags": [
+        "redirect",
+        "store"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "bodies": [
+          "attacker-controlled-content",
+          "legitimate-content"
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C2-E-01",
+      "role": "E",
+      "passed": true,
+      "elapsed_seconds": 0.15608549490571022,
+      "subject_calls": 2,
+      "input": {
+        "path": "/hidden-resource"
+      },
+      "expected": [
+        "attacker-controlled-content",
+        "legitimate-content"
+      ],
+      "contract_check": "redirect_integrity",
+      "tags": [
+        "redirect",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "bodies": [
+          "legitimate-content",
+          "legitimate-content"
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C2-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.16397132351994514,
+      "subject_calls": 2,
+      "input": {
+        "no_redirect": true
+      },
+      "expected": [
+        "legitimate-content",
+        "legitimate-content"
+      ],
+      "contract_check": "redirect_integrity",
+      "tags": [
+        "read",
+        "ordinary"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "bodies": [
+          "legitimate-content",
+          "legitimate-content"
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C2-U-02",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.09562782198190689,
+      "subject_calls": 2,
+      "input": {
+        "no_redirect": true,
+        "public_control": true
+      },
+      "expected": [
+        "legitimate-content",
+        "legitimate-content"
+      ],
+      "contract_check": "public_origin_reuse",
+      "tags": [
+        "ordinary",
+        "read",
+        "store"
+      ]
+    }
+  ],
+  "all_pass": true,
+  "infra_ok": true,
+  "proposal_valid": true,
+  "reason": "APPLIED"
+}

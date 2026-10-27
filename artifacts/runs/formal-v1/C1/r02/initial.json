@@ -1,0 +1,57 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 5117,
+    "candidatesTokenCount": 806,
+    "totalTokenCount": 18320,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 5117
+      }
+    ],
+    "thoughtsTokenCount": 12397,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "  if (cacheType === 'shared' && (cacheControlDirectives.private === true || resHeaders['set-cookie'])) {\n    return false\n  }",
+                    "old_text": "  if (cacheType === 'shared' && cacheControlDirectives.private === true) {\n    return false\n  }",
+                    "path": "lib/handler/cache-handler.js"
+                  },
+                  {
+                    "old_text": "function revalidationResponseDisallowsCachedReuse (cacheType, resHeaders, cacheControlDirectives) {\n  return cacheControlDirectives['no-store'] === true ||\n    (cacheType === 'shared' && cacheControlDirectives.private === true) ||\n    (resHeaders.vary ? isInvalidOrWildcardVaryHeader(resHeaders.vary) : false)\n}",
+                    "path": "lib/handler/cache-handler.js",
+                    "new_text": "function revalidationResponseDisallowsCachedReuse (cacheType, resHeaders, cacheControlDirectives) {\n  return cacheControlDirectives['no-store'] === true ||\n    (cacheType === 'shared' && (cacheControlDirectives.private === true || resHeaders['set-cookie'])) ||\n    (resHeaders.vary ? isInvalidOrWildcardVaryHeader(resHeaders.vary) : false)\n}"
+                  },
+                  {
+                    "path": "lib/interceptor/cache.js",
+                    "old_text": "function revalidationResponseDisallowsCachedReuse (cacheType, headers) {\n  if (headers.vary && isInvalidOrWildcardVaryHeader(headers.vary)) {\n    return true\n  }\n\n  const cacheControl = headers['cache-control']\n  if (!cacheControl) {\n    return false\n  }\n\n  const cacheControlDirectives = parseCacheControlHeader(cacheControl)\n  return cacheControlDirectives['no-store'] === true ||\n    (cacheType === 'shared' && cacheControlDirectives.private === true)\n}",
+                    "new_text": "function revalidationResponseDisallowsCachedReuse (cacheType, headers) {\n  if (headers.vary && isInvalidOrWildcardVaryHeader(headers.vary)) {\n    return true\n  }\n\n  if (cacheType === 'shared' && headers['set-cookie']) {\n    return true\n  }\n\n  const cacheControl = headers['cache-control']\n  if (!cacheControl) {\n    return false\n  }\n\n  const cacheControlDirectives = parseCacheControlHeader(cacheControl)\n  return cacheControlDirectives['no-store'] === true ||\n    (cacheType === 'shared' && cacheControlDirectives.private === true)\n}"
+                  },
+                  {
+                    "new_text": "  const now = Date.now()\n  if (now > result.deleteAt) {\n    // Response is expired, cache store shouldn't have given this to us\n    return dispatch(opts, new CacheHandler(globalOpts, cacheKey, handler))\n  }\n\n  if (globalOpts.type === 'shared' && result.headers?.['set-cookie']) {\n    // Shared caches must not replay Set-Cookie responses\n    return dispatch(opts, new CacheHandler(globalOpts, cacheKey, handler))\n  }",
+                    "path": "lib/interceptor/cache.js",
+                    "old_text": "  const now = Date.now()\n  if (now > result.deleteAt) {\n    // Response is expired, cache store shouldn't have given this to us\n    return dispatch(opts, new CacheHandler(globalOpts, cacheKey, handler))\n  }"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "b44ac02a094f55cd518933501789c5d8f7e098e6c048d279367a66877a28fa51"
+}

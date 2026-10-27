@@ -1,0 +1,57 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 8596,
+    "candidatesTokenCount": 801,
+    "totalTokenCount": 15555,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 8596
+      }
+    ],
+    "thoughtsTokenCount": 6158,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "  if (cacheType === 'shared' && cacheControlDirectives.private === true) {\n    return false\n  }\n\n  // https://www.rfc-editor.org/rfc/rfc9111.html#section-4.1-5",
+                    "new_text": "  if (cacheType === 'shared' && (cacheControlDirectives.private || resHeaders['set-cookie'])) {\n    return false\n  }\n\n  // https://www.rfc-editor.org/rfc/rfc9111.html#section-4.1-5",
+                    "path": "lib/handler/cache-handler.js"
+                  },
+                  {
+                    "new_text": "function revalidationResponseDisallowsCachedReuse (cacheType, resHeaders, cacheControlDirectives) {\n  return cacheControlDirectives['no-store'] === true ||\n    (cacheType === 'shared' && (cacheControlDirectives.private || resHeaders['set-cookie'])) ||\n    (resHeaders.vary ? isInvalidOrWildcardVaryHeader(resHeaders.vary) : false)\n}",
+                    "old_text": "function revalidationResponseDisallowsCachedReuse (cacheType, resHeaders, cacheControlDirectives) {\n  return cacheControlDirectives['no-store'] === true ||\n    (cacheType === 'shared' && cacheControlDirectives.private === true) ||\n    (resHeaders.vary ? isInvalidOrWildcardVaryHeader(resHeaders.vary) : false)\n}",
+                    "path": "lib/handler/cache-handler.js"
+                  },
+                  {
+                    "old_text": "function revalidationResponseDisallowsCachedReuse (cacheType, headers) {\n  if (headers.vary && isInvalidOrWildcardVaryHeader(headers.vary)) {\n    return true\n  }\n\n  const cacheControl = headers['cache-control']\n  if (!cacheControl) {\n    return false\n  }\n\n  const cacheControlDirectives = parseCacheControlHeader(cacheControl)\n  return cacheControlDirectives['no-store'] === true ||\n    (cacheType === 'shared' && cacheControlDirectives.private === true)\n}",
+                    "path": "lib/interceptor/cache.js",
+                    "new_text": "function revalidationResponseDisallowsCachedReuse (cacheType, headers) {\n  if (headers.vary && isInvalidOrWildcardVaryHeader(headers.vary)) {\n    return true\n  }\n\n  const cacheControl = headers['cache-control']\n  const cacheControlDirectives = cacheControl ? parseCacheControlHeader(cacheControl) : {}\n  return cacheControlDirectives['no-store'] === true ||\n    (cacheType === 'shared' && (cacheControlDirectives.private || headers['set-cookie']))\n}"
+                  },
+                  {
+                    "path": "lib/interceptor/cache.js",
+                    "old_text": "  if (!result) {\n    return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)\n  }\n\n  const now = Date.now()",
+                    "new_text": "  if (!result) {\n    return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)\n  }\n\n  if (globalOpts.type === 'shared' && (result.cacheControlDirectives?.private || result.headers?.['set-cookie'])) {\n    return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)\n  }\n\n  const now = Date.now()"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "c941f9b4d67c2c796ad0d30bdec3659ad695ff64cd6d283c840a4c9bab9791cf"
+}

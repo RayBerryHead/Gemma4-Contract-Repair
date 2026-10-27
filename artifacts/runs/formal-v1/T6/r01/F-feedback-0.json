@@ -1,0 +1,102 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": 1.0,
+      "probe_id": "T6-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.1304671000689268,
+      "subject_calls": 1,
+      "input": {
+        "start": "2026-03-29T01:59:59",
+        "end": "2026-03-29T03:00:00",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 1,
+      "contract_check": "equal",
+      "tags": [
+        "elapsed",
+        "dst"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 5.0,
+      "probe_id": "T6-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.0962897315621376,
+      "subject_calls": 1,
+      "input": {
+        "start": "2026-01-02T12:00:00",
+        "end": "2026-01-02T12:00:05",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 5,
+      "contract_check": "equal",
+      "tags": [
+        "elapsed",
+        "ordinary"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 3600.0,
+      "probe_id": "T6-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.0877411775290966,
+      "subject_calls": 1,
+      "input": {
+        "start": "2026-10-25T02:30:00",
+        "end": "2026-10-25T02:30:00",
+        "start_fold": 0,
+        "end_fold": 1,
+        "zone": "Europe/Berlin"
+      },
+      "expected": 3600,
+      "contract_check": "equal",
+      "tags": [
+        "elapsed",
+        "fold"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 10.0,
+      "probe_id": "T6-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.056503916159272194,
+      "subject_calls": 1,
+      "input": {
+        "start": "2026-01-02T12:00:00",
+        "end": "2026-01-02T12:00:10",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 10,
+      "contract_check": "equal",
+      "tags": [
+        "elapsed",
+        "ordinary"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "T6-V-01",
+    "T6-V-02"
+  ],
+  "new_subject_calls": 2,
+  "all_visible_pass": true,
+  "mapped_patch_phases": [],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "2630be3f6048ad3d610b8205bb050b8e3cf471b80eb8bdca9676262e578260e4",
+    "applied_diff_hash": "3de68ecd0dc7201a5d39b6f7f8576b9a92fe6ab7768aed3bd215ec40cbab986d"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "django/middleware/cache.py": [
+      [
+        0,
+        30
+      ],
+      [
+        18,
+        99
+      ],
+      [
+        21,
+        102
+      ],
+      [
+        67,
+        158
+      ]
+    ],
+    "django/utils/cache.py": [
+      [
+        0,
+        30
+      ],
+      [
+        12,
+        93
+      ]
+    ]
+  }
+}

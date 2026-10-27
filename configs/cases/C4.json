@@ -1,0 +1,130 @@
+{
+  "id": "C4",
+  "contract": "Responses setting a user-specific cookie with Vary: Cookie must not be shared even when the request contains unrelated or refreshed cookies.",
+  "product_paths": [
+    "django/middleware/cache.py"
+  ],
+  "evidence_class": "privacy",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "C4-Q0-01",
+      "case": "C4",
+      "role": "Q0",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "predicate": "cookie_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "store"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C4-V-01",
+      "case": "C4",
+      "role": "V",
+      "params": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "existing_session": true
+      },
+      "expected": null,
+      "predicate": "cookie_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C4-E-01",
+      "case": "C4",
+      "role": "E",
+      "params": {
+        "actors": [
+          "carol",
+          "dave",
+          "carol"
+        ]
+      },
+      "expected": null,
+      "predicate": "cookie_isolation",
+      "cost": 3,
+      "tags": [
+        "identity/key",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C4-E-02",
+      "case": "C4",
+      "role": "E",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "cookie_name": "language"
+      },
+      "expected": null,
+      "predicate": "cookie_isolation",
+      "cost": 2,
+      "tags": [
+        "store"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C4-V-02",
+      "case": "C4",
+      "role": "V",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "no_cookie": true
+      },
+      "expected": null,
+      "predicate": "cookie_isolation",
+      "cost": 2,
+      "tags": [
+        "store",
+        "cold"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C4-U-01",
+      "case": "C4",
+      "role": "U",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "predicate": "public_reuse",
+      "cost": 2,
+      "tags": [
+        "ordinary",
+        "store",
+        "read"
+      ],
+      "obligation": "isolation"
+    }
+  ]
+}

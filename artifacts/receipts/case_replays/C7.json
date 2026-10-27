@@ -1,0 +1,186 @@
+{
+  "id": "C7",
+  "buggy": {
+    "id": "C7",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "response for alice",
+              "cookie": null
+            },
+            {
+              "body": "response for alice",
+              "cookie": null
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C7-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.13714088313281536,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "response for alice",
+              "cookie": null
+            },
+            {
+              "body": "response for alice",
+              "cookie": null
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C7-V-01",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.1309131681919098,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "response for carol",
+              "cookie": null
+            },
+            {
+              "body": "response for carol",
+              "cookie": null
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C7-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.0922679677605629,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": null
+            },
+            {
+              "body": "public",
+              "cookie": null
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C7-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.09517486020922661,
+        "subject_calls": 2
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "C7",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "response for alice",
+              "cookie": null
+            },
+            {
+              "body": "response for anon",
+              "cookie": null
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C7-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.2292834296822548,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "response for alice",
+              "cookie": null
+            },
+            {
+              "body": "response for anon",
+              "cookie": null
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C7-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.14666330255568027,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "response for carol",
+              "cookie": null
+            },
+            {
+              "body": "response for anon",
+              "cookie": null
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C7-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.1425679288804531,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": null
+            },
+            {
+              "body": "public",
+              "cookie": null
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C7-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.10575193725526333,
+        "subject_calls": 2
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

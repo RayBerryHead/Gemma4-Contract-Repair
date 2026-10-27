@@ -1,0 +1,16 @@
+[
+  {
+    "path": "django/contrib/sessions/middleware.py",
+    "start": 18,
+    "end": 20,
+    "phase": "read",
+    "symbol": "process_request"
+  },
+  {
+    "path": "django/contrib/sessions/middleware.py",
+    "start": 22,
+    "end": 77,
+    "phase": "store",
+    "symbol": "process_response"
+  }
+]

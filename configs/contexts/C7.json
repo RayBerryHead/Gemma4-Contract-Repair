@@ -1,0 +1,24 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "lib/util/cache.js": [
+      [
+        0,
+        30
+      ],
+      [
+        125,
+        206
+      ],
+      [
+        232,
+        321
+      ],
+      [
+        243,
+        331
+      ]
+    ]
+  }
+}

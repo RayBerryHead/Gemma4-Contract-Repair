@@ -1,0 +1,90 @@
+{
+  "id": "C2",
+  "contract": "A redirected cross-origin response must not be stored under the original origin key. Subsequent requests must receive the legitimate origin response. This case concerns origin integrity, not demonstrated private-data disclosure.",
+  "product_paths": [
+    "lib/core/symbols.js",
+    "lib/handler/cache-handler.js",
+    "lib/handler/deduplication-handler.js",
+    "lib/handler/redirect-handler.js"
+  ],
+  "evidence_class": "origin-integrity",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "C2-Q0-01",
+      "case": "C2",
+      "role": "Q0",
+      "params": {},
+      "expected": [
+        "attacker-controlled-content",
+        "legitimate-content"
+      ],
+      "predicate": "redirect_integrity",
+      "cost": 2,
+      "tags": [
+        "redirect",
+        "store"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C2-E-01",
+      "case": "C2",
+      "role": "E",
+      "params": {
+        "path": "/hidden-resource"
+      },
+      "expected": [
+        "attacker-controlled-content",
+        "legitimate-content"
+      ],
+      "predicate": "redirect_integrity",
+      "cost": 2,
+      "tags": [
+        "redirect",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C2-U-01",
+      "case": "C2",
+      "role": "U",
+      "params": {
+        "no_redirect": true
+      },
+      "expected": [
+        "legitimate-content",
+        "legitimate-content"
+      ],
+      "predicate": "redirect_integrity",
+      "cost": 2,
+      "tags": [
+        "read",
+        "ordinary"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C2-U-02",
+      "case": "C2",
+      "role": "U",
+      "params": {
+        "no_redirect": true,
+        "public_control": true
+      },
+      "expected": [
+        "legitimate-content",
+        "legitimate-content"
+      ],
+      "predicate": "public_origin_reuse",
+      "cost": 2,
+      "tags": [
+        "ordinary",
+        "read",
+        "store"
+      ],
+      "obligation": "isolation"
+    }
+  ]
+}

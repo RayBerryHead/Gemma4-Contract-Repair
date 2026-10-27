@@ -1,0 +1,184 @@
+{
+  "id": "T1",
+  "contract": "Month/quarter/year ranges preserve the original day anchor, clip only when needed, and restore the original anchor later. A February 28 start does not imply sticky end-of-month.",
+  "product_paths": [
+    "arrow/arrow.py"
+  ],
+  "evidence_class": "temporal",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "T1-Q0-01",
+      "case": "T1",
+      "role": "Q0",
+      "params": {
+        "start": "2015-01-31",
+        "count": 4
+      },
+      "expected": [
+        "2015-01-31",
+        "2015-02-28",
+        "2015-03-31",
+        "2015-04-30"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "anchor",
+        "month-end"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T1-V-01",
+      "case": "T1",
+      "role": "V",
+      "params": {
+        "start": "2020-01-30",
+        "count": 3
+      },
+      "expected": [
+        "2020-01-30",
+        "2020-02-29",
+        "2020-03-30"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "anchor",
+        "month-end"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T1-E-01",
+      "case": "T1",
+      "role": "E",
+      "params": {
+        "start": "2021-02-28",
+        "count": 3
+      },
+      "expected": [
+        "2021-02-28",
+        "2021-03-28",
+        "2021-04-28"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "anchor",
+        "month-end"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T1-U-01",
+      "case": "T1",
+      "role": "U",
+      "params": {
+        "start": "2021-01-15",
+        "count": 3
+      },
+      "expected": [
+        "2021-01-15",
+        "2021-02-15",
+        "2021-03-15"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "anchor",
+        "month-end"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T1-V-02",
+      "case": "T1",
+      "role": "V",
+      "params": {
+        "start": "2019-01-15",
+        "count": 4
+      },
+      "expected": [
+        "2019-01-15",
+        "2019-02-15",
+        "2019-03-15",
+        "2019-04-15"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "ordinary"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T1-V-03",
+      "case": "T1",
+      "role": "V",
+      "params": {
+        "start": "2021-01-31",
+        "count": 3
+      },
+      "expected": [
+        "2021-01-31",
+        "2021-02-28",
+        "2021-03-31"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "month-end",
+        "anchor"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T1-E-02",
+      "case": "T1",
+      "role": "E",
+      "params": {
+        "start": "2016-02-29",
+        "frame": "year",
+        "count": 5
+      },
+      "expected": [
+        "2016-02-29",
+        "2017-02-28",
+        "2018-02-28",
+        "2019-02-28",
+        "2020-02-29"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "leap",
+        "anchor"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T1-E-03",
+      "case": "T1",
+      "role": "E",
+      "params": {
+        "start": "2019-11-30",
+        "frame": "quarter",
+        "count": 3
+      },
+      "expected": [
+        "2019-11-30",
+        "2020-02-29",
+        "2020-05-30"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "anchor",
+        "quarter"
+      ],
+      "obligation": "time-policy"
+    }
+  ]
+}

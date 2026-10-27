@@ -1,0 +1,231 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "response for alice",
+            "cookie": "session-for-alice"
+          },
+          {
+            "body": "response for bob",
+            "cookie": "session-for-bob"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C1-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.12518266029655933,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "store",
+        "identity/key"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": null
+          },
+          {
+            "body": "public",
+            "cookie": null
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C1-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.09635717049241066,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "contract_check": "public_reuse",
+      "tags": [
+        "store",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "response for alice",
+            "cookie": null
+          },
+          {
+            "body": "response for alice",
+            "cookie": null
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C1-V-01",
+      "role": "V",
+      "passed": false,
+      "elapsed_seconds": 0.12209061160683632,
+      "subject_calls": 3,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "warm_private": true
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "read",
+        "identity/key"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "response for alice",
+            "cookie": "session-for-alice"
+          },
+          {
+            "body": "response for alice",
+            "cookie": "session-for-alice"
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C1-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.09140967950224876,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "alice"
+        ],
+        "private": true
+      },
+      "expected": null,
+      "contract_check": "private_reuse",
+      "tags": [
+        "store",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "response for eve",
+            "cookie": "session-for-eve"
+          },
+          {
+            "body": "response for frank",
+            "cookie": "session-for-frank"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C1-V-03",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.1004556156694889,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "eve",
+          "frank"
+        ]
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "store",
+        "identity/key"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public-body",
+            "cookie": null
+          },
+          {
+            "body": "public-body",
+            "cookie": null
+          },
+          {
+            "body": "public-body",
+            "cookie": "session-for-bob"
+          }
+        ],
+        "origin_calls": 3,
+        "revalidation_seen": true
+      },
+      "probe_id": "C1-V-04",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.14956492744386196,
+      "subject_calls": 3,
+      "input": {
+        "lifecycle": "swr",
+        "warm_actor": "warm-public",
+        "owner": "alice",
+        "reader": "bob",
+        "sequence": "warm public entry; trigger conditional revalidation or stale-while-revalidate; await replacement; read as another actor"
+      },
+      "expected": null,
+      "contract_check": "lifecycle_cookie_isolation",
+      "tags": [
+        "revalidate",
+        "read",
+        "store"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "C1-V-02",
+    "C1-V-03",
+    "C1-V-04"
+  ],
+  "new_subject_calls": 7,
+  "all_visible_pass": false,
+  "mapped_patch_phases": [
+    "read"
+  ],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "04a1440101e06682b7243896cc4b1cb590472eefe41e9404493d4ca20ac9e3ad",
+    "applied_diff_hash": "8e0b0137a55efc6b4c193e58d709c5f4a564194846809c26055921ddb4d15902"
+  }
+}

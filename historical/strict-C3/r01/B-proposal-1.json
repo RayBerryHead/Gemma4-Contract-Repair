@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 3174,
+    "candidatesTokenCount": 421,
+    "totalTokenCount": 10529,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 3174
+      }
+    ],
+    "thoughtsTokenCount": 6934,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "        # Don't cache responses when the Cache-Control header is set to\n        # private, no-cache, or no-store.\n        cache_control = response.get(\"Cache-Control\", \"\").lower()\n        if cache_control and any(\n            directive in cache_control\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response\n\n        # Don't cache responses to requests with Authorization header\n        # unless the response is explicitly public or isolated by Authorization.\n        if request.META.get(\"HTTP_AUTHORIZATION\") and not (\n            \"public\" in cache_control or has_vary_header(response, \"Authorization\")\n        ):\n            return response\n\n        # Don't cache responses when the Vary header contains '*'.",
+                    "new_text": "        # Don't cache responses when the Cache-Control header is set to\n        # private, no-cache, or no-store.\n        cache_control = response.get(\"Cache-Control\", \"\").lower()\n        if cache_control and any(\n            directive in cache_control\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response\n\n        # Non-public responses to nonempty Authorization requests must remain\n        # isolated by Authorization.\n        if request.META.get(\"HTTP_AUTHORIZATION\") and \"public\" not in cache_control:\n            vary = response.get(\"Vary\", \"\")\n            if \"Authorization\" not in vary:\n                response[\"Vary\"] = f\"{vary}, Authorization\".strip(\", \")\n\n        # Don't cache responses when the Vary header contains '*'.",
+                    "path": "django/middleware/cache.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "94958b06493e9e4bed703bb1f95d16e49f0351ff85ceac5c5fa5ecb732291c63"
+}

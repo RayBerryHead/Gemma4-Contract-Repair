@@ -1,0 +1,187 @@
+{
+  "id": "T5",
+  "contract": "Duration days preserve calendar arithmetic; duration hours preserve elapsed-hour arithmetic across DST.",
+  "product_paths": [
+    "src/pendulum/datetime.py",
+    "src/pendulum/duration.py"
+  ],
+  "evidence_class": "temporal",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "T5-Q0-01",
+      "case": "T5",
+      "role": "Q0",
+      "params": {
+        "date": [
+          2017,
+          3,
+          11,
+          10,
+          45
+        ],
+        "zone": "America/Los_Angeles",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2017-03-12 10:45",
+        "elapsed": 82800
+      },
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "calendar",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T5-V-01",
+      "case": "T5",
+      "role": "V",
+      "params": {
+        "date": [
+          2017,
+          3,
+          11,
+          10,
+          45
+        ],
+        "zone": "America/Los_Angeles",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2017-03-12 11:45",
+        "elapsed": 86400
+      },
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "elapsed",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T5-E-01",
+      "case": "T5",
+      "role": "E",
+      "params": {
+        "date": [
+          2023,
+          11,
+          5,
+          0,
+          0
+        ],
+        "zone": "America/Chicago",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2023-11-06 00:00",
+        "elapsed": 90000
+      },
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "calendar",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T5-U-01",
+      "case": "T5",
+      "role": "U",
+      "params": {
+        "date": [
+          2017,
+          3,
+          9,
+          10,
+          45
+        ],
+        "zone": "America/Los_Angeles",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2017-03-10 10:45",
+        "elapsed": 86400
+      },
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "calendar",
+        "ordinary"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T5-V-02",
+      "case": "T5",
+      "role": "V",
+      "params": {
+        "date": [
+          2017,
+          3,
+          12,
+          10,
+          45
+        ],
+        "zone": "America/Los_Angeles",
+        "duration": {
+          "days": -1
+        }
+      },
+      "expected": {
+        "wall": "2017-03-11 10:45",
+        "elapsed": -82800
+      },
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "calendar",
+        "dst",
+        "negative"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T5-V-03",
+      "case": "T5",
+      "role": "V",
+      "params": {
+        "date": [
+          2021,
+          11,
+          7,
+          0,
+          0
+        ],
+        "zone": "America/Chicago",
+        "duration": {
+          "hours": 24
+        }
+      },
+      "expected": {
+        "wall": "2021-11-07 23:00",
+        "elapsed": 86400
+      },
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "elapsed",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 3712,
+    "candidatesTokenCount": 235,
+    "totalTokenCount": 11136,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 3712
+      }
+    ],
+    "thoughtsTokenCount": 7189,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "    switch (key) {\n      case 'min-fresh':\n      case 'max-stale':\n      case 'max-age':\n      case 's-maxage':\n      case 'stale-while-revalidate':\n      case 'stale-if-error': {\n        if (value === undefined || value[0] === ' ') {\n          continue\n        }",
+                    "new_text": "    switch (key) {\n      case 'no-cache':\n      case 'private':\n        output[key] = true\n        break\n      case 'min-fresh':\n      case 'max-stale':\n      case 'max-age':\n      case 's-maxage':\n      case 'stale-while-revalidate':\n      case 'stale-if-error': {\n        if (value === undefined || value[0] === ' ') {\n          continue\n        }",
+                    "path": "lib/util/cache.js"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "9aa9610ca218215b2dafe2ca5f1ed7c41b57eaa8f4182644d0ddc3277bf7ea95"
+}

@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2799,
+    "candidatesTokenCount": 223,
+    "totalTokenCount": 9716,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2799
+      }
+    ],
+    "thoughtsTokenCount": 6694,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "    @staticmethod\n    def fetch_cache_key(request: HttpRequest) -> str:\n        \"\"\"Return a hashed cache key built from the request body and user.\"\"\"\n        m = hashlib.sha256()\n        user = getattr(request, \"user\", None)\n        user_id = user.pk if user and user.is_authenticated else \"anonymous\"\n        m.update(f\"{user_id}:\".encode(\"utf-8\"))\n        m.update(request.body)\n\n        return m.hexdigest()",
+                    "old_text": "    @staticmethod\n    def fetch_cache_key(request: HttpRequest) -> str:\n        \"\"\"Return a hashed cache key built from the request body.\"\"\"\n        m = hashlib.sha256()\n        m.update(request.body)\n\n        return m.hexdigest()",
+                    "path": "django_graphex/views.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "244ea91a59e8259154a1b64240db9c1659b1986d9414c4374e7b1bacfd448681"
+}

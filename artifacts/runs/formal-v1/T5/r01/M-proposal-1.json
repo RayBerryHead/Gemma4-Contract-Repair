@@ -1,0 +1,52 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 3445,
+    "candidatesTokenCount": 428,
+    "totalTokenCount": 13331,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 3445
+      }
+    ],
+    "thoughtsTokenCount": 9458,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "src/pendulum/datetime.py",
+                    "new_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years,\n                months=delta.months,\n                days=delta._days,\n                seconds=delta._total - delta._days * SECONDS_PER_DAY,\n            )",
+                    "old_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )"
+                  },
+                  {
+                    "old_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )",
+                    "path": "src/pendulum/datetime.py",
+                    "new_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years,\n                months=delta.months,\n                days=delta._days,\n                seconds=delta._total - delta._days * SECONDS_PER_DAY,\n            )"
+                  },
+                  {
+                    "old_text": "        _days = abs(int(total)) // SECONDS_PER_DAY * m\n        self._days = _days\n        self._remaining_days = abs(_days) % 7 * m\n        self._weeks = abs(_days) // 7 * m",
+                    "new_text": "        _days = abs(int(total)) // SECONDS_PER_DAY * m\n        self._days = int(days + weeks * 7)\n        self._remaining_days = abs(_days) % 7 * m\n        self._weeks = abs(_days) // 7 * m",
+                    "path": "src/pendulum/duration.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "03ba33b0b910ce8a97583998f69f8403c533fc1013e0f965440a778e1763d95c"
+}

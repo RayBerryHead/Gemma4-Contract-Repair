@@ -1,0 +1,45 @@
+{
+  "id": "TD2",
+  "split": "dev",
+  "contract": "Cron triggers skip nonexistent local firing times at DST spring-forward.",
+  "product_paths": [
+    "src/apscheduler/triggers/cron/__init__.py"
+  ],
+  "evidence_class": "development",
+  "probes": [
+    {
+      "id": "TD2-Q0-01",
+      "case": "TD2",
+      "role": "Q0",
+      "params": {
+        "start": "2026-03-29T00:00:00",
+        "zone": "Europe/Berlin"
+      },
+      "expected": "2026-03-30 02:30",
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "gap",
+        "calendar"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "TD2-U-01",
+      "case": "TD2",
+      "role": "U",
+      "params": {
+        "start": "2026-03-28T00:00:00",
+        "zone": "Europe/Berlin"
+      },
+      "expected": "2026-03-28 02:30",
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "ordinary",
+        "calendar"
+      ],
+      "obligation": "time-policy"
+    }
+  ]
+}

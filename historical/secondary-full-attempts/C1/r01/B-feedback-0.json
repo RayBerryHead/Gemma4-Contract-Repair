@@ -1,0 +1,154 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "response for alice",
+            "cookie": "session-for-alice"
+          },
+          {
+            "body": "response for alice",
+            "cookie": "session-for-alice"
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C1-Q0-01",
+      "role": "Q0",
+      "passed": false,
+      "elapsed_seconds": 0.11683252640068531,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "store",
+        "identity/key"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": null
+          },
+          {
+            "body": "public",
+            "cookie": null
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C1-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.11099501885473728,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "contract_check": "public_reuse",
+      "tags": [
+        "store",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "response for alice",
+            "cookie": "session-for-alice"
+          },
+          {
+            "body": "response for alice",
+            "cookie": "session-for-alice"
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C1-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.11626332253217697,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "alice"
+        ],
+        "private": true
+      },
+      "expected": null,
+      "contract_check": "private_reuse",
+      "tags": [
+        "store",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "response for eve",
+            "cookie": "session-for-eve"
+          },
+          {
+            "body": "response for eve",
+            "cookie": "session-for-eve"
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C1-V-03",
+      "role": "V",
+      "passed": false,
+      "elapsed_seconds": 0.06767100840806961,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "eve",
+          "frank"
+        ]
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "store",
+        "identity/key"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "C1-V-02",
+    "C1-V-03"
+  ],
+  "new_subject_calls": 4,
+  "all_visible_pass": false,
+  "mapped_patch_phases": [],
+  "unmapped": true,
+  "budget_skipped": [],
+  "bank_exhausted": false,
+  "proposal": {
+    "valid": false,
+    "reason": "NO_VALID_PATCH_OR_EDITS",
+    "raw_proposal_hash": "2e072389e0360e1c32688039f9e90762989e613c6f136f203d6bd30fb9a938f4",
+    "applied_diff_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+  }
+}

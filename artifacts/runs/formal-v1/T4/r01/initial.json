@@ -1,0 +1,57 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 4305,
+    "candidatesTokenCount": 558,
+    "totalTokenCount": 14722,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 4305
+      }
+    ],
+    "thoughtsTokenCount": 9859,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "src/pendulum/date.py",
+                    "old_text": "        if day_of_week is None:\n            return dt.set(day=1)\n\n        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week",
+                    "new_text": "        if day_of_week is None:\n            return dt.set(day=1)\n\n        month = calendar.Calendar(0).monthdayscalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week"
+                  },
+                  {
+                    "new_text": "        if day_of_week is None:\n            return dt.set(day=self.days_in_month)\n\n        month = calendar.Calendar(0).monthdayscalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week",
+                    "old_text": "        if day_of_week is None:\n            return dt.set(day=self.days_in_month)\n\n        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week",
+                    "path": "src/pendulum/date.py"
+                  },
+                  {
+                    "new_text": "        if day_of_week is None:\n            return dt.set(day=1)\n\n        month = calendar.Calendar(0).monthdayscalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week",
+                    "old_text": "        if day_of_week is None:\n            return dt.set(day=1)\n\n        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week",
+                    "path": "src/pendulum/datetime.py"
+                  },
+                  {
+                    "new_text": "        if day_of_week is None:\n            return dt.set(day=self.days_in_month)\n\n        month = calendar.Calendar(0).monthdayscalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week",
+                    "path": "src/pendulum/datetime.py",
+                    "old_text": "        if day_of_week is None:\n            return dt.set(day=self.days_in_month)\n\n        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "64333b19ad7146643e12ec9342f2f57be22b40e0001bc8eb79595830cd5a4754"
+}

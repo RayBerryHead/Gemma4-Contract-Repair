@@ -1,0 +1,28 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "src/dateutil/tz/_tzfile.py": [
+      [
+        0,
+        30
+      ],
+      [
+        1202,
+        1283
+      ],
+      [
+        1222,
+        1303
+      ],
+      [
+        1223,
+        1305
+      ],
+      [
+        1275,
+        1356
+      ]
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "task_id": "T5",
+  "contract": "Duration days preserve calendar arithmetic; duration hours preserve elapsed-hour arithmetic across DST.",
+  "policy_origin": "source-backed supplied contract",
+  "source": {
+    "src/pendulum/datetime.py": "# Original line 1\nfrom __future__ import annotations\n\nimport calendar\nimport datetime\nimport traceback\n\nfrom typing import TYPE_CHECKING\nfrom typing import Any\nfrom typing import Callable\nfrom typing import ClassVar\nfrom typing import Optional\nfrom typing import cast\nfrom typing import overload\n\nimport pendulum\n\nfrom pendulum.constants import ATOM\nfrom pendulum.constants import COOKIE\nfrom pendulum.constants import MINUTES_PER_HOUR\nfrom pendulum.constants import MONTHS_PER_YEAR\nfrom pendulum.constants import RFC822\nfrom pendulum.constants import RFC850\nfrom pendulum.constants import RFC1036\nfrom pendulum.constants import RFC1123\nfrom pendulum.constants import RFC2822\nfrom pendulum.constants import RSS\nfrom pendulum.constants import SECONDS_PER_DAY\nfrom pendulum.constants import SECONDS_PER_MINUTE\nfrom pendulum.constants import W3C\nfrom pendulum.constants import YEARS_PER_CENTURY\n# Original line 648\n        weeks: int = 0,\n        days: int = 0,\n        hours: int = 0,\n        minutes: int = 0,\n        seconds: float = 0,\n        microseconds: int = 0,\n    ) -> Self:\n        \"\"\"\n        Remove duration from the instance.\n        \"\"\"\n        return self.add(\n            years=-years,\n            months=-months,\n            weeks=-weeks,\n            days=-days,\n            hours=-hours,\n            minutes=-minutes,\n            seconds=-seconds,\n            microseconds=-microseconds,\n        )\n\n    # Adding a final underscore to the method name\n    # to avoid errors for PyPy which already defines\n    # a _add_timedelta method\n    def _add_timedelta_(self, delta: datetime.timedelta) -> Self:\n        \"\"\"\n        Add timedelta duration to the instance.\n        \"\"\"\n        if isinstance(delta, pendulum.Interval):\n            return self.add(\n                years=delta.years,\n                months=delta.months,\n                weeks=delta.weeks,\n                days=delta.remaining_days,\n                hours=delta.hours,\n                minutes=delta.minutes,\n                seconds=delta.remaining_seconds,\n                microseconds=delta.microseconds,\n            )\n        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )\n\n        return self.add(seconds=delta.total_seconds())\n\n    def _subtract_timedelta(self, delta: datetime.timedelta) -> Self:\n        \"\"\"\n        Remove timedelta duration from the instance.\n        \"\"\"\n        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )\n\n        return self.subtract(seconds=delta.total_seconds())\n\n    # DIFFERENCES\n\n    def diff(  # type: ignore[override]\n        self, dt: datetime.datetime | None = None, abs: bool = True\n    ) -> Interval:\n        \"\"\"\n        Returns the difference between two DateTime objects represented as an Interval.\n        \"\"\"\n        if dt is None:\n            dt = self.now(self.tz)\n\n        return Interval(self, dt, absolute=abs)\n\n    def diff_for_humans(  # type: ignore[override]\n        self,\n        other: DateTime | None = None,\n        absolute: bool = False,\n        locale: str | None = None,\n    ) -> str:\n        \"\"\"\n        Get the difference in a human readable format in the current locale.\n\n        When comparing a value in the past to default now:\n        1 day ago\n        5 months ago\n",
+    "src/pendulum/duration.py": "# Original line 1\nfrom __future__ import annotations\n\nfrom datetime import timedelta\nfrom typing import TYPE_CHECKING\nfrom typing import cast\nfrom typing import overload\n\nimport pendulum\n\nfrom pendulum.constants import SECONDS_PER_DAY\nfrom pendulum.constants import SECONDS_PER_HOUR\nfrom pendulum.constants import SECONDS_PER_MINUTE\nfrom pendulum.constants import US_PER_SECOND\nfrom pendulum.utils._compat import PYPY\n\n\nif TYPE_CHECKING:\n    from typing_extensions import Self\n\n\ndef _divide_and_round(a: float, b: float) -> int:\n    \"\"\"divide a by b and round result to the nearest integer\n\n    When the ratio is exactly half-way between two integers,\n    the even integer is returned.\n    \"\"\"\n    # Based on the reference implementation for divmod_near\n    # in Objects/longobject.c.\n    q, r = divmod(a, b)\n\n# Original line 74\n        seconds: float = 0,\n        microseconds: float = 0,\n        milliseconds: float = 0,\n        minutes: float = 0,\n        hours: float = 0,\n        weeks: float = 0,\n        years: float = 0,\n        months: float = 0,\n    ) -> Self:\n        if not isinstance(years, int) or not isinstance(months, int):\n            raise ValueError(\"Float year and months are not supported\")\n\n        self = timedelta.__new__(\n            cls,\n            days + years * 365 + months * 30,\n            seconds,\n            microseconds,\n            milliseconds,\n            minutes,\n            hours,\n            weeks,\n        )\n\n        # Intuitive normalization\n        total = self.total_seconds() - (years * 365 + months * 30) * SECONDS_PER_DAY\n        self._total = total\n\n        m = 1\n        if total < 0:\n            m = -1\n\n        self._microseconds = round(total % m * 1e6)\n        self._seconds = abs(int(total)) % SECONDS_PER_DAY * m\n\n        _days = abs(int(total)) // SECONDS_PER_DAY * m\n        self._days = _days\n        self._remaining_days = abs(_days) % 7 * m\n        self._weeks = abs(_days) // 7 * m\n        self._months = months\n        self._years = years\n\n        return self\n\n    def total_minutes(self) -> float:\n        return self.total_seconds() / SECONDS_PER_MINUTE\n\n    def total_hours(self) -> float:\n        return self.total_seconds() / SECONDS_PER_HOUR\n\n    def total_days(self) -> float:\n        return self.total_seconds() / SECONDS_PER_DAY\n\n    def total_weeks(self) -> float:\n        return self.total_days() / 7\n\n    if PYPY:\n\n        def total_seconds(self) -> float:\n            days = 0\n\n            if hasattr(self, \"_years\"):\n                days += self._years * 365\n\n            if hasattr(self, \"_months\"):\n                days += self._months * 30\n\n            if hasattr(self, \"_remaining_days\"):\n                days += self._weeks * 7 + self._remaining_days\n            else:\n                days += self._days\n\n            return (\n                (days * SECONDS_PER_DAY + self._seconds) * US_PER_SECOND\n                + self._microseconds\n            ) / US_PER_SECOND\n\n    @property\n    def years(self) -> int:\n        return self._years\n\n    @property"
+  },
+  "visible_reproducer": [],
+  "preserved_functionality": [
+    {
+      "id": "T5-U-01",
+      "case": "T5",
+      "role": "U",
+      "params": {
+        "date": [
+          2017,
+          3,
+          9,
+          10,
+          45
+        ],
+        "zone": "America/Los_Angeles",
+        "duration": {
+          "days": 1
+        }
+      },
+      "expected": {
+        "wall": "2017-03-10 10:45",
+        "elapsed": 86400
+      },
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "calendar",
+        "ordinary"
+      ],
+      "obligation": "time-policy"
+    }
+  ],
+  "instructions": "Repair the existing product source. Submit one complete cumulative list of exact text replacements against the original buggy base through submit_patch. Use the full source path keys, and copy each old_text exactly once from the supplied source, preserving whitespace. All edits must be cumulative from the original source, including after feedback. Do not edit tests or evaluator files. Source localization is supplied. Use the stated contract and preserve legitimate behavior."
+}

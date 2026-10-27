@@ -1,0 +1,67 @@
+{
+  "task_id": "T7",
+  "contract": "keepLocalTime=true preserves existing wall-clock fields in the target zone; false preserves the instant.",
+  "policy_origin": "source-backed supplied contract",
+  "source": {
+    "src/datetime.js": "// Original line 1\nimport Duration, { friendlyDuration } from \"./duration.js\";\nimport Interval from \"./interval.js\";\nimport Settings from \"./settings.js\";\nimport Info from \"./info.js\";\nimport Formatter from \"./impl/formatter.js\";\nimport FixedOffsetZone from \"./zones/fixedOffsetZone.js\";\nimport Locale from \"./impl/locale.js\";\nimport {\n  isUndefined,\n  maybeArray,\n  isDate,\n  isNumber,\n  bestBy,\n  daysInMonth,\n  daysInYear,\n  isLeapYear,\n  weeksInWeekYear,\n  normalizeObject,\n  roundTo,\n  objToLocalTS\n} from \"./impl/util.js\";\nimport { normalizeZone } from \"./impl/zoneUtil.js\";\nimport diff from \"./impl/diff.js\";\nimport { parseRFC2822Date, parseISODate, parseHTTPDate, parseSQL } from \"./impl/regexParser.js\";\nimport { parseFromTokens, explainFromTokens } from \"./impl/tokenParser.js\";\nimport {\n  gregorianToWeek,\n  weekToGregorian,\n  gregorianToOrdinal,\n  ordinalToGregorian,\n// Original line 1234\n  /**\n   * \"Set\" the DateTime's zone to UTC. Returns a newly-constructed DateTime.\n   *\n   * Equivalent to {@link setZone}('utc')\n   * @param {number} [offset=0] - optionally, an offset from UTC in minutes\n   * @param {Object} [opts={}] - options to pass to `setZone()`\n   * @return {DateTime}\n   */\n  toUTC(offset = 0, opts = {}) {\n    return this.setZone(FixedOffsetZone.instance(offset), opts);\n  }\n\n  /**\n   * \"Set\" the DateTime's zone to the host's local zone. Returns a newly-constructed DateTime.\n   *\n   * Equivalent to `setZone('local')`\n   * @return {DateTime}\n   */\n  toLocal() {\n    return this.setZone(Settings.defaultZone);\n  }\n\n  /**\n   * \"Set\" the DateTime's zone to specified zone. Returns a newly-constructed DateTime.\n   *\n   * By default, the setter keeps the underlying time the same (as in, the same timestamp), but the new instance will report different local times and consider DSTs when making computations, as with {@link plus}. You may wish to use {@link toLocal} and {@link toUTC} which provide simple convenience wrappers for commonly used zones.\n   * @param {string|Zone} [zone='local'] - a zone identifier. As a string, that can be any IANA zone supported by the host environment, or a fixed-offset name of the form 'UTC+3', or the strings 'local' or 'utc'. You may also supply an instance of a {@link Zone} class.\n   * @param {Object} opts - options\n   * @param {boolean} [opts.keepLocalTime=false] - If true, adjust the underlying time so that the local time stays the same, but in the target zone. You should rarely need this.\n   * @return {DateTime}\n   */\n  setZone(zone, { keepLocalTime = false, keepCalendarTime = false } = {}) {\n    zone = normalizeZone(zone, Settings.defaultZone);\n    if (zone.equals(this.zone)) {\n      return this;\n    } else if (!zone.isValid) {\n      return DateTime.invalid(unsupportedZone(zone));\n    } else {\n      let newTS = this.ts;\n      if (keepLocalTime || keepCalendarTime) {\n        const offsetGuess = this.o - zone.offset(this.ts);\n        const asObj = this.toObject();\n        [newTS] = objToTS(asObj, offsetGuess, zone);\n      }\n      return clone(this, { ts: newTS, zone });\n    }\n  }\n\n  /**\n   * \"Set\" the locale, numberingSystem, or outputCalendar. Returns a newly-constructed DateTime.\n   * @param {Object} properties - the properties to set\n   * @example DateTime.local(2017, 5, 25).reconfigure({ locale: 'en-GB' })\n   * @return {DateTime}\n   */\n  reconfigure({ locale, numberingSystem, outputCalendar } = {}) {\n    const loc = this.loc.clone({ locale, numberingSystem, outputCalendar });\n    return clone(this, { loc });\n  }\n\n  /**\n   * \"Set\" the locale. Returns a newly-constructed DateTime.\n   * Just a convenient alias for reconfigure({ locale })\n   * @example DateTime.local(2017, 5, 25).setLocale('en-GB')\n   * @return {DateTime}\n   */\n  setLocale(locale) {\n    return this.reconfigure({ locale });\n  }\n\n  /**\n   * \"Set\" the values of specified units. Returns a newly-constructed DateTime.\n   * You can only set units with this method; for \"setting\" metadata, see {@link reconfigure} and {@link setZone}.\n   * @param {Object} values - a mapping of units to numbers\n   * @example dt.set({ year: 2017 })\n   * @example dt.set({ hour: 8, minute: 30 })\n   * @example dt.set({ weekday: 5 })\n   * @example dt.set({ year: 2005, ordinal: 234 })\n   * @return {DateTime}\n   */\n  set(values) {\n    if (!this.isValid) return this;"
+  },
+  "visible_reproducer": [
+    {
+      "id": "T7-Q0-01",
+      "case": "T7",
+      "role": "Q0",
+      "params": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 30,
+          "hour": 2,
+          "minute": 59
+        },
+        "source_zone": "America/New_York",
+        "target_zone": "Europe/Athens",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2016-10-30 02:59"
+      },
+      "predicate": "subset",
+      "cost": 1,
+      "tags": [
+        "wall",
+        "zone"
+      ],
+      "obligation": "time-policy"
+    }
+  ],
+  "preserved_functionality": [
+    {
+      "id": "T7-U-01",
+      "case": "T7",
+      "role": "U",
+      "params": {
+        "date": {
+          "year": 2025,
+          "month": 1,
+          "day": 15,
+          "hour": 10,
+          "minute": 30
+        },
+        "source_zone": "Asia/Taipei",
+        "target_zone": "Europe/Paris",
+        "keep_local": false
+      },
+      "expected": {
+        "instant_preserved": true
+      },
+      "predicate": "subset",
+      "cost": 1,
+      "tags": [
+        "instant",
+        "zone"
+      ],
+      "obligation": "time-policy"
+    }
+  ],
+  "instructions": "Repair the existing product source. Submit one complete cumulative list of exact text replacements against the original buggy base through submit_patch. Use the full source path keys, and copy each old_text exactly once from the supplied source, preserving whitespace. All edits must be cumulative from the original source, including after feedback. Do not edit tests or evaluator files. Source localization is supplied. Use the stated contract and preserve legitimate behavior."
+}

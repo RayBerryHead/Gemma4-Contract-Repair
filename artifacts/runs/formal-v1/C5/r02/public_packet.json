@@ -1,0 +1,51 @@
+{
+  "task_id": "C5",
+  "contract": "GraphQL cached responses must be scoped to the authenticated user. Preserve same-user and anonymous cache reuse.",
+  "policy_origin": "source-backed supplied contract",
+  "source": {
+    "django_graphex/views.py": "# Original line 1\n\"\"\"GraphQL views: a vendored base view plus the enhanced and authenticated views.\n\n- ``BaseGraphQLView`` \u2014 a self-contained fork of graphene-django's ``GraphQLView``\n  (GET/POST, batch, variable parsing, schema/document validation, atomic\n  mutations) so the package does not depend on the unmaintained ``graphene-django``.\n  GraphiQL is served from a self-contained CDN page by default, overridable with a\n  custom Django template via ``graphiql_template`` (for offline / strict-CSP setups).\n- ``GraphQLView`` \u2014 adds response caching, query depth/cost validation rules and the\n  ``extensions.cost`` payload.\n- ``AuthenticatedGraphQLView`` \u2014 gates the whole endpoint behind the library's own\n  permission classes (no DRF).\n\nReads the project's ``GRAPHENE`` Django setting (``SCHEMA``, ``MIDDLEWARE``,\n``SUBSCRIPTION_PATH``, ``MAX_VALIDATION_ERRORS``, ``ATOMIC_MUTATIONS``) directly.\n\"\"\"\n\nfrom __future__ import annotations\n\nimport hashlib\nimport inspect\nimport json\nimport re\nfrom types import SimpleNamespace\nfrom typing import TYPE_CHECKING, Any\n\nfrom django.core.cache import caches\nfrom django.db import connection, transaction\nfrom django.http import HttpResponse, HttpResponseNotAllowed\nfrom django.http.response import HttpResponseBadRequest\nfrom django.shortcuts import render\nfrom django.utils.decorators import method_decorator\nfrom django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie\nfrom django.views.generic import View\nfrom graphene import Schema\nfrom graphql import (\n    ExecutionResult,\n    OperationType,\n    Source,\n    execute,\n    get_operation_ast,\n    parse,\n    validate_schema,\n)\nfrom graphql.error import GraphQLError\nfrom graphql.execution.middleware import MiddlewareManager\nfrom graphql.validation import specified_rules, validate\n\nfrom . import settings as _settings\nfrom .cost import CostLimitValidationRule, analyze_cost\nfrom .permissions import IsAuthenticated\nfrom .settings import graphene_settings, graphql_api_settings\nfrom .utils import clean_dict\nfrom .validation import DepthLimitValidationRule\n\nif TYPE_CHECKING:\n    from django.http import HttpRequest\n\n#: Request attribute set when a model mutation reported errors, so the\n#: response can roll back an ATOMIC_MUTATIONS transaction.\nMUTATION_ERRORS_FLAG = \"graphene_mutation_has_errors\"\n\n#: Self-contained GraphiQL page (CDN). Avoids depending on graphene-django's\n#: bundled template + static assets. Override per view with ``graphiql_template``.\nGRAPHIQL_HTML = \"\"\"<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>GraphiQL</title>\n    <style>body { height: 100%; margin: 0; width: 100%; overflow: hidden; }\n      #graphiql { height: 100vh; }</style>\n    <link rel=\"stylesheet\" href=\"https://unpkg.com/graphiql@3/graphiql.min.css\" />\n  </head>\n  <body>\n    <div id=\"graphiql\">Loading...</div>\n    <script crossorigin src=\"https://unpkg.com/react@18/umd/react.production.min.js\"></script>\n    <script crossorigin src=\"https://unpkg.com/react-dom@18/umd/react-dom.production.min.js\"></script>\n    <script crossorigin src=\"https://unpkg.com/graphiql@3/graphiql.min.js\"></script>\n    <script>\n      const root = ReactDOM.createRoot(document.getElementById('graphiql'));\n      const fetcher = GraphiQL.createFetcher({ url: window.location.pathname });\n      root.render(React.createElement(GraphiQL, { fetcher }));\n    </script>\n  </body>\n</html>\"\"\"\n\n# Original line 457\n            try:\n                variables = json.loads(variables)\n            except Exception:\n                raise HttpError(HttpResponseBadRequest(\"Variables are invalid JSON.\"))\n\n        operation_name = request.GET.get(\"operationName\") or data.get(\"operationName\")\n        if operation_name == \"null\":\n            operation_name = None\n        return query, variables, operation_name, id\n\n    @staticmethod\n    def format_error(error: Any) -> dict:\n        \"\"\"Format an error for the response ``errors`` list.\"\"\"\n        if isinstance(error, GraphQLError):\n            return error.formatted\n        return {\"message\": str(error)}\n\n    @staticmethod\n    def get_content_type(request: Any) -> str:\n        \"\"\"Return the request content type without parameters.\"\"\"\n        meta = request.META\n        content_type = meta.get(\"CONTENT_TYPE\", meta.get(\"HTTP_CONTENT_TYPE\", \"\"))\n        return content_type.split(\";\", 1)[0].lower()\n\n\nclass GraphQLView(BaseGraphQLView):\n    \"\"\"Enhanced GraphQL view: response caching + depth/cost rules + cost payload.\"\"\"\n\n    #: Standard validation plus query-depth limiting (`Meta.max_deep` /\n    #: `MAX_QUERY_DEPTH`) and cost analysis (`Meta.complexity` / `MAX_QUERY_COST`).\n    #: Both are no-ops until configured.\n    validation_rules = (\n        *specified_rules,\n        DepthLimitValidationRule,\n        CostLimitValidationRule,\n    )\n\n    def get_operation_ast(self, request: HttpRequest) -> Any:\n        \"\"\"Get the AST of the GraphQL operation from the request.\n\n        Args:\n            request: The incoming HTTP request.\n\n        Returns:\n            The operation AST node, or None when there is no query.\n        \"\"\"\n        data = self.parse_body(request)\n        query = request.GET.get(\"query\") or data.get(\"query\")\n\n        if not query:\n            return None\n\n        source = Source(query, name=\"GraphQL request\")\n\n        document_ast = parse(source)\n        operation_ast = get_operation_ast(document_ast, None)\n\n        return operation_ast\n\n    @staticmethod\n    def fetch_cache_key(request: HttpRequest) -> str:\n        \"\"\"Return a hashed cache key built from the request body.\"\"\"\n        m = hashlib.sha256()\n        m.update(request.body)\n\n        return m.hexdigest()\n\n    def super_call(self, request: HttpRequest, *args: Any, **kwargs: Any) -> Any:\n        \"\"\"Call the parent dispatch method.\"\"\"\n        response = super().dispatch(request, *args, **kwargs)\n\n        return response\n\n    def dispatch(self, request: HttpRequest, *args: Any, **kwargs: Any) -> Any:\n        \"\"\"Fetch queried data from GraphQL and return the cached response.\"\"\"\n        if not graphql_api_settings.CACHE_ACTIVE:\n            return self.super_call(request, *args, **kwargs)\n\n        cache = caches[\"default\"]\n        operation_ast = self.get_operation_ast(request)\n        # `operation` is a graphql-core ``OperationType`` enum, so compare its\n        # value (a bare ``== \"mutation\"`` is always False and would skip the\n        # cache invalidation, serving stale results after a mutation).\n        operation = getattr(getattr(operation_ast, \"operation\", None), \"value\", None)\n        if operation == \"mutation\":\n            cache.clear()\n            return self.super_call(request, *args, **kwargs)\n\n        cache_key = f\"_graplql_{self.fetch_cache_key(request)}\"\n        response = cache.get(cache_key)\n\n        if not response:\n            response = self.super_call(request, *args, **kwargs)\n\n            # cache key and value\n            cache.set(cache_key, response, timeout=graphql_api_settings.CACHE_TIMEOUT)\n\n        return response\n\n    @classmethod\n    def as_view(cls, *args: Any, **kwargs: Any) -> Any:\n        \"\"\"Create the view with CSRF exemption.\"\"\"\n        view = super().as_view(*args, **kwargs)\n        view = csrf_exempt(view)\n        return view\n\n    def get_response(\n        self, request: HttpRequest, data: Any, show_graphiql: bool = False\n    ) -> tuple[Any, int]:\n        \"\"\"Build the GraphQL response with error handling and data cleaning.\n\n        Args:\n            request: The incoming HTTP request.\n            data: The parsed request body.\n            show_graphiql: Whether the GraphiQL interface is being rendered.\n\n        Returns:\n            A pair of the encoded response (or None) and the HTTP status code.\n        \"\"\"\n        query, variables, operation_name, id = self.get_graphql_params(request, data)\n\n        execution_result = self.execute_graphql_request(\n            request, data, query, variables, operation_name, show_graphiql\n        )\n\n        status_code = 200\n        if execution_result:\n            response: dict[str, Any] = {}\n\n            if execution_result.errors:\n                response[\"errors\"] = [\n                    self.format_error(e) for e in execution_result.errors\n                ]\n\n            if execution_result.errors and not execution_result.data:\n                # If there are errors and no data, consider it invalid."
+  },
+  "visible_reproducer": [
+    {
+      "id": "C5-Q0-01",
+      "case": "C5",
+      "role": "Q0",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "identity/key",
+        "store"
+      ],
+      "obligation": "isolation"
+    }
+  ],
+  "preserved_functionality": [
+    {
+      "id": "C5-U-01",
+      "case": "C5",
+      "role": "U",
+      "params": {
+        "actors": [
+          "alice",
+          "alice"
+        ]
+      },
+      "expected": null,
+      "predicate": "private_reuse",
+      "cost": 2,
+      "tags": [
+        "store",
+        "read"
+      ],
+      "obligation": "isolation"
+    }
+  ],
+  "instructions": "Repair the existing product source. Submit one complete cumulative list of exact text replacements against the original buggy base through submit_patch. Use the full source path keys, and copy each old_text exactly once from the supplied source, preserving whitespace. All edits must be cumulative from the original source, including after feedback. Do not edit tests or evaluator files. Source localization is supplied. Use the stated contract and preserve legitimate behavior."
+}

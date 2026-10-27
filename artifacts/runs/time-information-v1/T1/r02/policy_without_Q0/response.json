@@ -1,0 +1,41 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2393,
+    "candidatesTokenCount": 198,
+    "totalTokenCount": 8479,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2393
+      }
+    ],
+    "thoughtsTokenCount": 5888,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "arrow/arrow.py",
+                    "new_text": "        start_arrow = cls.fromdatetime(start)\n        current = start_arrow\n        i = 0\n\n        while current <= end and i < limit:\n            i += 1\n            yield current\n\n            current = start_arrow.shift(\n                **{frame_relative: relative_steps * i}\n            )",
+                    "old_text": "        current = cls.fromdatetime(start)\n        i = 0\n\n        while current <= end and i < limit:\n            i += 1\n            yield current\n\n            values = [getattr(current, f) for f in cls._ATTRS]\n            current = cls(*values, tzinfo=tzinfo).shift(\n                **{frame_relative: relative_steps}\n            )"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "original_response_sha256": "7d0a3bb347acf985f6a1464fc07b5b17ad03099d3255d89c6ba7ba2fd5806ad3"
+}

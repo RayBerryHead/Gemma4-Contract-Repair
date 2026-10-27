@@ -1,0 +1,438 @@
+{
+  "cases": [
+    {
+      "id": "C1",
+      "repo": "nodejs/undici",
+      "revisions": {
+        "buggy": {
+          "repo": "nodejs/undici",
+          "sha": "6d583124e7cf60b640097d64144ed633cc450584",
+          "url": "https://codeload.github.com/nodejs/undici/tar.gz/6d583124e7cf60b640097d64144ed633cc450584",
+          "archive_sha256": "7017c60753d3e9949749bccc5e2da200598c6f92400a9e408e2d1e4c6bea14ac",
+          "path": "artifacts/sources/nodejs--undici-6d583124e7cf60b640097d64144ed633cc450584",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "nodejs/undici",
+          "sha": "cb75bbb34224a968b4ad80cab8b7aba5e0b3b28a",
+          "url": "https://codeload.github.com/nodejs/undici/tar.gz/cb75bbb34224a968b4ad80cab8b7aba5e0b3b28a",
+          "archive_sha256": "2f3b71b4b377acfec96d104cd7506d24cf100f2c46f0ff526669432604273e22",
+          "path": "artifacts/sources/nodejs--undici-cb75bbb34224a968b4ad80cab8b7aba5e0b3b28a",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "C2",
+      "repo": "nodejs/undici",
+      "revisions": {
+        "buggy": {
+          "repo": "nodejs/undici",
+          "sha": "f75eac00ac177f7b2e6c8bfbd52d4113164286e6",
+          "url": "https://codeload.github.com/nodejs/undici/tar.gz/f75eac00ac177f7b2e6c8bfbd52d4113164286e6",
+          "archive_sha256": "71537fb8a0caa29723dcd5264fa770b6c16f3c5ded8cc5c322ce77cd0a6a6e65",
+          "path": "artifacts/sources/nodejs--undici-f75eac00ac177f7b2e6c8bfbd52d4113164286e6",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "nodejs/undici",
+          "sha": "26c2bfb3def0b67241ce878e80657ed5d6c3efa8",
+          "url": "https://codeload.github.com/nodejs/undici/tar.gz/26c2bfb3def0b67241ce878e80657ed5d6c3efa8",
+          "archive_sha256": "ac183478d26b8a96d66039ebef02dbabfdd037b5f903aaf853bffd585f946849",
+          "path": "artifacts/sources/nodejs--undici-26c2bfb3def0b67241ce878e80657ed5d6c3efa8",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "C3",
+      "repo": "django/django",
+      "revisions": {
+        "buggy": {
+          "repo": "django/django",
+          "sha": "d618d7ae4fec727d5b582bd24f803c28d17bf7cd",
+          "url": "https://codeload.github.com/django/django/tar.gz/d618d7ae4fec727d5b582bd24f803c28d17bf7cd",
+          "archive_sha256": "6eb0b7591ebe2163903af955e58b4b79e5c5a4b2e1ea30ff6bd2d448acfb78c6",
+          "path": "artifacts/sources/django--django-d618d7ae4fec727d5b582bd24f803c28d17bf7cd",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "django/django",
+          "sha": "a2faa8e895926ac5d63f72879b5ccf671b5b4ba9",
+          "url": "https://codeload.github.com/django/django/tar.gz/a2faa8e895926ac5d63f72879b5ccf671b5b4ba9",
+          "archive_sha256": "7aa0e0af82a6dd8bd16a8842343b816d49a14f6e0d80fb4142545c3ac1c47eaf",
+          "path": "artifacts/sources/django--django-a2faa8e895926ac5d63f72879b5ccf671b5b4ba9",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "C4",
+      "repo": "django/django",
+      "revisions": {
+        "buggy": {
+          "repo": "django/django",
+          "sha": "7f3954386beaabc59695629b81c2c2d0cf0fe522",
+          "url": "https://codeload.github.com/django/django/tar.gz/7f3954386beaabc59695629b81c2c2d0cf0fe522",
+          "archive_sha256": "f326d9eea835f5a55133ac07b8a54c1e07d667306174d9f18d87b89801d5787b",
+          "path": "artifacts/sources/django--django-7f3954386beaabc59695629b81c2c2d0cf0fe522",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "django/django",
+          "sha": "6e365f8d01f2ba0bbd90968d76a42600fb8bc4b1",
+          "url": "https://codeload.github.com/django/django/tar.gz/6e365f8d01f2ba0bbd90968d76a42600fb8bc4b1",
+          "archive_sha256": "0017f3022857306688acd4efc0e37a918e9e13ef0dc2e42689d5968664ac6989",
+          "path": "artifacts/sources/django--django-6e365f8d01f2ba0bbd90968d76a42600fb8bc4b1",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "C5",
+      "repo": "eamigo86/django-graphex",
+      "revisions": {
+        "buggy": {
+          "repo": "eamigo86/django-graphex",
+          "sha": "dd62b60d82cfc525a7480d3b511136eea94d351c",
+          "url": "https://codeload.github.com/eamigo86/django-graphex/tar.gz/dd62b60d82cfc525a7480d3b511136eea94d351c",
+          "archive_sha256": "40f441e238db1bb888ffb4e0427940620161f63154f41b996ac437cfeed36405",
+          "path": "artifacts/sources/eamigo86--django-graphex-dd62b60d82cfc525a7480d3b511136eea94d351c",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "eamigo86/django-graphex",
+          "sha": "ce471bd33b4146917195a1224ba776099a5497ad",
+          "url": "https://codeload.github.com/eamigo86/django-graphex/tar.gz/ce471bd33b4146917195a1224ba776099a5497ad",
+          "archive_sha256": "9644b12d8237713a5d3ccdffc14b3d516627c21bd39e450b8f5c09f37fbf7fd4",
+          "path": "artifacts/sources/eamigo86--django-graphex-ce471bd33b4146917195a1224ba776099a5497ad",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "C6",
+      "repo": "django/django",
+      "revisions": {
+        "buggy": {
+          "repo": "django/django",
+          "sha": "5a89e341bfc77dd67b7fd57b7091b6430558e1f4",
+          "url": "https://codeload.github.com/django/django/tar.gz/5a89e341bfc77dd67b7fd57b7091b6430558e1f4",
+          "archive_sha256": "7d05716b4cadc4c8762ba56b90744df6d252f7088315ed36b137d0549edc890f",
+          "path": "artifacts/sources/django--django-5a89e341bfc77dd67b7fd57b7091b6430558e1f4",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "django/django",
+          "sha": "7f6e9b55130d5158804c0acbc0b24ccb7422ed82",
+          "url": "https://codeload.github.com/django/django/tar.gz/7f6e9b55130d5158804c0acbc0b24ccb7422ed82",
+          "archive_sha256": "e2724394c57b02261676dfdfb36039e728e57c75aec218e3d4587fd058df8ee6",
+          "path": "artifacts/sources/django--django-7f6e9b55130d5158804c0acbc0b24ccb7422ed82",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "C7",
+      "repo": "nodejs/undici",
+      "revisions": {
+        "buggy": {
+          "repo": "nodejs/undici",
+          "sha": "10d93fc332f2c8c161982dec3833201de29891b5",
+          "url": "https://codeload.github.com/nodejs/undici/tar.gz/10d93fc332f2c8c161982dec3833201de29891b5",
+          "archive_sha256": "c180b8909d73c28c0e03c52ce0a1b00683d944b90995f42b2d21f08b117c6176",
+          "path": "artifacts/sources/nodejs--undici-10d93fc332f2c8c161982dec3833201de29891b5",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "nodejs/undici",
+          "sha": "4fe5bc5fefe5ac81a200fc8e1cf84b8bf8464451",
+          "url": "https://codeload.github.com/nodejs/undici/tar.gz/4fe5bc5fefe5ac81a200fc8e1cf84b8bf8464451",
+          "archive_sha256": "1d31ee9a0ac0e46e830cead18d8b338cba1075632a5fc3b43d1b2c467c8c6e39",
+          "path": "artifacts/sources/nodejs--undici-4fe5bc5fefe5ac81a200fc8e1cf84b8bf8464451",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "C8",
+      "repo": "django/django",
+      "revisions": {
+        "buggy": {
+          "repo": "django/django",
+          "sha": "2c5e4af3cccd88a7f0ea66a56aff1a49ad274681",
+          "url": "https://codeload.github.com/django/django/tar.gz/2c5e4af3cccd88a7f0ea66a56aff1a49ad274681",
+          "archive_sha256": "20f969d6aa1bf8c0c6721346ee50f977cbe594e8b0c680085e0197ba99207136",
+          "path": "artifacts/sources/django--django-2c5e4af3cccd88a7f0ea66a56aff1a49ad274681",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "django/django",
+          "sha": "b461519bf5973d7fc149560d2f99acdba71a437d",
+          "url": "https://codeload.github.com/django/django/tar.gz/b461519bf5973d7fc149560d2f99acdba71a437d",
+          "archive_sha256": "6dc5939ba3511e5deba12f3475c56b9df8e6eba6a467c505c0dd44b7d712d6e2",
+          "path": "artifacts/sources/django--django-b461519bf5973d7fc149560d2f99acdba71a437d",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "T1",
+      "repo": "arrow-py/arrow",
+      "revisions": {
+        "buggy": {
+          "repo": "arrow-py/arrow",
+          "sha": "405e0a5535343d594c4c646a643c83d347a8ae75",
+          "url": "https://codeload.github.com/arrow-py/arrow/tar.gz/405e0a5535343d594c4c646a643c83d347a8ae75",
+          "archive_sha256": "58126ab4613f9b2995419e73759d8f13de7c622d222ddb58f5cc2fdaae5432a8",
+          "path": "artifacts/sources/arrow-py--arrow-405e0a5535343d594c4c646a643c83d347a8ae75",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "arrow-py/arrow",
+          "sha": "da6ed8c028136ae2b4421e156d3cd65ecbf5efae",
+          "url": "https://codeload.github.com/arrow-py/arrow/tar.gz/da6ed8c028136ae2b4421e156d3cd65ecbf5efae",
+          "archive_sha256": "42ea4e02c9bf2dd5a337ed92ffcb95bc50bca2058b1cb7ad4d7205b64bfd7422",
+          "path": "artifacts/sources/arrow-py--arrow-da6ed8c028136ae2b4421e156d3cd65ecbf5efae",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "T2",
+      "repo": "pallets-eco/croniter",
+      "revisions": {
+        "buggy": {
+          "repo": "pallets-eco/croniter",
+          "sha": "e15047e612d2ad8cf9cdeeef99eac5787effd33d",
+          "url": "https://codeload.github.com/pallets-eco/croniter/tar.gz/e15047e612d2ad8cf9cdeeef99eac5787effd33d",
+          "archive_sha256": "e40460cbcdcbd2134cc55904f0000b9c84cf5cec2724e45332f5640b031b0049",
+          "path": "artifacts/sources/pallets-eco--croniter-e15047e612d2ad8cf9cdeeef99eac5787effd33d",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "pallets-eco/croniter",
+          "sha": "f1f3b2e144ee4dedd68585e5d22af6b776de6127",
+          "url": "https://codeload.github.com/pallets-eco/croniter/tar.gz/f1f3b2e144ee4dedd68585e5d22af6b776de6127",
+          "archive_sha256": "0fbedfa5a016501003c1a52e492be477b91f954dce637bcd031e563039eef13e",
+          "path": "artifacts/sources/pallets-eco--croniter-f1f3b2e144ee4dedd68585e5d22af6b776de6127",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "T3",
+      "repo": "dateutil/dateutil",
+      "revisions": {
+        "buggy": {
+          "repo": "dateutil/dateutil",
+          "sha": "208f5872937a3578058736708318b712aff29d6a",
+          "url": "https://codeload.github.com/dateutil/dateutil/tar.gz/208f5872937a3578058736708318b712aff29d6a",
+          "archive_sha256": "30ad4283f4f7ce24275a0ad14c96d8f17de7b6b98174e9e3dfa62565114f9cc6",
+          "path": "artifacts/sources/dateutil--dateutil-208f5872937a3578058736708318b712aff29d6a",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "dateutil/dateutil",
+          "sha": "99f6653c0152ee1f7f91b30d764a67d407407938",
+          "url": "https://codeload.github.com/dateutil/dateutil/tar.gz/99f6653c0152ee1f7f91b30d764a67d407407938",
+          "archive_sha256": "16d6c3c7e775c2d0d06ec5a895f0acd27f6970f812d7110c65ebe2ea576096db",
+          "path": "artifacts/sources/dateutil--dateutil-99f6653c0152ee1f7f91b30d764a67d407407938",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "T4",
+      "repo": "python-pendulum/pendulum",
+      "revisions": {
+        "buggy": {
+          "repo": "python-pendulum/pendulum",
+          "sha": "b97a3f0febffb7f5247e349e4d5a75a529b90fb4",
+          "url": "https://codeload.github.com/python-pendulum/pendulum/tar.gz/b97a3f0febffb7f5247e349e4d5a75a529b90fb4",
+          "archive_sha256": "922df06444e05a2574d455df6d38edb447dab5a399f116e7503741ff6453b336",
+          "path": "artifacts/sources/python-pendulum--pendulum-b97a3f0febffb7f5247e349e4d5a75a529b90fb4",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "python-pendulum/pendulum",
+          "sha": "24ff0e580fef17a83e702ef29affa44da4dc8511",
+          "url": "https://codeload.github.com/python-pendulum/pendulum/tar.gz/24ff0e580fef17a83e702ef29affa44da4dc8511",
+          "archive_sha256": "ebd0e2884414a36b575ccbd47fcd6743de2a643aa9a1daadac09c573951300a7",
+          "path": "artifacts/sources/python-pendulum--pendulum-24ff0e580fef17a83e702ef29affa44da4dc8511",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "T5",
+      "repo": "python-pendulum/pendulum",
+      "revisions": {
+        "buggy": {
+          "repo": "python-pendulum/pendulum",
+          "sha": "8d5aa823d390c88f329e721f00a3cc0ea25e8a6f",
+          "url": "https://codeload.github.com/python-pendulum/pendulum/tar.gz/8d5aa823d390c88f329e721f00a3cc0ea25e8a6f",
+          "archive_sha256": "2deb20d3dfe32e4d40544adbc92b4819b20487bf6d5ce5c26a3e9896e1786e07",
+          "path": "artifacts/sources/python-pendulum--pendulum-8d5aa823d390c88f329e721f00a3cc0ea25e8a6f",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "python-pendulum/pendulum",
+          "sha": "47c92b7cea3139ed631a573425f39c1c8b54ea6a",
+          "url": "https://codeload.github.com/python-pendulum/pendulum/tar.gz/47c92b7cea3139ed631a573425f39c1c8b54ea6a",
+          "archive_sha256": "6502679580c0797f13847fc86aa5c04cf087e9439f1343c91a1186f762d1181a",
+          "path": "artifacts/sources/python-pendulum--pendulum-47c92b7cea3139ed631a573425f39c1c8b54ea6a",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "T6",
+      "repo": "agronholm/apscheduler",
+      "revisions": {
+        "buggy": {
+          "repo": "agronholm/apscheduler",
+          "sha": "0636bf4931fddb706b948b6781ebbd76058f1443",
+          "url": "https://codeload.github.com/agronholm/apscheduler/tar.gz/0636bf4931fddb706b948b6781ebbd76058f1443",
+          "archive_sha256": "554828563cb66b1e9bd03d2640d212415455ab544b8e8ead3cde6a1bec143842",
+          "path": "artifacts/sources/agronholm--apscheduler-0636bf4931fddb706b948b6781ebbd76058f1443",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "agronholm/apscheduler",
+          "sha": "1693db4d8861bf941d299d79a586797ad0ac6467",
+          "url": "https://codeload.github.com/agronholm/apscheduler/tar.gz/1693db4d8861bf941d299d79a586797ad0ac6467",
+          "archive_sha256": "aff87a8719254a982cf05b4ae67aa008fa775330da1bb0911103f96e0a0fb02d",
+          "path": "artifacts/sources/agronholm--apscheduler-1693db4d8861bf941d299d79a586797ad0ac6467",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "T7",
+      "repo": "moment/luxon",
+      "revisions": {
+        "buggy": {
+          "repo": "moment/luxon",
+          "sha": "debf80bcaade0482eccb781f614816ed4e10499e",
+          "url": "https://codeload.github.com/moment/luxon/tar.gz/debf80bcaade0482eccb781f614816ed4e10499e",
+          "archive_sha256": "361e462067ebe6070e45db760e067b205ac68c3b33039a6ab7add5957e98abe4",
+          "path": "artifacts/sources/moment--luxon-debf80bcaade0482eccb781f614816ed4e10499e",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "moment/luxon",
+          "sha": "d4fd0afda16d4ae6fec038c6968ae74348465053",
+          "url": "https://codeload.github.com/moment/luxon/tar.gz/d4fd0afda16d4ae6fec038c6968ae74348465053",
+          "archive_sha256": "28f3a09fc665795017a7aa48e8ff7346d772e6af3924b2d85855762f5bfd5e1a",
+          "path": "artifacts/sources/moment--luxon-d4fd0afda16d4ae6fec038c6968ae74348465053",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "T8",
+      "repo": "date-fns/date-fns",
+      "revisions": {
+        "buggy": {
+          "repo": "date-fns/date-fns",
+          "sha": "e72b620a308bbf5e83085d533997cf4cdb1c3b45",
+          "url": "https://codeload.github.com/date-fns/date-fns/tar.gz/e72b620a308bbf5e83085d533997cf4cdb1c3b45",
+          "archive_sha256": "14238f04e4edd568784c05480318a662a51e949ed4f458eaaa6ae9ff6ae36f41",
+          "path": "artifacts/sources/date-fns--date-fns-e72b620a308bbf5e83085d533997cf4cdb1c3b45",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "date-fns/date-fns",
+          "sha": "dfbb83dce309bb0f5933dd616213cf53058d14f2",
+          "url": "https://codeload.github.com/date-fns/date-fns/tar.gz/dfbb83dce309bb0f5933dd616213cf53058d14f2",
+          "archive_sha256": "457ff20227b5ec8401b629c73f8b45fa4ba61634ffe2ab4d4e0393b3a60b2a87",
+          "path": "artifacts/sources/date-fns--date-fns-dfbb83dce309bb0f5933dd616213cf53058d14f2",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "TD1",
+      "repo": "pallets-eco/croniter",
+      "revisions": {
+        "buggy": {
+          "repo": "pallets-eco/croniter",
+          "sha": "9810279c20030954e2f1ed2cf5f1d34b98c6b07f",
+          "url": "https://codeload.github.com/pallets-eco/croniter/tar.gz/9810279c20030954e2f1ed2cf5f1d34b98c6b07f",
+          "archive_sha256": "9ef1fb6685f3018a5d55a2c4a0ea64126878eed5d9f0927e55b79f71ee5a1d3d",
+          "path": "artifacts/sources/pallets-eco--croniter-9810279c20030954e2f1ed2cf5f1d34b98c6b07f",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "pallets-eco/croniter",
+          "sha": "f329964223eeb29e7788b1a9d615b525148fec96",
+          "url": "https://codeload.github.com/pallets-eco/croniter/tar.gz/f329964223eeb29e7788b1a9d615b525148fec96",
+          "archive_sha256": "359bea8f7e7dc5b576bc05f39576e180e0d609fc444a2f4498fbe9fcfa2e22fe",
+          "path": "artifacts/sources/pallets-eco--croniter-f329964223eeb29e7788b1a9d615b525148fec96",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "TD2",
+      "repo": "agronholm/apscheduler",
+      "revisions": {
+        "buggy": {
+          "repo": "agronholm/apscheduler",
+          "sha": "307896e9f47627b4b752d5745407ee4a989ae24e",
+          "url": "https://codeload.github.com/agronholm/apscheduler/tar.gz/307896e9f47627b4b752d5745407ee4a989ae24e",
+          "archive_sha256": "5ab5db63842beba4893b3d76492cf618d213f81f00bcd0f6325b04e483e2ca98",
+          "path": "artifacts/sources/agronholm--apscheduler-307896e9f47627b4b752d5745407ee4a989ae24e",
+          "status": "SOURCE_READY"
+        },
+        "fixed": {
+          "repo": "agronholm/apscheduler",
+          "sha": "c5a0346d303f64a044ef744aa75d5d6a18593d34",
+          "url": "https://codeload.github.com/agronholm/apscheduler/tar.gz/c5a0346d303f64a044ef744aa75d5d6a18593d34",
+          "archive_sha256": "76c8326daa60a0ec66e97c24026dfc2b1d678acea5d03ce8802cd701eebca707",
+          "path": "artifacts/sources/agronholm--apscheduler-c5a0346d303f64a044ef744aa75d5d6a18593d34",
+          "status": "SOURCE_READY"
+        }
+      }
+    },
+    {
+      "id": "CD1",
+      "repo": "local-synthetic-dev",
+      "revisions": {
+        "buggy": {
+          "path": "artifacts/sources/synthetic-s01-buggy-7d35a2206717",
+          "sha256": "7d35a220671719818bed8a4fd3b0b3e439e5d5d3d37dad9bf26e9f90c5897ab9",
+          "status": "SOURCE_READY",
+          "source_kind": "synthetic_development"
+        },
+        "fixed": {
+          "path": "artifacts/sources/synthetic-s01-fixed-7c3975a72f52",
+          "sha256": "7c3975a72f524b856829b6410a182f53f53b9c2f6cf91f700d8fa35e1a6e83e1",
+          "status": "SOURCE_READY",
+          "source_kind": "synthetic_development"
+        }
+      }
+    },
+    {
+      "id": "CD2",
+      "repo": "local-synthetic-dev",
+      "revisions": {
+        "buggy": {
+          "path": "artifacts/sources/synthetic-s02-buggy-0c1cba53b834",
+          "sha256": "0c1cba53b83495cd0d740692bc133038ba06cb054a935b7d34426bbcc3ca6227",
+          "status": "SOURCE_READY",
+          "source_kind": "synthetic_development"
+        },
+        "fixed": {
+          "path": "artifacts/sources/synthetic-s02-fixed-701d9770ff53",
+          "sha256": "701d9770ff532320ea8215aa93cf3ee7bf58abb2f26ef3be6bd8379531aa3526",
+          "status": "SOURCE_READY",
+          "source_kind": "synthetic_development"
+        }
+      }
+    }
+  ],
+  "created_at": 1792937280.8671417,
+  "host": "GB10"
+}

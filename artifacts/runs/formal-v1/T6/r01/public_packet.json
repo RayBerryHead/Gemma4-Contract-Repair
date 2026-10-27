@@ -1,0 +1,49 @@
+{
+  "task_id": "T6",
+  "contract": "Scheduler waiting intervals measure elapsed instants, with past-due waits clamped to zero.",
+  "policy_origin": "source-backed supplied contract",
+  "source": {
+    "src/apscheduler/schedulers/base.py": "# Original line 1\nimport sys\nimport warnings\nfrom abc import ABCMeta, abstractmethod\nfrom collections.abc import Mapping, MutableMapping\nfrom contextlib import ExitStack\nfrom datetime import datetime, timedelta\nfrom importlib.metadata import entry_points\nfrom logging import getLogger\nfrom threading import TIMEOUT_MAX, RLock\n\nfrom tzlocal import get_localzone\n\nfrom apscheduler.events import (\n    EVENT_ALL,\n    EVENT_ALL_JOBS_REMOVED,\n    EVENT_EXECUTOR_ADDED,\n    EVENT_EXECUTOR_REMOVED,\n    EVENT_JOB_ADDED,\n    EVENT_JOB_MAX_INSTANCES,\n    EVENT_JOB_MODIFIED,\n    EVENT_JOB_REMOVED,\n    EVENT_JOB_SUBMITTED,\n    EVENT_JOBSTORE_ADDED,\n    EVENT_JOBSTORE_REMOVED,\n    EVENT_SCHEDULER_PAUSED,\n    EVENT_SCHEDULER_RESUMED,\n    EVENT_SCHEDULER_SHUTDOWN,\n    EVENT_SCHEDULER_STARTED,\n    JobEvent,\n    JobSubmissionEvent,\n# Original line 1216\n                        else:\n                            event = JobSubmissionEvent(\n                                EVENT_JOB_SUBMITTED, job.id, jobstore_alias, run_times\n                            )\n                            events.append(event)\n\n                        # Update the job if it has a next execution time.\n                        # Otherwise remove it from the job store.\n                        job_next_run = job.trigger.get_next_fire_time(\n                            run_times[-1], now\n                        )\n                        if job_next_run:\n                            job._modify(next_run_time=job_next_run)\n                            jobstore.update_job(job)\n                        else:\n                            self.remove_job(job.id, jobstore_alias)\n\n                # Set a new next wakeup time if there isn't one yet or\n                # the jobstore has an even earlier one\n                jobstore_next_run_time = jobstore.get_next_run_time()\n                if jobstore_next_run_time and (\n                    next_wakeup_time is None\n                    or jobstore_next_run_time < next_wakeup_time\n                ):\n                    next_wakeup_time = jobstore_next_run_time.astimezone(self.timezone)\n\n        # Dispatch collected events\n        for event in events:\n            self._dispatch_event(event)\n\n        # Determine the delay until this method should be called again\n        if self.state == STATE_PAUSED:\n            wait_seconds = None\n            self._logger.debug(\"Scheduler is paused; waiting until resume() is called\")\n        elif next_wakeup_time is None:\n            wait_seconds = None\n            self._logger.debug(\"No jobs; waiting until a job is added\")\n        else:\n            now = datetime.now(self.timezone)\n            wait_seconds = min(\n                max((next_wakeup_time - now).total_seconds(), 0), TIMEOUT_MAX\n            )\n            self._logger.debug(\n                \"Next wakeup is due at %s (in %f seconds)\",\n                next_wakeup_time,\n                wait_seconds,\n            )\n\n        return wait_seconds"
+  },
+  "visible_reproducer": [
+    {
+      "id": "T6-Q0-01",
+      "case": "T6",
+      "role": "Q0",
+      "params": {
+        "start": "2026-03-29T01:59:59",
+        "end": "2026-03-29T03:00:00",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 1,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "elapsed",
+        "dst"
+      ],
+      "obligation": "time-policy"
+    }
+  ],
+  "preserved_functionality": [
+    {
+      "id": "T6-U-01",
+      "case": "T6",
+      "role": "U",
+      "params": {
+        "start": "2026-01-02T12:00:00",
+        "end": "2026-01-02T12:00:05",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 5,
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "elapsed",
+        "ordinary"
+      ],
+      "obligation": "time-policy"
+    }
+  ],
+  "instructions": "Repair the existing product source. Submit one complete cumulative list of exact text replacements against the original buggy base through submit_patch. Use the full source path keys, and copy each old_text exactly once from the supplied source, preserving whitespace. All edits must be cumulative from the original source, including after feedback. Do not edit tests or evaluator files. Source localization is supplied. Use the stated contract and preserve legitimate behavior."
+}

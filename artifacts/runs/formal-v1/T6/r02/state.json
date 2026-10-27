@@ -1,0 +1,363 @@
+{
+  "case_id": "T6",
+  "replicate": "r02",
+  "identity": "24bdd2dda7400442499a11ee06a6f6256ac4a4e6b2814ae21058562ee55bbbd7",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/src/apscheduler/schedulers/base.py b/src/apscheduler/schedulers/base.py\n--- a/src/apscheduler/schedulers/base.py\n+++ b/src/apscheduler/schedulers/base.py\n@@ -3,7 +3,7 @@\n from abc import ABCMeta, abstractmethod\n from collections.abc import Mapping, MutableMapping\n from contextlib import ExitStack\n-from datetime import datetime, timedelta\n+from datetime import datetime, timedelta, timezone\n from importlib.metadata import entry_points\n from logging import getLogger\n from threading import TIMEOUT_MAX, RLock\n@@ -1251,9 +1251,9 @@\n             wait_seconds = None\n             self._logger.debug(\"No jobs; waiting until a job is added\")\n         else:\n-            now = datetime.now(self.timezone)\n+            now = datetime.now(timezone.utc)\n             wait_seconds = min(\n-                max((next_wakeup_time - now).total_seconds(), 0), TIMEOUT_MAX\n+                max((next_wakeup_time.astimezone(timezone.utc) - now).total_seconds(), 0), TIMEOUT_MAX\n             )\n             self._logger.debug(\n                 \"Next wakeup is due at %s (in %f seconds)\",\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T6/r02/B/patch-cc6f31c63d738564",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": 3600.0,
+          "probe_id": "T6-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.07274414226412773,
+          "subject_calls": 1,
+          "input": {
+            "start": "2026-10-25T02:30:00",
+            "end": "2026-10-25T02:30:00",
+            "start_fold": 0,
+            "end_fold": 1,
+            "zone": "Europe/Berlin"
+          },
+          "expected": 3600,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "fold"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": 10.0,
+          "probe_id": "T6-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.06533732451498508,
+          "subject_calls": 1,
+          "input": {
+            "start": "2026-01-02T12:00:00",
+            "end": "2026-01-02T12:00:10",
+            "zone": "Europe/Berlin"
+          },
+          "expected": 10,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "ordinary"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": 1.0,
+          "probe_id": "T6-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.10488667152822018,
+          "subject_calls": 1,
+          "input": {
+            "start": "2025-03-30T01:59:59",
+            "end": "2025-03-30T03:00:00",
+            "zone": "Europe/Berlin"
+          },
+          "expected": 1,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "dst"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": 1.0,
+            "probe_id": "T6-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.08142786845564842,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-03-29T01:59:59",
+              "end": "2026-03-29T03:00:00",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "dst"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 5.0,
+            "probe_id": "T6-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.06259369663894176,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-01-02T12:00:00",
+              "end": "2026-01-02T12:00:05",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 5,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 3600.0,
+            "probe_id": "T6-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.07274414226412773,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-10-25T02:30:00",
+              "end": "2026-10-25T02:30:00",
+              "start_fold": 0,
+              "end_fold": 1,
+              "zone": "Europe/Berlin"
+            },
+            "expected": 3600,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "fold"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 10.0,
+            "probe_id": "T6-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.06533732451498508,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-01-02T12:00:00",
+              "end": "2026-01-02T12:00:10",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 10,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "ordinary"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T6-V-01",
+          "T6-V-02"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "016bd3f3792e532795a8a6c01197dba809698b6287363147fac210dde6a0c09c",
+          "applied_diff_hash": "cc6f31c63d7385646bbfe79ac0161b7e6266610590997c36cf9ec34757aef74d"
+        }
+      },
+      "joint_valid": true
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/src/apscheduler/schedulers/base.py b/src/apscheduler/schedulers/base.py\n--- a/src/apscheduler/schedulers/base.py\n+++ b/src/apscheduler/schedulers/base.py\n@@ -3,7 +3,7 @@\n from abc import ABCMeta, abstractmethod\n from collections.abc import Mapping, MutableMapping\n from contextlib import ExitStack\n-from datetime import datetime, timedelta\n+from datetime import datetime, timedelta, timezone\n from importlib.metadata import entry_points\n from logging import getLogger\n from threading import TIMEOUT_MAX, RLock\n@@ -1251,9 +1251,9 @@\n             wait_seconds = None\n             self._logger.debug(\"No jobs; waiting until a job is added\")\n         else:\n-            now = datetime.now(self.timezone)\n+            now = datetime.now(timezone.utc)\n             wait_seconds = min(\n-                max((next_wakeup_time - now).total_seconds(), 0), TIMEOUT_MAX\n+                max((next_wakeup_time.astimezone(timezone.utc) - now).total_seconds(), 0), TIMEOUT_MAX\n             )\n             self._logger.debug(\n                 \"Next wakeup is due at %s (in %f seconds)\",\n",
+      "last_valid_source": "artifacts/runs/formal-v1/T6/r02/M/patch-cc6f31c63d738564",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": 3600.0,
+          "probe_id": "T6-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.10242261551320553,
+          "subject_calls": 1,
+          "input": {
+            "start": "2026-10-25T02:30:00",
+            "end": "2026-10-25T02:30:00",
+            "start_fold": 0,
+            "end_fold": 1,
+            "zone": "Europe/Berlin"
+          },
+          "expected": 3600,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "fold"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": 10.0,
+          "probe_id": "T6-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.054866284132003784,
+          "subject_calls": 1,
+          "input": {
+            "start": "2026-01-02T12:00:00",
+            "end": "2026-01-02T12:00:10",
+            "zone": "Europe/Berlin"
+          },
+          "expected": 10,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "ordinary"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": 1.0,
+          "probe_id": "T6-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.053554385900497437,
+          "subject_calls": 1,
+          "input": {
+            "start": "2025-03-30T01:59:59",
+            "end": "2025-03-30T03:00:00",
+            "zone": "Europe/Berlin"
+          },
+          "expected": 1,
+          "contract_check": "equal",
+          "tags": [
+            "elapsed",
+            "dst"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": 1.0,
+            "probe_id": "T6-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.08557913638651371,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-03-29T01:59:59",
+              "end": "2026-03-29T03:00:00",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 1,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "dst"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 5.0,
+            "probe_id": "T6-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.07508453167974949,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-01-02T12:00:00",
+              "end": "2026-01-02T12:00:05",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 5,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 3600.0,
+            "probe_id": "T6-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.10242261551320553,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-10-25T02:30:00",
+              "end": "2026-10-25T02:30:00",
+              "start_fold": 0,
+              "end_fold": 1,
+              "zone": "Europe/Berlin"
+            },
+            "expected": 3600,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "fold"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": 10.0,
+            "probe_id": "T6-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.054866284132003784,
+            "subject_calls": 1,
+            "input": {
+              "start": "2026-01-02T12:00:00",
+              "end": "2026-01-02T12:00:10",
+              "zone": "Europe/Berlin"
+            },
+            "expected": 10,
+            "contract_check": "equal",
+            "tags": [
+              "elapsed",
+              "ordinary"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "T6-V-01",
+          "T6-V-02"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "016bd3f3792e532795a8a6c01197dba809698b6287363147fac210dde6a0c09c",
+          "applied_diff_hash": "cc6f31c63d7385646bbfe79ac0161b7e6266610590997c36cf9ec34757aef74d"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "016bd3f3792e532795a8a6c01197dba809698b6287363147fac210dde6a0c09c"
+}

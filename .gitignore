@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+artifacts/sources/
+artifacts/report-cache/
+artifacts/node-runtime/node_modules/
+artifacts/runs/published-replay/
+artifacts/runs/new-sampling-v1/
+artifacts/results/published-replay/
+artifacts/api/*.lock

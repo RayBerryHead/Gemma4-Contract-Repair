@@ -1,0 +1,391 @@
+{
+  "case_id": "C6",
+  "replicate": "r02",
+  "identity": "c8acb926ec7e934e940157a511e2cb152e46f5f4e628444ababcd0d7075c3a09",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/django/contrib/sessions/middleware.py b/django/contrib/sessions/middleware.py\n--- a/django/contrib/sessions/middleware.py\n+++ b/django/contrib/sessions/middleware.py\n@@ -74,4 +74,5 @@\n                         httponly=settings.SESSION_COOKIE_HTTPONLY or None,\n                         samesite=settings.SESSION_COOKIE_SAMESITE,\n                     )\n+                    patch_vary_headers(response, (\"Cookie\",))\n         return response\n",
+      "last_valid_source": "artifacts/runs/formal-v1/C6/r02/B/patch-557f778b79704feb",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "public",
+                "cookie": "eyJpZGVudGl0eSI6ImJvYiJ9:1xLh5f:EpiXjZKBvdulyC6DcJyknI5uz7vVui8O6wo2e3IZkC0"
+              },
+              {
+                "body": "public",
+                "cookie": null
+              }
+            ],
+            "origin_calls": 2,
+            "owner_preserved": true
+          },
+          "probe_id": "C6-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.1408391259610653,
+          "subject_calls": 2,
+          "input": {
+            "owner": "bob",
+            "touch_session": true
+          },
+          "expected": null,
+          "contract_check": "session_not_replayed",
+          "tags": [
+            "store",
+            "read"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "public",
+                "cookie": "eyJpZGVudGl0eSI6ImNhcm9sIn0:1xLh5f:hwWt5c8ajzRQKTHRDHVmfymaH5e2ZYXpiI1w66s4MKY"
+              },
+              {
+                "body": "public",
+                "cookie": null
+              }
+            ],
+            "origin_calls": 2,
+            "owner_preserved": true
+          },
+          "probe_id": "C6-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.1964595466852188,
+          "subject_calls": 2,
+          "input": {
+            "owner": "carol"
+          },
+          "expected": null,
+          "contract_check": "session_not_replayed",
+          "tags": [
+            "read",
+            "identity/key"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": "eyJpZGVudGl0eSI6ImFsaWNlIn0:1xLh5e:Z28QVytdG8mI2F19QBr92qB75nvjdo72sTnSObPQ36I"
+                },
+                {
+                  "body": "public",
+                  "cookie": null
+                }
+              ],
+              "origin_calls": 2,
+              "owner_preserved": true
+            },
+            "probe_id": "C6-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.3752284087240696,
+            "subject_calls": 2,
+            "input": {
+              "owner": "alice"
+            },
+            "expected": null,
+            "contract_check": "session_not_replayed",
+            "tags": [
+              "store",
+              "identity/key"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": null
+                },
+                {
+                  "body": "public",
+                  "cookie": null
+                }
+              ],
+              "origin_calls": 1,
+              "owner_preserved": false
+            },
+            "probe_id": "C6-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.17608977481722832,
+            "subject_calls": 2,
+            "input": {
+              "empty": true
+            },
+            "expected": null,
+            "contract_check": "no_session_created",
+            "tags": [
+              "read",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": "eyJpZGVudGl0eSI6ImJvYiJ9:1xLh5f:EpiXjZKBvdulyC6DcJyknI5uz7vVui8O6wo2e3IZkC0"
+                },
+                {
+                  "body": "public",
+                  "cookie": null
+                }
+              ],
+              "origin_calls": 2,
+              "owner_preserved": true
+            },
+            "probe_id": "C6-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.1408391259610653,
+            "subject_calls": 2,
+            "input": {
+              "owner": "bob",
+              "touch_session": true
+            },
+            "expected": null,
+            "contract_check": "session_not_replayed",
+            "tags": [
+              "store",
+              "read"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "C6-V-01"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "26034f8700ed024623ba954b6428d32aff461a06fc89f2ec7755aa6f0fee23e5",
+          "applied_diff_hash": "557f778b79704febc7e2e91244da2518b045efa85407b9c10c8e43d3216327a7"
+        }
+      },
+      "joint_valid": true
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/django/contrib/sessions/middleware.py b/django/contrib/sessions/middleware.py\n--- a/django/contrib/sessions/middleware.py\n+++ b/django/contrib/sessions/middleware.py\n@@ -74,4 +74,5 @@\n                         httponly=settings.SESSION_COOKIE_HTTPONLY or None,\n                         samesite=settings.SESSION_COOKIE_SAMESITE,\n                     )\n+                    patch_vary_headers(response, (\"Cookie\",))\n         return response\n",
+      "last_valid_source": "artifacts/runs/formal-v1/C6/r02/M/patch-557f778b79704feb",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "public",
+                "cookie": "eyJpZGVudGl0eSI6ImJvYiJ9:1xLh5h:RYZReRJa84iazWk7BCiUmQ5WP7XdjISJP7aJgBNEUyo"
+              },
+              {
+                "body": "public",
+                "cookie": null
+              }
+            ],
+            "origin_calls": 2,
+            "owner_preserved": true
+          },
+          "probe_id": "C6-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.210482744500041,
+          "subject_calls": 2,
+          "input": {
+            "owner": "bob",
+            "touch_session": true
+          },
+          "expected": null,
+          "contract_check": "session_not_replayed",
+          "tags": [
+            "store",
+            "read"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "public",
+                "cookie": "eyJpZGVudGl0eSI6ImNhcm9sIn0:1xLh5i:kzVgELNRYfj-pkS8U2EAmMLcezOowedcae114ZXtfKs"
+              },
+              {
+                "body": "public",
+                "cookie": null
+              }
+            ],
+            "origin_calls": 2,
+            "owner_preserved": true
+          },
+          "probe_id": "C6-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.1700139418244362,
+          "subject_calls": 2,
+          "input": {
+            "owner": "carol"
+          },
+          "expected": null,
+          "contract_check": "session_not_replayed",
+          "tags": [
+            "read",
+            "identity/key"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": "eyJpZGVudGl0eSI6ImFsaWNlIn0:1xLh5h:LBtitWIO2FJzq10eQ5KWwJ8Lbh6hxy8YMI3ezAjPI5M"
+                },
+                {
+                  "body": "public",
+                  "cookie": null
+                }
+              ],
+              "origin_calls": 2,
+              "owner_preserved": true
+            },
+            "probe_id": "C6-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.4546567965298891,
+            "subject_calls": 2,
+            "input": {
+              "owner": "alice"
+            },
+            "expected": null,
+            "contract_check": "session_not_replayed",
+            "tags": [
+              "store",
+              "identity/key"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": null
+                },
+                {
+                  "body": "public",
+                  "cookie": null
+                }
+              ],
+              "origin_calls": 1,
+              "owner_preserved": false
+            },
+            "probe_id": "C6-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.1281458530575037,
+            "subject_calls": 2,
+            "input": {
+              "empty": true
+            },
+            "expected": null,
+            "contract_check": "no_session_created",
+            "tags": [
+              "read",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": "eyJpZGVudGl0eSI6ImJvYiJ9:1xLh5h:RYZReRJa84iazWk7BCiUmQ5WP7XdjISJP7aJgBNEUyo"
+                },
+                {
+                  "body": "public",
+                  "cookie": null
+                }
+              ],
+              "origin_calls": 2,
+              "owner_preserved": true
+            },
+            "probe_id": "C6-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.210482744500041,
+            "subject_calls": 2,
+            "input": {
+              "owner": "bob",
+              "touch_session": true
+            },
+            "expected": null,
+            "contract_check": "session_not_replayed",
+            "tags": [
+              "store",
+              "read"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "C6-V-01"
+        ],
+        "new_subject_calls": 2,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "26034f8700ed024623ba954b6428d32aff461a06fc89f2ec7755aa6f0fee23e5",
+          "applied_diff_hash": "557f778b79704febc7e2e91244da2518b045efa85407b9c10c8e43d3216327a7"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "26034f8700ed024623ba954b6428d32aff461a06fc89f2ec7755aa6f0fee23e5"
+}

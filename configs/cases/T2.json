@@ -1,0 +1,155 @@
+{
+  "id": "T2",
+  "contract": "With expand_from_start_time, cron phases derive from the caller's local start fields, not fields from a UTC roundtrip.",
+  "product_paths": [
+    "src/croniter/croniter.py"
+  ],
+  "evidence_class": "temporal",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "T2-Q0-01",
+      "case": "T2",
+      "role": "Q0",
+      "params": {
+        "start": "2025-01-01T05:00:00",
+        "zone": "Pacific/Auckland",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "zone",
+        "phase"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T2-V-01",
+      "case": "T2",
+      "role": "V",
+      "params": {
+        "start": "2025-01-01T07:00:00",
+        "zone": "Asia/Taipei",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        2,
+        7,
+        12,
+        17,
+        22
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "zone",
+        "phase"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T2-E-01",
+      "case": "T2",
+      "role": "E",
+      "params": {
+        "start": "2025-01-01T05:00:00",
+        "zone": "Asia/Kolkata",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "zone",
+        "phase"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T2-U-01",
+      "case": "T2",
+      "role": "U",
+      "params": {
+        "start": "2025-01-01T05:00:00",
+        "zone": "UTC",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "zone",
+        "phase"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T2-V-02",
+      "case": "T2",
+      "role": "V",
+      "params": {
+        "start": "2025-01-01T05:00:00",
+        "zone": "UTC",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "ordinary",
+        "phase"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T2-V-03",
+      "case": "T2",
+      "role": "V",
+      "params": {
+        "start": "2025-01-01T07:00:00",
+        "zone": "Asia/Tokyo",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        2,
+        7,
+        12,
+        17,
+        22
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "zone",
+        "phase"
+      ],
+      "obligation": "time-policy"
+    }
+  ]
+}

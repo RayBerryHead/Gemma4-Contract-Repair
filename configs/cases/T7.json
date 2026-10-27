@@ -1,0 +1,147 @@
+{
+  "id": "T7",
+  "contract": "keepLocalTime=true preserves existing wall-clock fields in the target zone; false preserves the instant.",
+  "product_paths": [
+    "src/datetime.js"
+  ],
+  "evidence_class": "temporal",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "T7-Q0-01",
+      "case": "T7",
+      "role": "Q0",
+      "params": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 30,
+          "hour": 2,
+          "minute": 59
+        },
+        "source_zone": "America/New_York",
+        "target_zone": "Europe/Athens",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2016-10-30 02:59"
+      },
+      "predicate": "subset",
+      "cost": 1,
+      "tags": [
+        "wall",
+        "zone"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T7-V-01",
+      "case": "T7",
+      "role": "V",
+      "params": {
+        "date": {
+          "year": 2025,
+          "month": 1,
+          "day": 15,
+          "hour": 10,
+          "minute": 30
+        },
+        "source_zone": "Asia/Taipei",
+        "target_zone": "Europe/Paris",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2025-01-15 10:30"
+      },
+      "predicate": "subset",
+      "cost": 1,
+      "tags": [
+        "wall",
+        "zone"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T7-E-01",
+      "case": "T7",
+      "role": "E",
+      "params": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 30,
+          "hour": 2,
+          "minute": 58
+        },
+        "source_zone": "America/New_York",
+        "target_zone": "Europe/Athens",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2016-10-30 02:58"
+      },
+      "predicate": "subset",
+      "cost": 1,
+      "tags": [
+        "wall",
+        "zone"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T7-U-01",
+      "case": "T7",
+      "role": "U",
+      "params": {
+        "date": {
+          "year": 2025,
+          "month": 1,
+          "day": 15,
+          "hour": 10,
+          "minute": 30
+        },
+        "source_zone": "Asia/Taipei",
+        "target_zone": "Europe/Paris",
+        "keep_local": false
+      },
+      "expected": {
+        "instant_preserved": true
+      },
+      "predicate": "subset",
+      "cost": 1,
+      "tags": [
+        "instant",
+        "zone"
+      ],
+      "obligation": "time-policy"
+    },
+    {
+      "id": "T7-V-02",
+      "case": "T7",
+      "role": "V",
+      "params": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 30,
+          "hour": 2,
+          "minute": 57
+        },
+        "source_zone": "America/New_York",
+        "target_zone": "Europe/Athens",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2016-10-30 02:57"
+      },
+      "predicate": "subset",
+      "cost": 1,
+      "tags": [
+        "wall",
+        "zone",
+        "boundary"
+      ],
+      "obligation": "time-policy"
+    }
+  ]
+}

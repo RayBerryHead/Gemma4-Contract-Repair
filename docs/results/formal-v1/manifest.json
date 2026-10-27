@@ -1,0 +1,105 @@
+{
+  "campaign": "formal-v1",
+  "status": "AUTHORIZED_AND_STARTING",
+  "base_sha": "7f8d0c3ac2d1882863917567f527bbf9708afc8b",
+  "started_at_host_utc": "2026-10-27T08:10:01.577965+00:00",
+  "owner": "GB10 Codex paper campaign",
+  "integration_owner": "same campaign",
+  "cash_authority": "FREE_ONLY_STOP_BEFORE_PAID",
+  "model": "gemma-4-31b-it",
+  "main_eval_roots": {
+    "cache": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8"
+    ],
+    "time": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "T7",
+      "T8"
+    ]
+  },
+  "replicates": [
+    "r01",
+    "r02"
+  ],
+  "main_arms": [
+    "B",
+    "M"
+  ],
+  "max_revisions": 2,
+  "full_bank_subset": {
+    "cache": [
+      "C1",
+      "C2",
+      "C3",
+      "C4"
+    ],
+    "time": [
+      "T1",
+      "T4",
+      "T5",
+      "T6"
+    ]
+  },
+  "full_bank_replicate": "r01",
+  "source_hashes": {
+    "configs/runtime.free.json": "1d0e2b91a79d8e06b0d76a25875aaf3ef8a67258b3d7014a085651cb71affd44",
+    "src/gemma_paper/api.py": "f8101a30f4ab7b1a14a478fec6224b280a77fbb9f5f6dd7322b4f0b616e6d19b",
+    "src/gemma_paper/runner.py": "4f3212d950c880e521c4ce283797cbc9fac4bfec9d4d2a0e8cab665e87785dde",
+    "src/gemma_paper/selectors.py": "bc7be9ff20d390483500751d05e5d8ada8c67967ea9f5e9801606dbbcfeb822f",
+    "src/gemma_paper/subjects.py": "91bc9be0b4252ef823ba02a7df64e7e7eb2d72b0b7533271813adde234ca30cd",
+    "configs/cases/C1.json": "a11234f3e74bb30df9291fe2ed20cbaa8081e9b0abdd961b6a7df3cc795453c8",
+    "configs/cases/C2.json": "1490ee2adf58fd661c9da835ddb338667984c74c70fb2948156baf66b699d815",
+    "configs/cases/C3.json": "a09b7b7aad2a757c9031a2fcd64acb1ecaad9160cb09ebae611813134d2fcf65",
+    "configs/cases/C4.json": "402e184c6a06c1dff1d49216e9bdc54c5fd3f0b658bc9edd0d12c691285d8097",
+    "configs/cases/C5.json": "3808728ed962dbb927b443dee55bde72e0c276e4db8d5831b9f8dd682c33637e",
+    "configs/cases/C6.json": "14078e93a2276bb7e747bcbdc06b264d654e66a1bc80d622020c98cb1fcb5bb4",
+    "configs/cases/C7.json": "229764c7ccfbd51dfacfcc46500f41eb0051090b86c8da7b12babf5aedbd7774",
+    "configs/cases/C8.json": "874b23778530e4c65f425ec6890a257bce75af9c8d9ff4e4a6193d8574d4d0ce",
+    "configs/cases/CD1.json": "a48dc3acf3fd42343185bc340c963ac92bb9f3fd964375096cb1d131227c34fc",
+    "configs/cases/CD2.json": "0b4c92d0af2045d46a18fcfcc900c02a61feb0ef3d6ddf8be861eaf8f179bcaa",
+    "configs/cases/T1.json": "93c16cf76b1077d01b885182d9e80de89bfedead7f3365769081ac794cafb4a1",
+    "configs/cases/T2.json": "1eb0c158e0f0310506f914f38105a708e589ff308f472ad2ba558d0c521a034c",
+    "configs/cases/T3.json": "38d7e368a5a89146c9fb1c13ff8f9129a78c03fffce25ae5fc499e0314a3ad09",
+    "configs/cases/T4.json": "d236f5cfdda408525412cc8f8bb2974afdf88756b8bbba3e95788a11d30cda9f",
+    "configs/cases/T5.json": "8e27eac30f8bcc4cb620d9bf5de75bc3a768909cbcb40cd607d027247e2a1b75",
+    "configs/cases/T6.json": "9c6c41d961d5a21bfd97f0b83d49688b76db3698796d43c7eb25ec6d67e94512",
+    "configs/cases/T7.json": "37b47bd528aa027019a061496fcd08e09e74fa4c18aa8bd9fe24ce21400b1ea8",
+    "configs/cases/T8.json": "83e20e881d50de0220134b3a5d27f059d588a4cbfd5f2d1fdfba46bb6424d11f",
+    "configs/cases/TD1.json": "ce935a24d671f461cb7ab4979a5de3e1c3d809ef677bbc0829a56b669809abb1",
+    "configs/cases/TD2.json": "fd6bfcc4d71dab1c4545d3087c720a04b3d7df509592446b7f4f1101d081efcf",
+    "configs/contexts/C1.json": "e0965416d8395f8e97fb6fd13c491a4637958c83bbbde7921b228762d1ab32df",
+    "configs/contexts/C2.json": "26ce22fa9ed1a4742f0331d834c2e9722a09dd8f4291cc55543700690911eb34",
+    "configs/contexts/C3.json": "642316e8f3b6914a05091bf6d5d2f7124575e176ae18848a5dbfc90aef2b2d1e",
+    "configs/contexts/C4.json": "19f6a7c5b69350932041cb8d5346515487429ebe6691f8c09f0c1bb6fbedf448",
+    "configs/contexts/C5.json": "96b96568efb79196d8d7bbb7bc5a149ec7fd5f63e1924d37cc09c83d7149e949",
+    "configs/contexts/C6.json": "2ce465fe5eccc2abc318a51a5665cbbd47a8bbf664ec72f8889b6a3a7ea1a943",
+    "configs/contexts/C7.json": "492cf78dc1fa2041f5579125b387829b00c070e97cd276caca7dd3413d6ad0b6",
+    "configs/contexts/C8.json": "a514882ade750650a0af7cd641f6bedffaf26e6a14b3c1bd975feebc33043207",
+    "configs/contexts/CD1.json": "50bc9fe89fd16454e0181931b9f1eb0cb2235d0e44b15a10f9422b78cc91e8ce",
+    "configs/contexts/CD2.json": "50bc9fe89fd16454e0181931b9f1eb0cb2235d0e44b15a10f9422b78cc91e8ce",
+    "configs/contexts/T1.json": "8941aa3bf63fd741461adf4fa82e22f65d658bd6d530422e9f52cfe4bc94928e",
+    "configs/contexts/T2.json": "b231d9a266a10f3137f47c0bb9843ce29ec6e8b2cd9d8ef65945eb0560cc3767",
+    "configs/contexts/T3.json": "fade0945a4e0471b71ba1bfb5c3a36e8c125f4086b67f0cb67c53c8338347907",
+    "configs/contexts/T4.json": "590b47377172f575669a990fc2d4e5690e452bc5ffc7c12069b9b79d5b217fa3",
+    "configs/contexts/T5.json": "3eef13139d98ce9e4e84e63673a13c8268866ff146f85d1d4803905accef4d6b",
+    "configs/contexts/T6.json": "3fbc03d9ec655ea7ba7ed8c1eebd46566bc96b6ed6cb8edb054e18773fe206d2",
+    "configs/contexts/T7.json": "0681f164b5c7778616553ebf02bb07a44fa0d739834b6359298e79205947ca93",
+    "configs/contexts/T8.json": "e0c8a935ca1567682f1abc05f48cfd17b09b9eb60764c1dbdee2cf0ad94dc805",
+    "configs/contexts/TD1.json": "114049df932d6ab610f03bf97e11a49d3da048610c0a8f8508ef12832f441742",
+    "configs/contexts/TD2.json": "ee388fa0fd0883d32835b16a0c346460f77763500921c85207fa9d221a1b17ae"
+  },
+  "formal_results_at_start": 0,
+  "paying_resources_started": false
+}

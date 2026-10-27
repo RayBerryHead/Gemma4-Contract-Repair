@@ -1,0 +1,68 @@
+{
+  "id": "TD1",
+  "buggy": {
+    "id": "TD1",
+    "results": [
+      {
+        "execution": "PRODUCT_EXCEPTION",
+        "error_type": "CroniterBadCronError",
+        "error": "[0 0 1 */5 *] is not acceptable, out of range",
+        "traceback": "Traceback (most recent call last):\n  File \"<HOST_HOME>/projects/261021_Gemma4_Paper_Research_workers/free-runtime-20261024/fixtures/probe_python.py\", line 177, in <module>\n    observed = run(specification[\"case\"], Path(specification[\"source\"]), specification[\"params\"])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<HOST_HOME>/projects/261021_Gemma4_Paper_Research_workers/free-runtime-20261024/fixtures/probe_python.py\", line 126, in run\n    iterator = croniter(params[\"expression\"], start, expand_from_start_time=True)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"artifacts/sources/pallets-eco--croniter-9810279c20030954e2f1ed2cf5f1d34b98c6b07f/src/croniter/croniter.py\", line 329, in __init__\n    self.expanded, self.nth_weekday_of_month, self.expressions, self.nearest_weekday = self._expand(\n                                                                                       ^^^^^^^^^^^^^\n  File \"artifacts/sources/pallets-eco--croniter-9810279c20030954e2f1ed2cf5f1d34b98c6b07f/src/croniter/croniter.py\", line 1128, in _expand\n    raise CroniterBadCronError(\ncroniter.croniter.CroniterBadCronError: [0 0 1 */5 *] is not acceptable, out of range\n",
+        "probe_id": "TD1-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.11393630504608154,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          1,
+          6,
+          11
+        ],
+        "probe_id": "TD1-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.12334039807319641,
+        "subject_calls": 1
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "TD1",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": [
+          5,
+          10
+        ],
+        "probe_id": "TD1-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.1073949933052063,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          1,
+          6,
+          11
+        ],
+        "probe_id": "TD1-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.1023973859846592,
+        "subject_calls": 1
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY",
+  "admission_note": "The historical bug raises CroniterBadCronError on a valid month phase. This is the expected product failure, not an environment failure."
+}

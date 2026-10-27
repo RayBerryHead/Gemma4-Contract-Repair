@@ -1,0 +1,629 @@
+{
+  "case_id": "C8",
+  "replicate": "r02",
+  "identity": "eee9747a5c4ab7c06c298a6592ef1666f12e46b7047879d6eda23fb6b953a09c",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/django/middleware/cache.py b/django/middleware/cache.py\n--- a/django/middleware/cache.py\n+++ b/django/middleware/cache.py\n@@ -109,12 +109,8 @@\n         cache_control = response.get(\"Cache-Control\", \"\").lower()\n         cache_control_parts = list(split_header_value(cache_control))\n         if cache_control and any(\n-            directive in cache_control_parts\n-            for directive in (\n-                \"private\",\n-                \"no-cache\",\n-                \"no-store\",\n-            )\n+            part.split(\"=\", 1)[0] in (\"private\", \"no-cache\", \"no-store\")\n+            for part in cache_control_parts\n         ):\n             return response\n \n",
+      "last_valid_source": "artifacts/runs/formal-v1/C8/r02/B/patch-dead518dfa00af70",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "alice",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "private=\"X-Private\", max-age=300"
+              },
+              {
+                "body": "anon",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "private=\"X-Private\", max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C8-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.13571259193122387,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "alice",
+              "anon"
+            ],
+            "existing_session": false,
+            "directive": "private=\"X-Private\", max-age=300"
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "anon",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "no-cache=\"X-Private\", max-age=300"
+              },
+              {
+                "body": "bob",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "no-cache=\"X-Private\", max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C8-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.180686604231596,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "anon",
+              "bob"
+            ],
+            "directive": "no-cache=\"X-Private\", max-age=300"
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "carol",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "private=\"X-Private\", max-age=300"
+              },
+              {
+                "body": "dave",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "private=\"X-Private\", max-age=300"
+              },
+              {
+                "body": "carol",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "private=\"X-Private\", max-age=300"
+              }
+            ],
+            "origin_calls": 3
+          },
+          "probe_id": "C8-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.11736948415637016,
+          "subject_calls": 3,
+          "input": {
+            "actors": [
+              "carol",
+              "dave",
+              "carol"
+            ],
+            "directive": "private=\"X-Private\", max-age=300"
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "alice",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "private=\"X-Private\", max-age=300"
+                },
+                {
+                  "body": "bob",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "private=\"X-Private\", max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C8-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.37655362859368324,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ],
+              "directive": "private=\"X-Private\", max-age=300"
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                },
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                }
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C8-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.13234075717628002,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ],
+              "public": true
+            },
+            "expected": null,
+            "contract_check": "public_reuse",
+            "tags": [
+              "store",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "alice",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "private=\"X-Private\", max-age=300"
+                },
+                {
+                  "body": "anon",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "private=\"X-Private\", max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C8-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.13571259193122387,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "anon"
+              ],
+              "existing_session": false,
+              "directive": "private=\"X-Private\", max-age=300"
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "anon",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "no-cache=\"X-Private\", max-age=300"
+                },
+                {
+                  "body": "bob",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "no-cache=\"X-Private\", max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C8-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.180686604231596,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "anon",
+                "bob"
+              ],
+              "directive": "no-cache=\"X-Private\", max-age=300"
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "C8-V-01",
+          "C8-V-02"
+        ],
+        "new_subject_calls": 4,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "afa0c63f4aa23b4f93d2410c16ff5971d1ac22342698b833e80fcf924336ae44",
+          "applied_diff_hash": "dead518dfa00af702632abd4e0541e0a9ca826503254fc058d1216c243cdc5f8"
+        }
+      },
+      "joint_valid": true
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/django/middleware/cache.py b/django/middleware/cache.py\n--- a/django/middleware/cache.py\n+++ b/django/middleware/cache.py\n@@ -109,12 +109,8 @@\n         cache_control = response.get(\"Cache-Control\", \"\").lower()\n         cache_control_parts = list(split_header_value(cache_control))\n         if cache_control and any(\n-            directive in cache_control_parts\n-            for directive in (\n-                \"private\",\n-                \"no-cache\",\n-                \"no-store\",\n-            )\n+            part.split(\"=\", 1)[0] in (\"private\", \"no-cache\", \"no-store\")\n+            for part in cache_control_parts\n         ):\n             return response\n \n",
+      "last_valid_source": "artifacts/runs/formal-v1/C8/r02/M/patch-dead518dfa00af70",
+      "final_audit": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "alice",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "private=\"X-Private\", max-age=300"
+              },
+              {
+                "body": "anon",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "private=\"X-Private\", max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C8-V-01",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.12589453905820847,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "alice",
+              "anon"
+            ],
+            "existing_session": false,
+            "directive": "private=\"X-Private\", max-age=300"
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        },
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "anon",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "no-cache=\"X-Private\", max-age=300"
+              },
+              {
+                "body": "bob",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "no-cache=\"X-Private\", max-age=300"
+              }
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C8-V-02",
+          "role": "V",
+          "passed": true,
+          "elapsed_seconds": 0.12676188722252846,
+          "subject_calls": 2,
+          "input": {
+            "actors": [
+              "anon",
+              "bob"
+            ],
+            "directive": "no-cache=\"X-Private\", max-age=300"
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "responses": [
+              {
+                "body": "carol",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "private=\"X-Private\", max-age=300"
+              },
+              {
+                "body": "dave",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "private=\"X-Private\", max-age=300"
+              },
+              {
+                "body": "carol",
+                "cookie": null,
+                "vary": "",
+                "cache_control": "private=\"X-Private\", max-age=300"
+              }
+            ],
+            "origin_calls": 3
+          },
+          "probe_id": "C8-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.13324514217674732,
+          "subject_calls": 3,
+          "input": {
+            "actors": [
+              "carol",
+              "dave",
+              "carol"
+            ],
+            "directive": "private=\"X-Private\", max-age=300"
+          },
+          "expected": null,
+          "contract_check": "actor_isolation",
+          "tags": [
+            "identity/key",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "alice",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "private=\"X-Private\", max-age=300"
+                },
+                {
+                  "body": "bob",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "private=\"X-Private\", max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C8-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.3845649715512991,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ],
+              "directive": "private=\"X-Private\", max-age=300"
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                },
+                {
+                  "body": "public",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "public, max-age=300"
+                }
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C8-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.12300627306103706,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "bob"
+              ],
+              "public": true
+            },
+            "expected": null,
+            "contract_check": "public_reuse",
+            "tags": [
+              "store",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "alice",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "private=\"X-Private\", max-age=300"
+                },
+                {
+                  "body": "anon",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "private=\"X-Private\", max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C8-V-01",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.12589453905820847,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "alice",
+                "anon"
+              ],
+              "existing_session": false,
+              "directive": "private=\"X-Private\", max-age=300"
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "responses": [
+                {
+                  "body": "anon",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "no-cache=\"X-Private\", max-age=300"
+                },
+                {
+                  "body": "bob",
+                  "cookie": null,
+                  "vary": "",
+                  "cache_control": "no-cache=\"X-Private\", max-age=300"
+                }
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C8-V-02",
+            "role": "V",
+            "passed": true,
+            "elapsed_seconds": 0.12676188722252846,
+            "subject_calls": 2,
+            "input": {
+              "actors": [
+                "anon",
+                "bob"
+              ],
+              "directive": "no-cache=\"X-Private\", max-age=300"
+            },
+            "expected": null,
+            "contract_check": "actor_isolation",
+            "tags": [
+              "identity/key",
+              "read"
+            ]
+          }
+        ],
+        "selected_probe_ids": [
+          "C8-V-01",
+          "C8-V-02"
+        ],
+        "new_subject_calls": 4,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "afa0c63f4aa23b4f93d2410c16ff5971d1ac22342698b833e80fcf924336ae44",
+          "applied_diff_hash": "dead518dfa00af702632abd4e0541e0a9ca826503254fc058d1216c243cdc5f8"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "afa0c63f4aa23b4f93d2410c16ff5971d1ac22342698b833e80fcf924336ae44"
+}

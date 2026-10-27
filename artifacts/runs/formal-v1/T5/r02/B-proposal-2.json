@@ -1,0 +1,52 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 4819,
+    "candidatesTokenCount": 553,
+    "totalTokenCount": 14991,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 4819
+      }
+    ],
+    "thoughtsTokenCount": 9619,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "        self = timedelta.__new__(\n            cls,\n            days + years * 365 + months * 30,\n            seconds,\n            microseconds,\n            milliseconds,\n            minutes,\n            hours,\n            weeks,\n        )\n\n        # Intuitive normalization\n",
+                    "path": "src/pendulum/duration.py",
+                    "new_text": "        self = timedelta.__new__(\n            cls,\n            days + years * 365 + months * 30,\n            seconds,\n            microseconds,\n            milliseconds,\n            minutes,\n            hours,\n            weeks,\n        )\n\n        self._days_input = days\n        self._weeks_input = weeks\n\n        # Intuitive normalization\n"
+                  },
+                  {
+                    "new_text": "        elif isinstance(delta, pendulum.Duration):\n            days_input = getattr(delta, \"_days_input\", 0)\n            weeks_input = getattr(delta, \"_weeks_input\", 0)\n            return self.add(\n                years=delta.years,\n                months=delta.months,\n                weeks=weeks_input,\n                days=days_input,\n                seconds=delta._total - (days_input + weeks_input * 7) * SECONDS_PER_DAY,\n            )\n",
+                    "old_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )\n",
+                    "path": "src/pendulum/datetime.py"
+                  },
+                  {
+                    "new_text": "        if isinstance(delta, pendulum.Duration):\n            days_input = getattr(delta, \"_days_input\", 0)\n            weeks_input = getattr(delta, \"_weeks_input\", 0)\n            return self.subtract(\n                years=delta.years,\n                months=delta.months,\n                weeks=weeks_input,\n                days=days_input,\n                seconds=delta._total - (days_input + weeks_input * 7) * SECONDS_PER_DAY,\n            )\n",
+                    "path": "src/pendulum/datetime.py",
+                    "old_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )\n"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "2d0f00f64bb74904a08d39be7771f4edc157ea07aa65568673d86c6c4180b3f2"
+}

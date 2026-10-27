@@ -1,0 +1,99 @@
+{
+  "status": "EXPLORATORY",
+  "natural_roots": 1,
+  "inputs_per_patch": 30,
+  "new_model_calls": 0,
+  "rows": [
+    {
+      "label": "upstream_buggy",
+      "root": "T5",
+      "product_sha256": "70a79ea01e7358b8c76fad304dff8db935dc67527904b0ea68ac08b77ef9724e",
+      "passed": 18,
+      "total": 30
+    },
+    {
+      "label": "upstream_fixed",
+      "root": "T5",
+      "product_sha256": "d7520a2114f94399c3c41f5ef7ee52f0863ba7dca8306dbf9ffc161fae57453d",
+      "passed": 30,
+      "total": 30
+    },
+    {
+      "label": "r01_initial",
+      "root": "T5",
+      "product_sha256": "f07c791ba44091a7868d7b51cc643721dad93302becb1ad57023bf9eb53601f8",
+      "passed": 18,
+      "total": 30
+    },
+    {
+      "label": "r01_B_retained",
+      "root": "T5",
+      "product_sha256": "3faacf83265d42a5822e90df128a44bcddee22301cc5eddd945810b3a7de5791",
+      "passed": 30,
+      "total": 30
+    },
+    {
+      "label": "r01_M_retained",
+      "root": "T5",
+      "product_sha256": "aa3b86f684d090564ffebf44c594ba16040a0a12f31780b134f1226e33f15458",
+      "passed": 30,
+      "total": 30
+    },
+    {
+      "label": "r01_F_retained",
+      "root": "T5",
+      "product_sha256": "247a744189a228a9176ed8972d7497970e355b90fe79c58d282c7aa0656e6020",
+      "passed": 30,
+      "total": 30
+    },
+    {
+      "label": "r02_initial",
+      "root": "T5",
+      "product_sha256": "c3878e6dd0b1fae7e234596e714a8002f948edf027411572aceb6073bd47ce51",
+      "passed": 18,
+      "total": 30
+    },
+    {
+      "label": "r02_B_retained",
+      "root": "T5",
+      "product_sha256": "e6ac1674e73eec4e9c833dcee7deeeb92f69a24cd4af4a95e2c44f3918f15b6c",
+      "passed": 30,
+      "total": 30
+    },
+    {
+      "label": "r02_M_retained",
+      "root": "T5",
+      "product_sha256": "e196d109b8534cc8b3f2224d10ce1b33e552b5633a6eef30173e963e88a89b06",
+      "passed": 30,
+      "total": 30
+    },
+    {
+      "label": "time-information-v1_r01_Q0_without_added_policy",
+      "root": "T5",
+      "product_sha256": "4874e4389d22940eeba65187790bd664deaa4c130a84e2e06b3dbaa044c48838",
+      "passed": 18,
+      "total": 30
+    },
+    {
+      "label": "time-information-v1_r01_policy_without_Q0",
+      "root": "T5",
+      "product_sha256": "438eb3558002679a108fc89ccadc3d62d0be77eeb893f9fcd529f2cdc7588598",
+      "passed": 30,
+      "total": 30
+    },
+    {
+      "label": "time-information-v1_r02_Q0_without_added_policy",
+      "root": "T5",
+      "product_sha256": "8cdf1b3f8af15f5f0e3313adec071323442217b6f69ab79315a35a5060775aca",
+      "passed": 18,
+      "total": 30
+    },
+    {
+      "label": "time-information-v1_r02_policy_without_Q0",
+      "root": "T5",
+      "product_sha256": "9bc22f7a3f4237e67d36629d1cb6642daf728bbe2cd83ccf03c21b5ee733de33",
+      "passed": 18,
+      "total": 30
+    }
+  ]
+}

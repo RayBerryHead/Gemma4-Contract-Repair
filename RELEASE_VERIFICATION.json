@@ -1,0 +1,12 @@
+{
+  "status": "RELEASE_REPLAY_VERIFIED",
+  "host": "GB10",
+  "public_patch_records": 124,
+  "unique_patches_evaluated": 59,
+  "all_primary_and_information_verdicts_match": true,
+  "public_scaling_and_30_point_contrast_audits_reproduced": true,
+  "live_model_requests": 0,
+  "private_git_history_copied": false,
+  "internal_model_thoughts_published": false,
+  "credentials_published": false
+}

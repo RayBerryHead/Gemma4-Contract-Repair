@@ -1,0 +1,54 @@
+{
+  "id": "TD2",
+  "buggy": {
+    "id": "TD2",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": "2026-03-29 02:30",
+        "probe_id": "TD2-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.16694947332143784,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": "2026-03-28 02:30",
+        "probe_id": "TD2-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.08611823245882988,
+        "subject_calls": 1
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "TD2",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": "2026-03-30 02:30",
+        "probe_id": "TD2-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.142501812428236,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": "2026-03-28 02:30",
+        "probe_id": "TD2-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.09962357953190804,
+        "subject_calls": 1
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

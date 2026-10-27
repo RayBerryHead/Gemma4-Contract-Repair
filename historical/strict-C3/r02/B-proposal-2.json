@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 4431,
+    "candidatesTokenCount": 502,
+    "totalTokenCount": 8883,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 4431
+      }
+    ],
+    "thoughtsTokenCount": 3950,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "        # Don't cache responses that set a user-specific (and maybe security\n        # sensitive) cookie in response to a cookie-less request.\n        if (\n            not request.COOKIES\n            and response.cookies\n            and has_vary_header(response, \"Cookie\")\n        ):\n            return response\n\n        # Don't cache responses when the Cache-Control header is set to\n        # private, no-cache, or no-store.\n        cache_control = response.get(\"Cache-Control\", \"\").lower()\n        if cache_control and any(\n            directive in cache_control\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response\n\n        # If the request has an Authorization header, the response must be\n        # either explicitly public or isolated by Authorization.\n        if request.META.get(\"HTTP_AUTHORIZATION\"):\n            if \"public\" not in cache_control:\n                response.vary(\"Authorization\")\n\n        # Don't cache responses when the Vary header contains '*'.\n        if has_vary_header(response, \"*\"):\n            return response",
+                    "old_text": "        # Don't cache responses that set a user-specific (and maybe security\n        # sensitive) cookie in response to a cookie-less request.\n        if (\n            not request.COOKIES\n            and response.cookies\n            and has_vary_header(response, \"Cookie\")\n        ):\n            return response\n\n        # Don't cache responses when the Cache-Control header is set to\n        # private, no-cache, or no-store.\n        cache_control = response.get(\"Cache-Control\", \"\").lower()\n        if cache_control and any(\n            directive in cache_control\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response\n\n        # Don't cache responses when the Vary header contains '*'.\n        if has_vary_header(response, \"*\"):\n            return response",
+                    "path": "django/middleware/cache.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "b321bdf8eaf0b37b06b092c6745e9bd21d59b99b0a1dfec4920ad956767a010b"
+}

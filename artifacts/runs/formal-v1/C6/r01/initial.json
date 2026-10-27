@@ -1,0 +1,47 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 1214,
+    "candidatesTokenCount": 372,
+    "totalTokenCount": 14881,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1214
+      }
+    ],
+    "thoughtsTokenCount": 13295,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "            if (modified or settings.SESSION_SAVE_EVERY_REQUEST) and not empty:",
+                    "path": "django/contrib/sessions/middleware.py",
+                    "new_text": "            if (modified or (settings.SESSION_SAVE_EVERY_REQUEST and settings.SESSION_COOKIE_NAME in request.COOKIES)) and not empty:"
+                  },
+                  {
+                    "path": "django/contrib/sessions/middleware.py",
+                    "old_text": "                    response.set_cookie(\n                        settings.SESSION_COOKIE_NAME,\n                        request.session.session_key,\n                        max_age=max_age,\n                        expires=expires,\n                        domain=settings.SESSION_COOKIE_DOMAIN,\n                        path=settings.SESSION_COOKIE_PATH,\n                        secure=settings.SESSION_COOKIE_SECURE or None,\n                        httponly=settings.SESSION_COOKIE_HTTPONLY or None,\n                        samesite=settings.SESSION_COOKIE_SAMESITE,\n                    )",
+                    "new_text": "                    patch_vary_headers(response, (\"Cookie\",))\n                    response.set_cookie(\n                        settings.SESSION_COOKIE_NAME,\n                        request.session.session_key,\n                        max_age=max_age,\n                        expires=expires,\n                        domain=settings.SESSION_COOKIE_DOMAIN,\n                        path=settings.SESSION_COOKIE_PATH,\n                        secure=settings.SESSION_COOKIE_SECURE or None,\n                        httponly=settings.SESSION_COOKIE_HTTPONLY or None,\n                        samesite=settings.SESSION_COOKIE_SAMESITE,\n                    )"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "9fce3629e9d3d6b541f339ff3087a7053ff50312678840bcbc3d2360c9ca6971"
+}

@@ -1,0 +1,994 @@
+[
+  {
+    "root": "T1",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T1/r01/patches/initial.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T1/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T1/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r01",
+    "label": "F-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T1/r01/patches/F-retained.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T1/r02/patches/initial.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T1/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T1/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "C4",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C4/r01/patches/initial.diff"
+  },
+  {
+    "root": "C4",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C4/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "C4",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C4/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "C4",
+    "replicate": "r01",
+    "label": "F-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C4/r01/patches/F-retained.diff"
+  },
+  {
+    "root": "C4",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C4/r02/patches/initial.diff"
+  },
+  {
+    "root": "C4",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C4/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "C4",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C4/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "C6",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C6/r01/patches/initial.diff"
+  },
+  {
+    "root": "C6",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C6/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "C6",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C6/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "C6",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C6/r02/patches/initial.diff"
+  },
+  {
+    "root": "C6",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C6/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "C6",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C6/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "C3",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C3/r01/patches/initial.diff"
+  },
+  {
+    "root": "C3",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C3/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "C3",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C3/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "C3",
+    "replicate": "r01",
+    "label": "F-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C3/r01/patches/F-retained.diff"
+  },
+  {
+    "root": "C3",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C3/r02/patches/initial.diff"
+  },
+  {
+    "root": "C3",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C3/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "C3",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C3/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "C5",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C5/r01/patches/initial.diff"
+  },
+  {
+    "root": "C5",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C5/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "C5",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C5/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "C5",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C5/r02/patches/initial.diff"
+  },
+  {
+    "root": "C5",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C5/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "C5",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C5/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T4/r01/patches/initial.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T4/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T4/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r01",
+    "label": "F-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T4/r01/patches/F-retained.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T4/r02/patches/initial.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T4/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T4/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "C2",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C2/r01/patches/initial.diff"
+  },
+  {
+    "root": "C2",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C2/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "C2",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C2/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "C2",
+    "replicate": "r01",
+    "label": "F-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C2/r01/patches/F-retained.diff"
+  },
+  {
+    "root": "C2",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/C2/r02/patches/initial.diff"
+  },
+  {
+    "root": "C2",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/C2/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "C2",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C2/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "T3",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T3/r01/patches/initial.diff"
+  },
+  {
+    "root": "T3",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T3/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "T3",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T3/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "T3",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T3/r02/patches/initial.diff"
+  },
+  {
+    "root": "T3",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T3/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "T3",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T3/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "T8",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/T8/r01/patches/initial.diff"
+  },
+  {
+    "root": "T8",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T8/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "T8",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T8/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "T8",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T8/r02/patches/initial.diff"
+  },
+  {
+    "root": "T8",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T8/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "T8",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T8/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/T5/r01/patches/initial.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T5/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T5/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r01",
+    "label": "F-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T5/r01/patches/F-retained.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/T5/r02/patches/initial.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T5/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T5/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "C8",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C8/r01/patches/initial.diff"
+  },
+  {
+    "root": "C8",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C8/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "C8",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C8/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "C8",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C8/r02/patches/initial.diff"
+  },
+  {
+    "root": "C8",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C8/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "C8",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C8/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "T2",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T2/r01/patches/initial.diff"
+  },
+  {
+    "root": "T2",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T2/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "T2",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T2/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "T2",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T2/r02/patches/initial.diff"
+  },
+  {
+    "root": "T2",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T2/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "T2",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T2/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "T7",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/T7/r01/patches/initial.diff"
+  },
+  {
+    "root": "T7",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/T7/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "T7",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/T7/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "T7",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/T7/r02/patches/initial.diff"
+  },
+  {
+    "root": "T7",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/T7/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "T7",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/T7/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "C1",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/C1/r01/patches/initial.diff"
+  },
+  {
+    "root": "C1",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C1/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "C1",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/C1/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "C1",
+    "replicate": "r01",
+    "label": "F-retained",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/C1/r01/patches/F-retained.diff"
+  },
+  {
+    "root": "C1",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C1/r02/patches/initial.diff"
+  },
+  {
+    "root": "C1",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C1/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "C1",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C1/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "C7",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/C7/r01/patches/initial.diff"
+  },
+  {
+    "root": "C7",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/C7/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "C7",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/C7/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "C7",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/C7/r02/patches/initial.diff"
+  },
+  {
+    "root": "C7",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/C7/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "C7",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/formal-v1/C7/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T6/r01/patches/initial.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r01",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T6/r01/patches/B-retained.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r01",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T6/r01/patches/M-retained.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r01",
+    "label": "F-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T6/r01/patches/F-retained.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r02",
+    "label": "initial",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T6/r02/patches/initial.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r02",
+    "label": "B-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T6/r02/patches/B-retained.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r02",
+    "label": "M-retained",
+    "campaign": "formal-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/formal-v1/T6/r02/patches/M-retained.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "transfer-initials-26b-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/transfer-initials-26b-v1/T1/r01/patches/initial.diff"
+  },
+  {
+    "root": "C3",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "transfer-initials-26b-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/transfer-initials-26b-v1/C3/r01/patches/initial.diff"
+  },
+  {
+    "root": "C1",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "transfer-initials-26b-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/transfer-initials-26b-v1/C1/r01/patches/initial.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r01",
+    "label": "initial",
+    "campaign": "transfer-initials-26b-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/transfer-initials-26b-v1/T6/r01/patches/initial.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r01",
+    "label": "Q0_without_added_policy",
+    "campaign": "time-information-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/time-information-v1/T1/r01/Q0_without_added_policy/patch.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r01",
+    "label": "policy_without_Q0",
+    "campaign": "time-information-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/time-information-v1/T1/r01/policy_without_Q0/patch.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r02",
+    "label": "Q0_without_added_policy",
+    "campaign": "time-information-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/time-information-v1/T1/r02/Q0_without_added_policy/patch.diff"
+  },
+  {
+    "root": "T1",
+    "replicate": "r02",
+    "label": "policy_without_Q0",
+    "campaign": "time-information-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/time-information-v1/T1/r02/policy_without_Q0/patch.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r01",
+    "label": "Q0_without_added_policy",
+    "campaign": "time-information-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/time-information-v1/T4/r01/Q0_without_added_policy/patch.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r01",
+    "label": "policy_without_Q0",
+    "campaign": "time-information-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/time-information-v1/T4/r01/policy_without_Q0/patch.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r02",
+    "label": "Q0_without_added_policy",
+    "campaign": "time-information-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/time-information-v1/T4/r02/Q0_without_added_policy/patch.diff"
+  },
+  {
+    "root": "T4",
+    "replicate": "r02",
+    "label": "policy_without_Q0",
+    "campaign": "time-information-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/time-information-v1/T4/r02/policy_without_Q0/patch.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r01",
+    "label": "Q0_without_added_policy",
+    "campaign": "time-information-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/time-information-v1/T5/r01/Q0_without_added_policy/patch.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r01",
+    "label": "policy_without_Q0",
+    "campaign": "time-information-v1",
+    "joint_valid": true,
+    "diff_file": "artifacts/runs/time-information-v1/T5/r01/policy_without_Q0/patch.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r02",
+    "label": "Q0_without_added_policy",
+    "campaign": "time-information-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/time-information-v1/T5/r02/Q0_without_added_policy/patch.diff"
+  },
+  {
+    "root": "T5",
+    "replicate": "r02",
+    "label": "policy_without_Q0",
+    "campaign": "time-information-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/time-information-v1/T5/r02/policy_without_Q0/patch.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r01",
+    "label": "Q0_without_added_policy",
+    "campaign": "time-information-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/time-information-v1/T6/r01/Q0_without_added_policy/patch.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r01",
+    "label": "policy_without_Q0",
+    "campaign": "time-information-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/time-information-v1/T6/r01/policy_without_Q0/patch.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r02",
+    "label": "Q0_without_added_policy",
+    "campaign": "time-information-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/time-information-v1/T6/r02/Q0_without_added_policy/patch.diff"
+  },
+  {
+    "root": "T6",
+    "replicate": "r02",
+    "label": "policy_without_Q0",
+    "campaign": "time-information-v1",
+    "joint_valid": false,
+    "diff_file": "artifacts/runs/time-information-v1/T6/r02/policy_without_Q0/patch.diff"
+  }
+]

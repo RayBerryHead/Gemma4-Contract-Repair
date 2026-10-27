@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 1099,
+    "candidatesTokenCount": 261,
+    "totalTokenCount": 11123,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1099
+      }
+    ],
+    "thoughtsTokenCount": 9763,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "  var result = (dateLeft - dateRight) / MILLISECONDS_IN_DAY\n\n  // round towards zero\n  if (result > 0) return Math.floor(result)\n  return Math.ceil(result)",
+                    "path": "src/differenceInDays/index.js",
+                    "new_text": "  var startLeft = new Date(dateLeft.getTime())\n  startLeft.setHours(0, 0, 0, 0)\n  var startRight = new Date(dateRight.getTime())\n  startRight.setHours(0, 0, 0, 0)\n\n  var result = Math.round((startLeft - startRight) / MILLISECONDS_IN_DAY)\n\n  var timeLeft = dateLeft.getTime() - startLeft.getTime()\n  var timeRight = dateRight.getTime() - startRight.getTime()\n\n  if (result > 0 && timeLeft < timeRight) {\n    result--\n  } else if (result < 0 && timeLeft > timeRight) {\n    result++\n  }\n\n  return result"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "226037932d7f4fc6d03411ca5c3401cee4af0021f47a022206945e70dc7c4983"
+}

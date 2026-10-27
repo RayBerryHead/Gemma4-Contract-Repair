@@ -1,0 +1,52 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 7808,
+    "candidatesTokenCount": 394,
+    "totalTokenCount": 18429,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 7808
+      }
+    ],
+    "thoughtsTokenCount": 10227,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "    const handler = this\n\n    if (controller.crossOriginRedirect) {\n      return downstreamOnHeaders()\n    }\n\n    if (\n      !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&",
+                    "path": "lib/handler/cache-handler.js",
+                    "old_text": "    const handler = this\n\n    if (\n      !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&"
+                  },
+                  {
+                    "new_text": "    if (!this.location) {\n      if (this.opts.crossOriginRedirect) {\n        controller.crossOriginRedirect = true\n      }\n      this.handler.onResponseStart?.(controller, statusCode, headers, statusMessage)\n      return\n    }",
+                    "old_text": "    if (!this.location) {\n      this.handler.onResponseStart?.(controller, statusCode, headers, statusMessage)\n      return\n    }",
+                    "path": "lib/handler/redirect-handler.js"
+                  },
+                  {
+                    "path": "lib/handler/redirect-handler.js",
+                    "old_text": "    this.opts.headers = cleanRequestHeaders(this.opts.headers, removeContentHeaders, requestOrigin !== origin, this.stripHeadersOnRedirect, this.stripHeadersOnCrossOriginRedirect)\n    this.opts.path = path",
+                    "new_text": "    this.opts.headers = cleanRequestHeaders(this.opts.headers, removeContentHeaders, requestOrigin !== origin, this.stripHeadersOnRedirect, this.stripHeadersOnCrossOriginRedirect)\n    if (requestOrigin !== origin) {\n      this.opts.crossOriginRedirect = true\n    }\n    this.opts.path = path"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "9b6e89e406537b7211617498dd567c3555bbc2e950b98e56ec583559b4bc504d"
+}

@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 3543,
+    "candidatesTokenCount": 290,
+    "totalTokenCount": 16414,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 3543
+      }
+    ],
+    "thoughtsTokenCount": 12581,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "src/croniter/croniter.py",
+                    "new_text": "        from_timestamp = None\n        if self._expand_from_start_time:\n            from_timestamp = self.dst_start_time\n            if self.tzinfo:\n                dt = datetime.datetime.fromtimestamp(from_timestamp, self.tzinfo)\n                offset = dt.utcoffset()\n                if offset:\n                    from_timestamp += offset.total_seconds()\n\n        self.expanded, self.nth_weekday_of_month, self.expressions, self.nearest_weekday = self._expand(\n            expr_format,\n            hash_id=hash_id,\n            from_timestamp=from_timestamp,\n            second_at_beginning=second_at_beginning,\n        )",
+                    "old_text": "        self.expanded, self.nth_weekday_of_month, self.expressions, self.nearest_weekday = self._expand(\n            expr_format,\n            hash_id=hash_id,\n            from_timestamp=self.dst_start_time if self._expand_from_start_time else None,\n            second_at_beginning=second_at_beginning,\n        )"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "6befa3f8f499b5a79bec72862888bc1176a35c3263200f3061a5f37c5c93fc0e"
+}

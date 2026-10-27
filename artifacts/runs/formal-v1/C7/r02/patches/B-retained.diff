@@ -1,0 +1,64 @@
+diff --git a/lib/util/cache.js b/lib/util/cache.js
+--- a/lib/util/cache.js
++++ b/lib/util/cache.js
+@@ -199,8 +199,20 @@
+       case 'max-age':
+       case 's-maxage':
+       case 'stale-while-revalidate':
+-      case 'stale-if-error': {
+-        if (value === undefined || value[0] === ' ') {
++      case 'stale-if-error':
++      case 'private':
++      case 'no-cache': {
++        if (value === undefined) {
++          if (key === 'private' || key === 'no-cache') {
++            output[key] = true
++          }
++          continue
++        }
++        if (value.trim() === '' && (key === 'private' || key === 'no-cache')) {
++          output[key] = true
++          continue
++        }
++        if (value[0] === ' ') {
+           continue
+         }
+ 
+@@ -274,20 +286,29 @@
+                 headers[j] = headers[j].trim()
+               }
+ 
+-              if (key in output) {
+-                output[key] = output[key].concat(headers)
+-              } else {
+-                output[key] = headers
++              const filteredHeaders = headers.filter(h => h !== '')
++              if (filteredHeaders.length === 0 && (key === 'private' || key === 'no-cache')) {
++                output[key] = true
++              } else if (filteredHeaders.length > 0) {
++                if (Array.isArray(output[key])) {
++                  output[key] = output[key].concat(filteredHeaders)
++                } else {
++                  output[key] = filteredHeaders
++                }
+               }
+             }
+           } else {
+             // Something like `no-cache="some-header"`
+             const fieldName = value.trim()
+ 
+-            if (key in output) {
+-              output[key] = output[key].concat(fieldName)
+-            } else {
+-              output[key] = [fieldName]
++            if (fieldName === '' && (key === 'private' || key === 'no-cache')) {
++              output[key] = true
++            } else if (fieldName !== '') {
++              if (Array.isArray(output[key])) {
++                output[key] = output[key].concat(fieldName)
++              } else {
++                output[key] = [fieldName]
++              }
+             }
+           }
+ 

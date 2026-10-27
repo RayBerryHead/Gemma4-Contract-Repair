@@ -1,0 +1,108 @@
+{
+  "id": "T6",
+  "buggy": {
+    "id": "T6",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": 3601.0,
+        "probe_id": "T6-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.1205710805952549,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": 0.0,
+        "probe_id": "T6-V-01",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.08638201281428337,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": 3601.0,
+        "probe_id": "T6-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.07207071222364902,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": 5.0,
+        "probe_id": "T6-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.07045979425311089,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": 10.0,
+        "probe_id": "T6-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.06966527737677097,
+        "subject_calls": 1
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "T6",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": 1.0,
+        "probe_id": "T6-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.11087440699338913,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": 3600.0,
+        "probe_id": "T6-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.07601640373468399,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": 1.0,
+        "probe_id": "T6-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.07125717215240002,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": 5.0,
+        "probe_id": "T6-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.0891817044466734,
+        "subject_calls": 1
+      },
+      {
+        "execution": "VALID",
+        "observed": 10.0,
+        "probe_id": "T6-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.08435098081827164,
+        "subject_calls": 1
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

@@ -1,0 +1,41 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 4512,
+    "candidatesTokenCount": 354,
+    "totalTokenCount": 4866,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 4512
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "django/middleware/cache.py",
+                    "old_text": "        # Don't cache responses when the Cache-Control header is set to\n        # private, no-cache, or no-store.\n        cache_control = response.get(\"Cache-Control\", \"\").lower()\n        if cache_control and any(\n            directive in cache_control\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response\n\n        # Don't cache responses when the Vary header contains '*'.",
+                    "new_text": "        # Don't cache responses when the Cache-Control header is set to\n        # private, no-cache, or no-store.\n        cache_control = response.get(\"Cache-Control\", \"\").lower()\n        if cache_control and any(\n            directive in cache_control\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response\n\n        # Non-public responses to nonempty Authorization requests must remain\n        # isolated by Authorization.\n        if request.META.get(\"HTTP_AUTHORIZATION\") and \"public\" not in cache_control:\n            if not has_vary_header(response, \"Authorization\"):\n                vary = response.get(\"Vary\", \"\")\n                response[\"Vary\"] = f\"{vary}, Authorization\".strip(\", \")\n\n        # Don't cache responses when the Vary header contains '*'."
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "58a80c44ba9b2906cc47cd89856836e75bb0e8049b3987f7117445d7f4583d7c"
+}

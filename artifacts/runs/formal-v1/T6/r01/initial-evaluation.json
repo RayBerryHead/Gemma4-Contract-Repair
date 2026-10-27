@@ -1,0 +1,111 @@
+{
+  "id": "T6",
+  "results": [
+    {
+      "execution": "VALID",
+      "observed": 1.0,
+      "probe_id": "T6-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.15106415562331676,
+      "subject_calls": 1,
+      "input": {
+        "start": "2026-03-29T01:59:59",
+        "end": "2026-03-29T03:00:00",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 1,
+      "contract_check": "equal",
+      "tags": [
+        "elapsed",
+        "dst"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 3600.0,
+      "probe_id": "T6-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.11549738608300686,
+      "subject_calls": 1,
+      "input": {
+        "start": "2026-10-25T02:30:00",
+        "end": "2026-10-25T02:30:00",
+        "start_fold": 0,
+        "end_fold": 1,
+        "zone": "Europe/Berlin"
+      },
+      "expected": 3600,
+      "contract_check": "equal",
+      "tags": [
+        "elapsed",
+        "fold"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 1.0,
+      "probe_id": "T6-E-01",
+      "role": "E",
+      "passed": true,
+      "elapsed_seconds": 0.09057347476482391,
+      "subject_calls": 1,
+      "input": {
+        "start": "2025-03-30T01:59:59",
+        "end": "2025-03-30T03:00:00",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 1,
+      "contract_check": "equal",
+      "tags": [
+        "elapsed",
+        "dst"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 5.0,
+      "probe_id": "T6-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.107458071783185,
+      "subject_calls": 1,
+      "input": {
+        "start": "2026-01-02T12:00:00",
+        "end": "2026-01-02T12:00:05",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 5,
+      "contract_check": "equal",
+      "tags": [
+        "elapsed",
+        "ordinary"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": 10.0,
+      "probe_id": "T6-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.11164245940744877,
+      "subject_calls": 1,
+      "input": {
+        "start": "2026-01-02T12:00:00",
+        "end": "2026-01-02T12:00:10",
+        "zone": "Europe/Berlin"
+      },
+      "expected": 10,
+      "contract_check": "equal",
+      "tags": [
+        "elapsed",
+        "ordinary"
+      ]
+    }
+  ],
+  "all_pass": true,
+  "infra_ok": true,
+  "proposal_valid": true,
+  "reason": "APPLIED"
+}

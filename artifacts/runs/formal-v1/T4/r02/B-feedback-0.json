@@ -1,0 +1,171 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "date": "2026-10-05",
+        "global_unchanged": true
+      },
+      "probe_id": "T4-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.10048574395477772,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2026,
+          10,
+          15
+        ],
+        "firstweekday": 6,
+        "datetime": false
+      },
+      "expected": {
+        "date": "2026-10-05",
+        "global_unchanged": true
+      },
+      "contract_check": "equal",
+      "tags": [
+        "global-state",
+        "weekday"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "date": "2026-10-05",
+        "global_unchanged": true
+      },
+      "probe_id": "T4-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.08385072834789753,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2026,
+          10,
+          15
+        ],
+        "firstweekday": 0,
+        "datetime": false
+      },
+      "expected": {
+        "date": "2026-10-05",
+        "global_unchanged": true
+      },
+      "contract_check": "equal",
+      "tags": [
+        "global-state",
+        "weekday"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "date": "2026-10-05",
+        "global_unchanged": true
+      },
+      "probe_id": "T4-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.05665452778339386,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2026,
+          10,
+          15
+        ],
+        "firstweekday": 2,
+        "datetime": true
+      },
+      "expected": {
+        "date": "2026-10-05",
+        "global_unchanged": true
+      },
+      "contract_check": "equal",
+      "tags": [
+        "global-state",
+        "weekday"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "date": "2026-10-05",
+        "global_unchanged": true
+      },
+      "probe_id": "T4-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.044677168130874634,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2026,
+          10,
+          15
+        ],
+        "firstweekday": 0,
+        "datetime": true
+      },
+      "expected": {
+        "date": "2026-10-05",
+        "global_unchanged": true
+      },
+      "contract_check": "equal",
+      "tags": [
+        "ordinary",
+        "weekday"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "date": "2026-10-26",
+        "global_unchanged": true
+      },
+      "probe_id": "T4-V-03",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.04600386135280132,
+      "subject_calls": 1,
+      "input": {
+        "date": [
+          2026,
+          10,
+          15
+        ],
+        "firstweekday": 6,
+        "method": "last_of"
+      },
+      "expected": {
+        "date": "2026-10-26",
+        "global_unchanged": true
+      },
+      "contract_check": "equal",
+      "tags": [
+        "weekday",
+        "global-state"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "T4-V-01",
+    "T4-V-02",
+    "T4-V-03"
+  ],
+  "new_subject_calls": 3,
+  "all_visible_pass": true,
+  "mapped_patch_phases": [],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "4abb7299bc012debe194026e89cd903ab5aa30753577de2e1ce6a8cbf94cbbf4",
+    "applied_diff_hash": "9484bc480bc8c341440f2be52162c26ef96849ca146e2b95e0f7c46c4957fb1a"
+  }
+}

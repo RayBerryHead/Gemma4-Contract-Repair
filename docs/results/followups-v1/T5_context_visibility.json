@@ -1,0 +1,12 @@
+{
+  "root": "T5",
+  "replicate": "r01",
+  "packet_sha256": "100f084a8cc4f915c0db7979f52e8bd396857d285e64c269ce9062923671a9ad",
+  "duration_excerpt_characters": 3035,
+  "consumer_visible": {
+    "_to_microseconds": false,
+    "__mul__": false,
+    "__truediv__": false
+  },
+  "interpretation": "The exploratory arithmetic regression was outside both supplied source excerpts and the frozen test bundle; this setting does not measure full-repository caller navigation."
+}

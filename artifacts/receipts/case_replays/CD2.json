@@ -1,0 +1,114 @@
+{
+  "id": "CD2",
+  "buggy": {
+    "id": "CD2",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:alice",
+          "private:alice"
+        ],
+        "probe_id": "CD2-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.04471510834991932,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:alice",
+          "private:alice"
+        ],
+        "probe_id": "CD2-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.03398246690630913,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:carol",
+          "private:carol"
+        ],
+        "probe_id": "CD2-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.042229436337947845,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:alice",
+          "private:alice"
+        ],
+        "probe_id": "CD2-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.03141514211893082,
+        "subject_calls": 2
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "CD2",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:alice",
+          "private:bob"
+        ],
+        "probe_id": "CD2-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.035973964259028435,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:alice",
+          "private:alice"
+        ],
+        "probe_id": "CD2-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.033499808982014656,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:carol",
+          "private:dave"
+        ],
+        "probe_id": "CD2-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.022390028461813927,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": [
+          "private:alice",
+          "private:alice"
+        ],
+        "probe_id": "CD2-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.027791570872068405,
+        "subject_calls": 2
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

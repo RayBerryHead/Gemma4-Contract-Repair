@@ -1,0 +1,68 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "django_graphex/views.py": [
+      [
+        0,
+        30
+      ],
+      [
+        0,
+        63
+      ],
+      [
+        3,
+        84
+      ],
+      [
+        456,
+        537
+      ],
+      [
+        460,
+        541
+      ],
+      [
+        470,
+        551
+      ],
+      [
+        477,
+        558
+      ],
+      [
+        482,
+        563
+      ],
+      [
+        490,
+        571
+      ],
+      [
+        494,
+        575
+      ],
+      [
+        496,
+        579
+      ],
+      [
+        501,
+        582
+      ],
+      [
+        504,
+        586
+      ],
+      [
+        507,
+        588
+      ],
+      [
+        509,
+        592
+      ]
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2109,
+    "candidatesTokenCount": 170,
+    "totalTokenCount": 9945,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2109
+      }
+    ],
+    "thoughtsTokenCount": 7666,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "django/middleware/cache.py",
+                    "old_text": "        # Don't cache responses when the Vary header contains '*'.\n        if has_vary_header(response, \"*\"):\n            return response",
+                    "new_text": "        # If the request has an Authorization header, the response must be\n        # either explicitly public or isolated by Authorization.\n        if request.META.get(\"HTTP_AUTHORIZATION\"):\n            if \"public\" not in cache_control and not has_vary_header(response, \"Authorization\"):\n                return response\n\n        # Don't cache responses when the Vary header contains '*'.\n        if has_vary_header(response, \"*\"):\n            return response"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "7a5bcc572bb9bd4c0b84a36a25780326e82513c837564dfdc2b96bc9f08e4708"
+}

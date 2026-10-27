@@ -1,0 +1,100 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "bodies": [
+          "attacker-controlled-content",
+          "attacker-controlled-content"
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C2-Q0-01",
+      "role": "Q0",
+      "passed": false,
+      "elapsed_seconds": 0.1166005078703165,
+      "subject_calls": 2,
+      "input": {},
+      "expected": [
+        "attacker-controlled-content",
+        "legitimate-content"
+      ],
+      "contract_check": "redirect_integrity",
+      "tags": [
+        "redirect",
+        "store"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "bodies": [
+          "legitimate-content",
+          "legitimate-content"
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C2-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.08585730008780956,
+      "subject_calls": 2,
+      "input": {
+        "no_redirect": true
+      },
+      "expected": [
+        "legitimate-content",
+        "legitimate-content"
+      ],
+      "contract_check": "redirect_integrity",
+      "tags": [
+        "read",
+        "ordinary"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "bodies": [
+          "legitimate-content",
+          "legitimate-content"
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C2-U-02",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.091515326872468,
+      "subject_calls": 2,
+      "input": {
+        "no_redirect": true,
+        "public_control": true
+      },
+      "expected": [
+        "legitimate-content",
+        "legitimate-content"
+      ],
+      "contract_check": "public_origin_reuse",
+      "tags": [
+        "ordinary",
+        "read",
+        "store"
+      ]
+    }
+  ],
+  "selected_probe_ids": [],
+  "new_subject_calls": 0,
+  "all_visible_pass": false,
+  "mapped_patch_phases": [
+    "store"
+  ],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": false,
+    "reason": "OLD_TEXT_MATCH_COUNT_0: copy an exact unique source string",
+    "raw_proposal_hash": "1fc6a99492dd4286431f1183f0ed9516c55defda18601ebde6c9071e318c900b",
+    "applied_diff_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+  }
+}

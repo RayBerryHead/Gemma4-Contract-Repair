@@ -1,0 +1,46 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 2291,
+    "candidatesTokenCount": 266,
+    "totalTokenCount": 15135,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 2291
+      }
+    ],
+    "thoughtsTokenCount": 12578,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "src/pendulum/datetime.py",
+                    "old_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )",
+                    "new_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years,\n                months=delta.months,\n                days=delta._days,\n                seconds=delta._seconds,\n                microseconds=delta._microseconds,\n            )"
+                  },
+                  {
+                    "old_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )",
+                    "new_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years,\n                months=delta.months,\n                days=delta._days,\n                seconds=delta._seconds,\n                microseconds=delta._microseconds,\n            )",
+                    "path": "src/pendulum/datetime.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "original_response_sha256": "642ee2f2c7f9cf853d10b96b079a4e879bb804f048ca39cb4e0a022c1867c903"
+}

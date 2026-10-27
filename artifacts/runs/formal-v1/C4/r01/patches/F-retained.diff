@@ -1,0 +1,16 @@
+diff --git a/django/middleware/cache.py b/django/middleware/cache.py
+--- a/django/middleware/cache.py
++++ b/django/middleware/cache.py
+@@ -95,10 +95,9 @@
+             return response
+ 
+         # Don't cache responses that set a user-specific (and maybe security
+-        # sensitive) cookie in response to a cookie-less request.
++        # sensitive) cookie.
+         if (
+-            not request.COOKIES
+-            and response.cookies
++            response.cookies
+             and has_vary_header(response, "Cookie")
+         ):
+             return response

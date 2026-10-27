@@ -1,0 +1,33 @@
+diff --git a/lib/handler/cache-handler.js b/lib/handler/cache-handler.js
+--- a/lib/handler/cache-handler.js
++++ b/lib/handler/cache-handler.js
+@@ -202,6 +202,8 @@
+    * @type {import('node:stream').Writable | undefined}
+    */
+   #writeStream
++
++  #isReused = false
+ 
+   /**
+    * @param {import('../../types/cache-interceptor.d.ts').default.CacheHandlerOptions} opts
+@@ -217,6 +219,9 @@
+   }
+ 
+   onRequestStart (controller, context) {
++    if (this.#downstreamController) {
++      this.#isReused = true
++    }
+     this.#writeStream?.destroy()
+     this.#writeStream = undefined
+     this.#downstreamController = new CacheController(controller)
+@@ -256,6 +261,10 @@
+       )
+     const handler = this
+ 
++    if (this.#isReused) {
++      return downstreamOnHeaders()
++    }
++
+     if (
+       !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&
+       statusCode >= 200 &&

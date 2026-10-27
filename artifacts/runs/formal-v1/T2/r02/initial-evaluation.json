@@ -1,0 +1,201 @@
+{
+  "id": "T2",
+  "results": [
+    {
+      "execution": "VALID",
+      "observed": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "probe_id": "T2-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.12788010016083717,
+      "subject_calls": 1,
+      "input": {
+        "start": "2025-01-01T05:00:00",
+        "zone": "Pacific/Auckland",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "zone",
+        "phase"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        2,
+        7,
+        12,
+        17,
+        22
+      ],
+      "probe_id": "T2-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.11215604096651077,
+      "subject_calls": 1,
+      "input": {
+        "start": "2025-01-01T07:00:00",
+        "zone": "Asia/Taipei",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        2,
+        7,
+        12,
+        17,
+        22
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "zone",
+        "phase"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "probe_id": "T2-E-01",
+      "role": "E",
+      "passed": true,
+      "elapsed_seconds": 0.09378902986645699,
+      "subject_calls": 1,
+      "input": {
+        "start": "2025-01-01T05:00:00",
+        "zone": "Asia/Kolkata",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "zone",
+        "phase"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "probe_id": "T2-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.07493225671350956,
+      "subject_calls": 1,
+      "input": {
+        "start": "2025-01-01T05:00:00",
+        "zone": "UTC",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "zone",
+        "phase"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "probe_id": "T2-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.11083511635661125,
+      "subject_calls": 1,
+      "input": {
+        "start": "2025-01-01T05:00:00",
+        "zone": "UTC",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinary",
+        "phase"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        2,
+        7,
+        12,
+        17,
+        22
+      ],
+      "probe_id": "T2-V-03",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.11090745218098164,
+      "subject_calls": 1,
+      "input": {
+        "start": "2025-01-01T07:00:00",
+        "zone": "Asia/Tokyo",
+        "expression": "0 */5 * * *"
+      },
+      "expected": [
+        2,
+        7,
+        12,
+        17,
+        22
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "zone",
+        "phase"
+      ]
+    }
+  ],
+  "all_pass": true,
+  "infra_ok": true,
+  "proposal_valid": true,
+  "reason": "APPLIED"
+}

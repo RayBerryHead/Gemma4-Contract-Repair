@@ -1,0 +1,52 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 4822,
+    "candidatesTokenCount": 581,
+    "totalTokenCount": 15917,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 4822
+      }
+    ],
+    "thoughtsTokenCount": 10514,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )\n",
+                    "path": "src/pendulum/datetime.py",
+                    "new_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years,\n                months=delta.months,\n                weeks=delta._original_weeks,\n                days=delta._original_days,\n                hours=delta._original_hours,\n                minutes=delta._original_minutes,\n                seconds=delta._original_seconds,\n                microseconds=delta._original_microseconds,\n            )\n"
+                  },
+                  {
+                    "new_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years,\n                months=delta.months,\n                weeks=delta._original_weeks,\n                days=delta._original_days,\n                hours=delta._original_hours,\n                minutes=delta._original_minutes,\n                seconds=delta._original_seconds,\n                microseconds=delta._original_microseconds,\n            )\n",
+                    "old_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )\n",
+                    "path": "src/pendulum/datetime.py"
+                  },
+                  {
+                    "old_text": "        _days = abs(int(total)) // SECONDS_PER_DAY * m\n        self._days = _days\n        self._remaining_days = abs(_days) % 7 * m\n        self._weeks = abs(_days) // 7 * m\n        self._months = months\n        self._years = years\n\n        return self\n",
+                    "path": "src/pendulum/duration.py",
+                    "new_text": "        _days = abs(int(total)) // SECONDS_PER_DAY * m\n        self._days = _days\n        self._remaining_days = abs(_days) % 7 * m\n        self._weeks = abs(_days) // 7 * m\n        self._months = months\n        self._years = years\n        self._original_weeks = weeks\n        self._original_days = days\n        self._original_hours = hours\n        self._original_minutes = minutes\n        self._original_seconds = seconds\n        self._original_microseconds = microseconds\n\n        return self\n"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "50b210b77330e8cf5dbefc9e82d2b9dd6bfd846c580cd3c946ee5c55ae956d6e"
+}

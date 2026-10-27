@@ -1,0 +1,415 @@
+{
+  "version": "L6",
+  "case_count": 16,
+  "notes": "Design is fixed in linked card. Runtime receipts are execution outputs, not claimed here. Upstream changed paths are inherited metadata, not permissible gold input to model.",
+  "cases": [
+    {
+      "id": "C1",
+      "legacy_id": "CACHE-E1",
+      "paper": "PrivateCacheWitness",
+      "root_family": "Set-Cookie lifecycle",
+      "repo": "nodejs/undici",
+      "language": "javascript",
+      "buggy_sha": "6d583124e7cf60b640097d64144ed633cc450584",
+      "fixed_sha": "cb75bbb34224a968b4ad80cab8b7aba5e0b3b28a",
+      "source_url": "https://github.com/nodejs/undici/commit/cb75bbb34224a968b4ad80cab8b7aba5e0b3b28a",
+      "design_card": "CACHE_PROTOCOL.md",
+      "design_heading": "### C1\uff5c",
+      "upstream_changed_paths": [
+        "lib/handler/cache-handler.js",
+        "lib/interceptor/cache.js",
+        "test/interceptors/cache.js"
+      ],
+      "known_test_paths": [
+        "test/interceptors/cache.js"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": true,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "C2",
+      "legacy_id": "CACHE-E2",
+      "paper": "PrivateCacheWitness",
+      "root_family": "redirect identity",
+      "repo": "nodejs/undici",
+      "language": "javascript",
+      "buggy_sha": "f75eac00ac177f7b2e6c8bfbd52d4113164286e6",
+      "fixed_sha": "26c2bfb3def0b67241ce878e80657ed5d6c3efa8",
+      "source_url": "https://github.com/nodejs/undici/commit/26c2bfb3def0b67241ce878e80657ed5d6c3efa8",
+      "design_card": "CACHE_PROTOCOL.md",
+      "design_heading": "### C2\uff5c",
+      "upstream_changed_paths": [
+        "lib/core/symbols.js",
+        "lib/handler/cache-handler.js",
+        "lib/handler/deduplication-handler.js",
+        "lib/handler/redirect-handler.js",
+        "test/interceptors/cache-redirect-origin.js",
+        "test/interceptors/deduplicate-terminal.js"
+      ],
+      "known_test_paths": [
+        "test/interceptors/cache-redirect-origin.js",
+        "test/interceptors/deduplicate-terminal.js"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": true,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "evidence_class": "origin-integrity",
+      "privacy_disclosure_denominator_eligible": false,
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "C3",
+      "legacy_id": "CACHE-E3",
+      "paper": "PrivateCacheWitness",
+      "root_family": "Authorization/Vary",
+      "repo": "django/django",
+      "language": "python",
+      "buggy_sha": "d618d7ae4fec727d5b582bd24f803c28d17bf7cd",
+      "fixed_sha": "a2faa8e895926ac5d63f72879b5ccf671b5b4ba9",
+      "source_url": "https://github.com/django/django/commit/a2faa8e895926ac5d63f72879b5ccf671b5b4ba9",
+      "design_card": "CACHE_PROTOCOL.md",
+      "design_heading": "### C3\uff5c",
+      "upstream_changed_paths": [
+        "django/middleware/cache.py",
+        "docs/releases/5.2.15.txt",
+        "docs/releases/6.0.6.txt",
+        "docs/topics/cache.txt",
+        "tests/cache/tests.py"
+      ],
+      "known_test_paths": [
+        "tests/cache/tests.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": true,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "C4",
+      "legacy_id": "CACHE-E4",
+      "paper": "PrivateCacheWitness",
+      "root_family": "unrelated cookie/refresh",
+      "repo": "django/django",
+      "language": "python",
+      "buggy_sha": "7f3954386beaabc59695629b81c2c2d0cf0fe522",
+      "fixed_sha": "6e365f8d01f2ba0bbd90968d76a42600fb8bc4b1",
+      "source_url": "https://github.com/django/django/commit/6e365f8d01f2ba0bbd90968d76a42600fb8bc4b1",
+      "design_card": "CACHE_PROTOCOL.md",
+      "design_heading": "### C4\uff5c",
+      "upstream_changed_paths": [
+        "django/middleware/cache.py",
+        "docs/releases/5.2.16.txt",
+        "docs/releases/6.0.7.txt",
+        "tests/cache/tests.py"
+      ],
+      "known_test_paths": [
+        "tests/cache/tests.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": true,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "C5",
+      "legacy_id": "CACHE-E5",
+      "paper": "PrivateCacheWitness",
+      "root_family": "per-user GraphQL cache",
+      "repo": "eamigo86/django-graphex",
+      "language": "python",
+      "buggy_sha": "dd62b60d82cfc525a7480d3b511136eea94d351c",
+      "fixed_sha": "ce471bd33b4146917195a1224ba776099a5497ad",
+      "source_url": "https://github.com/eamigo86/django-graphex/commit/ce471bd33b4146917195a1224ba776099a5497ad",
+      "design_card": "CACHE_PROTOCOL.md",
+      "design_heading": "### C5\uff5c",
+      "upstream_changed_paths": [
+        "django_graphex/views.py",
+        "docs/usage/caching.md",
+        "docs/usage/settings.md",
+        "tests/test_views.py",
+        "tests/test_views_cache_isolation.py",
+        "tests/test_views_extra.py",
+        "zensical.yml"
+      ],
+      "known_test_paths": [
+        "tests/test_views.py",
+        "tests/test_views_cache_isolation.py",
+        "tests/test_views_extra.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": true,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "C6",
+      "legacy_id": "CACHE-E6",
+      "paper": "PrivateCacheWitness",
+      "root_family": "session renewal",
+      "repo": "django/django",
+      "language": "python",
+      "buggy_sha": "5a89e341bfc77dd67b7fd57b7091b6430558e1f4",
+      "fixed_sha": "7f6e9b55130d5158804c0acbc0b24ccb7422ed82",
+      "source_url": "https://github.com/django/django/commit/7f6e9b55130d5158804c0acbc0b24ccb7422ed82",
+      "design_card": "CACHE_PROTOCOL.md",
+      "design_heading": "### C6\uff5c",
+      "upstream_changed_paths": [
+        "django/contrib/sessions/middleware.py",
+        "docs/releases/5.2.14.txt",
+        "docs/releases/6.0.5.txt",
+        "tests/sessions_tests/tests.py"
+      ],
+      "known_test_paths": [
+        "tests/sessions_tests/tests.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": true,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "C7",
+      "legacy_id": "CACHE-E7",
+      "paper": "PrivateCacheWitness",
+      "root_family": "empty qualified private",
+      "repo": "nodejs/undici",
+      "language": "javascript",
+      "buggy_sha": "10d93fc332f2c8c161982dec3833201de29891b5",
+      "fixed_sha": "4fe5bc5fefe5ac81a200fc8e1cf84b8bf8464451",
+      "source_url": "https://github.com/nodejs/undici/commit/4fe5bc5fefe5ac81a200fc8e1cf84b8bf8464451",
+      "design_card": "CACHE_PROTOCOL.md",
+      "design_heading": "### C7\uff5c",
+      "upstream_changed_paths": [
+        "lib/util/cache.js",
+        "test/cache-interceptor/utils.js",
+        "test/interceptors/cache.js"
+      ],
+      "known_test_paths": [
+        "test/cache-interceptor/utils.js",
+        "test/interceptors/cache.js"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": true,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "C8",
+      "legacy_id": "CACHE-E8",
+      "paper": "PrivateCacheWitness",
+      "root_family": "qualified cache directives",
+      "repo": "django/django",
+      "language": "python",
+      "buggy_sha": "2c5e4af3cccd88a7f0ea66a56aff1a49ad274681",
+      "fixed_sha": "b461519bf5973d7fc149560d2f99acdba71a437d",
+      "source_url": "https://github.com/django/django/commit/b461519bf5973d7fc149560d2f99acdba71a437d",
+      "design_card": "CACHE_PROTOCOL.md",
+      "design_heading": "### C8\uff5c",
+      "upstream_changed_paths": [
+        "django/middleware/cache.py",
+        "django/middleware/http.py",
+        "django/utils/cache.py",
+        "django/utils/http.py",
+        "tests/cache/tests.py",
+        "tests/middleware/tests.py",
+        "tests/utils_tests/test_http.py"
+      ],
+      "known_test_paths": [
+        "tests/cache/tests.py",
+        "tests/middleware/tests.py",
+        "tests/utils_tests/test_http.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": true,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "T1",
+      "legacy_id": "CT-eval-01",
+      "paper": "CivilTimeGuard",
+      "root_family": "original day anchor",
+      "repo": "arrow-py/arrow",
+      "language": "python",
+      "buggy_sha": "405e0a5535343d594c4c646a643c83d347a8ae75",
+      "fixed_sha": "da6ed8c028136ae2b4421e156d3cd65ecbf5efae",
+      "source_url": "https://github.com/arrow-py/arrow/commit/da6ed8c028136ae2b4421e156d3cd65ecbf5efae",
+      "design_card": "TIME_PROTOCOL.md",
+      "design_heading": "### T1\uff5c",
+      "upstream_changed_paths": [],
+      "known_test_paths": [
+        "tests/test_arrow.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": false,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "T2",
+      "legacy_id": "CT-eval-02",
+      "paper": "CivilTimeGuard",
+      "root_family": "caller-zone cron phase",
+      "repo": "pallets-eco/croniter",
+      "language": "python",
+      "buggy_sha": "e15047e612d2ad8cf9cdeeef99eac5787effd33d",
+      "fixed_sha": "f1f3b2e144ee4dedd68585e5d22af6b776de6127",
+      "source_url": "https://github.com/pallets-eco/croniter/commit/f1f3b2e144ee4dedd68585e5d22af6b776de6127",
+      "design_card": "TIME_PROTOCOL.md",
+      "design_heading": "### T2\uff5c",
+      "upstream_changed_paths": [],
+      "known_test_paths": [
+        "src/croniter/tests/test_croniter.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": false,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "T3",
+      "legacy_id": "CT-eval-03",
+      "paper": "CivilTimeGuard",
+      "root_family": "POSIX ordinal rules",
+      "repo": "dateutil/dateutil",
+      "language": "python",
+      "buggy_sha": "208f5872937a3578058736708318b712aff29d6a",
+      "fixed_sha": "99f6653c0152ee1f7f91b30d764a67d407407938",
+      "source_url": "https://github.com/dateutil/dateutil/commit/99f6653c0152ee1f7f91b30d764a67d407407938",
+      "design_card": "TIME_PROTOCOL.md",
+      "design_heading": "### T3\uff5c",
+      "upstream_changed_paths": [],
+      "known_test_paths": [
+        "tests/test_tzfile.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": false,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "T4",
+      "legacy_id": "CT-eval-04",
+      "paper": "CivilTimeGuard",
+      "root_family": "global calendar independence",
+      "repo": "python-pendulum/pendulum",
+      "language": "python",
+      "buggy_sha": "b97a3f0febffb7f5247e349e4d5a75a529b90fb4",
+      "fixed_sha": "24ff0e580fef17a83e702ef29affa44da4dc8511",
+      "source_url": "https://github.com/python-pendulum/pendulum/commit/24ff0e580fef17a83e702ef29affa44da4dc8511",
+      "design_card": "TIME_PROTOCOL.md",
+      "design_heading": "### T4\uff5c",
+      "upstream_changed_paths": [],
+      "known_test_paths": [
+        "tests/date/test_day_of_week_modifiers.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": false,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "T5",
+      "legacy_id": "CT-eval-05",
+      "paper": "CivilTimeGuard",
+      "root_family": "duration unit preservation",
+      "repo": "python-pendulum/pendulum",
+      "language": "python",
+      "buggy_sha": "8d5aa823d390c88f329e721f00a3cc0ea25e8a6f",
+      "fixed_sha": "47c92b7cea3139ed631a573425f39c1c8b54ea6a",
+      "source_url": "https://github.com/python-pendulum/pendulum/commit/47c92b7cea3139ed631a573425f39c1c8b54ea6a",
+      "design_card": "TIME_PROTOCOL.md",
+      "design_heading": "### T5\uff5c",
+      "upstream_changed_paths": [],
+      "known_test_paths": [
+        "tests/datetime/test_add.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": false,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "T6",
+      "legacy_id": "CT-eval-06",
+      "paper": "CivilTimeGuard",
+      "root_family": "elapsed scheduler wait",
+      "repo": "agronholm/apscheduler",
+      "language": "python",
+      "buggy_sha": "0636bf4931fddb706b948b6781ebbd76058f1443",
+      "fixed_sha": "1693db4d8861bf941d299d79a586797ad0ac6467",
+      "source_url": "https://github.com/agronholm/apscheduler/commit/1693db4d8861bf941d299d79a586797ad0ac6467",
+      "design_card": "TIME_PROTOCOL.md",
+      "design_heading": "### T6\uff5c",
+      "upstream_changed_paths": [],
+      "known_test_paths": [
+        "tests/test_schedulers.py"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": false,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "T7",
+      "legacy_id": "CT-eval-07",
+      "paper": "CivilTimeGuard",
+      "root_family": "keepLocalTime zone conversion",
+      "repo": "moment/luxon",
+      "language": "javascript",
+      "buggy_sha": "debf80bcaade0482eccb781f614816ed4e10499e",
+      "fixed_sha": "d4fd0afda16d4ae6fec038c6968ae74348465053",
+      "source_url": "https://github.com/moment/luxon/commit/d4fd0afda16d4ae6fec038c6968ae74348465053",
+      "design_card": "TIME_PROTOCOL.md",
+      "design_heading": "### T7\uff5c",
+      "upstream_changed_paths": [],
+      "known_test_paths": [
+        "test/datetime/zone.test.js"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": false,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    },
+    {
+      "id": "T8",
+      "legacy_id": "CT-eval-08",
+      "paper": "CivilTimeGuard",
+      "root_family": "local full days",
+      "repo": "date-fns/date-fns",
+      "language": "javascript",
+      "buggy_sha": "e72b620a308bbf5e83085d533997cf4cdb1c3b45",
+      "fixed_sha": "dfbb83dce309bb0f5933dd616213cf53058d14f2",
+      "source_url": "https://github.com/date-fns/date-fns/commit/dfbb83dce309bb0f5933dd616213cf53058d14f2",
+      "design_card": "TIME_PROTOCOL.md",
+      "design_heading": "### T8\uff5c",
+      "upstream_changed_paths": [],
+      "known_test_paths": [
+        "src/differenceInCalendarDays/test.js",
+        "src/differenceInDays/test.js"
+      ],
+      "privacy_effect_main_table_requires_carrier_replay": false,
+      "status": "FORMAL_MAIN_COMPLETE",
+      "model_runs_completed": 2,
+      "replay_receipt": "docs/execution/case_readiness_20261027.json",
+      "results": "artifacts/results/formal-v1/root_outcomes.csv"
+    }
+  ]
+}

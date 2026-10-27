@@ -1,0 +1,51 @@
+diff --git a/lib/handler/cache-handler.js b/lib/handler/cache-handler.js
+--- a/lib/handler/cache-handler.js
++++ b/lib/handler/cache-handler.js
+@@ -484,7 +484,7 @@
+  */
+ function revalidationResponseDisallowsCachedReuse (cacheType, resHeaders, cacheControlDirectives) {
+   return cacheControlDirectives['no-store'] === true ||
+-    (cacheType === 'shared' && cacheControlDirectives.private === true) ||
++    (cacheType === 'shared' && (cacheControlDirectives.private || resHeaders['set-cookie'])) ||
+     (resHeaders.vary ? isInvalidOrWildcardVaryHeader(resHeaders.vary) : false)
+ }
+ 
+@@ -522,7 +522,7 @@
+     return false
+   }
+ 
+-  if (cacheType === 'shared' && cacheControlDirectives.private === true) {
++  if (cacheType === 'shared' && (cacheControlDirectives.private || resHeaders['set-cookie'])) {
+     return false
+   }
+ 
+diff --git a/lib/interceptor/cache.js b/lib/interceptor/cache.js
+--- a/lib/interceptor/cache.js
++++ b/lib/interceptor/cache.js
+@@ -131,13 +131,9 @@
+   }
+ 
+   const cacheControl = headers['cache-control']
+-  if (!cacheControl) {
+-    return false
+-  }
+-
+-  const cacheControlDirectives = parseCacheControlHeader(cacheControl)
++  const cacheControlDirectives = cacheControl ? parseCacheControlHeader(cacheControl) : {}
+   return cacheControlDirectives['no-store'] === true ||
+-    (cacheType === 'shared' && cacheControlDirectives.private === true)
++    (cacheType === 'shared' && (cacheControlDirectives.private || headers['set-cookie']))
+ }
+ 
+ function revalidationResponseUpdatesCacheControl (headers) {
+@@ -417,6 +413,10 @@
+     return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)
+   }
+ 
++  if (globalOpts.type === 'shared' && (result.cacheControlDirectives?.private || result.headers?.['set-cookie'])) {
++    return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)
++  }
++
+   const now = Date.now()
+   if (now > result.deleteAt) {
+     // Response is expired, cache store shouldn't have given this to us

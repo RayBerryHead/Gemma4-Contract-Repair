@@ -1,0 +1,52 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 3818,
+    "candidatesTokenCount": 884,
+    "totalTokenCount": 15107,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 3818
+      }
+    ],
+    "thoughtsTokenCount": 10405,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "src/pendulum/duration.py",
+                    "old_text": "        seconds: float = 0,\n        microseconds: float = 0,\n        milliseconds: float = 0,\n        minutes: float = 0,\n        hours: float = 0,\n        weeks: float = 0,\n        years: float = 0,\n        months: float = 0,\n    ) -> Self:\n        if not isinstance(years, int) or not isinstance(months, int):\n            raise ValueError(\"Float year and months are not supported\")\n\n        self = timedelta.__new__(\n            cls,\n            days + years * 365 + months * 30,\n            seconds,\n            microseconds,\n            milliseconds,\n            minutes,\n            hours,\n            weeks,\n        )\n\n        # Intuitive normalization\n        total = self.total_seconds() - (years * 365 + months * 30) * SECONDS_PER_DAY\n        self._total = total",
+                    "new_text": "        seconds: float = 0,\n        microseconds: float = 0,\n        milliseconds: float = 0,\n        minutes: float = 0,\n        hours: float = 0,\n        weeks: float = 0,\n        years: float = 0,\n        months: float = 0,\n    ) -> Self:\n        if not isinstance(years, int) or not isinstance(months, int):\n            raise ValueError(\"Float year and months are not supported\")\n\n        self = timedelta.__new__(\n            cls,\n            days + years * 365 + months * 30,\n            seconds,\n            microseconds,\n            milliseconds,\n            minutes,\n            hours,\n            weeks,\n        )\n\n        # Store original arguments for calendar vs elapsed arithmetic\n        self._arg_years = years\n        self._arg_months = months\n        self._arg_weeks = weeks\n        self._arg_days = days\n        self._arg_hours = hours\n        self._arg_minutes = minutes\n        self._arg_seconds = seconds\n        self._arg_microseconds = microseconds + milliseconds * 1000\n\n        # Intuitive normalization\n        total = self.total_seconds() - (years * 365 + months * 30) * SECONDS_PER_DAY\n        self._total = total"
+                  },
+                  {
+                    "old_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )",
+                    "new_text": "        elif isinstance(delta, pendulum.Duration):\n            return self.add(\n                years=delta._arg_years,\n                months=delta._arg_months,\n                weeks=delta._arg_weeks,\n                days=delta._arg_days,\n                hours=delta._arg_hours,\n                minutes=delta._arg_minutes,\n                seconds=delta._arg_seconds,\n                microseconds=delta._arg_microseconds,\n            )",
+                    "path": "src/pendulum/datetime.py"
+                  },
+                  {
+                    "new_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta._arg_years,\n                months=delta._arg_months,\n                weeks=delta._arg_weeks,\n                days=delta._arg_days,\n                hours=delta._arg_hours,\n                minutes=delta._arg_minutes,\n                seconds=delta._arg_seconds,\n                microseconds=delta._arg_microseconds,\n            )",
+                    "old_text": "        if isinstance(delta, pendulum.Duration):\n            return self.subtract(\n                years=delta.years, months=delta.months, seconds=delta._total\n            )",
+                    "path": "src/pendulum/datetime.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "d9a9f96602218e3f2958b0abd61f116b4805a9f6e10d797da60f131492dcf097"
+}

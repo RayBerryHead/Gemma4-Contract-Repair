@@ -1,0 +1,20 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "src/apscheduler/triggers/cron/__init__.py": [
+      [
+        0,
+        30
+      ],
+      [
+        0,
+        52
+      ],
+      [
+        194,
+        275
+      ]
+    ]
+  }
+}

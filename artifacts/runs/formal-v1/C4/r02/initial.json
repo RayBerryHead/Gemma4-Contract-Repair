@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 1742,
+    "candidatesTokenCount": 164,
+    "totalTokenCount": 7303,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1742
+      }
+    ],
+    "thoughtsTokenCount": 5397,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "        # Don't cache responses that set a user-specific (and maybe security\n        # sensitive) cookie.\n        if (\n            response.cookies\n            and has_vary_header(response, \"Cookie\")\n        ):\n            return response",
+                    "path": "django/middleware/cache.py",
+                    "old_text": "        # Don't cache responses that set a user-specific (and maybe security\n        # sensitive) cookie in response to a cookie-less request.\n        if (\n            not request.COOKIES\n            and response.cookies\n            and has_vary_header(response, \"Cookie\")\n        ):\n            return response"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "93cb6b343426b4930f2f893f5c31d14e18203de45af072ebdccd207b7d1182f6"
+}

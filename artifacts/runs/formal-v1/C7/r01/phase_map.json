@@ -1,0 +1,16 @@
+[
+  {
+    "path": "lib/util/cache.js",
+    "start": 14,
+    "end": 36,
+    "phase": "identity/key",
+    "symbol": "makeCacheKey"
+  },
+  {
+    "path": "lib/util/cache.js",
+    "start": 166,
+    "end": 327,
+    "phase": "identity/key",
+    "symbol": "parseCacheControlHeader"
+  }
+]

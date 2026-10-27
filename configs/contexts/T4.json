@@ -1,0 +1,42 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "src/pendulum/date.py": [
+      [
+        0,
+        30
+      ],
+      [
+        0,
+        72
+      ],
+      [
+        537,
+        618
+      ],
+      [
+        562,
+        643
+      ]
+    ],
+    "src/pendulum/datetime.py": [
+      [
+        0,
+        30
+      ],
+      [
+        6,
+        87
+      ],
+      [
+        988,
+        1069
+      ],
+      [
+        1011,
+        1092
+      ]
+    ]
+  }
+}

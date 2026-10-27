@@ -1,0 +1,112 @@
+{
+  "public_results": [
+    {
+      "execution": "PRODUCT_EXCEPTION",
+      "error_type": "TypeError",
+      "error": "number 1477796340000 is not iterable (cannot read property Symbol(Symbol.iterator))",
+      "probe_id": "T7-Q0-01",
+      "role": "Q0",
+      "passed": false,
+      "elapsed_seconds": 0.06094570644199848,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 30,
+          "hour": 2,
+          "minute": 59
+        },
+        "source_zone": "America/New_York",
+        "target_zone": "Europe/Athens",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2016-10-30 02:59"
+      },
+      "contract_check": "subset",
+      "tags": [
+        "wall",
+        "zone"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2025-01-15 03:30",
+        "instant_preserved": true,
+        "valid": true
+      },
+      "probe_id": "T7-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.08478141203522682,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2025,
+          "month": 1,
+          "day": 15,
+          "hour": 10,
+          "minute": 30
+        },
+        "source_zone": "Asia/Taipei",
+        "target_zone": "Europe/Paris",
+        "keep_local": false
+      },
+      "expected": {
+        "instant_preserved": true
+      },
+      "contract_check": "subset",
+      "tags": [
+        "instant",
+        "zone"
+      ]
+    },
+    {
+      "execution": "PRODUCT_EXCEPTION",
+      "error_type": "TypeError",
+      "error": "number 1736937000000 is not iterable (cannot read property Symbol(Symbol.iterator))",
+      "probe_id": "T7-V-01",
+      "role": "V",
+      "passed": false,
+      "elapsed_seconds": 0.09400448761880398,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2025,
+          "month": 1,
+          "day": 15,
+          "hour": 10,
+          "minute": 30
+        },
+        "source_zone": "Asia/Taipei",
+        "target_zone": "Europe/Paris",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2025-01-15 10:30"
+      },
+      "contract_check": "subset",
+      "tags": [
+        "wall",
+        "zone"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "T7-V-01"
+  ],
+  "new_subject_calls": 1,
+  "all_visible_pass": false,
+  "mapped_patch_phases": [],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": false,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "20ff3c86d5bf5cbba4083b000104d979008f6d8effad3930b76c5e66d5705df7",
+    "applied_diff_hash": "6911e18ddd66c3a02e15e9fa6bf72557be7a2c83c62a1b0e00ced57de8954a6b"
+  }
+}

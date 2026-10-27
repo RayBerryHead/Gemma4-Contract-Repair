@@ -1,0 +1,175 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "alice",
+            "cookie": null,
+            "vary": "",
+            "cache_control": "private=\"X-Private\", max-age=300"
+          },
+          {
+            "body": "bob",
+            "cookie": null,
+            "vary": "",
+            "cache_control": "private=\"X-Private\", max-age=300"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C8-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.39981191605329514,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "directive": "private=\"X-Private\", max-age=300"
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "identity/key",
+        "store"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "public",
+            "cookie": null,
+            "vary": "",
+            "cache_control": "public, max-age=300"
+          },
+          {
+            "body": "public",
+            "cookie": null,
+            "vary": "",
+            "cache_control": "public, max-age=300"
+          }
+        ],
+        "origin_calls": 1
+      },
+      "probe_id": "C8-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.2139628827571869,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "contract_check": "public_reuse",
+      "tags": [
+        "store",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "alice",
+            "cookie": null,
+            "vary": "",
+            "cache_control": "private=\"X-Private\", max-age=300"
+          },
+          {
+            "body": "anon",
+            "cookie": null,
+            "vary": "",
+            "cache_control": "private=\"X-Private\", max-age=300"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C8-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.12060695700347424,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "existing_session": false,
+        "directive": "private=\"X-Private\", max-age=300"
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "identity/key",
+        "read"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "responses": [
+          {
+            "body": "anon",
+            "cookie": null,
+            "vary": "",
+            "cache_control": "no-cache=\"X-Private\", max-age=300"
+          },
+          {
+            "body": "bob",
+            "cookie": null,
+            "vary": "",
+            "cache_control": "no-cache=\"X-Private\", max-age=300"
+          }
+        ],
+        "origin_calls": 2
+      },
+      "probe_id": "C8-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.18592053838074207,
+      "subject_calls": 2,
+      "input": {
+        "actors": [
+          "anon",
+          "bob"
+        ],
+        "directive": "no-cache=\"X-Private\", max-age=300"
+      },
+      "expected": null,
+      "contract_check": "actor_isolation",
+      "tags": [
+        "identity/key",
+        "read"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "C8-V-01",
+    "C8-V-02"
+  ],
+  "new_subject_calls": 4,
+  "all_visible_pass": true,
+  "mapped_patch_phases": [
+    "store"
+  ],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "fa6079806ba583e217c0e740a3ba2c336795ea40b97d222d8fcd100b8a2e2e46",
+    "applied_diff_hash": "dead518dfa00af702632abd4e0541e0a9ca826503254fc058d1216c243cdc5f8"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "localization": "Historical old-side localization is supplied; fixed text is excluded.",
+  "per_file_character_cap": 10000,
+  "ranges": {
+    "src/apscheduler/schedulers/base.py": [
+      [
+        0,
+        30
+      ],
+      [
+        1215,
+        1264
+      ]
+    ]
+  }
+}

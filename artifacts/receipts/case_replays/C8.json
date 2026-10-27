@@ -1,0 +1,258 @@
+{
+  "id": "C8",
+  "buggy": {
+    "id": "C8",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C8-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.30121298879384995,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C8-V-01",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.18250476196408272,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "carol",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "carol",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "carol",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C8-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.19058066420257092,
+        "subject_calls": 3
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C8-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.18524363450706005,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "anon",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "anon",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C8-V-02",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.18439422734081745,
+        "subject_calls": 2
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "fixed": {
+    "id": "C8",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "bob",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C8-Q0-01",
+        "role": "Q0",
+        "passed": true,
+        "elapsed_seconds": 0.27029090747237206,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "alice",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "anon",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C8-V-01",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.17917889170348644,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "carol",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "dave",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "carol",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 3
+        },
+        "probe_id": "C8-E-01",
+        "role": "E",
+        "passed": true,
+        "elapsed_seconds": 0.1906513199210167,
+        "subject_calls": 3
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "public",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 1
+        },
+        "probe_id": "C8-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.17482907138764858,
+        "subject_calls": 2
+      },
+      {
+        "execution": "VALID",
+        "observed": {
+          "responses": [
+            {
+              "body": "anon",
+              "cookie": null,
+              "vary": ""
+            },
+            {
+              "body": "bob",
+              "cookie": null,
+              "vary": ""
+            }
+          ],
+          "origin_calls": 2
+        },
+        "probe_id": "C8-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.19274092838168144,
+        "subject_calls": 2
+      }
+    ],
+    "all_pass": true,
+    "infra_ok": true
+  },
+  "status": "READY"
+}

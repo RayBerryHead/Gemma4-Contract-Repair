@@ -1,0 +1,21 @@
+diff --git a/src/apscheduler/schedulers/base.py b/src/apscheduler/schedulers/base.py
+--- a/src/apscheduler/schedulers/base.py
++++ b/src/apscheduler/schedulers/base.py
+@@ -1237,7 +1237,7 @@
+                     next_wakeup_time is None
+                     or jobstore_next_run_time < next_wakeup_time
+                 ):
+-                    next_wakeup_time = jobstore_next_run_time.astimezone(self.timezone)
++                    next_wakeup_time = jobstore_next_run_time
+ 
+         # Dispatch collected events
+         for event in events:
+@@ -1257,7 +1257,7 @@
+             )
+             self._logger.debug(
+                 "Next wakeup is due at %s (in %f seconds)",
+-                next_wakeup_time,
++                next_wakeup_time.astimezone(self.timezone),
+                 wait_seconds,
+             )
+ 

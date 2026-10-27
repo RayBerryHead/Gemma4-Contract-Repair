@@ -1,0 +1,154 @@
+{
+  "id": "T3",
+  "results": [
+    {
+      "execution": "VALID",
+      "observed": [
+        "STD",
+        "DST"
+      ],
+      "probe_id": "T3-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.08507692441344261,
+      "subject_calls": 1,
+      "input": {
+        "rule": "STD0DST-1,10/0,J100/0",
+        "dates": [
+          "2021-01-10T12:00",
+          "2021-01-11T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinal"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "STD",
+        "DST"
+      ],
+      "probe_id": "T3-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.07291360571980476,
+      "subject_calls": 1,
+      "input": {
+        "rule": "STD0DST-1,J59/0,J200/0",
+        "dates": [
+          "2020-02-27T12:00",
+          "2020-02-28T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinal",
+        "leap"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "STD",
+        "DST",
+        "STD",
+        "DST"
+      ],
+      "probe_id": "T3-E-01",
+      "role": "E",
+      "passed": true,
+      "elapsed_seconds": 0.06318438798189163,
+      "subject_calls": 1,
+      "input": {
+        "rule": "STD0DST-1,59/0,J200/0",
+        "dates": [
+          "2020-02-28T12:00",
+          "2020-02-29T12:00",
+          "2025-02-28T12:00",
+          "2025-03-01T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST",
+        "STD",
+        "DST"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinal",
+        "leap"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "STD",
+        "DST"
+      ],
+      "probe_id": "T3-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.06147678382694721,
+      "subject_calls": 1,
+      "input": {
+        "rule": "STD0DST-1,M3.2.0/2,M11.1.0/2",
+        "dates": [
+          "2021-01-15T12:00",
+          "2021-07-15T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinary",
+        "month-week"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "STD",
+        "DST"
+      ],
+      "probe_id": "T3-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.0684126727283001,
+      "subject_calls": 1,
+      "input": {
+        "rule": "STD0DST-1,J60/0,J200/0",
+        "dates": [
+          "2024-02-29T12:00",
+          "2024-03-01T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinal",
+        "leap"
+      ]
+    }
+  ],
+  "all_pass": true,
+  "infra_ok": true,
+  "proposal_valid": true,
+  "reason": "APPLIED"
+}

@@ -1,0 +1,34 @@
+diff --git a/lib/handler/cache-handler.js b/lib/handler/cache-handler.js
+--- a/lib/handler/cache-handler.js
++++ b/lib/handler/cache-handler.js
+@@ -526,6 +526,10 @@
+     return false
+   }
+ 
++  if (cacheType === 'shared' && resHeaders['set-cookie']) {
++    return false
++  }
++
+   // https://www.rfc-editor.org/rfc/rfc9111.html#section-4.1-5
+   if (resHeaders.vary && hasVaryStar(resHeaders.vary)) {
+     return false
+diff --git a/lib/interceptor/cache.js b/lib/interceptor/cache.js
+--- a/lib/interceptor/cache.js
++++ b/lib/interceptor/cache.js
+@@ -417,6 +417,16 @@
+     return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)
+   }
+ 
++  if (globalOpts.type === 'shared' && result.headers && result.headers['set-cookie']) {
++    result = {
++      ...result,
++      headers: {
++        ...result.headers,
++        'set-cookie': undefined
++      }
++    }
++  }
++
+   const now = Date.now()
+   if (now > result.deleteAt) {
+     // Response is expired, cache store shouldn't have given this to us

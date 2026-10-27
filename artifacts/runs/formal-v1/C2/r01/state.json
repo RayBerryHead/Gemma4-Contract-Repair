@@ -1,0 +1,428 @@
+{
+  "case_id": "C2",
+  "replicate": "r01",
+  "identity": "f91b044e132815d4cf53482427fae8bbe22daa871e02223454489f77682bb314",
+  "stage": "formal",
+  "status": "COMPLETE",
+  "arms": {
+    "B": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/lib/handler/cache-handler.js b/lib/handler/cache-handler.js\n--- a/lib/handler/cache-handler.js\n+++ b/lib/handler/cache-handler.js\n@@ -202,6 +202,8 @@\n    * @type {import('node:stream').Writable | undefined}\n    */\n   #writeStream\n+\n+  #isReused = false\n \n   /**\n    * @param {import('../../types/cache-interceptor.d.ts').default.CacheHandlerOptions} opts\n@@ -217,6 +219,9 @@\n   }\n \n   onRequestStart (controller, context) {\n+    if (this.#downstreamController) {\n+      this.#isReused = true\n+    }\n     this.#writeStream?.destroy()\n     this.#writeStream = undefined\n     this.#downstreamController = new CacheController(controller)\n@@ -256,6 +261,10 @@\n       )\n     const handler = this\n \n+    if (this.#isReused) {\n+      return downstreamOnHeaders()\n+    }\n+\n     if (\n       !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&\n       statusCode >= 200 &&\n",
+      "last_valid_source": "artifacts/runs/formal-v1/C2/r01/B/patch-2543b5bd97fe1edd",
+      "final_audit": [],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "bodies": [
+              "attacker-controlled-content",
+              "legitimate-content"
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C2-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.15420876815915108,
+          "subject_calls": 2,
+          "input": {
+            "path": "/hidden-resource"
+          },
+          "expected": [
+            "attacker-controlled-content",
+            "legitimate-content"
+          ],
+          "contract_check": "redirect_integrity",
+          "tags": [
+            "redirect",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "attacker-controlled-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C2-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.13436715118587017,
+            "subject_calls": 2,
+            "input": {},
+            "expected": [
+              "attacker-controlled-content",
+              "legitimate-content"
+            ],
+            "contract_check": "redirect_integrity",
+            "tags": [
+              "redirect",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "legitimate-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C2-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.12797723524272442,
+            "subject_calls": 2,
+            "input": {
+              "no_redirect": true
+            },
+            "expected": [
+              "legitimate-content",
+              "legitimate-content"
+            ],
+            "contract_check": "redirect_integrity",
+            "tags": [
+              "read",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "legitimate-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C2-U-02",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.1117371916770935,
+            "subject_calls": 2,
+            "input": {
+              "no_redirect": true,
+              "public_control": true
+            },
+            "expected": [
+              "legitimate-content",
+              "legitimate-content"
+            ],
+            "contract_check": "public_origin_reuse",
+            "tags": [
+              "ordinary",
+              "read",
+              "store"
+            ]
+          }
+        ],
+        "selected_probe_ids": [],
+        "new_subject_calls": 0,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "identity/key",
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "94b780c09dfc5f3c80ba32aa16f634158f4f91f3aeac86e6aca967e86945269e",
+          "applied_diff_hash": "2543b5bd97fe1edd19fcc508285ab2a34d380e899ce57133675af7811cfd1a07"
+        }
+      },
+      "joint_valid": true
+    },
+    "M": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/lib/handler/cache-handler.js b/lib/handler/cache-handler.js\n--- a/lib/handler/cache-handler.js\n+++ b/lib/handler/cache-handler.js\n@@ -202,6 +202,8 @@\n    * @type {import('node:stream').Writable | undefined}\n    */\n   #writeStream\n+\n+  #isReused = false\n \n   /**\n    * @param {import('../../types/cache-interceptor.d.ts').default.CacheHandlerOptions} opts\n@@ -217,6 +219,9 @@\n   }\n \n   onRequestStart (controller, context) {\n+    if (this.#downstreamController) {\n+      this.#isReused = true\n+    }\n     this.#writeStream?.destroy()\n     this.#writeStream = undefined\n     this.#downstreamController = new CacheController(controller)\n@@ -256,6 +261,10 @@\n       )\n     const handler = this\n \n+    if (this.#isReused) {\n+      return downstreamOnHeaders()\n+    }\n+\n     if (\n       !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&\n       statusCode >= 200 &&\n",
+      "last_valid_source": "artifacts/runs/formal-v1/C2/r01/M/patch-2543b5bd97fe1edd",
+      "final_audit": [],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "bodies": [
+              "attacker-controlled-content",
+              "legitimate-content"
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C2-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.1844799965620041,
+          "subject_calls": 2,
+          "input": {
+            "path": "/hidden-resource"
+          },
+          "expected": [
+            "attacker-controlled-content",
+            "legitimate-content"
+          ],
+          "contract_check": "redirect_integrity",
+          "tags": [
+            "redirect",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "attacker-controlled-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C2-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.13349374197423458,
+            "subject_calls": 2,
+            "input": {},
+            "expected": [
+              "attacker-controlled-content",
+              "legitimate-content"
+            ],
+            "contract_check": "redirect_integrity",
+            "tags": [
+              "redirect",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "legitimate-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C2-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.11330140754580498,
+            "subject_calls": 2,
+            "input": {
+              "no_redirect": true
+            },
+            "expected": [
+              "legitimate-content",
+              "legitimate-content"
+            ],
+            "contract_check": "redirect_integrity",
+            "tags": [
+              "read",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "legitimate-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C2-U-02",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.1135627031326294,
+            "subject_calls": 2,
+            "input": {
+              "no_redirect": true,
+              "public_control": true
+            },
+            "expected": [
+              "legitimate-content",
+              "legitimate-content"
+            ],
+            "contract_check": "public_origin_reuse",
+            "tags": [
+              "ordinary",
+              "read",
+              "store"
+            ]
+          }
+        ],
+        "selected_probe_ids": [],
+        "new_subject_calls": 0,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "identity/key",
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "94b780c09dfc5f3c80ba32aa16f634158f4f91f3aeac86e6aca967e86945269e",
+          "applied_diff_hash": "2543b5bd97fe1edd19fcc508285ab2a34d380e899ce57133675af7811cfd1a07"
+        }
+      },
+      "joint_valid": true
+    },
+    "F": {
+      "previous_witnesses": [],
+      "step": 0,
+      "status": "COMPLETE",
+      "last_valid_diff": "diff --git a/lib/handler/cache-handler.js b/lib/handler/cache-handler.js\n--- a/lib/handler/cache-handler.js\n+++ b/lib/handler/cache-handler.js\n@@ -202,6 +202,8 @@\n    * @type {import('node:stream').Writable | undefined}\n    */\n   #writeStream\n+\n+  #isReused = false\n \n   /**\n    * @param {import('../../types/cache-interceptor.d.ts').default.CacheHandlerOptions} opts\n@@ -217,6 +219,9 @@\n   }\n \n   onRequestStart (controller, context) {\n+    if (this.#downstreamController) {\n+      this.#isReused = true\n+    }\n     this.#writeStream?.destroy()\n     this.#writeStream = undefined\n     this.#downstreamController = new CacheController(controller)\n@@ -256,6 +261,10 @@\n       )\n     const handler = this\n \n+    if (this.#isReused) {\n+      return downstreamOnHeaders()\n+    }\n+\n     if (\n       !arrayIncludes(util.safeHTTPMethods, this.#cacheKey.method) &&\n       statusCode >= 200 &&\n",
+      "last_valid_source": "artifacts/runs/formal-v1/C2/r01/F/patch-2543b5bd97fe1edd",
+      "final_audit": [],
+      "final_holdout": [
+        {
+          "execution": "VALID",
+          "observed": {
+            "bodies": [
+              "attacker-controlled-content",
+              "legitimate-content"
+            ],
+            "origin_calls": 2
+          },
+          "probe_id": "C2-E-01",
+          "role": "E",
+          "passed": true,
+          "elapsed_seconds": 0.12598690390586853,
+          "subject_calls": 2,
+          "input": {
+            "path": "/hidden-resource"
+          },
+          "expected": [
+            "attacker-controlled-content",
+            "legitimate-content"
+          ],
+          "contract_check": "redirect_integrity",
+          "tags": [
+            "redirect",
+            "read"
+          ]
+        }
+      ],
+      "final_feedback": {
+        "public_results": [
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "attacker-controlled-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C2-Q0-01",
+            "role": "Q0",
+            "passed": true,
+            "elapsed_seconds": 0.12790985591709614,
+            "subject_calls": 2,
+            "input": {},
+            "expected": [
+              "attacker-controlled-content",
+              "legitimate-content"
+            ],
+            "contract_check": "redirect_integrity",
+            "tags": [
+              "redirect",
+              "store"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "legitimate-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 2
+            },
+            "probe_id": "C2-U-01",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.14467857778072357,
+            "subject_calls": 2,
+            "input": {
+              "no_redirect": true
+            },
+            "expected": [
+              "legitimate-content",
+              "legitimate-content"
+            ],
+            "contract_check": "redirect_integrity",
+            "tags": [
+              "read",
+              "ordinary"
+            ]
+          },
+          {
+            "execution": "VALID",
+            "observed": {
+              "bodies": [
+                "legitimate-content",
+                "legitimate-content"
+              ],
+              "origin_calls": 1
+            },
+            "probe_id": "C2-U-02",
+            "role": "U",
+            "passed": true,
+            "elapsed_seconds": 0.06493998877704144,
+            "subject_calls": 2,
+            "input": {
+              "no_redirect": true,
+              "public_control": true
+            },
+            "expected": [
+              "legitimate-content",
+              "legitimate-content"
+            ],
+            "contract_check": "public_origin_reuse",
+            "tags": [
+              "ordinary",
+              "read",
+              "store"
+            ]
+          }
+        ],
+        "selected_probe_ids": [],
+        "new_subject_calls": 0,
+        "all_visible_pass": true,
+        "mapped_patch_phases": [
+          "identity/key",
+          "store"
+        ],
+        "unmapped": false,
+        "budget_skipped": [],
+        "bank_exhausted": true,
+        "proposal": {
+          "valid": true,
+          "reason": "APPLIED",
+          "raw_proposal_hash": "94b780c09dfc5f3c80ba32aa16f634158f4f91f3aeac86e6aca967e86945269e",
+          "applied_diff_hash": "2543b5bd97fe1edd19fcc508285ab2a34d380e899ce57133675af7811cfd1a07"
+        }
+      },
+      "joint_valid": true
+    }
+  },
+  "source_sha": "766719f763c651624f9776c3b3ff3f4bfef712b2",
+  "initial_hash": "94b780c09dfc5f3c80ba32aa16f634158f4f91f3aeac86e6aca967e86945269e"
+}

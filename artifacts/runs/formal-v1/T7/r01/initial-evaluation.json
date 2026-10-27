@@ -1,0 +1,163 @@
+{
+  "id": "T7",
+  "results": [
+    {
+      "execution": "PRODUCT_EXCEPTION",
+      "error_type": "TypeError",
+      "error": "number 1477796340000 is not iterable (cannot read property Symbol(Symbol.iterator))",
+      "probe_id": "T7-Q0-01",
+      "role": "Q0",
+      "passed": false,
+      "elapsed_seconds": 0.10255524888634682,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 30,
+          "hour": 2,
+          "minute": 59
+        },
+        "source_zone": "America/New_York",
+        "target_zone": "Europe/Athens",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2016-10-30 02:59"
+      },
+      "contract_check": "subset",
+      "tags": [
+        "wall",
+        "zone"
+      ]
+    },
+    {
+      "execution": "PRODUCT_EXCEPTION",
+      "error_type": "TypeError",
+      "error": "number 1736937000000 is not iterable (cannot read property Symbol(Symbol.iterator))",
+      "probe_id": "T7-V-01",
+      "role": "V",
+      "passed": false,
+      "elapsed_seconds": 0.05916404910385609,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2025,
+          "month": 1,
+          "day": 15,
+          "hour": 10,
+          "minute": 30
+        },
+        "source_zone": "Asia/Taipei",
+        "target_zone": "Europe/Paris",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2025-01-15 10:30"
+      },
+      "contract_check": "subset",
+      "tags": [
+        "wall",
+        "zone"
+      ]
+    },
+    {
+      "execution": "PRODUCT_EXCEPTION",
+      "error_type": "TypeError",
+      "error": "number 1477796280000 is not iterable (cannot read property Symbol(Symbol.iterator))",
+      "probe_id": "T7-E-01",
+      "role": "E",
+      "passed": false,
+      "elapsed_seconds": 0.08069255016744137,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 30,
+          "hour": 2,
+          "minute": 58
+        },
+        "source_zone": "America/New_York",
+        "target_zone": "Europe/Athens",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2016-10-30 02:58"
+      },
+      "contract_check": "subset",
+      "tags": [
+        "wall",
+        "zone"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": {
+        "wall": "2025-01-15 03:30",
+        "instant_preserved": true,
+        "valid": true
+      },
+      "probe_id": "T7-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.061207206919789314,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2025,
+          "month": 1,
+          "day": 15,
+          "hour": 10,
+          "minute": 30
+        },
+        "source_zone": "Asia/Taipei",
+        "target_zone": "Europe/Paris",
+        "keep_local": false
+      },
+      "expected": {
+        "instant_preserved": true
+      },
+      "contract_check": "subset",
+      "tags": [
+        "instant",
+        "zone"
+      ]
+    },
+    {
+      "execution": "PRODUCT_EXCEPTION",
+      "error_type": "TypeError",
+      "error": "number 1477796220000 is not iterable (cannot read property Symbol(Symbol.iterator))",
+      "probe_id": "T7-V-02",
+      "role": "V",
+      "passed": false,
+      "elapsed_seconds": 0.06596730463206768,
+      "subject_calls": 1,
+      "input": {
+        "date": {
+          "year": 2016,
+          "month": 10,
+          "day": 30,
+          "hour": 2,
+          "minute": 57
+        },
+        "source_zone": "America/New_York",
+        "target_zone": "Europe/Athens",
+        "keep_local": true
+      },
+      "expected": {
+        "wall": "2016-10-30 02:57"
+      },
+      "contract_check": "subset",
+      "tags": [
+        "wall",
+        "zone",
+        "boundary"
+      ]
+    }
+  ],
+  "all_pass": false,
+  "infra_ok": true,
+  "proposal_valid": true,
+  "reason": "APPLIED"
+}

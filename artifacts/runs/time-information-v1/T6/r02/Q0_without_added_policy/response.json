@@ -1,0 +1,46 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 1306,
+    "candidatesTokenCount": 201,
+    "totalTokenCount": 18016,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1306
+      }
+    ],
+    "thoughtsTokenCount": 16509,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "                    next_wakeup_time = jobstore_next_run_time.astimezone(self.timezone)",
+                    "path": "src/apscheduler/schedulers/base.py",
+                    "new_text": "                    next_wakeup_time = jobstore_next_run_time"
+                  },
+                  {
+                    "new_text": "            self._logger.debug(\n                \"Next wakeup is due at %s (in %f seconds)\",\n                next_wakeup_time.astimezone(self.timezone),\n                wait_seconds,\n            )",
+                    "path": "src/apscheduler/schedulers/base.py",
+                    "old_text": "            self._logger.debug(\n                \"Next wakeup is due at %s (in %f seconds)\",\n                next_wakeup_time,\n                wait_seconds,\n            )"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "original_response_sha256": "b8542ce85419b9229d8ff77a7d90d7c043163a6906ad2b3a0d26c4b35341ae98"
+}

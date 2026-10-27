@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 6632,
+    "candidatesTokenCount": 305,
+    "totalTokenCount": 19371,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6632
+      }
+    ],
+    "thoughtsTokenCount": 12434,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "path": "lib/interceptor/cache.js",
+                    "new_text": "  if (!result) {\n    return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)\n  }\n\n  if (globalOpts.type === 'shared') {\n    if (result.cacheControlDirectives?.private === true) {\n      return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)\n    }\n\n    if (result.headers && result.headers['set-cookie']) {\n      result = {\n        ...result,\n        headers: {\n          ...result.headers,\n          'set-cookie': undefined\n        }\n      }\n    }\n  }\n\n  const now = Date.now()",
+                    "old_text": "  if (!result) {\n    return handleUncachedResponse(dispatch, globalOpts, cacheKey, handler, opts, reqCacheControl)\n  }\n\n  if (globalOpts.type === 'shared' && result.headers && result.headers['set-cookie']) {\n    result = {\n      ...result,\n      headers: {\n        ...result.headers,\n        'set-cookie': undefined\n      }\n    }\n  }\n\n  const now = Date.now()"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "7671ebe938d402087d03985f7f36eb9bceae6f88bce6057c2766a93713ba810e"
+}

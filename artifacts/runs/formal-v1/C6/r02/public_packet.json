@@ -1,0 +1,45 @@
+{
+  "task_id": "C6",
+  "contract": "Session renewal without a view access must still preserve Cookie variation and must not replay a session carrier to an anonymous caller.",
+  "policy_origin": "source-backed supplied contract",
+  "source": {
+    "django/contrib/sessions/middleware.py": "# Original line 1\nimport time\nfrom importlib import import_module\n\nfrom django.conf import settings\nfrom django.contrib.sessions.backends.base import UpdateError\nfrom django.contrib.sessions.exceptions import SessionInterrupted\nfrom django.utils.cache import patch_vary_headers\nfrom django.utils.deprecation import MiddlewareMixin\nfrom django.utils.http import http_date\n\n\nclass SessionMiddleware(MiddlewareMixin):\n    def __init__(self, get_response):\n        super().__init__(get_response)\n        engine = import_module(settings.SESSION_ENGINE)\n        self.SessionStore = engine.SessionStore\n\n    def process_request(self, request):\n        session_key = request.COOKIES.get(settings.SESSION_COOKIE_NAME)\n        request.session = self.SessionStore(session_key)\n\n    def process_response(self, request, response):\n        \"\"\"\n        If request.session was modified, or if the configuration is to save the\n        session every time, save the changes and set a session cookie or delete\n        the session cookie if the session has been emptied.\n        \"\"\"\n        try:\n            accessed = request.session.accessed\n            modified = request.session.modified\n            empty = request.session.is_empty()\n        except AttributeError:\n            return response\n        # First check if we need to delete this cookie.\n        # The session should be deleted only if the session is entirely empty.\n        if settings.SESSION_COOKIE_NAME in request.COOKIES and empty:\n            response.delete_cookie(\n                settings.SESSION_COOKIE_NAME,\n                path=settings.SESSION_COOKIE_PATH,\n                domain=settings.SESSION_COOKIE_DOMAIN,\n                samesite=settings.SESSION_COOKIE_SAMESITE,\n            )\n            patch_vary_headers(response, (\"Cookie\",))\n        else:\n            if accessed:\n                patch_vary_headers(response, (\"Cookie\",))\n            if (modified or settings.SESSION_SAVE_EVERY_REQUEST) and not empty:\n                if request.session.get_expire_at_browser_close():\n                    max_age = None\n                    expires = None\n                else:\n                    max_age = request.session.get_expiry_age()\n                    expires_time = time.time() + max_age\n                    expires = http_date(expires_time)\n                # Save the session data and refresh the client cookie.\n                # Skip session save for 5xx responses.\n                if response.status_code < 500:\n                    try:\n                        request.session.save()\n                    except UpdateError:\n                        raise SessionInterrupted(\n                            \"The request's session was deleted before the \"\n                            \"request completed. The user may have logged \"\n                            \"out in a concurrent request, for example.\"\n                        )\n                    response.set_cookie(\n                        settings.SESSION_COOKIE_NAME,\n                        request.session.session_key,\n                        max_age=max_age,\n                        expires=expires,\n                        domain=settings.SESSION_COOKIE_DOMAIN,\n                        path=settings.SESSION_COOKIE_PATH,\n                        secure=settings.SESSION_COOKIE_SECURE or None,\n                        httponly=settings.SESSION_COOKIE_HTTPONLY or None,\n                        samesite=settings.SESSION_COOKIE_SAMESITE,\n                    )\n        return response"
+  },
+  "visible_reproducer": [
+    {
+      "id": "C6-Q0-01",
+      "case": "C6",
+      "role": "Q0",
+      "params": {
+        "owner": "alice"
+      },
+      "expected": null,
+      "predicate": "session_not_replayed",
+      "cost": 2,
+      "tags": [
+        "store",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    }
+  ],
+  "preserved_functionality": [
+    {
+      "id": "C6-U-01",
+      "case": "C6",
+      "role": "U",
+      "params": {
+        "empty": true
+      },
+      "expected": null,
+      "predicate": "no_session_created",
+      "cost": 2,
+      "tags": [
+        "read",
+        "ordinary"
+      ],
+      "obligation": "isolation"
+    }
+  ],
+  "instructions": "Repair the existing product source. Submit one complete cumulative list of exact text replacements against the original buggy base through submit_patch. Use the full source path keys, and copy each old_text exactly once from the supplied source, preserving whitespace. All edits must be cumulative from the original source, including after feedback. Do not edit tests or evaluator files. Source localization is supplied. Use the stated contract and preserve legitimate behavior."
+}

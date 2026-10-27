@@ -1,0 +1,56 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 4312,
+    "candidatesTokenCount": 1898,
+    "totalTokenCount": 18195,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 4312
+      }
+    ],
+    "thoughtsTokenCount": 11985,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "old_text": "    def _first_of_month(self, day_of_week: WeekDay) -> Self:\n        \\\"\\\"\\\"\n        Modify to the first occurrence of a given day of the week\n        in the current month. If no day_of_week is provided,\n        modify to the first day of the month. Use the supplied consts\n        to indicate the desired day_of_week, ex. pendulum.MONDAY.\n\n        :param day_of_week: The day of week to set to.\n        \\\"\\\"\\\"\n        dt = self\n\n        if day_of_week is None:\n            return dt.set(day=1)\n\n        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week\n\n        if month[0][calendar_day] > 0:\n            day_of_month = month[0][calendar_day]\n        else:\n            day_of_month = month[1][calendar_day]\n\n        return dt.set(day=day_of_month)\n",
+                    "path": "src/pendulum/date.py",
+                    "new_text": "    def _first_of_month(self, day_of_week: WeekDay | None = None) -> Self:\n        \\\"\\\"\\\"\n        Modify to the first occurrence of a given day of the week\n        in the current month. If no day_of_week is provided,\n        modify to the first day of the month. Use the supplied consts\n        to indicate the desired day_of_week, ex. pendulum.MONDAY.\n\n        :param day_of_week: The day of week to set to.\n        \\\"\\\"\\\"\n        dt = self\n\n        if day_of_week is None:\n            return dt.set(day=1)\n\n        first_day = dt.set(day=1)\n        offset = (day_of_week - first_day.weekday() + 7) % 7\n        return dt.set(day=1 + offset)\n"
+                  },
+                  {
+                    "new_text": "    def _last_of_month(self, day_of_week: WeekDay | None = None) -> Self:\n        \\\"\\\"\\\"\n        Modify to the last occurrence of a given day of the week\n        in the current month. If no day_of_week is provided,\n        modify to the last day of the month. Use the supplied consts\n        to indicate the desired day_of_week, ex. pendulum.MONDAY.\n\n        :param day_of_week: The day of week to set to.\n        \\\"\\\"\\\"\n        dt = self\n\n        if day_of_week is None:\n            return dt.set(day=self.days_in_month)\n\n        last_day = dt.set(day=self.days_in_month)\n        offset = (last_day.weekday() - day_of_week + 7) % 7\n        return dt.set(day=self.days_in_month - offset)\n",
+                    "path": "src/pendulum/date.py",
+                    "old_text": "    def _last_of_month(self, day_of_week: WeekDay | None = None) -> Self:\n        \\\"\\\"\\\"\n        Modify to the last occurrence of a given day of the week\n        in the current month. If no day_of_week is provided,\n        modify to the last day of the month. Use the supplied consts\n        to indicate the desired day_of_week, ex. pendulum.MONDAY.\n\n        :param day_of_week: The day of week to set to.\n        \\\"\\\"\\\"\n        dt = self\n\n        if day_of_week is None:\n            return dt.set(day=self.days_in_month)\n\n        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week\n\n        if month[-1][calendar_day] > 0:\n            day_of_month = month[-1][calendar_day]\n        else:\n            day_of_month = month[-2][calendar_day]\n\n        return dt.set(day=day_of_month)\n"
+                  },
+                  {
+                    "new_text": "    def _first_of_month(self, day_of_week: WeekDay | None = None) -> Self:\n        \\\"\\\"\\\"\n        Modify to the first occurrence of a given day of the week\n        in the current month. If no day_of_week is provided,\n        modify to the first day of the month. Use the supplied consts\n        to indicate the desired day_of_week, ex. DateTime.MONDAY.\n        \\\"\\\"\\\"\n        dt = self.start_of(\\\"day\\\")\n\n        if day_of_week is None:\n            return dt.set(day=1)\n\n        first_day = dt.set(day=1)\n        offset = (day_of_week - first_day.weekday() + 7) % 7\n        return dt.set(day=1 + offset)\n",
+                    "old_text": "    def _first_of_month(self, day_of_week: WeekDay | None = None) -> Self:\n        \\\"\\\"\\\"\n        Modify to the first occurrence of a given day of the week\n        in the current month. If no day_of_week is provided,\n        modify to the first day of the month. Use the supplied consts\n        to indicate the desired day_of_week, ex. DateTime.MONDAY.\n        \\\"\\\"\\\"\n        dt = self.start_of(\\\"day\\\")\n\n        if day_of_week is None:\n            return dt.set(day=1)\n\n        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week\n\n        if month[0][calendar_day] > 0:\n            day_of_month = month[0][calendar_day]\n        else:\n            day_of_month = month[1][calendar_day]\n\n        return dt.set(day=day_of_month)\n",
+                    "path": "src/pendulum/datetime.py"
+                  },
+                  {
+                    "old_text": "    def _last_of_month(self, day_of_week: WeekDay | None = None) -> Self:\n        \\\"\\\"\\\"\n        Modify to the last occurrence of a given day of the week\n        in the current month. If no day_of_week is provided,\n        modify to the last day of the month. Use the supplied consts\n        to indicate the desired day_of_week, ex. DateTime.MONDAY.\n        \\\"\\\"\\\"\n        dt = self.start_of(\\\"day\\\")\n\n        if day_of_week is None:\n            return dt.set(day=self.days_in_month)\n\n        month = calendar.monthcalendar(dt.year, dt.month)\n\n        calendar_day = day_of_week\n\n        if month[-1][calendar_day] > 0:\n            day_of_month = month[-1][calendar_day]\n        else:\n            day_of_month = month[-2][calendar_day]\n\n        return dt.set(day=day_of_month)\n",
+                    "new_text": "    def _last_of_month(self, day_of_week: WeekDay | None = None) -> Self:\n        \\\"\\\"\\\"\n        Modify to the last occurrence of a given day of the week\n        in the current month. If no day_of_week is provided,\n        modify to the last day of the month. Use the supplied consts\n        to indicate the desired day_of_week, ex. DateTime.MONDAY.\n        \\\"\\\"\\\"\n        dt = self.start_of(\\\"day\\\")\n\n        if day_of_week is None:\n            return dt.set(day=self.days_in_month)\n\n        last_day = dt.set(day=self.days_in_month)\n        offset = (last_day.weekday() - day_of_week + 7) % 7\n        return dt.set(day=self.days_in_month - offset)\n",
+                    "path": "src/pendulum/datetime.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "original_response_sha256": "25711de85eb884e089ef875e8fc2b0b8149e58da0bb0579debb0590a692ba112"
+}

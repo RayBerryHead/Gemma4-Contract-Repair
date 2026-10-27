@@ -1,0 +1,159 @@
+{
+  "public_results": [
+    {
+      "execution": "VALID",
+      "observed": [
+        "2015-01-31",
+        "2015-02-28",
+        "2015-03-31",
+        "2015-04-30"
+      ],
+      "probe_id": "T1-Q0-01",
+      "role": "Q0",
+      "passed": true,
+      "elapsed_seconds": 0.07265936397016048,
+      "subject_calls": 1,
+      "input": {
+        "start": "2015-01-31",
+        "count": 4
+      },
+      "expected": [
+        "2015-01-31",
+        "2015-02-28",
+        "2015-03-31",
+        "2015-04-30"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "anchor",
+        "month-end"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "2021-01-15",
+        "2021-02-15",
+        "2021-03-15"
+      ],
+      "probe_id": "T1-U-01",
+      "role": "U",
+      "passed": true,
+      "elapsed_seconds": 0.0889564286917448,
+      "subject_calls": 1,
+      "input": {
+        "start": "2021-01-15",
+        "count": 3
+      },
+      "expected": [
+        "2021-01-15",
+        "2021-02-15",
+        "2021-03-15"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "anchor",
+        "month-end"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "2020-01-30",
+        "2020-02-29",
+        "2020-03-30"
+      ],
+      "probe_id": "T1-V-01",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.05289700999855995,
+      "subject_calls": 1,
+      "input": {
+        "start": "2020-01-30",
+        "count": 3
+      },
+      "expected": [
+        "2020-01-30",
+        "2020-02-29",
+        "2020-03-30"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "anchor",
+        "month-end"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "2019-01-15",
+        "2019-02-15",
+        "2019-03-15",
+        "2019-04-15"
+      ],
+      "probe_id": "T1-V-02",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.04291296564042568,
+      "subject_calls": 1,
+      "input": {
+        "start": "2019-01-15",
+        "count": 4
+      },
+      "expected": [
+        "2019-01-15",
+        "2019-02-15",
+        "2019-03-15",
+        "2019-04-15"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "ordinary"
+      ]
+    },
+    {
+      "execution": "VALID",
+      "observed": [
+        "2021-01-31",
+        "2021-02-28",
+        "2021-03-31"
+      ],
+      "probe_id": "T1-V-03",
+      "role": "V",
+      "passed": true,
+      "elapsed_seconds": 0.04112439788877964,
+      "subject_calls": 1,
+      "input": {
+        "start": "2021-01-31",
+        "count": 3
+      },
+      "expected": [
+        "2021-01-31",
+        "2021-02-28",
+        "2021-03-31"
+      ],
+      "contract_check": "equal",
+      "tags": [
+        "month-end",
+        "anchor"
+      ]
+    }
+  ],
+  "selected_probe_ids": [
+    "T1-V-01",
+    "T1-V-02",
+    "T1-V-03"
+  ],
+  "new_subject_calls": 3,
+  "all_visible_pass": true,
+  "mapped_patch_phases": [],
+  "unmapped": false,
+  "budget_skipped": [],
+  "bank_exhausted": true,
+  "proposal": {
+    "valid": true,
+    "reason": "APPLIED",
+    "raw_proposal_hash": "9bba6ac4dcea45d4fc2eb50eaa783bb90b77b5eb839b14c39c0046f23b2e7bb4",
+    "applied_diff_hash": "40c7780f914c34a2f076541728f73c03e8b06ba02fcae29a493efef66c75ea0b"
+  }
+}

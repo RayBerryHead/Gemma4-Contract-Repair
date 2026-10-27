@@ -1,0 +1,132 @@
+{
+  "case": "T6",
+  "replicate": "r01",
+  "condition": "policy_without_Q0",
+  "proposal_valid": true,
+  "proposal_reason": "APPLIED",
+  "joint_valid": false,
+  "evaluation": {
+    "id": "T6",
+    "results": [
+      {
+        "execution": "VALID",
+        "observed": 3601.0,
+        "probe_id": "T6-Q0-01",
+        "role": "Q0",
+        "passed": false,
+        "elapsed_seconds": 0.0947097260504961,
+        "subject_calls": 1,
+        "input": {
+          "start": "2026-03-29T01:59:59",
+          "end": "2026-03-29T03:00:00",
+          "zone": "Europe/Berlin"
+        },
+        "expected": 1,
+        "contract_check": "equal",
+        "tags": [
+          "elapsed",
+          "dst"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": 0.0,
+        "probe_id": "T6-V-01",
+        "role": "V",
+        "passed": false,
+        "elapsed_seconds": 0.058582983911037445,
+        "subject_calls": 1,
+        "input": {
+          "start": "2026-10-25T02:30:00",
+          "end": "2026-10-25T02:30:00",
+          "start_fold": 0,
+          "end_fold": 1,
+          "zone": "Europe/Berlin"
+        },
+        "expected": 3600,
+        "contract_check": "equal",
+        "tags": [
+          "elapsed",
+          "fold"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": 3601.0,
+        "probe_id": "T6-E-01",
+        "role": "E",
+        "passed": false,
+        "elapsed_seconds": 0.07551066391170025,
+        "subject_calls": 1,
+        "input": {
+          "start": "2025-03-30T01:59:59",
+          "end": "2025-03-30T03:00:00",
+          "zone": "Europe/Berlin"
+        },
+        "expected": 1,
+        "contract_check": "equal",
+        "tags": [
+          "elapsed",
+          "dst"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": 5.0,
+        "probe_id": "T6-U-01",
+        "role": "U",
+        "passed": true,
+        "elapsed_seconds": 0.07378962077200413,
+        "subject_calls": 1,
+        "input": {
+          "start": "2026-01-02T12:00:00",
+          "end": "2026-01-02T12:00:05",
+          "zone": "Europe/Berlin"
+        },
+        "expected": 5,
+        "contract_check": "equal",
+        "tags": [
+          "elapsed",
+          "ordinary"
+        ]
+      },
+      {
+        "execution": "VALID",
+        "observed": 10.0,
+        "probe_id": "T6-V-02",
+        "role": "V",
+        "passed": true,
+        "elapsed_seconds": 0.10900730825960636,
+        "subject_calls": 1,
+        "input": {
+          "start": "2026-01-02T12:00:00",
+          "end": "2026-01-02T12:00:10",
+          "zone": "Europe/Berlin"
+        },
+        "expected": 10,
+        "contract_check": "equal",
+        "tags": [
+          "elapsed",
+          "ordinary"
+        ]
+      }
+    ],
+    "all_pass": false,
+    "infra_ok": true
+  },
+  "usage": {
+    "promptTokenCount": 1180,
+    "candidatesTokenCount": 142,
+    "totalTokenCount": 13814,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 1180
+      }
+    ],
+    "thoughtsTokenCount": 12492,
+    "serviceTier": "standard"
+  },
+  "model_version": "gemma-4-31b-it",
+  "source_response": "artifacts/runs/time-information-v1/T6/r01/policy_without_Q0/response.json"
+}

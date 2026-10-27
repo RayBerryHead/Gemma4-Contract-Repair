@@ -1,0 +1,10 @@
+{
+  "case_id": "C3",
+  "replicate": "r01",
+  "stage": "secondary-initial-only",
+  "status": "COMPLETE",
+  "source_sha": "1de2217c02ec797f660e359b5801af91ccff9632",
+  "initial_hash": "86c4a8aecff64d2d7054d5fa18cddb58499e2c3eed40d2571955811bc7567b6f",
+  "arms": {},
+  "reused_original_initial": false
+}

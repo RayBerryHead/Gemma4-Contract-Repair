@@ -1,0 +1,184 @@
+{
+  "id": "C1",
+  "contract": "Shared caches must not store or replay Set-Cookie responses, including entries created using a supported private client. Preserve ordinary public and private-cache behavior.",
+  "product_paths": [
+    "lib/handler/cache-handler.js",
+    "lib/interceptor/cache.js"
+  ],
+  "evidence_class": "privacy",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "C1-Q0-01",
+      "case": "C1",
+      "role": "Q0",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ]
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "store",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C1-V-01",
+      "case": "C1",
+      "role": "V",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "warm_private": true
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 3,
+      "tags": [
+        "read",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C1-E-01",
+      "case": "C1",
+      "role": "E",
+      "params": {
+        "actors": [
+          "carol",
+          "dave",
+          "carol"
+        ]
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 3,
+      "tags": [
+        "read",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C1-U-01",
+      "case": "C1",
+      "role": "U",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "predicate": "public_reuse",
+      "cost": 2,
+      "tags": [
+        "store",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C1-V-02",
+      "case": "C1",
+      "role": "V",
+      "params": {
+        "actors": [
+          "alice",
+          "alice"
+        ],
+        "private": true
+      },
+      "expected": null,
+      "predicate": "private_reuse",
+      "cost": 2,
+      "tags": [
+        "store",
+        "read"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C1-V-03",
+      "case": "C1",
+      "role": "V",
+      "params": {
+        "actors": [
+          "eve",
+          "frank"
+        ]
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "store",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C1-E-02",
+      "case": "C1",
+      "role": "E",
+      "params": {
+        "actors": [
+          "dave",
+          "carol"
+        ],
+        "warm_private": true
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 3,
+      "tags": [
+        "read",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C1-E-03",
+      "case": "C1",
+      "role": "E",
+      "params": {
+        "lifecycle": "revalidate"
+      },
+      "expected": null,
+      "predicate": "lifecycle_cookie_isolation",
+      "cost": 3,
+      "tags": [
+        "revalidate",
+        "read",
+        "store"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C1-V-04",
+      "case": "C1",
+      "role": "V",
+      "params": {
+        "lifecycle": "swr"
+      },
+      "expected": null,
+      "predicate": "lifecycle_cookie_isolation",
+      "cost": 3,
+      "tags": [
+        "revalidate",
+        "read",
+        "store"
+      ],
+      "obligation": "isolation"
+    }
+  ]
+}

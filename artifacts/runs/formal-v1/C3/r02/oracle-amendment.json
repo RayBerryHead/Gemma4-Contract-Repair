@@ -1,0 +1,5 @@
+{
+  "original_response_sha256": "7a5bcc572bb9bd4c0b84a36a25780326e82513c837564dfdc2b96bc9f08e4708",
+  "initial_regenerated": false,
+  "change": "Remove outgoing Vary/private/no-store shape requirement; retain actor-isolation and public U."
+}

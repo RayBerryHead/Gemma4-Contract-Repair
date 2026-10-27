@@ -1,0 +1,91 @@
+{
+  "id": "C7",
+  "contract": "An empty qualified private field list must behave as unqualified private; preserve normal public reuse.",
+  "product_paths": [
+    "lib/util/cache.js"
+  ],
+  "evidence_class": "privacy",
+  "status": "DESIGNED_REPLAY_PENDING",
+  "probes": [
+    {
+      "id": "C7-Q0-01",
+      "case": "C7",
+      "role": "Q0",
+      "params": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "directive": "public, max-age=300, private=\"\""
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "store",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C7-V-01",
+      "case": "C7",
+      "role": "V",
+      "params": {
+        "actors": [
+          "alice",
+          "anon"
+        ],
+        "directive": "public, max-age=300, private=\",\""
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "read",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C7-E-01",
+      "case": "C7",
+      "role": "E",
+      "params": {
+        "actors": [
+          "carol",
+          "anon"
+        ],
+        "directive": "public, max-age=300, private=\"   \""
+      },
+      "expected": null,
+      "predicate": "actor_isolation",
+      "cost": 2,
+      "tags": [
+        "read",
+        "identity/key"
+      ],
+      "obligation": "isolation"
+    },
+    {
+      "id": "C7-U-01",
+      "case": "C7",
+      "role": "U",
+      "params": {
+        "actors": [
+          "alice",
+          "bob"
+        ],
+        "public": true
+      },
+      "expected": null,
+      "predicate": "public_reuse",
+      "cost": 2,
+      "tags": [
+        "store",
+        "read"
+      ],
+      "obligation": "isolation"
+    }
+  ]
+}

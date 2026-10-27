@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 4314,
+    "candidatesTokenCount": 384,
+    "totalTokenCount": 11700,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 4314
+      }
+    ],
+    "thoughtsTokenCount": 7002,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "        # Don't cache responses when the Cache-Control header is set to\n        # private, no-cache, or no-store.\n        cache_control = response.get(\"Cache-Control\", \"\").lower()\n        if cache_control and any(\n            directive in cache_control\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response\n\n        # Ensure responses to Authorization requests are isolated by Authorization\n        # unless they are explicitly public.\n        if request.META.get(\"HTTP_AUTHORIZATION\") and \"public\" not in cache_control:\n            if not has_vary_header(response, \"Authorization\"):\n                if hasattr(response, \"set_vary\"):\n                    response.set_vary(\"Authorization\")\n                else:\n                    vary = response.get(\"Vary\", \"\")\n                    response[\"Vary\"] = f\"{vary}, Authorization\" if vary else \"Authorization\"\n\n        # Don't cache responses when the Vary header contains '*'.",
+                    "old_text": "        # Don't cache responses when the Cache-Control header is set to\n        # private, no-cache, or no-store.\n        cache_control = response.get(\"Cache-Control\", \"\").lower()\n        if cache_control and any(\n            directive in cache_control\n            for directive in (\n                \"private\",\n                \"no-cache\",\n                \"no-store\",\n            )\n        ):\n            return response\n\n        # Don't cache responses when the Vary header contains '*'.",
+                    "path": "django/middleware/cache.py"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "4455a9c5372f328d407d59678b18196d447632401935eb2eb07afecddf24054c"
+}

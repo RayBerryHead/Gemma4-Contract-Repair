@@ -1,0 +1,58 @@
+{
+  "task_id": "T3",
+  "contract": "POSIX n is zero-based and includes leap day; Jn is one-based and excludes leap day.",
+  "policy_origin": "source-backed supplied contract",
+  "source": {
+    "src/dateutil/tz/_tzfile.py": "# Original line 1\n# -*- coding: utf-8 -*-\nimport bisect\nimport calendar\nimport functools\nimport io\nimport os\nimport re\nimport stat\nimport struct\nimport sys\nfrom datetime import MAXYEAR, MINYEAR, datetime, timedelta\n\nimport six\n\nfrom ._common import _tzinfo, enfold, tzname_in_python2\n\nEPOCH = datetime(1970, 1, 1)\nEPOCHORDINAL = EPOCH.toordinal()\n\n# TODO: Move this to _common.py\ntry:\n    # Python 3.7 feature\n    from contextlib import nullcontext as _nullcontext\nexcept ImportError:\n    import contextlib\n\n    @contextlib.contextmanager\n    def _nullcontext(context):\n        yield context\n\n# Original line 1203\n        return (tti, fold)\n\n    def _get_trans_info_fromutc(self, ts, year):\n        if self._near_new_year(ts, year):\n            return self._get_trans_info_fromutc_near_new_year(ts, year)\n\n        start, end = self.transitions(year)\n        start -= self.std.utcoff.total_seconds()\n        end -= self.dst.utcoff.total_seconds()\n\n        if start < end:\n            isdst = start <= ts < end\n        else:\n            isdst = not (end <= ts < start)\n\n        # For positive DST, the ambiguous period is one dst_diff after the end\n        # of DST; for negative DST, the ambiguous period is one dst_diff before\n        # the start of DST.\n        if self.dst_diff > 0:\n            ambig_start = end\n            ambig_end = end + self.dst_diff\n        else:\n            ambig_start = start\n            ambig_end = start - self.dst_diff\n\n        fold = ambig_start <= ts < ambig_end\n\n        return (self.dst if isdst else self.std, fold)\n\n\n# A rule can put a transition up to 167 hours (just under a week) away from\n# the day it names, and local time is at most a day or so away from UTC, so\n# only times within this distance of the new year can be affected by the\n# rules for the previous or next year.\n_NEW_YEAR_MARGIN = 10 * 86400\n\n\ndef _post_epoch_days_before_year(year):\n    \"\"\"Get the number of days between 1970-01-01 and YEAR-01-01\"\"\"\n    y = year - 1\n    return y * 365 + y // 4 - y // 100 + y // 400 - EPOCHORDINAL\n\n\nclass _DayOffset(object):\n    __slots__ = [\"d\", \"julian\", \"hour\", \"minute\", \"second\"]\n\n    def __init__(self, d, julian, hour=2, minute=0, second=0):\n        min_day = 0 + julian  # convert bool to int\n        if not min_day <= d <= 365:\n            raise ValueError(\"d must be in [%s, 365], not: %s\" % (min_day, d))\n\n        self.d = d\n        self.julian = julian\n        self.hour = hour\n        self.minute = minute\n        self.second = second\n\n    def year_to_epoch(self, year):\n        days_before_year = _post_epoch_days_before_year(year)\n\n        d = self.d\n        if self.julian and d >= 59 and calendar.isleap(year):\n            d += 1\n\n        epoch = (days_before_year + d) * 86400\n        epoch += self.hour * 3600 + self.minute * 60 + self.second\n\n        return epoch\n\n\nclass _CalendarOffset(object):\n    __slots__ = [\"m\", \"w\", \"d\", \"hour\", \"minute\", \"second\"]\n\n    _DAYS_BEFORE_MONTH = (\n        -1,\n        0,\n        31,\n        59,\n        90,\n        120,\n        151,\n        181,\n        212,\n        243,\n        273,\n        304,\n        334,\n    )\n\n    def __init__(self, m, w, d, hour=2, minute=0, second=0):\n        if not 1 <= m <= 12:\n            raise ValueError(\"m must be in [1, 12]\")\n\n        if not 1 <= w <= 5:\n            raise ValueError(\"w must be in [1, 5]\")\n\n        if not 0 <= d <= 6:\n            raise ValueError(\"d must be in [0, 6]\")\n\n        self.m = m\n        self.w = w\n        self.d = d\n        self.hour = hour\n        self.minute = minute\n        self.second = second\n\n    @classmethod\n    def _ymd2ord(cls, year, month, day):\n        return (\n            _post_epoch_days_before_year(year)\n            + cls._DAYS_BEFORE_MONTH[month]\n            + (month > 2 and calendar.isleap(year))\n            + day\n        )\n\n    # TODO: These are not actually epoch dates as they are expressed in local time\n    def year_to_epoch(self, year):\n        \"\"\"Calculates the datetime of the occurrence from the year\"\"\"\n        # We know year and month, we need to convert w, d into day of month\n        #\n        # Week 1 is the first week in which day `d` (where 0 = Sunday) appears.\n        # Week 5 represents the last occurrence of day `d`, so we need to know\n        # the range of the month.\n        #\n        # This doesn't use calendar.monthrange because the rules for years 0\n        # and 10000 can affect times that datetime can represent, and\n        # calendar.monthrange constructs a datetime.date. Instead, get the\n        # weekday (0 = Monday) from the ordinal: 1970-01-01 was a Thursday.\n        first_ordinal = self._ymd2ord(year, self.m, 1)\n        first_day = (first_ordinal + 3) % 7\n        if self.m == 12:\n            next_ordinal = self._ymd2ord(year + 1, 1, 1)\n        else:\n            next_ordinal = self._ymd2ord(year, self.m + 1, 1)\n        days_in_month = next_ordinal - first_ordinal\n\n        # This equation seems magical, so I'll break it down:\n        # 1. calendar says 0 = Monday, POSIX says 0 = Sunday\n        #    so we need first_day + 1 to get 1 = Monday -> 7 = Sunday,\n        #    which is still equivalent because this math is mod 7\n        # 2. Get first day - desired day mod 7: -1 % 7 = 6, so we don't need\n        #    to do anything to adjust negative numbers.\n        # 3. Add 1 because month days are a 1-based index.\n        month_day = (self.d - (first_day + 1)) % 7 + 1\n\n        # Now use a 0-based index version of `w` to calculate the w-th\n        # occurrence of `d`\n        month_day += (self.w - 1) * 7\n\n        # month_day will only be > days_in_month if w was 5, and `w` means\n        # \"last occurrence of `d`\", so now we just check if we over-shot the\n        # end of the month and if so knock off 1 week.\n        if month_day > days_in_month:\n            month_day -= 7"
+  },
+  "visible_reproducer": [
+    {
+      "id": "T3-Q0-01",
+      "case": "T3",
+      "role": "Q0",
+      "params": {
+        "rule": "STD0DST-1,10/0,J100/0",
+        "dates": [
+          "2021-01-10T12:00",
+          "2021-01-11T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "ordinal"
+      ],
+      "obligation": "time-policy"
+    }
+  ],
+  "preserved_functionality": [
+    {
+      "id": "T3-U-01",
+      "case": "T3",
+      "role": "U",
+      "params": {
+        "rule": "STD0DST-1,M3.2.0/2,M11.1.0/2",
+        "dates": [
+          "2021-01-15T12:00",
+          "2021-07-15T12:00"
+        ]
+      },
+      "expected": [
+        "STD",
+        "DST"
+      ],
+      "predicate": "equal",
+      "cost": 1,
+      "tags": [
+        "ordinary",
+        "month-week"
+      ],
+      "obligation": "time-policy"
+    }
+  ],
+  "instructions": "Repair the existing product source. Submit one complete cumulative list of exact text replacements against the original buggy base through submit_patch. Use the full source path keys, and copy each old_text exactly once from the supplied source, preserving whitespace. All edits must be cumulative from the original source, including after feedback. Do not edit tests or evaluator files. Source localization is supplied. Use the stated contract and preserve legitimate behavior."
+}

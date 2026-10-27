@@ -1,0 +1,42 @@
+{
+  "usageMetadata": {
+    "promptTokenCount": 3012,
+    "candidatesTokenCount": 242,
+    "totalTokenCount": 8255,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 3012
+      }
+    ],
+    "thoughtsTokenCount": 5001,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemma-4-31b-it",
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "submit_patch",
+              "args": {
+                "edits": [
+                  {
+                    "new_text": "        # Don't cache responses when the Vary header contains '*'.\n        if has_vary_header(response, \"*\"):\n            return response\n\n        # If the request has an Authorization header, the response must be\n        # either explicitly public or isolated by Authorization.\n        if request.META.get(\"HTTP_AUTHORIZATION\") and \"public\" not in cache_control:\n            if not has_vary_header(response, \"Authorization\"):\n                vary = response.get(\"Vary\", \"\")\n                response[\"Vary\"] = (vary + \", Authorization\").strip(\", \")\n\n        # Page timeout takes precedence over the \"max-age\" and the default\n        # cache timeout.",
+                    "path": "django/middleware/cache.py",
+                    "old_text": "        # Don't cache responses when the Vary header contains '*'.\n        if has_vary_header(response, \"*\"):\n            return response\n\n        # Page timeout takes precedence over the \"max-age\" and the default\n        # cache timeout."
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "publication_note": "Function arguments or extracted diff only; internal thoughts and signatures removed.",
+  "original_response_sha256": "5e4f7367ef5916616995e7a26c1986e33ffdbe562f37449b730011ef376a3d8e"
+}
